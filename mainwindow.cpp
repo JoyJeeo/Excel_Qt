@@ -31,6 +31,77 @@ MainWindow::MainWindow(QWidget *parent)
 //    initChart();
 }
 
+// NULL的取固定值
+const int NULL_Number = INT_MIN;
+
+// 所有属性的最大、最小值和属性
+// 只定义结构，而不定义对象
+class UL_Unit_NUMBER
+{
+public:
+    // 无参构造
+    explicit UL_Unit_NUMBER()
+    {
+        // 初始化m_uls
+        m_uls.insert(make_pair(LimitL,vector<double>()));
+        m_uls.insert(make_pair(LimitU,vector<double>()));
+    }
+
+// string代表Limit的UL，vector中依次对应所测属性的数值【通过[下标]索引实现】
+// 1. 这里将ul和unit耦合在一起，但这并不是一种耦合，因为ul与unit之间有直接的关系，大部分应用场景需要他们同时出现【有关系】
+// 2. units作为单位的容器，不需要使用map的方式来占用更多的空间来实现【从效率的角度，不需要unit与ul使用相同的容器进行存储】【有效率】
+map<string,vector<double>> m_uls;
+vector<string> m_units; // Unit
+
+private:
+    string LimitL = "LimitL";
+    string LimitU = "LimitU";
+
+};
+
+// 芯片号和轮数
+class SITE_PART
+{
+public:
+    // 无参构造
+    explicit SITE_PART()
+    {
+        // 初始化m_site_part
+        m_site_part.insert(make_pair(SITE_NUM,vector<int>()));
+        m_site_part.insert(make_pair(PART_ID,vector<int>()));
+    }
+
+    int get_Max_Site_Number()
+    {
+        vector<int> v = this->m_site_part[SITE_NUM];
+        int ans_Number = -1;
+        for(auto x : v)
+        {
+            if(ans_Number < x)ans_Number = x;
+        }
+        return ans_Number;
+    }
+
+    int get_Max_Part_Id()
+    {
+        vector<int> v = this->m_site_part[PART_ID];
+        int ans_Number = -1;
+        for(auto x : v)
+        {
+            if(ans_Number < x)ans_Number = x;
+        }
+        return ans_Number;
+    }
+
+// string代表SITE_NUM和PART_ID，vector中依次对应所测属性的数值【通过[下标]索引实现】
+map<string,vector<int>> m_site_part; // 直接写m_在类中声明的好处是，对象可以通过m_的代码提示直接查看到public中，对外开放的所有可用属性
+
+private:
+    string SITE_NUM = "SITE_NUM";
+    string PART_ID = "PART_ID";
+
+};
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -50,24 +121,90 @@ void get_attri_MAX_MIN(double& m_max,double& m_min)
 }
 
 
-// 获取数据的vector<vector<double>>>的map数据【将string转换为double存储在矩阵中】
-map<string,vector<vector<double>>> draw_map(const vector<vector<string>>& target_vec)
+// 判断一个string是否为整数数字
+inline bool is_Numeric(const string &str)
 {
-    map<string,vector<vector<double>>> m;
-    map<string,vector<double>> mv;
-    string str;vector<vector<double>> vec;
-    for(int i = 0;i < target_vec.size();i++)
+    auto it = str.begin();
+    while (it != str.end() && std::isdigit(*it)) {
+        it++;
+    }
+    return !str.empty() && it == str.end();
+}
+
+// 获取数据的vector<vector<double>>>的map数据【将string转换为double存储在矩阵中】
+void draw_map
+(const vector<vector<string>>& target_vec, // 数据源
+    SITE_PART& site_parts,
+    UL_Unit_NUMBER& uuls,
+     map<string,vector<vector<double>>>& ans) // 传入参数
+{
+    // 获取site和part -> site_parts
+    for(size_t i = 0;i < 2;i++)
     {
-        for(int j = 0;j < target_vec[i].size();j++)
+        string attri;
+        for(size_t j = 0;j < target_vec[i].size();j++)
         {
-            if(i == 0 && j == 0) {
-                str = target_vec[0][0];
+            if(j == 0) attri = target_vec[i][j];
+            if(is_Numeric(target_vec[i][j]))
+            {
+                site_parts.m_site_part[attri].push_back(stoi(target_vec[i][j]));
+            }
+        }
+    }
+
+    // 获取unit,limitL和limitU -> uuls
+    for(size_t i = 0,j = 0;j < target_vec[i].size();j++)
+    {
+        string attri;
+        if(target_vec[i][j] != "Unit" || target_vec[i][j] != "LimitL" || target_vec[i][j] != "LimitU") continue;
+
+        // 获取属性名称
+        attri = target_vec[i][j];
+        for(size_t k = 2;k < target_vec.size();k++)
+        {
+            if(attri == "Unit") uuls.m_units.push_back(target_vec[k][j]);
+            else {
+                // 如果为空的话，获得一个计算后的数值进行存储【！！！】
+                uuls.m_uls[attri].push_back(stod(target_vec[k][j]));
+           }
+        }
+    }
+
+    // 获取主数据群
+    for(size_t i = 2;i < target_vec.size();i++)
+    {
+        string attri;
+        vector<vector<double>> data(); // 【！！！】初始化大小后，才能矩阵随机的存储【使用类内定义好的函数返回值】
+        bool flage = true; // 观念值【就像电路板上的0 1数据代表的含义一样，给数据赋予自己所谓的意义，执行对应操作】
+        for(size_t j = 0; j < target_vec[i].size();j++)
+        {
+            // 跨越无效数据区
+            if(j == 0) attri = target_vec[i][j];
+            if(target_vec[i][j].size() != 0 && flage) continue;
+            if(target_vec[i][j].size() == 0) {
+                flage = false;
                 continue;
             }
-            vec.push_back(stod(target_vec[i][j]));
+            // 正式读取主数据群数据
 
         }
     }
+
+//    map<string,vector<vector<double>>> m;
+//    map<string,vector<double>> mv;
+//    string str;vector<vector<double>> vec;
+//    for(int i = 0;i < target_vec.size();i++)
+//    {
+//        for(int j = 0;j < target_vec[i].size();j++)
+//        {
+//            if(i == 0 && j == 0) {
+//                str = target_vec[0][0];
+//                continue;
+//            }
+//            vec.push_back(stod(target_vec[i][j]));
+
+//        }
+//    }
 }
 
 // 制作QList<QList<QPointF>>数据列表
