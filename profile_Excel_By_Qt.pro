@@ -17,12 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Attri_UL_Unit_NUMBER.cpp \
+    SITE_PART.cpp \
+    Valid_Data.cpp \
         main.cpp \
         mainwindow.cpp \
     chart.cpp \
     operate_file.cpp
 
 HEADERS += \
+    Attri_UL_Unit_NUMBER.h \
+    HEADER_01.h \
+    SITE_PART.h \
+    Valid_Data.h \
         mainwindow.h \
     chart.h \
     operate_file.h

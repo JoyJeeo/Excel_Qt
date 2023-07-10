@@ -32,6 +32,8 @@ vector<vector<string>> tackle_file_cols(const vector<vector<string>>& target_arr
 // map<string,vector<string>> tackle_file_get_maps(const vector<vector<string>>& cols_array);
 vector<vector<string>> tackle_file_get_ans(const vector<vector<string>>& rows_array,const vector<vector<string>>& cols_array);
 void save_tackle_datas(const ofstream& ofs,const vector<vector<string>>& datas);
+
+// 暂时没什么用处
 void draw_datas(const string& draw_File_Name);
 
 // test

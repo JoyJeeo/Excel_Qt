@@ -51,9 +51,13 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         qchart->addAxis(axisY, Qt::AlignLeft);   //左：Qt::AlignLeft    右：Qt::AlignRight
 }
 
-void Chart::buildChart(QList<QPointF> pointlist)
+void Chart::buildChart(const QVector<QVector<QPointF>>& series_data)
 {
-    /*根据复数的QList<QList<QPointF>>，在chart中同时绘制复数的线，并加入chart*/
+    /*
+        使用QVector<QVector<QPointF>>:attri -> [site][part] = (part,val)的类型
+
+        在chart中对每个site的数据线都进行构造并加入chart中,最后进行返回
+    */
     int counter = 0;
     series.push_back(QVector<QLineSeries*>());
     series[0].push_back(new QLineSeries(this));

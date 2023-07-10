@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "chart.h"
-#include "operate_file.h"
+#include "HEADER_01.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,7 +23,9 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    Chart* initChart(const string& label,const vector<vector<double>>& data);
-    void while_draw(const ifstream& ifs);
+    Chart* initChart(const string&,const vector<vector<double>>&,Valid_Data&,double,double);
+    void while_draw(const Valid_Data);
+    // 制作QList<QList<QPointF>>数据列表
+    QVector<QVector<QPointF>> get_QVector(const vector<vector<double>>&);
 };
 #endif // MAINWINDOW_H

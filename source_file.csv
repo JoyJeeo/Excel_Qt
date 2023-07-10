@@ -61,9 +61,9 @@ SBin[67]  Vload_regulation_33__AllFail        0     0.00%   13,,,,,,,,,,,,,,,,,,
  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 SITE_NUM,PART_ID,PASSFG,SOFT_BIN,T_TIME,TEST_NUM,Continuity_out,Continuity_vin1,Continuity_en,Continuity_pg,Continuity_pgdl,Continuity_fb,Leakage_out_h,Leakage_out_l,Leakage_vin_h,Leakage_en_h,Leakage_en_l,Leakage_pg_h,Leakage_pg_l,Leakage_pgdl_h,Leakage_pgdl_l,Leakage_fb_h,Leakage_fb_l,Ignd100,Ishd,Vfb,Vout_5,Ifb,Ilimit,Vdropout_5_50mA,Vdropout_5_300mA,Vline_regulation_5,Vload_regulation_33,Tss,Ven_low,Ven_high,Ien,PG_rising,PG_hys,PG_low,PG_leakage,PGDL_charg,PGDL_rising,PGDL_falling,PG_reaction
-Unit,,,,ms,,V,V,V,V,V,V,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,V,V,uA,,mV,mV,mV,mV,mS,v,v,uA,%,%,V,uA,uA,V,V,om
-LimitL,,,,,,0.1,-1,-1,-1,-1,-1,-5,-5,-10,-5,-5,-5,-5,-5,-5,-5,-5,,,1.225,4.8,,0.6,,349,,,0,,,,90,3,0.08,,,1.5,0.26,
-LimitU,,,,,,1,-0.1,-0.1,-0.1,-0.1,-0.1,5,5,10,5,5,5,5,5,5,5,5,16,1,1.275,5.082,1,1.35,289,,300,3.5,1.01,,,0.5,95,7,0.4,0.015,13.9,2,0.71,15
+Unit,,,,ms,,V,V,V,V,V,V,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,V,V,uA,V,mV,mV,mV,mV,mS,v,v,uA,%,%,V,uA,uA,V,V,om
+LimitL,,,,,,0.1,-1,-1,-1,-1,-1,-5,-5,-10,-5,-5,-5,-5,-5,-5,-5,-5,,0,1.225,4.8,0,0.6,200,349,200,0,0,0,0,-1,90,3,0.08,-1,0,1.5,0.26,0
+LimitU,,,,,,1,-0.1,-0.1,-0.1,-0.1,-0.1,5,5,10,5,5,5,5,5,5,5,5,16,1,1.275,5.082,1,1.35,289,,300,3.5,1.01,1,5,0.5,95,7,0.4,0.015,13.9,2,0.71,15
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 1,1,FALSE,1,1153,39,0.508,-0.483,-0.584,-0.57,-0.4,-0.579,,7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 2,1,TRUE,1,1153,39,0.507,-0.481,-0.583,-0.57,-0.397,-0.579,,1.229,,,0.198,,0.036,,0.05,,0.324,12.046,0.192,1.267,5.01,0.805,0.96,125.981,419.436,26.501,-448.521,0.779,0.03,1.99,0,91.303,4.752,0.337,-0.009,5.686,1.647,0.383,0.036

@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// 获取被分析的excel文件名
 const string tackel_file_name()
 {
     size_t i;
@@ -23,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle(tackel_file_name().c_str()); // 设置MainWindow的窗口名称
     //为MainWindow添加一个中心窗口布局【一个mianwindow只能有一个】
-//    this->pHLayout = new QHBoxLayout(ui->centralwidget);
     this->pGridLayout = new QGridLayout(ui->centralwidget); // 添加布局到主窗体中
     this->draw();
 //    QPixmap pixMap_ = QPixmap::grabWidget(this);
@@ -31,213 +29,95 @@ MainWindow::MainWindow(QWidget *parent)
 //    initChart();
 }
 
-// NULL的取固定值
-const int NULL_Number = INT_MIN;
-
-// 所有属性的最大、最小值和属性
-// 只定义结构，而不定义对象
-class UL_Unit_NUMBER
-{
-public:
-    // 无参构造
-    explicit UL_Unit_NUMBER()
-    {
-        // 初始化m_uls
-        m_uls.insert(make_pair(LimitL,vector<double>()));
-        m_uls.insert(make_pair(LimitU,vector<double>()));
-    }
-
-// string代表Limit的UL，vector中依次对应所测属性的数值【通过[下标]索引实现】
-// 1. 这里将ul和unit耦合在一起，但这并不是一种耦合，因为ul与unit之间有直接的关系，大部分应用场景需要他们同时出现【有关系】
-// 2. units作为单位的容器，不需要使用map的方式来占用更多的空间来实现【从效率的角度，不需要unit与ul使用相同的容器进行存储】【有效率】
-map<string,vector<double>> m_uls;
-vector<string> m_units; // Unit
-
-private:
-    string LimitL = "LimitL";
-    string LimitU = "LimitU";
-
-};
-
-// 芯片号和轮数
-class SITE_PART
-{
-public:
-    // 无参构造
-    explicit SITE_PART()
-    {
-        // 初始化m_site_part
-        m_site_part.insert(make_pair(SITE_NUM,vector<int>()));
-        m_site_part.insert(make_pair(PART_ID,vector<int>()));
-    }
-
-    int get_Max_Site_Number()
-    {
-        vector<int> v = this->m_site_part[SITE_NUM];
-        int ans_Number = -1;
-        for(auto x : v)
-        {
-            if(ans_Number < x)ans_Number = x;
-        }
-        return ans_Number;
-    }
-
-    int get_Max_Part_Id()
-    {
-        vector<int> v = this->m_site_part[PART_ID];
-        int ans_Number = -1;
-        for(auto x : v)
-        {
-            if(ans_Number < x)ans_Number = x;
-        }
-        return ans_Number;
-    }
-
-// string代表SITE_NUM和PART_ID，vector中依次对应所测属性的数值【通过[下标]索引实现】
-map<string,vector<int>> m_site_part; // 直接写m_在类中声明的好处是，对象可以通过m_的代码提示直接查看到public中，对外开放的所有可用属性
-
-private:
-    string SITE_NUM = "SITE_NUM";
-    string PART_ID = "PART_ID";
-
-};
-
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-
-// 获取PART_ID最大值【范围】
-int get_PART_ID()
-{
-
-}
-
-// 获取属性的最大最小值
-void get_attri_MAX_MIN(double& m_max,double& m_min)
-{
-
-}
-
-
-// 判断一个string是否为整数数字
-inline bool is_Numeric(const string &str)
-{
-    auto it = str.begin();
-    while (it != str.end() && std::isdigit(*it)) {
-        it++;
-    }
-    return !str.empty() && it == str.end();
-}
-
-// 获取数据的vector<vector<double>>>的map数据【将string转换为double存储在矩阵中】
-void draw_map
-(const vector<vector<string>>& target_vec, // 数据源
-    SITE_PART& site_parts,
-    UL_Unit_NUMBER& uuls,
-     map<string,vector<vector<double>>>& ans) // 传入参数
-{
-    // 获取site和part -> site_parts
-    for(size_t i = 0;i < 2;i++)
-    {
-        string attri;
-        for(size_t j = 0;j < target_vec[i].size();j++)
-        {
-            if(j == 0) attri = target_vec[i][j];
-            if(is_Numeric(target_vec[i][j]))
-            {
-                site_parts.m_site_part[attri].push_back(stoi(target_vec[i][j]));
-            }
-        }
-    }
-
-    // 获取unit,limitL和limitU -> uuls
-    for(size_t i = 0,j = 0;j < target_vec[i].size();j++)
-    {
-        string attri;
-        if(target_vec[i][j] != "Unit" || target_vec[i][j] != "LimitL" || target_vec[i][j] != "LimitU") continue;
-
-        // 获取属性名称
-        attri = target_vec[i][j];
-        for(size_t k = 2;k < target_vec.size();k++)
-        {
-            if(attri == "Unit") uuls.m_units.push_back(target_vec[k][j]);
-            else {
-                // 如果为空的话，获得一个计算后的数值进行存储【！！！】
-                uuls.m_uls[attri].push_back(stod(target_vec[k][j]));
-           }
-        }
-    }
-
-    // 获取主数据群
-    for(size_t i = 2;i < target_vec.size();i++)
-    {
-        string attri;
-        vector<vector<double>> data(); // 【！！！】初始化大小后，才能矩阵随机的存储【使用类内定义好的函数返回值】
-        bool flage = true; // 观念值【就像电路板上的0 1数据代表的含义一样，给数据赋予自己所谓的意义，执行对应操作】
-        for(size_t j = 0; j < target_vec[i].size();j++)
-        {
-            // 跨越无效数据区
-            if(j == 0) attri = target_vec[i][j];
-            if(target_vec[i][j].size() != 0 && flage) continue;
-            if(target_vec[i][j].size() == 0) {
-                flage = false;
-                continue;
-            }
-            // 正式读取主数据群数据
-
-        }
-    }
-
-//    map<string,vector<vector<double>>> m;
-//    map<string,vector<double>> mv;
-//    string str;vector<vector<double>> vec;
-//    for(int i = 0;i < target_vec.size();i++)
-//    {
-//        for(int j = 0;j < target_vec[i].size();j++)
-//        {
-//            if(i == 0 && j == 0) {
-//                str = target_vec[0][0];
-//                continue;
-//            }
-//            vec.push_back(stod(target_vec[i][j]));
-
-//        }
-//    }
-}
-
 // 制作QList<QList<QPointF>>数据列表
-QList<QList<QPointF>> get_QList(vector<vector<double>> data)
+QVector<QVector<QPointF>> MainWindow::get_QVector(const vector<vector<double>>& site_part_vals)
 {
+    /*
+       转换site_part_vals中的数据和数据类型为QVector<QVector<QPointF>>进行传出,
+        为series提供数据
+    */
 
+// 返回值更换类型
+QVector<QVector<QPointF>> ans;
+
+    // 将原本site_part_vals的数据:
+    //      attri -> [site][part] = val ----> attri -> [site][part] = (part,val)
+    // 只是将内部值转换为QPointF(列,数值) 并将 vector转换为QVector
+    for(size_t i = 0;i < site_part_vals.size();i++)
+    {
+        ans.push_back(QVector<QPointF>());
+        for(size_t j = 0;j < site_part_vals[i].size();j++)
+        {
+            // 如果为NULL值,则需要进行断点处理
+            if(site_part_vals[i][j] == NULL_Number)
+                ans[i].push_back(QPointF(0,0)); // (0,0)作为断点的标志值
+            else
+                ans[i].push_back(QPointF(j,site_part_vals[i][j]));
+        }
+    }
+
+    return ans;
 }
 
-// 获取target表的所有结果
-vector<vector<string>> load_target_vec(const ifstream& ifs)
-{
-    return tackle_file_all(ifs);
-}
 
 
 //初始化图表
-Chart* MainWindow::initChart(const string& label,const vector<vector<double>>& data)
+Chart* MainWindow::initChart(const string& attri,
+                             const vector<vector<double>>& site_part_vals,
+                             Valid_Data& datas,
+                             double axisX_k = 1,
+                             double axisY_k = 1.2)
 {
+    /*
+        这里设置y轴的放大倍数默认为1.2,留一个接口,为数据图像的放大和缩小做准备
+            [图像的方法/缩小,本质就是数轴的放大和缩小]
+    */
     //设置表头
-    chart = new Chart(this,label.c_str());
-    //为MainWindow的centralWidget添加一个布局
-//    QHBoxLayout *pHLayout = new QHBoxLayout(ui->centralwidget);
+    chart = new Chart(this,attri.c_str());
+
+    // 获取site_part
+    auto site_part = datas.get_site_parts();
+    // 获取attri_uul
+    auto attri_uul = datas.get_attri_uuls();
 
     //设置坐标系
-    chart->setAxis("PART_ID",1,100,11, label.c_str(),0,20,11);
+    // 获取PART_ID的最大值
+    size_t PART_ID_MAX = site_part.get_Max_Part_Id();
+    // 获取属性的单位
+    string unit = attri_uul.m_attri_uuls[attri].m_Unit;
+    // 获取属性的最值:是LimitL,LimitU与属性值比较后获得的最值[为了使得图表画出的线不会超出屏幕范围]
+    auto ul_cmp_attri_XI = datas.get_ul_compare_attri_XI(attri);
+    // 对ul_cmp_attri_XI的最值进行进一步处理,由于其数据范围为[INT_MIN,INT_MAX]
+    //      1. 如果是正常数值,则需要在原本最值的基础上扩大一部分数值[方便观察],这里默认扩大1/5
+    //      2. 如果是INT_*数据,则使用默认[-1.10,1.10]进行设置
+    auto realY_XI = make_pair(
+                ul_cmp_attri_XI.first == INT_MIN ? -1.10 : ul_cmp_attri_XI.first * axisY_k,
+                ul_cmp_attri_XI.second == INT_MAX ? 1.10 : ul_cmp_attri_XI.second * axisY_k
+                );
+    // 设置坐标系的数值范围
+    chart->setAxis(
+                // 横坐标
+                "PART_ID",1,PART_ID_MAX,PART_ID_MAX+1,
+                // 纵坐标
+                unit.c_str(),realY_XI.first,realY_XI.second,
+                // 纵坐标的分割线的条数
+                    (abs(realY_XI.first)+abs(realY_XI.second))/5+1
+                );
 
-    //设置离散点数据
-    QList<QPointF> pointlist = {QPointF(0,1), QPointF(10,2), QPointF(20,4), QPointF(30,8), QPointF(40,16),
-                                QPointF(50,16), QPointF(60,8), QPointF(70,4), QPointF(80,2), QPointF(90,1),};
+    // 获取site_part的对应数据点
+    QVector<QVector<QPointF>> point_vecs = get_QVector(site_part_vals);
+//    QList<QPointF> pointlist = {QPointF(0,1), QPointF(10,2), QPointF(20,4), QPointF(30,8), QPointF(40,16),
+//                                QPointF(50,16), QPointF(60,8), QPointF(70,4), QPointF(80,2), QPointF(90,1),};
 
 //    QList<QList<QPointF>> pointlist1;
+
     //绘制
-    chart->buildChart(pointlist);
+    chart->buildChart(point_vecs);
 
     //将chart添加到布局中【多个chart显示在一个窗口中，合理排布】
 //    pHLayout->addWidget(chart);
@@ -252,29 +132,25 @@ Chart* MainWindow::initChart(const string& label,const vector<vector<double>>& d
 //        QHBoxLayout *pHLayout = new QHBoxLayout(ui->centralwidget);
 }
 
-void MainWindow::while_draw(const ifstream& ifs)
+void MainWindow::while_draw(Valid_Data datas)
 {
     /*循环添加所有生成的chart到网格布局管理器中*/
-    // 加载ifs中的所有内容进入程序
-    vector<vector<string>> target_vec = load_target_vec(ifs);
-    // 获取map<string,vector<vector<double>>>的数据
-    map<string,vector<vector<double>>>m =  draw_map(target_vec);
+
+    // 获取attri -> [site][part]的series数据,存于map<string,vector<vector<double>>>中
+    map<string,vector<vector<double>>>series_datas = datas.get_series_datas();
+
+    // 获取target_file中有效的属性label
+    auto labels = datas.get_labels();
 
     // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
-        // 将chart表格依次添加入主框体中，依次显示
+    // 将chart表格依次添加入主框体中，依次显示
     for(size_t i = 0;i < labels.size();i++)
     {
-        auto x = m.find(labels[i]);
-        Chart* chart = this->initChart(x->first,x->second);
+        auto x = series_datas.find(labels[i]);
+        Chart* chart = this->initChart(x->first,x->second,datas);
+        // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
         this->pGridLayout->addWidget(chart,i/5+1,i%5+1);
     }
-    //    for(int i =1;i<=3;i++)
-    //    {
-    //        for(int j = 1;j <= 5; j++)
-    //        {
-    //            this->pGridLayout->addWidget(initChart(),i,j);
-    //        }
-    //    }
 
 }
 
@@ -282,13 +158,18 @@ void MainWindow::draw()
 {
     /*使用中间文件，将目标文件的数据打开后，对其中内容进行绘制*/
     // 数据处理
+    // 对原始数据进行处理和分析source_file -> target_file
     const string draw_File_Name = task01();
     ifstream ifs = input_file_open(draw_File_Name);
 
+    // 解析生成的target_file数据读入程序中
+    Valid_Data datas;
+    datas.load_target_vec(ifs);
+    datas.profile_get_datas();
 
     // 开始绘画
 //    cout<<"drawing..."<<endl;
-    while_draw(ifs);
+    while_draw(datas);
 //        for(int i =1;i<=3;i++)
 //        {
 //            for(int j = 1;j <= 5; j++)

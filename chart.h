@@ -35,7 +35,7 @@ public:
     ~Chart(){}
     void setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
                  QString _yname, qreal _ymin, qreal _ymax, int _ytickc);
-    void buildChart(QList<QPointF> pointlist);
+    void buildChart(const QVector<QVector<QPointF>>&);
 
 };
 
