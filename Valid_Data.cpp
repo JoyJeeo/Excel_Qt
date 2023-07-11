@@ -79,7 +79,7 @@ size_t end_col_dex = get_source_vec_col_index_valid();
         }
         // 将attri -> uul插入
         m_attri_uuls.m_attri_uuls.insert(make_pair(attri,
-                                        Attri_UL_Unit_NUMBER::UL_Unit_NUMBER(unit,limitL,limitU)));
+                                        UL_Unit_NUMBER(unit,limitL,limitU)));
     }
 
     // 扫描target_file表中的第一行数据
@@ -155,8 +155,11 @@ vector<vector<double>> data(sites,vector<double>(parts,NULL_Number)); // 横坐�
 //            }
             // 正式读取主数据群数据，填充vector<vector<double>> data
             if(m_source_target_file_vec[i][j] == "NULL")  continue;
+
+            int row = stoi(m_source_target_file_vec[site_dex][j]) - 1;
+            int col = stoi(m_source_target_file_vec[part_dex][j]) - 1; // 需要转换
             // 转换数据后，获取数据
-            data[stoi(m_source_target_file_vec[site_dex][j])][stoi(m_source_target_file_vec[part_dex][j])] = stod(m_source_target_file_vec[i][j]);
+            data[row][col] = stod(m_source_target_file_vec[i][j]);
         }
         // 添加属性的主数据进map
         m_series_datas.insert(make_pair(attri,data));// 乱序存储 但可以通过labels vector进行查看检索

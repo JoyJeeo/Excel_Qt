@@ -4,6 +4,7 @@
 #include "SITE_PART.h"
 #include "Attri_UL_Unit_NUMBER.h"
 
+
 // NULL的取固定值
 const int NULL_Number = INT_MIN;
 

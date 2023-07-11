@@ -23,7 +23,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     chart.cpp \
-    operate_file.cpp
+    operate_file.cpp \
+    ul_unit_number.cpp
 
 HEADERS += \
     Attri_UL_Unit_NUMBER.h \
@@ -32,7 +33,8 @@ HEADERS += \
     Valid_Data.h \
         mainwindow.h \
     chart.h \
-    operate_file.h
+    operate_file.h \
+    ul_unit_number.h
 
 FORMS += \
     mainwindow.ui

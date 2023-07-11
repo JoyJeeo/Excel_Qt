@@ -216,7 +216,7 @@ Makefile: ../profile_Excel_By_Qt.pro C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g+
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_config.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/spec_post.prf \
-		.qmake.stash \
+		../.qmake.stash \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/toolchain.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/default_pre.prf \
@@ -409,7 +409,7 @@ C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_functions.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_config.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g++/qmake.conf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/spec_post.prf:
-.qmake.stash:
+../.qmake.stash:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/exclusive_builds.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/toolchain.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/default_pre.prf:
@@ -456,7 +456,7 @@ all: release-all debug-all  FORCE
 clean: release-clean debug-clean  FORCE
 distclean: release-distclean debug-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) D:\QT\Codes\profile_Excel_By_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) D:\QT\Codes\profile_Excel_By_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp
 
 release-mocclean:
 	$(MAKE) -f $(MAKEFILE).Release mocclean

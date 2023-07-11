@@ -1,0 +1,13 @@
+INPUT(
+./debug\Attri_UL_Unit_NUMBER.o
+./debug\SITE_PART.o
+./debug\Valid_Data.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\chart.o
+./debug\operate_file.o
+./debug\ul_unit_number.o
+./debug\profile_excel_by_qt_plugin_import.o
+./debug\moc_mainwindow.o
+./debug\moc_chart.o
+);

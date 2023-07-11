@@ -45,30 +45,43 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
-SOURCES       = ..\Get_Draw_Data.cpp \
+SOURCES       = ..\Attri_UL_Unit_NUMBER.cpp \
+		..\SITE_PART.cpp \
+		..\Valid_Data.cpp \
 		..\main.cpp \
 		..\mainwindow.cpp \
 		..\chart.cpp \
-		..\operate_file.cpp D:/QT/Codes/profile_Excel_By_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
+		..\operate_file.cpp \
+		..\ul_unit_number.cpp D:/QT/Codes/profile_Excel_By_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
 		debug\moc_mainwindow.cpp \
 		debug\moc_chart.cpp
-OBJECTS       = debug/Get_Draw_Data.o \
+OBJECTS       = debug/Attri_UL_Unit_NUMBER.o \
+		debug/SITE_PART.o \
+		debug/Valid_Data.o \
 		debug/main.o \
 		debug/mainwindow.o \
 		debug/chart.o \
 		debug/operate_file.o \
+		debug/ul_unit_number.o \
 		debug/profile_excel_by_qt_plugin_import.o \
 		debug/moc_mainwindow.o \
 		debug/moc_chart.o
 
-DIST          =  ..\Get_Draw_Data.h \
+DIST          =  ..\Attri_UL_Unit_NUMBER.h \
+		..\HEADER_01.h \
+		..\SITE_PART.h \
+		..\Valid_Data.h \
 		..\mainwindow.h \
 		..\chart.h \
-		..\operate_file.h ..\Get_Draw_Data.cpp \
+		..\operate_file.h \
+		..\ul_unit_number.h ..\Attri_UL_Unit_NUMBER.cpp \
+		..\SITE_PART.cpp \
+		..\Valid_Data.cpp \
 		..\main.cpp \
 		..\mainwindow.cpp \
 		..\chart.cpp \
-		..\operate_file.cpp
+		..\operate_file.cpp \
+		..\ul_unit_number.cpp
 QMAKE_TARGET  = profile_Excel_By_Qt
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = profile_Excel_By_Qt.exe
@@ -80,7 +93,7 @@ first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET): C:/Qt/Qt5.9.3_MinGW_static/lib/libQt5Chartsd.a C:/Qt/Qt5.9.3_MinGW_static/lib/libQt5Widgetsd.a C:/Qt/Qt5.9.3_MinGW_static/lib/libQt5Guid.a C:/Qt/Qt5.9.3_MinGW_static/lib/libQt5Cored.a ui_mainwindow.h $(OBJECTS) 
-	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.profile_Excel_By_Qt.Debug  $(LIBS)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ..\profile_Excel_By_Qt.pro -spec win32-g++
@@ -88,13 +101,13 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\profile_Excel_By_Qt.pro C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\qdevice.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\device_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\g++-base.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\angle.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\sanitize.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\gcc-base.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\qconfig.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_repparser.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_dsengine.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qgenericbearer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qgif.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qicns.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qico.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qjpeg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qminimal.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_debugger.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_inspector.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_local.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_messages.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_native.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_nativedebugger.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_profiler.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_quickprofiler.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_server.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_tcp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qnativewifibearer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qoffscreen.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsqlite.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsqlodbc.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsvg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsvgicon.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtaudio_windows.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtexttospeech_sapi.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtga.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtiff.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtmedia_audioengine.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtmultimedia_m3u.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtpeakcanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_plugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_shakeplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensors_generic.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsysteccanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qttinycanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtuiotouchplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtvectorcanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboardplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwbmp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwebp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwindows.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_windowsprintersupport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_xinputgamepad.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\default_post.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\resources.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\moc.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\uic.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\yacc.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro    C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\data\dummy.cpp ..\Get_Draw_Data.h ..\mainwindow.h ..\chart.h ..\operate_file.h ..\Get_Draw_Data.cpp ..\main.cpp ..\mainwindow.cpp ..\chart.cpp ..\operate_file.cpp ..\mainwindow.ui    
+	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\profile_Excel_By_Qt.pro C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\qdevice.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\device_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\g++-base.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\angle.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\sanitize.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\common\gcc-base.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\qconfig.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_repparser.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_dsengine.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qgenericbearer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qgif.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qicns.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qico.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qjpeg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qminimal.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_debugger.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_inspector.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_local.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_messages.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_native.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_nativedebugger.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_profiler.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_quickprofiler.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_server.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_tcp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qnativewifibearer.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qoffscreen.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsqlite.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsqlodbc.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsvg.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qsvgicon.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtaudio_windows.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtexttospeech_sapi.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtga.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtiff.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtmedia_audioengine.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtmultimedia_m3u.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtpeakcanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_plugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_shakeplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsensors_generic.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtsysteccanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qttinycanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtuiotouchplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtvectorcanbus.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboardplugin.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwbmp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwebp.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_qwindows.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_windowsprintersupport.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\modules\qt_plugin_xinputgamepad.pri C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\spec_post.prf ..\.qmake.stash C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\default_post.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qt.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\resources.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\moc.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\uic.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\yacc.prf C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro    C:\Qt\Qt5.9.3_MinGW_static\mkspecs\features\data\dummy.cpp ..\Attri_UL_Unit_NUMBER.h ..\HEADER_01.h ..\SITE_PART.h ..\Valid_Data.h ..\mainwindow.h ..\chart.h ..\operate_file.h ..\ul_unit_number.h ..\Attri_UL_Unit_NUMBER.cpp ..\SITE_PART.cpp ..\Valid_Data.cpp ..\main.cpp ..\mainwindow.cpp ..\chart.cpp ..\operate_file.cpp ..\ul_unit_number.cpp ..\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\Get_Draw_Data.o debug\main.o debug\mainwindow.o debug\chart.o debug\operate_file.o debug\profile_excel_by_qt_plugin_import.o debug\moc_mainwindow.o debug\moc_chart.o
+	-$(DEL_FILE) debug\Attri_UL_Unit_NUMBER.o debug\SITE_PART.o debug\Valid_Data.o debug\main.o debug\mainwindow.o debug\chart.o debug\operate_file.o debug\ul_unit_number.o debug\profile_excel_by_qt_plugin_import.o debug\moc_mainwindow.o debug\moc_chart.o
 
 distclean: clean 
-	-$(DEL_FILE) D:\QT\Codes\profile_Excel_By_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) D:\QT\Codes\profile_Excel_By_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Debug
 
@@ -266,7 +279,11 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QMainWind
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/QValueAxis \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/qvalueaxis.h \
+		../HEADER_01.h \
+		../Valid_Data.h \
 		../operate_file.h \
+		../SITE_PART.h \
+		../Attri_UL_Unit_NUMBER.h \
 		../mainwindow.h \
 		debug/moc_predefs.h \
 		C:/Qt/Qt5.9.3_MinGW_static/bin/moc.exe
@@ -440,9 +457,19 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-debug/Get_Draw_Data.o: ../Get_Draw_Data.cpp ../Get_Draw_Data.h \
+debug/Attri_UL_Unit_NUMBER.o: ../Attri_UL_Unit_NUMBER.cpp ../Attri_UL_Unit_NUMBER.h \
 		../operate_file.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Get_Draw_Data.o ..\Get_Draw_Data.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Attri_UL_Unit_NUMBER.o ..\Attri_UL_Unit_NUMBER.cpp
+
+debug/SITE_PART.o: ../SITE_PART.cpp ../SITE_PART.h \
+		../operate_file.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\SITE_PART.o ..\SITE_PART.cpp
+
+debug/Valid_Data.o: ../Valid_Data.cpp ../Valid_Data.h \
+		../operate_file.h \
+		../SITE_PART.h \
+		../Attri_UL_Unit_NUMBER.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Valid_Data.o ..\Valid_Data.cpp
 
 debug/main.o: ../main.cpp ../mainwindow.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QMainWindow \
@@ -592,7 +619,11 @@ debug/main.o: ../main.cpp ../mainwindow.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/QValueAxis \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/qvalueaxis.h \
+		../HEADER_01.h \
+		../Valid_Data.h \
 		../operate_file.h \
+		../SITE_PART.h \
+		../Attri_UL_Unit_NUMBER.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qapplication.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCore/qcoreapplication.h \
@@ -750,8 +781,12 @@ debug/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/QValueAxis \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCharts/qvalueaxis.h \
+		../HEADER_01.h \
+		../Valid_Data.h \
 		../operate_file.h \
-		ui_mainwindow.h \
+		../SITE_PART.h \
+		../Attri_UL_Unit_NUMBER.h \
+		../ui_mainwindow.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QApplication \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qapplication.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtCore/qcoreapplication.h \
@@ -764,13 +799,9 @@ debug/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qmenu.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qaction.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QStatusBar \
 		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QWidget \
-		../Get_Draw_Data.h
+		C:/Qt/Qt5.9.3_MinGW_static/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\mainwindow.cpp
 
 debug/chart.o: ../chart.cpp ../chart.h \
@@ -920,6 +951,14 @@ debug/chart.o: ../chart.cpp ../chart.h \
 
 debug/operate_file.o: ../operate_file.cpp ../operate_file.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\operate_file.o ..\operate_file.cpp
+
+debug/ul_unit_number.o: ../ul_unit_number.cpp ../ul_unit_number.h \
+		../HEADER_01.h \
+		../Valid_Data.h \
+		../operate_file.h \
+		../SITE_PART.h \
+		../Attri_UL_Unit_NUMBER.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ul_unit_number.o ..\ul_unit_number.cpp
 
 debug/profile_excel_by_qt_plugin_import.o: D:/QT/Codes/profile_Excel_By_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\profile_excel_by_qt_plugin_import.o D:/QT/Codes/profile_Excel_By_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp

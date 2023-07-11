@@ -1,13 +1,21 @@
 #ifndef ATTRI_UL_UNIT_NUMBER_H
 #define ATTRI_UL_UNIT_NUMBER_H
 #include "operate_file.h"
-
+//#include "ul_unit_number.h"
+// 专门存储行数据单元的结构体
+struct UL_Unit_NUMBER{
+    UL_Unit_NUMBER(){};
+    UL_Unit_NUMBER(string unit,double limitL,double limitU)
+                :m_Unit(unit),m_LimitL(limitL),m_LimitU(limitU){}
+    string m_Unit;
+    double m_LimitL;
+    double m_LimitU;
+};
 // 所有属性的最大、最小值和属性
 // 只定义结构，而不定义对象
 class Attri_UL_Unit_NUMBER
 {
 public:
-struct UL_Unit_NUMBER;
     // 无参构造
     explicit Attri_UL_Unit_NUMBER();
 
@@ -22,15 +30,6 @@ const string m_Unit = "Unit";
 const string m_LimitL = "LimitL";
 const string m_LimitU = "LimitU";
 map<string,UL_Unit_NUMBER> m_attri_uuls; // 使用attri -> uul的方式进行 行对应
-
-// 专门存储行数据单元的结构体
-struct UL_Unit_NUMBER{
-    explicit UL_Unit_NUMBER(string unit,double limitL,double limitU)
-                :m_Unit(unit),m_LimitL(limitL),m_LimitU(limitU){}
-    string m_Unit;
-    double m_LimitL;
-    double m_LimitU;
-};
 
 };
 

@@ -1,0 +1,13 @@
+INPUT(
+./release\Attri_UL_Unit_NUMBER.o
+./release\SITE_PART.o
+./release\Valid_Data.o
+./release\main.o
+./release\mainwindow.o
+./release\chart.o
+./release\operate_file.o
+./release\ul_unit_number.o
+./release\profile_excel_by_qt_plugin_import.o
+./release\moc_mainwindow.o
+./release\moc_chart.o
+);
