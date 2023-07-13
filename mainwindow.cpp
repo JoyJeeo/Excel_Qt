@@ -19,15 +19,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-//    resize(800,800);
-    ui->setupUi(this);
-    this->setWindowTitle(tackel_file_name().c_str()); // 设置MainWindow的窗口名称
-    //为MainWindow添加一个中心窗口布局【一个mianwindow只能有一个】
-    this->pGridLayout = new QGridLayout(ui->centralwidget); // 添加布局到主窗体中
-    this->draw();
-//    QPixmap pixMap_ = QPixmap::grabWidget(this);
-//    pixMap_.save("./myImage.png");
-//    initChart();
+    //    resize(800,800);
+        ui->setupUi(this);
+        this->setWindowTitle(tackel_file_name().c_str()); // 设置MainWindow的窗口名称
+        //为MainWindow添加一个中心窗口布局【一个mianwindow只能有一个】
+        this->pGridLayout = new QGridLayout(ui->centralwidget); // 添加布局到主窗体中
+        this->draw();
+    //    QPixmap pixMap_ = QPixmap::grabWidget(this);
+    //    pixMap_.save("./myImage.png");
+    //    initChart();
 }
 
 MainWindow::~MainWindow()

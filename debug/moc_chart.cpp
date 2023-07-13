@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../chart.h"
+#include "../tools/include/draw_picture/chart.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

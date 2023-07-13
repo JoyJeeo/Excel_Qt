@@ -17,24 +17,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Attri_UL_Unit_NUMBER.cpp \
-    SITE_PART.cpp \
-    Valid_Data.cpp \
-        main.cpp \
-        mainwindow.cpp \
-    chart.cpp \
-    operate_file.cpp \
-    ul_unit_number.cpp
+    main.cpp \
+    mainwindow.cpp \
+    tools/src/data_profile/Attri_UL_Unit_NUMBER.cpp \
+    tools/src/data_profile/SITE_PART.cpp \
+    tools/src/data_profile/Valid_Data.cpp \
+    tools/src/data_profile/operate_file.cpp \
+    tools/src/data_profile/ul_unit_number.cpp \
+    tools/src/draw_picture/chart.cpp \
+    widgets/widget_all_attri_show/src/widget_all_attri_show.cpp \
 
 HEADERS += \
-    Attri_UL_Unit_NUMBER.h \
-    HEADER_01.h \
-    SITE_PART.h \
-    Valid_Data.h \
-        mainwindow.h \
-    chart.h \
-    operate_file.h \
-    ul_unit_number.h
+    mainwindow.h \
+    tools/include/HEADER_01.h \
+    tools/include/data_profile/Attri_UL_Unit_NUMBER.h \
+    tools/include/data_profile/SITE_PART.h \
+    tools/include/data_profile/Valid_Data.h \
+    tools/include/data_profile/operate_file.h \
+    tools/include/data_profile/ul_unit_number.h \
+    tools/include/draw_picture/chart.h \
+    widgets/widget_all_attri_show/include/widget_all_attri_show.h \
 
 FORMS += \
     mainwindow.ui

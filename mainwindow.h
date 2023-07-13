@@ -2,8 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "chart.h"
-#include "HEADER_01.h"
+#include "tools/include/HEADER_01.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

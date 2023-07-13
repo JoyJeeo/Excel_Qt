@@ -1,10 +1,12 @@
+debug/main.o
+debug/mainwindow.o
 debug/Attri_UL_Unit_NUMBER.o
 debug/SITE_PART.o
 debug/Valid_Data.o
-debug/main.o
-debug/mainwindow.o
-debug/chart.o
 debug/operate_file.o
 debug/ul_unit_number.o
+debug/chart.o
+debug/widget_all_attri_show.o
 debug/moc_mainwindow.o
 debug/moc_chart.o
+debug/moc_widget_all_attri_show.o
