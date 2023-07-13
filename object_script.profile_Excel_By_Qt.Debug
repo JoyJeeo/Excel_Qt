@@ -1,7 +1,8 @@
 debug/main.o
 debug/mainwindow.o
-debug/Attri_UL_Unit_NUMBER.o
-debug/SITE_PART.o
+debug/Attri_Unit_UL.o
+debug/Site_Part.o
+debug/Unit_Ul.o
 debug/Valid_Data.o
 debug/operate_file.o
 debug/ul_unit_number.o

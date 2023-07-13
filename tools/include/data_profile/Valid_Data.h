@@ -1,8 +1,8 @@
 #ifndef VALID_DATA_H
 #define VALID_DATA_H
-#include "operate_file.h"
-#include "SITE_PART.h"
-#include "Attri_UL_Unit_NUMBER.h"
+
+#include "Site_Part.h"
+#include "Attri_Unit_Ul.h"
 
 
 // NULL的取固定值
@@ -48,9 +48,9 @@ public:
     */
     vector<vector<string>> get_source_target_file_vec();
 
-    SITE_PART get_site_parts();
+    Site_Part get_site_parts();
 
-    Attri_UL_Unit_NUMBER get_attri_uuls();
+    Attri_Unit_Ul get_attri_uuls();
 
     map<string,vector<vector<double>>> get_series_datas();
 
@@ -67,8 +67,8 @@ private:
 // 获取主数据
 vector<vector<string>> m_source_target_file_vec; // target_file中直接获取的数据
 // 使用组合的方式，使用其他类的对象，这样便于数据封装与方法调用和实现
-SITE_PART m_site_parts;
-Attri_UL_Unit_NUMBER m_attri_uuls; // attri -> uul 他们之间具有直接的关系
+Site_Part m_site_parts;
+Attri_Unit_Ul m_attri_uuls; // attri -> uul 他们之间具有直接的关系
 map<string,vector<vector<double>>> m_series_datas;
 // 规定map的打印顺序所需的key数据
 const vector<string> labels = {"SITE_NUM","PART_ID","Continuity_out","Continuity_vin1","Continuity_en","Continuity_pg",

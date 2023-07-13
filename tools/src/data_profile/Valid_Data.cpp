@@ -1,5 +1,9 @@
 #include "../../include/data_profile/Valid_Data.h"
 
+#include <fstream>
+#include <sstream>
+using namespace std;
+
 void Valid_Data::profile_get_site_parts()
 {
     /*
@@ -79,7 +83,7 @@ size_t end_col_dex = get_source_vec_col_index_valid();
         }
         // 将attri -> uul插入
         m_attri_uuls.m_attri_uuls.insert(make_pair(attri,
-                                        UL_Unit_NUMBER(unit,limitL,limitU)));
+                                        Unit_Ul(unit,limitL,limitU)));
     }
 
     // 扫描target_file表中的第一行数据
@@ -220,12 +224,12 @@ vector<vector<string>> Valid_Data::get_source_target_file_vec()
     return m_source_target_file_vec;
 }
 
-SITE_PART Valid_Data::get_site_parts()
+Site_Part Valid_Data::get_site_parts()
 {
     return m_site_parts;
 }
 
-Attri_UL_Unit_NUMBER Valid_Data::get_attri_uuls()
+Attri_Unit_Ul Valid_Data::get_attri_uuls()
 {
     return m_attri_uuls;
 }

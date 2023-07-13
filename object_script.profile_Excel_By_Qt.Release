@@ -1,7 +1,8 @@
 release/main.o
 release/mainwindow.o
-release/Attri_UL_Unit_NUMBER.o
-release/SITE_PART.o
+release/Attri_Unit_UL.o
+release/Site_Part.o
+release/Unit_Ul.o
 release/Valid_Data.o
 release/operate_file.o
 release/ul_unit_number.o
