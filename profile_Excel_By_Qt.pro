@@ -17,33 +17,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Main_Window.cpp \
     main.cpp \
-    mainwindow.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
     tools/src/data_profile/Site_Part.cpp \
+    tools/src/data_profile/Targetfile_Valid_Data.cpp \
     tools/src/data_profile/Unit_Ul.cpp \
-    tools/src/data_profile/Valid_Data.cpp \
-    tools/src/data_profile/ul_unit_number.cpp \
-    tools/src/draw_picture/chart.cpp \
-    widgets/widget_all_attri_show/src/widget_all_attri_show.cpp \
+    tools/src/draw_picture/Chart.cpp \
+    widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp
 
 HEADERS += \
-    mainwindow.h \
+    Main_Window.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
     tools/include/data_profile/File_To_Targetfile.h \
     tools/include/data_profile/Site_Part.h \
+    tools/include/data_profile/Targetfile_Valid_Data.h \
     tools/include/data_profile/Unit_Ul.h \
-    tools/include/data_profile/Valid_Data.h \
-    tools/include/data_profile/ul_unit_number.h \
-    tools/include/draw_picture/chart.h \
+    tools/include/draw_picture/Chart.h \
     widgets/Widgets_Header_Proxy_01.h \
+    widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
     widgets/widget_all_attri_show/include/Widgets_Header_Proxy_01.h \
-    widgets/widget_all_attri_show/include/widget_all_attri_show.h \
 
 FORMS += \
-    mainwindow.ui
+    Main_Window.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -2,6 +2,7 @@
 #define UNIT_UL_H
 
 #include <string>
+#include <QDebug>
 using namespace std;
 
 // 专门存储行数据单元的结构体

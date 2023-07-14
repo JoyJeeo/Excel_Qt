@@ -5,11 +5,16 @@
 #include<fstream>
 #include<vector>
 #include <QString>
+#include <QDebug>
 using namespace std;
-#define endl '\n'
+//#define endl '\n'
 
 class File_To_Targetfile{
 public:
+    // 打开输入和输出文件
+    ifstream input_file_open(const string& input_File_path);
+    ofstream output_file_open(const string& out_File_path);
+
     // SET,GET区域
     // 修改输入文件的路径
     void set_input_file_path(const string& path);
@@ -21,9 +26,29 @@ public:
     const string total_task();
 
 private:
-    // 打开输入和输出文件
-    ifstream input_file_open(const string& input_File_path);
-    ofstream output_file_open(const string& out_File_path);
+    // 动态获取输入文件的绝对路径
+    QString profile_input_file_path();
+
+    // 动态获取输出文件的绝对路径
+    QString profile_output_file_path(QString output_file_name = "target_file.csv");
+
+    // 将输入的QString -> string
+    /*
+        字符串类型转换：
+            QString->string: QString("123").toStdString()
+            string->char*: string("123").c_str()
+            char*->string: string("123")
+            string->QString: QString::fromStdString(string("123"))
+
+            char*->QString: QObject::tr("123")
+    */
+    string qstring_to_string(const QString& qstr);
+
+    // SET,GET区域
+    // 修改输出文件的路径
+    void set_output_file_path(const string& path);
+    // 查看输出文件的路径
+    string get_output_file_path();
 
     // 处理输入的源文件，获取目标数据后，读入内存中
     vector<vector<string>>
@@ -42,23 +67,9 @@ private:
     // 将读入程序中的数据输出到文件中
     void save_tackle_datas(const ofstream& ofs,const vector<vector<string>>& datas);
 
-    // SET,GET区域
-    // 修改输出文件的路径
-    void set_output_file_path(const string& path);
-    // 查看输出文件的路径
-    string get_output_file_path();
 
     // 测试载入程序的数据是否符合预期
     void test_datas(const vector<vector<string>>& arrays);
-
-    // 获取输入文件的绝对路径
-    QString profile_input_file_path();
-
-    // 获取输出文件的绝对路径
-    QString profile_output_file_path(QString output_file_name);
-
-    // 将输入的QString -> string
-    string qstring_to_string(const QString& qstr);
 
 
 
@@ -71,7 +82,7 @@ const vector<string> labels = {"SITE_NUM","PART_ID","Continuity_out","Continuity
 
 // 可修改的输入文件的路径【通过函数接口可以进行修改】
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
-// 限制输出文件的产生位置
+// 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
 };
 

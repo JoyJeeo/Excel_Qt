@@ -3,7 +3,7 @@
 #include <sstream>
 #include <algorithm>
 #include <QCoreApplication>
-#include <QMessageBox>
+#include <QFileDialog>
 
 // 目标表的长和宽
 const int cols_num = 45; // 长度可能存在问题，需要进一步处理【！！！】
@@ -12,21 +12,42 @@ const int rows_num = 45;
 
 const string File_To_Targetfile::total_task()
 {
-    /*将文件处理后，将目标文件名进行返回*/
-    // 获取输入文件的路径
+    /*
+        功能：
+            1. 执行这个封装类所需要执行的全部任务，一次批量完成
+            2. 将输入文件处理后，生成目标文件，并将target_file的绝对路径进行返回
+    */
 
-    // 打开输入文件
-    ifstream ifs = input_file_open(IN_FILE_PATH);
-    // 将该文件进行处理后将目标数据读入程序
-    vector<vector<string>> datas = tackle_file(ifs);
-    ifs.close();
-    // 打开输出的target_file
-    ofstream ofs = output_file_open(OUT_FILE_PATH);
-    // 将处理好的数据输出到target_file中
-    save_tackle_datas(ofs,datas);
-    ofs.close();
-    // 返回target_file的路径
-    return OUT_FILE_PATH;
+    // 动态获取程序的输出文件路径
+    try {
+        QString qstr_outfile_path = profile_output_file_path();
+        string str_outfile_path = qstring_to_string(qstr_outfile_path);
+        set_output_file_path(str_outfile_path);
+        // 动态获取输入文件的路径
+        QString qstr_infile_path = profile_input_file_path();
+        string str_infile_path = qstring_to_string(qstr_infile_path);
+        // 如果没有输入文件
+        if(str_infile_path == ""){
+            return str_infile_path;
+        }
+        set_input_file_path(str_infile_path);
+
+        // 打开输入文件
+        ifstream ifs = input_file_open(IN_FILE_PATH);
+        // 将该文件进行处理后将目标数据读入程序
+        vector<vector<string>> datas = tackle_file(ifs);
+        ifs.close();
+        // 打开输出的target_file
+        ofstream ofs = output_file_open(OUT_FILE_PATH);
+        // 将处理好的数据输出到target_file中
+        save_tackle_datas(ofs,datas);
+        ofs.close();
+        // 返回target_file的路径
+        return OUT_FILE_PATH;
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::total_task";
+        return "";
+    }
 }
 
 ifstream File_To_Targetfile::input_file_open(const string& input_File_path)
@@ -274,10 +295,17 @@ void File_To_Targetfile::test_datas(const vector<vector<string>>& arrays)
 
 QString File_To_Targetfile::profile_input_file_path()
 {
-//    QString input_file_path =
+    /*
+        使用文件对话框的形式，可视化的选择需要处理的.csv文件作为程序的输入文件
+    */
+    QString input_file_path = QFileDialog::getOpenFileName(Q_NULLPTR, // 不设置父窗体，独立窗体显示dialog即可
+                                                   QObject::tr("select open file"), // 设置窗体标题
+                                                   QObject::tr("../"), // 是指初始打开文件的位置
+                                                   QObject::tr("File(*.csv);;All(*.*)")); // 设置可以筛选的文件类型
+    return input_file_path;
 }
 
-QString File_To_Targetfile::profile_output_file_path(QString output_file_name = "target_file.csv")
+QString File_To_Targetfile::profile_output_file_path(QString output_file_name)
 {
     /*
         函数功能：
@@ -289,13 +317,14 @@ QString File_To_Targetfile::profile_output_file_path(QString output_file_name = 
             2. 输出文件的路径，又会作为valid_data获取数据是读取的文件路径，qt读取文件必须是绝对路径【读入路径必须为绝对路径】
 
     */
-    QString ans = QCoreApplication::applicationDirPath() + QString("\\") + output_file_name;
-    return ans;
+    QString output_file_path = QCoreApplication::applicationDirPath() + QObject::tr("\\") + output_file_name;
+    return output_file_path;
 }
 
 string File_To_Targetfile::qstring_to_string(const QString &qstr)
 {
-    return string(qstr.toUtf8().data());
+    /*使用函数方式，将qstring转换为string*/
+    return qstr.toStdString();
 }
 
 

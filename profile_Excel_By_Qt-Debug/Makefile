@@ -247,6 +247,7 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../baseCodes/5.14.2/mingw73_32/mkspec
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
@@ -276,7 +277,6 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../baseCodes/5.14.2/mingw73_32/mkspec
 		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl \
 		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl \
 		../../../baseCodes/5.14.2/mingw73_32/lib/qtmain.prl \
-		.qmake.stash \
 		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
@@ -456,6 +456,7 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../baseCodes/5.14.2/mingw73_32/mkspec
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
@@ -485,7 +486,6 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../baseCodes/5.14.2/mingw73_32/mkspec
 ../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl:
 ../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl:
 ../../../baseCodes/5.14.2/mingw73_32/lib/qtmain.prl:
-.qmake.stash:
 ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

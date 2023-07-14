@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include "Unit_Ul.h"
+#include <QDebug>
 
 // 所有属性的最大、最小值和属性
 // 只定义结构，而不定义对象

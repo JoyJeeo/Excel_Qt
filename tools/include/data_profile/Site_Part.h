@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <QDebug>
 using namespace std;
 
 // 芯片号和轮数
