@@ -14,8 +14,12 @@ Chart::Chart(QWidget* parent, QString _chartname)
         layout->addWidget(chartview); // chart显示器添加入布局中
     //    setLayout(layout); // 将布局容器放入最大的widget布局容器中
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
+        // 设置chartview观察器的大小范围
         chartview->setMinimumSize(500,500);
         chartview->setMaximumSize(INT_MAX,INT_MAX);
+        // 设置chartview具有放大镜功能【！！！】
+        chartview->setRubberBand(QChartView::RectangleRubberBand);
+
 
     } catch (...) {
         qDebug() << "Chart::Chart";
@@ -60,7 +64,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
     }
 }
 
-void Chart::buildChart(const QVector<QVector<QPointF>>& series_data)
+void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<double,double>& real_XI)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -137,6 +141,36 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data)
                 qchart->setAxisY(axisY, series[i][j]);
             }
         }
+
+        // 添加最值线【都是红色的虚线】
+        // 最大值线
+        QLineSeries* max_line = new QLineSeries(this);
+        // 初始化点组上生成线时的初始化数据
+        max_line->clear();
+        max_line->setPen(QPen(Qt::red,3,Qt::DashLine));
+        // 最小值线
+        QLineSeries* min_line = new QLineSeries(this);
+        // 初始化点组上生成线时的初始化数据
+        min_line->clear();
+        min_line->setPen(QPen(Qt::red,3,Qt::DashLine));
+
+        // 遍历每组芯片内的点数据
+        for(int j = 0;j < series_data[0].size();j++)
+        {
+            max_line->append(QPointF(j+1,real_XI.second));
+            min_line->append(QPointF(j+1,real_XI.first));
+        }
+        // 添加LineSeries 加入chart
+        qchart->addSeries(max_line);
+        qchart->addSeries(min_line);
+        // 设置x轴和y轴与LineSeries的点数据进行对应
+        qchart->setAxisX(axisX, max_line);
+        qchart->setAxisY(axisY, max_line);
+        qchart->setAxisX(axisX, min_line);
+        qchart->setAxisY(axisY, min_line);
+
+
+
 
     } catch (...) {
         qDebug() << "Chart::buildChart";

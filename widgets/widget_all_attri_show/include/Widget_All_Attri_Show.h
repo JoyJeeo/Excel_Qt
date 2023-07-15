@@ -29,6 +29,9 @@ Targetfile_Valid_Data* datas; // 目标文件读取分析管理器
     void
     while_draw(int row_obj_nums = 2); // 设置网格管理器默认一行的窗体个数
 
+    void
+    build_axis(Chart* chart);
+
     // 制作QList<QList<QPointF>>数据列表
     QVector<QVector<QPointF>>
     get_QVector(const vector<vector<double>>&);

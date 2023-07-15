@@ -25,6 +25,7 @@ SOURCES += \
     tools/src/data_profile/Targetfile_Valid_Data.cpp \
     tools/src/data_profile/Unit_Ul.cpp \
     tools/src/draw_picture/Chart.cpp \
+    tools/src/draw_picture/My_Chart_View.cpp \
     widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp
 
 HEADERS += \
@@ -36,6 +37,7 @@ HEADERS += \
     tools/include/data_profile/Targetfile_Valid_Data.h \
     tools/include/data_profile/Unit_Ul.h \
     tools/include/draw_picture/Chart.h \
+    tools/include/draw_picture/My_Chart_View.h \
     widgets/Widgets_Header_Proxy_01.h \
     widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
     widgets/widget_all_attri_show/include/Widgets_Header_Proxy_01.h \

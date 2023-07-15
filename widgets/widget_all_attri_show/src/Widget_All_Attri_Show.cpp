@@ -108,66 +108,70 @@ QVector<QVector<QPointF>> Widget_All_Attri_Show::get_QVector(const vector<vector
     }
 }
 
+void Widget_All_Attri_Show::build_axis(Chart *chart)
+{
+    // 获取site_part
+    auto site_part = datas->get_site_parts();
+    // 获取attri_uul
+    auto attri_uul = datas->get_attri_uuls();
 
+    //设置坐标系
+    // 获取PART_ID的最大值
+    size_t PART_ID_MAX = site_part.get_Max_Part_Id();
+    // 获取属性的单位
+    string unit = attri_uul.m_attri_uuls[attri].m_Unit;
+
+    // 获取最值
+    // 获取属性最值
+    auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
+                              attri_uul.m_attri_uuls[attri].m_LimitU);
+    // 获取所有属性值的最值
+    auto all_attri_XI = datas->get_attri_XI(attri);
+
+    // 获取属性最值和所有属性值对比的最值
+    auto ul_cmp_attri_XI = datas->get_ul_compare_attri_XI(attri);
+
+    // 对纵坐标的大小范围进行处理
+//     对ul_cmp_attri_XI的最值进行进一步处理,由于其数据范围为[INT_MIN,INT_MAX]
+//          1. 如果是正常数值,则需要在原本最值的基础上扩大一部分数值[方便观察],这里默认扩大axisY_k
+//          2. 如果是INT_*数据,则使用默认[-1.10,1.10]进行设置
+    auto realY_XI = make_pair(
+                ul_cmp_attri_XI.first == INT_MIN ? -1.10 : ul_cmp_attri_XI.first * (1 - axisY_k),
+                ul_cmp_attri_XI.second == INT_MAX ? 1.10 : ul_cmp_attri_XI.second * (1 + axisY_k)
+                );
+    // 设置坐标系的数值范围
+    chart->setAxis(
+                // 横坐标
+                "PART_ID",1,PART_ID_MAX,PART_ID_MAX,
+                // 纵坐标
+//                unit.c_str(),attri_XI.first * (1 - axisY_k),attri_XI.second * (1 + axisY_k),
+                unit.c_str(),realY_XI.first,realY_XI.second,
+                // 纵坐标的分割线的条数
+                    12
+                );
+}
 
 //初始化图表
 Chart* Widget_All_Attri_Show::initChart(const string& attri,
                              const vector<vector<double>>& site_part_vals,
                              double axisX_k = 1,
-                             double axisY_k = 0.1)
+                             double axisY_k = 0.01)
 {
     /*
         这里设置y轴的放大倍数默认为1.2,留一个接口,为放大镜功能做准备
             [图像的方法/缩小,本质就是数轴的放大和缩小]
     */
     try {
-        //设置表头
+        //设置表头【attri的名称已经在这里设置给chart作为表名了】
         Chart* chart = new Chart(this,attri.c_str()); // 局部对象
 
-        // 获取site_part
-        auto site_part = datas->get_site_parts();
-        // 获取attri_uul
-        auto attri_uul = datas->get_attri_uuls();
 
-        //设置坐标系
-        // 获取PART_ID的最大值
-        size_t PART_ID_MAX = site_part.get_Max_Part_Id();
-        // 获取属性的单位
-        string unit = attri_uul.m_attri_uuls[attri].m_Unit;
-
-        // 获取最值
-        // 获取属性最值
-        auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
-                                  attri_uul.m_attri_uuls[attri].m_LimitU);
-        // 获取所有属性值的最值
-        auto all_attri_XI = datas->get_attri_XI(attri);
-        // 获取属性最值和所有属性值对比的最值
-        auto ul_cmp_attri_XI = datas->get_ul_compare_attri_XI(attri);
-
-        // 对纵坐标的大小范围进行处理
-    //     对ul_cmp_attri_XI的最值进行进一步处理,由于其数据范围为[INT_MIN,INT_MAX]
-    //          1. 如果是正常数值,则需要在原本最值的基础上扩大一部分数值[方便观察],这里默认扩大axisY_k
-    //          2. 如果是INT_*数据,则使用默认[-1.10,1.10]进行设置
-        auto realY_XI = make_pair(
-                    ul_cmp_attri_XI.first == INT_MIN ? -1.10 : ul_cmp_attri_XI.first * (1 - axisY_k),
-                    ul_cmp_attri_XI.second == INT_MAX ? 1.10 : ul_cmp_attri_XI.second * (1 + axisY_k)
-                    );
-        // 设置坐标系的数值范围
-        chart->setAxis(
-                    // 横坐标
-                    "PART_ID",1,PART_ID_MAX,PART_ID_MAX,
-                    // 纵坐标
-    //                unit.c_str(),attri_XI.first * (1 - axisY_k),attri_XI.second * (1 + axisY_k),
-                    unit.c_str(),realY_XI.first,realY_XI.second,
-                    // 纵坐标的分割线的条数
-                        12
-                    );
 
         // 获取site_part的对应数据点
         QVector<QVector<QPointF>> point_vecs = get_QVector(site_part_vals);
 
-        //绘制
-        chart->buildChart(point_vecs);
+        //绘制【注入数据点数值和最值】
+        chart->buildChart(point_vecs,attri_XI);
 
         return chart;
 

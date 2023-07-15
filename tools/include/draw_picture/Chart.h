@@ -7,6 +7,8 @@
 #include <QHBoxLayout>
 #include <QValueAxis>
 #include <QDebug>
+#include <map>
+using namespace std;
 
 QT_CHARTS_USE_NAMESPACE
 class Chart : public QWidget
@@ -18,7 +20,7 @@ public:
     ~Chart(){}
     void setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
                  QString _yname, qreal _ymin, qreal _ymax, int _ytickc);
-    void buildChart(const QVector<QVector<QPointF>>&);
+    void buildChart(const QVector<QVector<QPointF>>&,const pair<double,double>&);
 
 private:
     QChart* qchart; // chart图表容器
@@ -43,10 +45,10 @@ private:
     int ytickc; // y轴上的实线个数
 
     QVector<int> colors={
-        Qt::gray,Qt::red,Qt::blue,Qt::yellow,
+        Qt::gray,Qt::blue,Qt::yellow,Qt::green,
         Qt::darkGreen,Qt::darkCyan,Qt::darkMagenta,
         Qt::black,Qt::cyan,Qt::lightGray,
-        Qt::green,Qt::magenta,
+        Qt::magenta,
             Qt::darkBlue,Qt::darkRed,Qt::darkGray,Qt::darkYellow,
 
     }; // 线条颜色筛选

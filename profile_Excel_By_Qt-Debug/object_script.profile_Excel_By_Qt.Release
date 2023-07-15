@@ -6,7 +6,9 @@ release/Site_Part.o
 release/Targetfile_Valid_Data.o
 release/Unit_Ul.o
 release/Chart.o
+release/My_Chart_View.o
 release/Widget_All_Attri_Show.o
 release/moc_Main_Window.o
 release/moc_Chart.o
+release/moc_My_Chart_View.o
 release/moc_Widget_All_Attri_Show.o
