@@ -18,14 +18,25 @@ const string Widget_All_Attri_Show::tackel_file_name()
         {
             if(in_file_path[i] == '/' || in_file_path[i] == '\\')break;
         }
-        string ans = "分析文件：";
-        ans +=  in_file_path.substr(i+1,in_file_path.size()-i+1);
+        // 设置获取的文件名
+        src_file_name = in_file_path.substr(i+1,in_file_path.size()-i+1);
+        string ans = "分析文件：" + src_file_name;
         return ans;
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::tackel_file_name";
         throw;
     }
+}
+
+void Widget_All_Attri_Show::set_src_file_name(const string &str) noexcept
+{
+    src_file_name = str;
+}
+
+const string Widget_All_Attri_Show::get_src_file_name() noexcept
+{
+    return src_file_name;
 }
 
 Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
@@ -38,6 +49,7 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         src_file_manager = new File_To_Targetfile;
         datas = new Targetfile_Valid_Data;
         this->pGridLayout = new QGridLayout(this); // 添加布局到主窗体中
+        this->pGridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
 
     } catch (...) {
@@ -102,7 +114,7 @@ QVector<QVector<QPointF>> Widget_All_Attri_Show::get_QVector(const vector<vector
 Chart* Widget_All_Attri_Show::initChart(const string& attri,
                              const vector<vector<double>>& site_part_vals,
                              double axisX_k = 1,
-                             double axisY_k = 0.01)
+                             double axisY_k = 0.1)
 {
     /*
         这里设置y轴的放大倍数默认为1.2,留一个接口,为放大镜功能做准备
@@ -122,8 +134,17 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         size_t PART_ID_MAX = site_part.get_Max_Part_Id();
         // 获取属性的单位
         string unit = attri_uul.m_attri_uuls[attri].m_Unit;
-        // 获取属性的最值:是LimitL,LimitU与属性值比较后获得的最值[为了使得图表画出的线不会超出屏幕范围]
+
+        // 获取最值
+        // 获取属性最值
+        auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
+                                  attri_uul.m_attri_uuls[attri].m_LimitU);
+        // 获取所有属性值的最值
+        auto all_attri_XI = datas->get_attri_XI(attri);
+        // 获取属性最值和所有属性值对比的最值
         auto ul_cmp_attri_XI = datas->get_ul_compare_attri_XI(attri);
+
+        // 对纵坐标的大小范围进行处理
     //     对ul_cmp_attri_XI的最值进行进一步处理,由于其数据范围为[INT_MIN,INT_MAX]
     //          1. 如果是正常数值,则需要在原本最值的基础上扩大一部分数值[方便观察],这里默认扩大axisY_k
     //          2. 如果是INT_*数据,则使用默认[-1.10,1.10]进行设置
@@ -139,7 +160,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
     //                unit.c_str(),attri_XI.first * (1 - axisY_k),attri_XI.second * (1 + axisY_k),
                     unit.c_str(),realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
-                        10
+                        12
                     );
 
         // 获取site_part的对应数据点
@@ -156,9 +177,13 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
     }
 }
 
-void Widget_All_Attri_Show::while_draw()
+void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 {
-    /*循环添加所有生成的chart到网格布局管理器中*/
+    /*
+        功能：
+            1. 循环添加所有生成的chart到网格布局管理器中
+            2. 使用默认参数row_obj_nums的方式，来默认设置网格管理器一行的widget个数
+    */
 
     try {
         // 获取attri -> [site][part]的series数据,存于map<string,vector<vector<double>>>中
@@ -176,7 +201,7 @@ void Widget_All_Attri_Show::while_draw()
             int no = i+2;
             Chart* chart = this->initChart(labels[no],series_datas[labels[no]]);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
-            this->pGridLayout->addWidget(chart,i/5+1,i%5+1);
+            this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
         }
 
     } catch (...) {

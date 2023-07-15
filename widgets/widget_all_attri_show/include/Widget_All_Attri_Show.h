@@ -11,6 +11,11 @@ class Widget_All_Attri_Show : public QWidget
 public:
     Widget_All_Attri_Show(QWidget *parent = nullptr);
     ~Widget_All_Attri_Show();
+
+    // 获取源文件的文件名
+    void set_src_file_name(const string& str) noexcept;
+    const string get_src_file_name() noexcept;
+
     bool total_task();
 
 private:
@@ -22,7 +27,7 @@ Targetfile_Valid_Data* datas; // 目标文件读取分析管理器
     initChart(const string&,const vector<vector<double>>&,double,double);
 
     void
-    while_draw();
+    while_draw(int row_obj_nums = 2); // 设置网格管理器默认一行的窗体个数
 
     // 制作QList<QList<QPointF>>数据列表
     QVector<QVector<QPointF>>
@@ -30,6 +35,8 @@ Targetfile_Valid_Data* datas; // 目标文件读取分析管理器
 
     // 获取被处理的input文件名
     const string tackel_file_name();
+
+    string src_file_name;
 
 };
 

@@ -14,6 +14,8 @@ Chart::Chart(QWidget* parent, QString _chartname)
         layout->addWidget(chartview); // chart显示器添加入布局中
     //    setLayout(layout); // 将布局容器放入最大的widget布局容器中
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
+        chartview->setMinimumSize(500,500);
+        chartview->setMaximumSize(INT_MAX,INT_MAX);
 
     } catch (...) {
         qDebug() << "Chart::Chart";
