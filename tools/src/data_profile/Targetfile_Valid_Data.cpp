@@ -13,17 +13,23 @@ void Targetfile_Valid_Data::profile_get_site_parts()
         存储：
             存储数据在m_site_parts.m_site_part当中，其为一个map<string,vector<int>>结构
     */
-    for(size_t i = 0;i < 2;i++)
-    {
-        string attri;
-        for(size_t j = 0;j < m_source_target_file_vec[i].size();j++)
+    try {
+        for(size_t i = 0;i < 2;i++)
         {
-            if(j == 0) attri = m_source_target_file_vec[i][j];
-            if(is_Integer_Numeric(m_source_target_file_vec[i][j]))
+            string attri;
+            for(size_t j = 0;j < m_source_target_file_vec[i].size();j++)
             {
-                m_site_parts.m_site_part[attri].push_back(stoi(m_source_target_file_vec[i][j]));
+                if(j == 0) attri = m_source_target_file_vec[i][j];
+                if(is_Integer_Numeric(m_source_target_file_vec[i][j]))
+                {
+                    m_site_parts.m_site_part[attri].push_back(stoi(m_source_target_file_vec[i][j]));
+                }
             }
         }
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_site_parts";
+        throw;
     }
 }
 
@@ -57,70 +63,41 @@ void Targetfile_Valid_Data::profile_get_attri_uuls(const string& normal_attri)
                 实现 attri -> uul的对应
     */
 
-// 获取起点获取数据的位置
-size_t begin_row_dex = get_source_vec_row_index_by_attri(normal_attri) + 1;
-size_t end_col_dex = get_source_vec_col_index_valid();
+    try {
+        // 获取起点获取数据的位置
+        size_t begin_row_dex = get_source_vec_row_index_by_attri(normal_attri) + 1;
+        size_t end_col_dex = get_source_vec_col_index_valid();
 
-    for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
-    {
-        string attri=m_source_target_file_vec[i][0]; // 存储属性名称
-        string unit="";
-        double limitL=INT_MIN,limitU=INT_MAX; // 需要插入的data数据
-        // 对列依次查找,到end_col_dex分界点时结束遍历
-        for(size_t j = 0;j < end_col_dex;j++)
+        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
         {
-            // unit定义,未定义都存储
-            if(m_source_target_file_vec[0][j] == m_attri_uuls.m_Unit)
-                unit = m_source_target_file_vec[i][j];
-            // limitL 定义的存储其值,未定义的存储INT_MIN
-            else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitL
-                    && m_source_target_file_vec[i][j].size() != 0)
-                limitL = stod(m_source_target_file_vec[i][j]);
-            // limitU 定义的存储其值,未定义的存储INT_MAX
-            else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitU
-                    && m_source_target_file_vec[i][j].size() != 0)
-                limitU = stod(m_source_target_file_vec[i][j]);
+            string attri=m_source_target_file_vec[i][0]; // 存储属性名称
+            string unit="";
+            double limitL=INT_MIN,limitU=INT_MAX; // 需要插入的data数据
+
+            // 对列依次查找,到end_col_dex分界点时结束遍历
+            for(size_t j = 0;j < end_col_dex;j++)
+            {
+                // unit定义,未定义都存储
+                if(m_source_target_file_vec[0][j] == m_attri_uuls.m_Unit)
+                    unit = m_source_target_file_vec[i][j];
+                // limitL 定义的存储其值,未定义的存储INT_MIN
+                else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitL
+                        && m_source_target_file_vec[i][j].size() != 0)
+                    limitL = stod(m_source_target_file_vec[i][j]);
+                // limitU 定义的存储其值,未定义的存储INT_MAX
+                else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitU
+                        && m_source_target_file_vec[i][j].size() != 0)
+                    limitU = stod(m_source_target_file_vec[i][j]);
+            }
+            // 将attri -> uul插入
+            m_attri_uuls.m_attri_uuls.insert(make_pair(attri,
+                                            Unit_Ul(unit,limitL,limitU)));
         }
-        // 将attri -> uul插入
-        m_attri_uuls.m_attri_uuls.insert(make_pair(attri,
-                                        Unit_Ul(unit,limitL,limitU)));
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_attri_uuls";
+        throw;
     }
-
-    // 扫描target_file表中的第一行数据
-//    for(size_t i = 0,j = 0;j < m_source_target_file_vec[i].size();j++)
-//    {
-//        string attri;
-//        // 跳过非Unit,LimitL,LimitU的第一行数据
-//        if(m_source_target_file_vec[i][j] != "Unit" ||
-//                m_source_target_file_vec[i][j] != "LimitL" ||
-//                m_source_target_file_vec[i][j] != "LimitU")
-//            continue;
-
-//        // 获取属性 Unit,LimitL,LimitU 之一的名称
-//        attri = m_source_target_file_vec[i][j];
-//        // 使用列索引j，从开始获取数据的表项索引处开始存储数据
-//        for(size_t k = begin_dex;k < m_source_target_file_vec.size();k++)
-//        {
-//            if(attri == "Unit")
-//                // 存储size = 0的字符串进去【unit为空，画图时，不显示单位即可】
-//                m_uuls.m_units.push_back(m_source_target_file_vec[k][j]);
-//            else {
-//                // UL如果为空【LimitL就存储INT_MIN,LimitU就存储INT_MAX】
-//                if(m_source_target_file_vec[k][j].size() == 0){
-//                    if(attri == m_uuls.LimitL)
-//                    {
-//                        m_uuls.m_uls[attri].push_back(INT_MIN);
-//                    }
-//                    if(attri == m_uuls.LimitU)
-//                    {
-//                        m_uuls.m_uls[attri].push_back(INT_MAX);
-//                    }
-
-//                }
-//                else m_uuls.m_uls[attri].push_back(stod(m_source_target_file_vec[k][j]));
-//            }
-//        }
-//    }
 }
 
 void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
@@ -137,10 +114,6 @@ void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
             对于空的主数据,以NULL_Number进行存储
     */
     try {
-
-    } catch () {
-
-    }
         int sites = m_site_parts.get_Max_Site_Number(); // 芯片的个数
         int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
         int site_dex = 0; // SITE_NUM在target_file表中的下标位置
@@ -148,30 +121,28 @@ void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
         size_t begin_row_dex = get_source_vec_row_index_by_attri(normal_attri) + 1; // 与profile_get_uuls函数中同理
         size_t begin_col_dex = get_source_vec_col_index_valid(); // 获取有效列
 
-            for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
-            {
-        string attri = m_source_target_file_vec[i][0]; // 用来记录该行的属性值
-        vector<vector<double>> data(sites,vector<double>(parts,NULL_Number)); // 横坐标为芯片号，纵坐标为该芯片的第几次part，其中空数据以NULL_Number存储
-        //bool flage = true; // 观念值，用来手动设置哪些数据是不需要处理的数据【就像电路板上的0 1数据代表的含义一样，给数据赋予自己所谓的意义，执行对应操作】
-        for(size_t j = begin_col_dex; j < m_source_target_file_vec[i].size();j++)
+        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
         {
-            // 跨越无效数据区 // 直接进入数据区，不再需要跨越数据区获取数据
-//            if(j == 0) attri = m_source_target_file_vec[i][j];
-//            if(m_source_target_file_vec[i][j].size() != 0 && flage) continue;
-//            if(m_source_target_file_vec[i][j].size() == 0) {
-//                flage = false;
-//                continue;
-//            }
-            // 正式读取主数据群数据，填充vector<vector<double>> data
-            if(m_source_target_file_vec[i][j] == "NULL")  continue;
+            string attri = m_source_target_file_vec[i][0]; // 用来记录该行的属性值
+            vector<vector<double>> data(sites,vector<double>(parts,NULL_Number)); // 横坐标为芯片号，纵坐标为该芯片的第几次part，其中空数据以NULL_Number存储
 
-            int row = stoi(m_source_target_file_vec[site_dex][j]) - 1;
-            int col = stoi(m_source_target_file_vec[part_dex][j]) - 1; // 需要转换
-            // 转换数据后，获取数据
-            data[row][col] = stod(m_source_target_file_vec[i][j]);
+            for(size_t j = begin_col_dex; j < m_source_target_file_vec[i].size();j++)
+            {
+                // 正式读取主数据群数据，填充vector<vector<double>> data
+                if(m_source_target_file_vec[i][j] == "NULL")  continue;
+
+                int row = stoi(m_source_target_file_vec[site_dex][j]) - 1;
+                int col = stoi(m_source_target_file_vec[part_dex][j]) - 1; // 需要转换
+                // 转换数据后，获取数据
+                data[row][col] = stod(m_source_target_file_vec[i][j]);
+            }
+            // 添加属性的主数据进map
+            m_series_datas.insert(make_pair(attri,data));// 乱序存储 但可以通过labels vector进行查看检索
         }
-        // 添加属性的主数据进map
-        m_series_datas.insert(make_pair(attri,data));// 乱序存储 但可以通过labels vector进行查看检索
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_series_datas";
+        throw;
     }
 }
 

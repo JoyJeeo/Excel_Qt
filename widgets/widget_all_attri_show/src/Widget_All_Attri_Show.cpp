@@ -20,6 +20,8 @@ const string Widget_All_Attri_Show::tackel_file_name()
         }
         string ans = "分析文件：";
         ans +=  in_file_path.substr(i+1,in_file_path.size()-i+1);
+        return ans;
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::tackel_file_name";
         throw;
@@ -37,11 +39,11 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         datas = new Targetfile_Valid_Data;
         this->pGridLayout = new QGridLayout(this); // 添加布局到主窗体中
         this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::Widget_All_Attri_Show";
         throw;
     }
-
 }
 
 Widget_All_Attri_Show::~Widget_All_Attri_Show()
@@ -87,6 +89,7 @@ QVector<QVector<QPointF>> Widget_All_Attri_Show::get_QVector(const vector<vector
         }
 
         return ans;
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::get_QVector";
         throw;
@@ -175,6 +178,7 @@ void Widget_All_Attri_Show::while_draw()
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/5+1,i%5+1);
         }
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::while_draw";
         throw;

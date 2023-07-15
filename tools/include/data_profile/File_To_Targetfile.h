@@ -17,9 +17,9 @@ public:
 
     // SET,GET区域
     // 修改输入文件的路径
-    void set_input_file_path(const string& path);
+    void set_input_file_path(const string& path) noexcept;
     // 查看输入文件的路径
-    string get_input_file_path();
+    string get_input_file_path() noexcept;
 
     // 直接实现该类的总任务
     // 将target_file文件的路径进行返回
@@ -46,9 +46,9 @@ private:
 
     // SET,GET区域
     // 修改输出文件的路径
-    void set_output_file_path(const string& path);
+    void set_output_file_path(const string& path) noexcept;
     // 查看输出文件的路径
-    string get_output_file_path();
+    string get_output_file_path() noexcept;
 
     // 处理输入的源文件，获取目标数据后，读入内存中
     vector<vector<string>>

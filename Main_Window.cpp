@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "widgets/Widgets_Header_Proxy_01.h"
 #include <QPushButton>
-#include <QDebug>
 
 Main_Window::Main_Window(QWidget *parent)
     : QMainWindow(parent)
@@ -38,7 +37,6 @@ void Main_Window::total_task()
         qDebug() << "Main_Window::total_task";
         throw;
     }
-
 }
 
 void Main_Window::task_widget_all_attri_show()
@@ -62,6 +60,7 @@ void Main_Window::task_widget_all_attri_show()
         }
         // 使用非模态窗口实现
         else widget->show();
+
     }
     catch(...){
         qDebug()<<"Main_Window::task_widget_all_attri_show()";
