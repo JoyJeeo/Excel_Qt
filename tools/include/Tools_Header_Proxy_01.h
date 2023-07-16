@@ -10,5 +10,6 @@
 
 // draw_picture
 #include "draw_picture/Chart.h"
+#include "draw_picture/My_Chart_View.h"
 
 #endif // HEADER_PROXY_01

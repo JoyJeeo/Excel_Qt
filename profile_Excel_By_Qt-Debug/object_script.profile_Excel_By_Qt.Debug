@@ -10,5 +10,4 @@ debug/My_Chart_View.o
 debug/Widget_All_Attri_Show.o
 debug/moc_Main_Window.o
 debug/moc_Chart.o
-debug/moc_My_Chart_View.o
 debug/moc_Widget_All_Attri_Show.o

@@ -7,6 +7,7 @@ Chart::Chart(QWidget* parent, QString _chartname)
 
         qchart = new QChart;
         chartview = new QChartView(qchart); // 将chart图表添加入chart显示器中
+//        chartview = new My_Chart_View(qchart); // 将chart图表添加入chart显示器中
         layout = new QHBoxLayout(this); // 添加对象到布局中
         axisX = new QValueAxis(this);
         axisY = new QValueAxis(this);

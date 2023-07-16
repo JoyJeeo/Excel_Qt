@@ -8,6 +8,7 @@
 #include <QValueAxis>
 #include <QDebug>
 #include <map>
+#include "My_Chart_View.h"
 using namespace std;
 
 QT_CHARTS_USE_NAMESPACE
@@ -25,6 +26,7 @@ public:
 private:
     QChart* qchart; // chart图表容器
     QChartView* chartview; // chart显示器容器，容纳chart图表
+//    My_Chart_View* chartview; // chart显示器容器，容纳chart图表
     QVector<QVector<QLineSeries*>> series; // chart图表中的数据：折线图 // 由于可能出现断点，因此需要使用这种结构进行定义
         // 横坐标代表每个site芯片【一组线】，纵坐标代表一组点，纵坐标中，是每组多个点构成的线数据
         // attri -> [site][Line_part] = [LineSeries] = many_points
