@@ -21,7 +21,6 @@ Chart::Chart(QWidget* parent, QString _chartname)
         // 设置chartview具有放大镜功能【！！！】
         chartview->setRubberBand(QChartView::RectangleRubberBand);
 
-
     } catch (...) {
         qDebug() << "Chart::Chart";
         throw;

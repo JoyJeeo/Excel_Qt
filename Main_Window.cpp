@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QScrollArea>
 #include <QVBoxLayout>
+#include <QSizePolicy>
 
 Main_Window::Main_Window(QWidget *parent)
     : QMainWindow(parent)
