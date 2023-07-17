@@ -1,5 +1,6 @@
 #include "../../include/draw_picture/chart.h"
 
+#include <QFont>
 Chart::Chart(QWidget* parent, QString _chartname)
     :QWidget(parent),chartname(_chartname){
     try {
@@ -32,9 +33,6 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
     try {
         xname = _xname; xmin = _xmin; xmax = _xmax; xtickc = _xtickc;
         yname = _yname; ymin = _ymin; ymax = _ymax; ytickc = _ytickc;
-
-        axisX->setRange(xmin, xmax);    //设置x轴的数据范围
-        axisX->setLabelFormat("%u");   //设置x轴的刻度标签格式
         /************************************
             %u 无符号十进制整数
             %s 字符串
@@ -44,19 +42,33 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
             %f 浮点数、十进制记数法
             %s 字符串
         ****************************************/
-            axisX->setGridLineVisible(true);   //x轴网格线可见
-            axisX->setTickCount(xtickc);       //x轴设置实网格线的数量【也是一个大格】
-            axisX->setMinorTickCount(1);   //设置x轴每个大格里面小刻度线的数目
-            axisX->setTitleText(xname);  //设置x轴的描述
-            axisY->setRange(ymin, ymax); // 设置y轴的数据范围
-            axisY->setLabelFormat("%0.3f"); // 设置y轴的刻度标签格式
-            axisY->setGridLineVisible(true); // y轴网格线可见
-            axisY->setTickCount(ytickc); // y轴设置实网格线的数量【也是一个大格】
-            axisY->setMinorTickCount(1); // 设置y轴每个大格里面小刻度线的数目
-            axisY->setTitleText(yname); // 设置y轴的描述
-            // 将数轴添加入chart图表中
-            qchart->addAxis(axisX, Qt::AlignBottom); //下：Qt::AlignBottom  上：Qt::AlignTop
-            qchart->addAxis(axisY, Qt::AlignLeft);   //左：Qt::AlignLeft    右：Qt::AlignRight
+
+        QFont font = QFont("Consolas");
+        font.setStyleStrategy(QFont::PreferAntialias);
+        font.setPointSize(12);
+        font.setBold(true);
+
+        // 设置X轴描述
+        axisX->setRange(xmin, xmax);    //设置x轴的数据范围
+        axisX->setLabelFormat("%u");   //设置x轴的刻度标签格式
+        axisX->setGridLineVisible(true);   //x轴网格线可见
+        axisX->setTickCount(xtickc);       //x轴设置实网格线的数量【也是一个大格】
+        axisX->setMinorTickCount(1);   //设置x轴每个大格里面小刻度线的数目
+        axisX->setTitleText(xname);  //设置x轴的描述
+        axisX->setTitleFont(font);
+
+        // 设置Y轴描述
+        axisY->setRange(ymin, ymax); // 设置y轴的数据范围
+        axisY->setLabelFormat("%0.3f"); // 设置y轴的刻度标签格式
+        axisY->setGridLineVisible(true); // y轴网格线可见
+        axisY->setTickCount(ytickc); // y轴设置实网格线的数量【也是一个大格】
+        axisY->setMinorTickCount(1); // 设置y轴每个大格里面小刻度线的数目
+        axisY->setTitleText(yname); // 设置y轴的描述
+        axisY->setTitleFont(font);
+
+        // 将数轴添加入chart图表中
+        qchart->addAxis(axisX, Qt::AlignBottom); //下：Qt::AlignBottom  上：Qt::AlignTop
+        qchart->addAxis(axisY, Qt::AlignLeft);   //左：Qt::AlignLeft    右：Qt::AlignRight
 
     } catch (...) {
         qDebug() << "Chart::setAxis";
@@ -64,7 +76,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
     }
 }
 
-void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<double,double>& real_XI)
+void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<double,double>& XI_line_data)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -85,6 +97,14 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<d
         // 设置chart名称
         qchart->setTitle(chartname);
 
+        // 设置数据线粗细
+        int data_series_width = 3;
+        // 设置最值线粗细
+        int XI_series_width = 3;
+
+        // 【特殊最值处理】：如果没有数值存在时，图表什么都不画
+        if(XI_line_data.first == INT_MIN && XI_line_data.second == INT_MAX)return;
+
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
@@ -98,7 +118,7 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<d
             QLineSeries* line = new QLineSeries(this);
             // 初始化点组上生成线时的初始化数据
             line->clear();
-            line->setPen(QPen(Qt::GlobalColor(this->colors[i]),2,Qt::SolidLine));
+            line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
             // 将点组加入线组中
             t_vec.push_back(line);
             // 将点组容器加入线组容器中
@@ -118,12 +138,12 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<d
                 else {
                     QLineSeries* t_line = new QLineSeries(this);
                     t_line->clear();
-                    t_line->setPen(QPen(Qt::GlobalColor(this->colors[i]),2,Qt::SolidLine));
+                    t_line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
                     series[i].push_back(t_line);
                     grp++;
                 }
             }
-        }
+        }      
 
         //隐藏图例【隐藏每条图线的具体描述】
     //    qchart->legend()->hide();
@@ -147,18 +167,18 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<d
         QLineSeries* max_line = new QLineSeries(this);
         // 初始化点组上生成线时的初始化数据
         max_line->clear();
-        max_line->setPen(QPen(Qt::red,3,Qt::DashLine));
+        max_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
         // 最小值线
         QLineSeries* min_line = new QLineSeries(this);
         // 初始化点组上生成线时的初始化数据
         min_line->clear();
-        min_line->setPen(QPen(Qt::red,3,Qt::DashLine));
+        min_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
 
         // 遍历每组芯片内的点数据
         for(int j = 0;j < series_data[0].size();j++)
         {
-            max_line->append(QPointF(j+1,real_XI.second));
-            min_line->append(QPointF(j+1,real_XI.first));
+            max_line->append(QPointF(j+1,XI_line_data.second));
+            min_line->append(QPointF(j+1,XI_line_data.first));
         }
         // 添加LineSeries 加入chart
         qchart->addSeries(max_line);

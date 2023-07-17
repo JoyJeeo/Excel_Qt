@@ -1,5 +1,5 @@
 #include "Main_Window.h"
-#include "ui_mainwindow.h"
+#include "ui_Main_Window.h"
 #include "widgets/Widgets_Header_Proxy_01.h"
 #include <QPushButton>
 #include <QScrollArea>
@@ -8,7 +8,7 @@
 
 Main_Window::Main_Window(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::Main_Window)
 {
     try {
         resize(800,800);
@@ -30,7 +30,7 @@ Main_Window::~Main_Window()
 void Main_Window::total_task()
 {
     try {
-        // 所有属性展示widget
+        // 所有属性展示widget【！！！】【优化封装按钮】
         QPushButton* bt_all_attri_show = new QPushButton("Show all attributes",this);
         bt_all_attri_show->setFont(QFont("Consolas")); // 设置字体样式
         bt_all_attri_show->adjustSize(); // 按钮大小适应字体大小

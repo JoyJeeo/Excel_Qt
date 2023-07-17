@@ -18,43 +18,43 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_Main_Window
 {
 public:
     QWidget *centralwidget;
     QStatusBar *statusbar;
     QMenuBar *menubar;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *Main_Window)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
-        centralwidget = new QWidget(MainWindow);
+        if (Main_Window->objectName().isEmpty())
+            Main_Window->setObjectName(QString::fromUtf8("Main_Window"));
+        Main_Window->resize(800, 600);
+        centralwidget = new QWidget(Main_Window);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
+        Main_Window->setCentralWidget(centralwidget);
+        statusbar = new QStatusBar(Main_Window);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
-        menubar = new QMenuBar(MainWindow);
+        Main_Window->setStatusBar(statusbar);
+        menubar = new QMenuBar(Main_Window);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 23));
-        MainWindow->setMenuBar(menubar);
+        Main_Window->setMenuBar(menubar);
 
-        retranslateUi(MainWindow);
+        retranslateUi(Main_Window);
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(Main_Window);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *Main_Window)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        Main_Window->setWindowTitle(QCoreApplication::translate("Main_Window", "MainWindow", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class Main_Window: public Ui_Main_Window {};
 } // namespace Ui
 
 QT_END_NAMESPACE

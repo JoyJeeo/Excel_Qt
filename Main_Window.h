@@ -4,7 +4,7 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class Main_Window; }
 QT_END_NAMESPACE
 
 class Main_Window : public QMainWindow
@@ -21,7 +21,7 @@ public slots:
     void task_widget_all_attri_show();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::Main_Window *ui;
 
 };
 #endif // MAIN_WINDOW_H

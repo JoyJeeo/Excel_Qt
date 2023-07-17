@@ -108,37 +108,108 @@ QVector<QVector<QPointF>> Widget_All_Attri_Show::get_QVector(const vector<vector
     }
 }
 
-void Widget_All_Attri_Show::build_axis(Chart *chart)
-{
-
-}
-
 //初始化图表
 Chart* Widget_All_Attri_Show::initChart(const string& attri,
-                             const vector<vector<double>>& site_part_vals,
-                             double axisX_k = 1,
-                             double axisY_k = 0.01)
+                             const QVector<QVector<QPointF>>& point_vecs,
+                             double axisX_k,
+                             double axisY_k)
 {
     /*
         这里设置y轴的放大倍数默认为1.2,留一个接口,为放大镜功能做准备
             [图像的方法/缩小,本质就是数轴的放大和缩小]
+
+        属性最值线与纵坐标的放缩之间，没有直接关系【互相独立】
     */
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
         Chart* chart = new Chart(this,attri.c_str()); // 局部对象
 
-        //////
+        //设置坐标系
+        // 设置X轴数据
         // 获取site_part
         auto site_part = datas->get_site_parts();
+        // 获取PART_ID的最大值
+        size_t PART_ID_MAX = site_part.get_Max_Part_Id(); // 【！！！】【这里设计横坐标的解耦，之后处理】
+
+        // 设置Y轴数据
+        // 获取属性单位
+        QString unit = profile_attri_unit(attri);
+
+        // 获取的数值的最值线的数值结果
+        auto XI_line_data = profile_data_series_XI(attri);
+
+        // 对纵坐标的大小范围进行处理【而不是简单的通过get_ul_compare_attri_XI函数获取的最值】
+        // 获取倍距
+        double zoom_dist = profile_zoom_dist_XI(XI_line_data);
+        // 获取理论上初始纵坐标的的数值
+        auto Y_XI = profile_Y_XI(XI_line_data,zoom_dist,axisY_k);
+
+        // 综合处理最值线和理论纵坐标，使得初始数据图更[美观]
+        auto realY_XI = profile_generalY_XI(XI_line_data,Y_XI);
+
+        // 应该使用最大最小值之间的倍距来作为放大和缩小的依据【而不应该是线本身的数值】
+        // 【灵活设置图像的放大缩小】
+        // 设置坐标系的数值范围
+        chart->setAxis(
+                    // 横坐标
+                    "PART_ID",1,PART_ID_MAX,PART_ID_MAX,
+                    // 纵坐标
+                    unit,realY_XI.first,realY_XI.second,
+                    // 纵坐标的分割线的条数
+                    12
+                    );
+
+        //绘制【注入数据点数值和最值】
+        chart->buildChart(point_vecs,XI_line_data);
+
+        return chart;
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::initChart";
+        throw;
+    }
+}
+
+QString Widget_All_Attri_Show::profile_attri_unit(const string& attri)
+{
+    /*
+        参数：
+            attri：根据输入的属性，获取其对应的属性单位
+        功能：
+            将attri的属性单位获取，并转换为QString返回
+    */
+    try {
+        // 获取attri_uul
+        auto attri_uul = datas->get_attri_uuls();
+        // 获取属性的单位
+        string unit = attri_uul.m_attri_uuls[attri].m_Unit;
+
+        // 转换为QString
+        return QString::fromStdString(unit);
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_attri_unit";
+        throw;
+    }
+}
+
+pair<double, double> Widget_All_Attri_Show::profile_data_series_XI(const string &attri,double zoom)
+{
+    /*
+        参数：
+            attri：对应属性获取数据最值
+            zoom：设置当最值不存在时，设置属性数值最值的放大倍数
+        功能：
+            经过attri_XI和all_attri_XI对比后，综合获取的数值的最值线的数值结果
+            【获取属性对应数值的合理的最值线】
+        数值范围：
+            [INT_MIN,INT_MAX]、[正常数值范围]
+    */
+    try {
         // 获取attri_uul
         auto attri_uul = datas->get_attri_uuls();
 
         //设置坐标系
-        // 获取PART_ID的最大值
-        size_t PART_ID_MAX = site_part.get_Max_Part_Id();
-        // 获取属性的单位
-        string unit = attri_uul.m_attri_uuls[attri].m_Unit;
-
         // 获取最值
         // 获取属性最值
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
@@ -146,39 +217,153 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         // 获取所有属性值的最值
         auto all_attri_XI = datas->get_attri_XI(attri);
 
-        // 获取属性最值和所有属性值对比的最值
-        auto ul_cmp_attri_XI = datas->get_ul_compare_attri_XI(attri);
+        // 经过attri_XI和all_attri_XI对比后，综合获取的数值的最值线的数值结果
+        auto XI_line_data = attri_XI;
 
-        // 对纵坐标的大小范围进行处理
-    //     对ul_cmp_attri_XI的最值进行进一步处理,由于其数据范围为[INT_MIN,INT_MAX]
-    //          1. 如果是正常数值,则需要在原本最值的基础上扩大一部分数值[方便观察],这里默认扩大axisY_k
-    //          2. 如果是INT_*数据,则使用默认[-1.10,1.10]进行设置
-        auto realY_XI = make_pair(
-                    ul_cmp_attri_XI.first == INT_MIN ? -1.10 : ul_cmp_attri_XI.first * (1 - axisY_k),
-                    ul_cmp_attri_XI.second == INT_MAX ? 1.10 : ul_cmp_attri_XI.second * (1 + axisY_k)
-                    );
-        // 设置坐标系的数值范围
-        chart->setAxis(
-                    // 横坐标
-                    "PART_ID",1,PART_ID_MAX,PART_ID_MAX,
-                    // 纵坐标
-    //                unit.c_str(),attri_XI.first * (1 - axisY_k),attri_XI.second * (1 + axisY_k),
-                    unit.c_str(),realY_XI.first,realY_XI.second,
-                    // 纵坐标的分割线的条数
-                        12
-                    );
-        ///////
+        // 构造XI_line_data // 【使得只要有属性数值，就一定可以画出最值线，没有属性数值则不画线】【完备】
+        // XI_line_data: [INT_MIN,INT_MAX]、[正常数值范围]
+        /* 更新属性最值：只有两种重要情况
+         *      1. 当属性的最值不存在，属性数值的最值存在时，则使用属性数值的最值的0.05倍来替代
+         *      2. 当属性的最值存在，而数值的最值不存在时，则最值线无意义【什么都不用画】
+         *
+         * 这里使用attri_XI作为判断最值线的主要条件，由其需求所导致
+        */
+        // 最小值构造
+        if(attri_XI.first != INT_MIN && all_attri_XI.first == INT_MIN)
+        {
+            XI_line_data.first = all_attri_XI.first;
+        }
+        if(attri_XI.first == INT_MIN && all_attri_XI.first != INT_MIN)
+        {
+            // 对线进行倍数移动
+            XI_line_data.first = all_attri_XI.first - abs(all_attri_XI.first) * zoom;
+        }
+        // 最大值构造
+        if(attri_XI.second != INT_MAX && all_attri_XI.second == INT_MAX)
+        {
+            XI_line_data.second = all_attri_XI.second;
+        }
+        if(attri_XI.second == INT_MAX && all_attri_XI.second != INT_MAX)
+        {
+            // 对线进行倍数移动
+            XI_line_data.second = all_attri_XI.second + abs(all_attri_XI.second) * zoom;
+        }
 
-        // 获取site_part的对应数据点
-        QVector<QVector<QPointF>> point_vecs = get_QVector(site_part_vals);
-
-        //绘制【注入数据点数值和最值】
-        chart->buildChart(point_vecs,attri_XI);
-
-        return chart;
+        return XI_line_data;
 
     } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::initChart";
+        qDebug() << "Widget_All_Attri_Show::profile_data_series_XI";
+        throw;
+    }
+}
+
+pair<double, double> Widget_All_Attri_Show::profile_Y_XI(const pair<double, double> &data_series_XI,
+                                                         double zoom_dist, double axisY_k)
+{
+    /*
+        函数功能：
+            获取纵坐标数值的理论范围
+        数值范围：
+            [-1.10,1.10]、[最小值线的放缩后的结果，最大值线的放缩后的结果]
+    */
+    try {
+        // 获取理论上初始纵坐标在缩放后的正常数值【理论上，纵坐标的数值与数值的最值线的数值之间是相互独立的关系】
+        // 设置理论缩放大小
+        // 理论纵坐标的数值范围[-1.1,1.1]、[最小值线的放缩后的结果，最大值线的放缩后的结果]【无论如何，纵坐标都要有数值的】
+        pair<double, double> Y_XI;
+        /* data_series_XI.first/second代表最值线的数值，zoom_dist一般代表最值线之间距离的一半，
+             axisY_k > 0代表缩小的倍数【纵坐标数值放大，则图像缩小】
+             axisY_k < 0代表放大的倍数【纵坐标数值放小，则图像变大】【反比关系】
+        */
+        // 放小
+        Y_XI.first = data_series_XI.first == INT_MIN ? -1.10 :
+                                        data_series_XI.first - zoom_dist * axisY_k;
+        // 放大
+        Y_XI.second = data_series_XI.second == INT_MAX ? 1.10 :
+                                        data_series_XI.second + zoom_dist * axisY_k;
+
+        return Y_XI;
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_Y_XI";
+        throw;
+    }
+}
+
+pair<double, double> Widget_All_Attri_Show::profile_generalY_XI(const pair<double, double> &data_series_XI,
+                                                                const pair<double,double>& Y_XI)
+{
+    /*
+        参数：
+            data_series_XI： 数据线的最值线的数据
+            Y_XI：纵坐标最值的数据
+        功能：
+            理论纵坐标的数值范围与实际最值线的数值范围，综合后，获得纵坐标的实际数值范围
+            【使其能够包裹最值线的最大最小值】
+            【综合处理，主要为了初始构图时的美观】
+    */
+    try {
+        // 【初始图片美观 -> 缩放交给chartview】
+        // 理论纵坐标的数值范围与实际最值线的数值范围，综合后，获得纵坐标的实际数值范围【使其能够包裹最值线的最大最小值】
+        // 这样设置，会导致缩放图像无法缩放进极限最大值内部(除非不用他经过缩放)【除非，chartview可以实现缩放】
+        // 【这里综合处理，主要为了初始构图时的美观】
+        auto realY_XI = Y_XI; // 初始化Y_XI，防止无法进入if语句(数据全空的情况)
+        if(data_series_XI.first != INT_MIN && data_series_XI.second != INT_MAX)
+        {
+            // 获取综合最值后，需要进一步放缩【防止重合线】【简单放缩】
+            realY_XI.first = min(realY_XI.first,data_series_XI.first);
+            realY_XI.second = max(realY_XI.second,data_series_XI.second);
+
+            // 获取放缩倍距
+            double inner_multi_dst = profile_zoom_dist_XI(realY_XI);
+
+            // 进一步缩放
+            realY_XI.first -= inner_multi_dst * 0.1;
+            realY_XI.second += inner_multi_dst * 0.1;
+        }
+
+        return realY_XI;
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_generalY_XI";
+        throw;
+    }
+}
+
+double Widget_All_Attri_Show::profile_zoom_dist_XI(const pair<double, double> &data_XI)
+{
+    /*
+        参数：
+            data_XI：数据上线限之间的最值
+        功能：
+            获取上下限之间距离的一半进行返回，
+            如果上下限数值相等，则以其中一个数值的绝对值/2作为上下限距离的一半，进行返回
+    */
+    try {
+        // 获取最值线之间的距离差
+        double gap = 0.0;
+        // 上下限距离的一半，为放缩距离
+        double zoom_dist = 0.0;
+        // 防止无最值时，数值错误
+        if(data_XI.first != INT_MIN && data_XI.second != INT_MAX)
+        {
+            // 获取attri_XI最值之间的距离【正值】
+            gap = abs(data_XI.second - data_XI.first);
+            // 如果最值线之间存在gap，则倍距为
+            if(gap != 0.0)
+            {
+                // 设置图像的倍距
+                zoom_dist = gap / 2;
+            }
+            // 否则就设置为其中一个数值【按线进行放缩即可】
+            else {
+                zoom_dist = abs(data_XI.first/2);
+            }
+        }
+        return zoom_dist;
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_zoom_dist_XI";
         throw;
     }
 }
@@ -205,7 +390,9 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             // 从label中的第二个开始算
             int no = i+2;
-            Chart* chart = this->initChart(labels[no],series_datas[labels[no]]);
+            // 获取site_part的对应数据点
+            QVector<QVector<QPointF>> point_vecs = get_QVector(series_datas[labels[no]]);
+            Chart* chart = this->initChart(labels[no],point_vecs);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
         }
