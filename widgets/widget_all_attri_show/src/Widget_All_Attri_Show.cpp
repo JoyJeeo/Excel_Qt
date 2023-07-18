@@ -20,6 +20,7 @@ const string Widget_All_Attri_Show::tackel_file_name()
         }
         // 设置获取的文件名
         src_file_name = in_file_path.substr(i+1,in_file_path.size()-i+1);
+//        qDebug() << src_file_name.c_str();
         string ans = "分析文件：" + src_file_name;
         return ans;
 
@@ -49,8 +50,7 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         src_file_manager = new File_To_Targetfile;
         datas = new Targetfile_Valid_Data;
         this->pGridLayout = new QGridLayout(this); // 添加布局到主窗体中
-        this->pGridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
-        this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
+        this->pGridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::Widget_All_Attri_Show";
@@ -417,6 +417,8 @@ bool Widget_All_Attri_Show::total_task()
             // 返回false代表任务执行失败
             return false;
         }
+        // 打开目标文件后，输入的文件名才会被修改
+        this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
 
         // 输入文件路径获取成功
         ifstream ifs = src_file_manager->input_file_open(draw_File_Name);

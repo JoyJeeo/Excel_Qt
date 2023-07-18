@@ -5,11 +5,6 @@
 #include <QCoreApplication>
 #include <QFileDialog>
 
-// 目标表的长和宽
-const int cols_num = 45; // 长度可能存在问题，需要进一步处理【！！！】
-const int rows_num = 45;
-
-
 const string File_To_Targetfile::total_task()
 {
     /*
@@ -150,9 +145,12 @@ File_To_Targetfile::tackle_file_get_target(const vector<vector<string>>& all_arr
 
         // cout<<all_array.size()<<" "<<all_array[0].size()<<endl;
 
+        bool flage = false; // 标记有效数据区开始的位置
         for(size_t i = 0;i < t_all_array.size();i++)
         {
             if(t_all_array[i].size() != cols_num)continue;
+//            if(t_all_array[i][0] == "SITE_NUM" )flage = true;
+//            else flage = true;
             else {
                 for(size_t j = i;j < t_all_array.size();j++)
                 {
@@ -364,6 +362,7 @@ QString File_To_Targetfile::profile_input_file_path()
                                                        QObject::tr("select open file"), // 设置窗体标题
                                                        QObject::tr("../"), // 是指初始打开文件的位置
                                                        QObject::tr("File(*.csv);;All(*.*)")); // 设置可以筛选的文件类型
+//        qDebug() << input_file_path;
         return input_file_path;
 
     } catch (...) {
@@ -386,7 +385,7 @@ QString File_To_Targetfile::profile_output_file_path(QString output_file_name)
     */
     try {
         QString output_file_path = QCoreApplication::applicationDirPath() +
-                                        QObject::tr("\\") + output_file_name;
+                                        QObject::tr("\\") + output_file_name; // target_file.csv
         return output_file_path;
 
     } catch (...) {

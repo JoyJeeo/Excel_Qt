@@ -84,6 +84,10 @@ const vector<string> labels = {"SITE_NUM","PART_ID","Continuity_out","Continuity
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
 // 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
+
+// 目标表的长和宽【以SITE_NUM作为目标数据的开始标记，更新目标数据的长和宽】
+int cols_num = 45;
+int rows_num = 45;
 };
 
 #endif // FILE_TO_TARGETFILE_H
