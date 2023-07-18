@@ -20,10 +20,10 @@ public:
     void profile_get_site_parts();
 
     // 获取unit,limitL和limitU
-    void profile_get_attri_uuls(const string& normal_attri = "PART_ID");
+    void profile_get_attri_uuls();
 
     // 获取线的数据组，实际就是获取map<string,vector<vector<double>>>
-    void profile_get_series_datas(const string& normal_attri = "PART_ID");
+    void profile_get_series_datas();
 
     // 获取数据的vector<vector<double>>>的map数据【将string转换为double存储在矩阵中】
     // 将源数据，进行解析拆分，是对三个成员函数的统一分析处理
@@ -66,19 +66,30 @@ private:
     size_t get_source_vec_row_index_by_attri(const string& attri);
     // 获取属性在m_source_target_file_vec中所对应的有效列索引值
     size_t get_source_vec_col_index_valid();
+    void profile_labels() noexcept;
 
-// 获取主数据
-vector<vector<string>> m_source_target_file_vec; // target_file中直接获取的数据
-// 使用组合的方式，使用其他类的对象，这样便于数据封装与方法调用和实现
-Site_Part m_site_parts;
-Attri_Unit_Ul m_attri_uuls; // attri -> uul 他们之间具有直接的关系
-map<string,vector<vector<double>>> m_series_datas;
-// 规定map的打印顺序所需的key数据
-const vector<string> labels = {"SITE_NUM","PART_ID","Continuity_out","Continuity_vin1","Continuity_en","Continuity_pg",
-"Continuity_pgdl","Continuity_fb","Leakage_out_l","Leakage_en_l","Leakage_pg_l","Leakage_pgdl_l","Leakage_fb_l",
-"Ignd100","Ishd","Vfb","Vout_5","Ifb","Ilimit","Vdropout_5_50mA","Vdropout_5_300mA","Vline_regulation_5",
-"Vload_regulation_33","Tss","Ven_low","Ven_high","Ien","PG_rising","PG_hys","PG_low","PG_leakage",
-"PGDL_charg","PGDL_rising","PGDL_falling","PG_reaction"};
+    // 获取主数据
+    vector<vector<string>> m_source_target_file_vec; // target_file中直接获取的数据
+
+    // 使用组合的方式，使用其他类的对象，这样便于数据封装与方法调用和实现
+    Site_Part m_site_parts;
+    Attri_Unit_Ul m_attri_uuls; // attri -> uul 他们之间具有直接的关系
+    map<string,vector<vector<double>>> m_series_datas;
+
+    // 用于区分属性的分界点属性【数据表自身的"属性"】
+    const string div_attri = "TEST_NUM";
+
+    // 使用profile_labels函数，更新不同的csv文件中的目标属性 // 规定map的打印顺序所需的key数据
+    vector<string> labels;
+// 无效的labels
+//{
+//"SITE_NUM","PART_ID", // 非目标属性的数据
+//"Continuity_out","Continuity_vin1","Continuity_en","Continuity_pg",
+//"Continuity_pgdl","Continuity_fb","Leakage_out_l","Leakage_en_l","Leakage_pg_l","Leakage_pgdl_l","Leakage_fb_l",
+//"Ignd100","Ishd","Vfb","Vout_5","Ifb","Ilimit","Vdropout_5_50mA","Vdropout_5_300mA","Vline_regulation_5",
+//"Vload_regulation_33","Tss","Ven_low","Ven_high","Ien","PG_rising","PG_hys","PG_low","PG_leakage",
+//"PGDL_charg","PGDL_rising","PGDL_falling","PG_reaction"
+//};
 };
 
 

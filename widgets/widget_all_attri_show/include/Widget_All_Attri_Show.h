@@ -42,7 +42,7 @@ private:
                                             const pair<double,double>& Y_XI);
 
     // 制作QList<QList<QPointF>>数据列表，[为初始化chart提供数据接口数据]
-    QVector<QVector<QPointF>> get_QVector(const vector<vector<double>>&);
+    QVector<QVector<QPointF>> get_matrix_pointF(const vector<vector<double>>&);
 
     // 获取被处理的input文件名
     const string tackel_file_name();

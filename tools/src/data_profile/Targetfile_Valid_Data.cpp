@@ -12,6 +12,11 @@ void Targetfile_Valid_Data::profile_get_site_parts()
             默认为列表的第一行 和 第二行的数据
         存储：
             存储数据在m_site_parts.m_site_part当中，其为一个map<string,vector<int>>结构
+        说明：
+            1. 行索引上，扫描SITE_NUM,PART_ID，他们都一定处于0，1索引位置
+            2. 列索引上，从出现第一个整数的部分开始扫描获取数据
+        功能：
+            获取site,part 对应的数据
     */
     try {
         for(size_t i = 0;i < 2;i++)
@@ -19,9 +24,12 @@ void Targetfile_Valid_Data::profile_get_site_parts()
             string attri;
             for(size_t j = 0;j < m_source_target_file_vec[i].size();j++)
             {
+                // 获取对应属性名称
                 if(j == 0) attri = m_source_target_file_vec[i][j];
+                // 从出现第一个整数数据处开始记录
                 if(is_Integer_Numeric(m_source_target_file_vec[i][j]))
                 {
+                    // 获取 attri -> Integer
                     m_site_parts.m_site_part[attri].push_back(stoi(m_source_target_file_vec[i][j]));
                 }
             }
@@ -33,14 +41,14 @@ void Targetfile_Valid_Data::profile_get_site_parts()
     }
 }
 
-void Targetfile_Valid_Data::profile_get_attri_uuls(const string& normal_attri)
+void Targetfile_Valid_Data::profile_get_attri_uuls()
 {
     /*
         数据的起点位置：
-            1. 使用默认参数，normal_attri = "PART_ID"，
+            1. 使用默认参数，normal_attri = "TEST_NUM"，
                 定义uul获取数据的起始attri的前一位属性
-                【因为前一位PART_ID可能是一个固定不变的末尾属性】【这样方便作为两组数据的的拆分】
-            2. 默认情况下以PART_ID为两组数据拆分的分界点，使用默认参数留住接口位置，为后续可能的修改做准备
+                【因为前一位TEST_NUM可能是一个固定不变的末尾属性】【这样方便作为两组数据的的拆分】
+            2. 默认情况下以TEST_NUM为两组数据拆分的分界点，使用默认参数留住接口位置，为后续可能的修改做准备
 
         数据的范围：
             Unit:[已定义单位,空]
@@ -61,17 +69,20 @@ void Targetfile_Valid_Data::profile_get_attri_uuls(const string& normal_attri)
             Unit,LimitL,LimitU存储在m_attri_uuls.m_attri_uuls中，
                 其结构为 map<string,Attri_UL_Unit_NUMBER::UL_Unit_NUMBER>
                 实现 attri -> uul的对应
+        功能：
+            从有效数据行开始依次搜索，获取列中小于end_col_dex【实际是有效数据区的起始列下标】，以此作为列的结束标记，
+            获取每行attri -> uul
     */
 
     try {
         // 获取起点获取数据的位置
-        size_t begin_row_dex = get_source_vec_row_index_by_attri(normal_attri) + 1;
+        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1;
         size_t end_col_dex = get_source_vec_col_index_valid();
 
         for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
         {
             string attri=m_source_target_file_vec[i][0]; // 存储属性名称
-            string unit="";
+            string unit=""; // 初始化，有些属性可能并没有单位【这是合法的】
             double limitL=INT_MIN,limitU=INT_MAX; // 需要插入的data数据
 
             // 对列依次查找,到end_col_dex分界点时结束遍历
@@ -100,7 +111,7 @@ void Targetfile_Valid_Data::profile_get_attri_uuls(const string& normal_attri)
     }
 }
 
-void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
+void Targetfile_Valid_Data::profile_get_series_datas()
 {
     /*
         数据的结构类型:
@@ -118,7 +129,7 @@ void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
         int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
         int site_dex = 0; // SITE_NUM在target_file表中的下标位置
         int part_dex = 1; // PART_ID在target_file表中的下标位置
-        size_t begin_row_dex = get_source_vec_row_index_by_attri(normal_attri) + 1; // 与profile_get_uuls函数中同理
+        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1; // 与profile_get_uuls函数中同理
         size_t begin_col_dex = get_source_vec_col_index_valid(); // 获取有效列
 
         for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
@@ -131,9 +142,11 @@ void Targetfile_Valid_Data::profile_get_series_datas(const string& normal_attri)
                 // 正式读取主数据群数据，填充vector<vector<double>> data
                 if(m_source_target_file_vec[i][j] == "NULL")  continue;
 
+                // 数据表中的site和part从1开始，程序中从0开始计数
+                // 转化行列下标
                 int row = stoi(m_source_target_file_vec[site_dex][j]) - 1;
-                int col = stoi(m_source_target_file_vec[part_dex][j]) - 1; // 需要转换
-                // 转换数据后，获取数据
+                int col = stoi(m_source_target_file_vec[part_dex][j]) - 1;
+                // 转换行列后，获取数据
                 data[row][col] = stod(m_source_target_file_vec[i][j]);
             }
             // 添加属性的主数据进map
@@ -313,6 +326,29 @@ size_t Targetfile_Valid_Data::get_source_vec_col_index_valid()
     }
 }
 
+void Targetfile_Valid_Data::profile_labels() noexcept
+{
+    /*
+        功能：
+            维护类内的labels，动态分析每个不同文件的属性项目数据，用于遍历所有有效的attri对应的datas
+        说明：
+            1. 只有在获取SITE_NUM,PART_ID的数据时，才需要SITE_NUM,PART_ID的属性
+            2. 在分析attri->uul，attri->series_datas时，都不需要SITE_NUM,PART_ID属性
+                【有效数据从div_attri后开始】
+    */
+    try {
+        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1;
+        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
+        {
+            this->labels.push_back(m_source_target_file_vec[i][0]);
+        }
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_labels";
+        throw ;
+    }
+}
+
 pair<double,double> Targetfile_Valid_Data::get_ul_compare_attri_XI(const string& attri)
 {
     /*
@@ -360,8 +396,12 @@ bool Targetfile_Valid_Data::total_task(const ifstream &ifs)
 {
     /*执行该类的总任务*/
     try {
+        // 加载target_file
         load_target_vec(ifs);
+        // 拆解加载的数据信息
         profile_get_datas();
+        // 动态获取有效的属性项目信息
+        profile_labels();
         return true;
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::total_task";

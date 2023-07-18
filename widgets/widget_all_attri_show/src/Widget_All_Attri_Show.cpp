@@ -64,7 +64,7 @@ Widget_All_Attri_Show::~Widget_All_Attri_Show()
 }
 
 // 制作QList<QList<QPointF>>数据列表
-QVector<QVector<QPointF>> Widget_All_Attri_Show::get_QVector(const vector<vector<double>>& site_part_vals)
+QVector<QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(const vector<vector<double>>& site_part_vals)
 {
     /*
        功能：
@@ -385,14 +385,14 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
         // 将chart表格依次添加入主框体中，依次显示
-        for(size_t i = 0;i < labels.size()-2;i++) // labels.size()
+        for(size_t i = 0;i < labels.size();i++) // labels.size()
         {
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
-            // 从label中的第二个开始算
-            int no = i+2;
+            string attri = labels[i];
             // 获取site_part的对应数据点
-            QVector<QVector<QPointF>> point_vecs = get_QVector(series_datas[labels[no]]);
-            Chart* chart = this->initChart(labels[no],point_vecs);
+            QVector<QVector<QPointF>> point_vecs = get_matrix_pointF(series_datas[attri]);
+            // 获取初始化好的chart
+            Chart* chart = this->initChart(attri,point_vecs);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
         }
@@ -410,9 +410,9 @@ bool Widget_All_Attri_Show::total_task()
     // 数据处理
     try{
         // 对原始数据进行处理和分析source_file -> target_file，获取目标文件的绝对路径
-        const string draw_File_Name = src_file_manager->total_task();
+        const string target_file_path = src_file_manager->total_task();
         // 如果没有选择文件，则为空，直接结束
-        if(draw_File_Name == "")
+        if(target_file_path.size() == 0)
         {
             // 返回false代表任务执行失败
             return false;
@@ -421,7 +421,7 @@ bool Widget_All_Attri_Show::total_task()
         this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
 
         // 输入文件路径获取成功
-        ifstream ifs = src_file_manager->input_file_open(draw_File_Name);
+        ifstream ifs = src_file_manager->input_file_open(target_file_path);
         // 解析生成的target_file数据读入程序中
         datas->total_task(ifs);
 
