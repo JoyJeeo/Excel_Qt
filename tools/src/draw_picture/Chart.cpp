@@ -186,12 +186,13 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
             将数据的数据点组，转换为数据线，并添加到chart中
     */
     try {
+//        qDebug() << series_data.size();
+//        qDebug() << series_data[0].size();
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
         for(int i = 0;i < series_data.size();i++)
         {
-
             // 起步：
             // 创建第一个线组
             QVector<QLineSeries*> t_vec;
