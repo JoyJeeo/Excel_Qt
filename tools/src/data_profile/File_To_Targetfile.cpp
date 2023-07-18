@@ -6,7 +6,7 @@
 #include <QFileDialog>
 #include <strings.h>
 
-const string File_To_Targetfile::total_task()
+const string File_To_Targetfile::total_task(const string& input_file_path)
 {
     /*
         功能：
@@ -18,14 +18,15 @@ const string File_To_Targetfile::total_task()
         QString qstr_outfile_path = profile_output_file_path();
         string str_outfile_path = qstring_to_string(qstr_outfile_path);
         set_output_file_path(str_outfile_path);
+
         // 动态获取输入文件的路径
-        QString qstr_infile_path = profile_input_file_path();
-        string str_infile_path = qstring_to_string(qstr_infile_path);
-        // 如果没有输入文件
-        if(str_infile_path == ""){
-            return str_infile_path;
-        }
-        set_input_file_path(str_infile_path);
+//        QString qstr_infile_path = profile_input_file_path();
+//        string str_infile_path = qstring_to_string(qstr_infile_path);
+//        // 如果没有输入文件
+//        if(str_infile_path.size() == 0){
+//            return str_infile_path;
+//        }
+        set_input_file_path(input_file_path);
 
         // 打开输入文件
         ifstream ifs = input_file_open(IN_FILE_PATH);

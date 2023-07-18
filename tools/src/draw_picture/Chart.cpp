@@ -71,7 +71,8 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         axisY->setTickCount(ytickc); // y轴设置实网格线的数量【也是一个大格】
         axisY->setMinorTickCount(1); // 设置y轴每个大格里面小刻度线的数目
         // 设置刻度线
-        axisY->setTickType(QValueAxis::TickType::TicksFixed);
+//        axisY->setTickType(QValueAxis::TickType::TicksFixed);
+
 
         // 将数轴添加入chart图表中
         qchart->addAxis(axisX, Qt::AlignBottom); //下：Qt::AlignBottom  上：Qt::AlignTop

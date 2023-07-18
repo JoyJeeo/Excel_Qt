@@ -23,7 +23,7 @@ public:
 
     // 直接实现该类的总任务
     // 将target_file文件的路径进行返回
-    const string total_task();
+    const string total_task(const string& input_file_path);
 
 private:
     // 动态获取输入文件的绝对路径

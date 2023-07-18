@@ -7,6 +7,7 @@ INPUT(
 ./debug\Targetfile_Valid_Data.o
 ./debug\Unit_Ul.o
 ./debug\Chart.o
+./debug\My_Chart_View.o
 ./debug\Widget_All_Attri_Show.o
 ./debug\profile_excel_by_qt_plugin_import.o
 ./debug\moc_Main_Window.o

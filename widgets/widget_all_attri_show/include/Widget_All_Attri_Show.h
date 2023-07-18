@@ -16,7 +16,10 @@ public:
     void set_src_file_name(const string& str) noexcept;
     const string get_src_file_name() noexcept;
 
-    bool total_task();
+    // 设置窗体的title
+    const string get_window_title() noexcept;
+
+    bool total_task(const string& input_file_path);
 
 private:
     // 循环绘制折线图chart

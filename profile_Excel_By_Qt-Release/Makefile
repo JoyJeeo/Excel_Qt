@@ -216,6 +216,7 @@ Makefile: ../profile_Excel_By_Qt.pro C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g+
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_config.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/toolchain.prf \
 		C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/default_pre.prf \
@@ -408,6 +409,7 @@ C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_functions.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/qt_config.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/win32-g++/qmake.conf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/exclusive_builds.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/toolchain.prf:
 C:/Qt/Qt5.9.3_MinGW_static/mkspecs/features/default_pre.prf:

@@ -21,13 +21,18 @@ const string Widget_All_Attri_Show::tackel_file_name()
         // 设置获取的文件名
         src_file_name = in_file_path.substr(i+1,in_file_path.size()-i+1);
 //        qDebug() << src_file_name.c_str();
-        string ans = "分析文件：" + src_file_name;
-        return ans;
+        return src_file_name;
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::tackel_file_name";
         throw;
     }
+}
+
+const string Widget_All_Attri_Show::get_window_title() noexcept
+{
+    // 由于不同文件夹中会有同名文件，因此使用绝对路径的方式加以文件区分
+    return "Analysis file：" + src_file_manager->get_input_file_path();
 }
 
 void Widget_All_Attri_Show::set_src_file_name(const string &str) noexcept
@@ -404,21 +409,22 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 
 }
 
-bool Widget_All_Attri_Show::total_task()
+bool Widget_All_Attri_Show::total_task(const string& input_file_path)
 {
     /*使用中间文件，将目标文件的数据打开后，对其中内容进行绘制*/
     // 数据处理
     try{
         // 对原始数据进行处理和分析source_file -> target_file，获取目标文件的绝对路径
-        const string target_file_path = src_file_manager->total_task();
-        // 如果没有选择文件，则为空，直接结束
-        if(target_file_path.size() == 0)
-        {
-            // 返回false代表任务执行失败
-            return false;
-        }
+        // 【传入输入文件的路径，传出输出文件的路径】
+        const string target_file_path = src_file_manager->total_task(input_file_path);
+        // 多文件开启时，不会有该判断的必要 // 如果没有选择文件，则为空，直接结束
+//        if(target_file_path.size() == 0)
+//        {
+//            // 返回false代表任务执行失败
+//            return false;
+//        }
         // 打开目标文件后，输入的文件名才会被修改
-        this->setWindowTitle(tackel_file_name().c_str()); // 设置Widget的窗口名称
+        this->setWindowTitle(get_window_title().c_str()); // 设置Widget的窗口名称
 
         // 输入文件路径获取成功
         ifstream ifs = src_file_manager->input_file_open(target_file_path);
