@@ -209,20 +209,33 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
             int grp = 0;
 
             // 遍历每组芯片内的点数据
-            for(int j = 0;j < series_data[i].size();j++)
+            for(int j = 0;j < series_data[i].size();)
             {
-                // 如果不为NULL点，则点不为(0,0)
+                // 如果不为NULL点，则点不为(0,0)，正常添加点数据
                 if(series_data[i][j].x() != zero || series_data[i][j].y() != zero)
                 {
                     series[i][grp]->append(series_data[i][j]);
+                    j++;
                 }
                 // 如果为(0,0)点，则创建一个新的点组进行记录【实现分段处理】
                 else {
-                    QLineSeries* t_line = new QLineSeries(this);
-                    t_line->clear();
-                    t_line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
-                    series[i].push_back(t_line);
-                    grp++;
+                    // 连续的(0,0)间断，需要进行跨越
+                    while(series_data[i][j].x() == zero && series_data[i][j].y() == zero)
+                    {
+                        // 防止连续++造成越界
+                        j++;
+                        if(j >= series_data[i].size()) break;
+                    }
+                    // 没有数据点，不需要去构造线【当j已经越界时】
+                    if( j < series_data[i].size())
+                    {
+                        // 跳过了连续的(0,0)点
+                        QLineSeries* t_line = new QLineSeries(this);
+                        t_line->clear();
+                        t_line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
+                        series[i].push_back(t_line);
+                        grp++;
+                    }
                 }
             }
         }
@@ -311,15 +324,18 @@ void Chart::construct_legend_style()
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();
         size_t legends_size = legends.size();
+
         // 设置图例中的文字描述
         for(size_t i = 0;i < legends_size;i++)
         {
+            // site数据线的图例
             if(i < legends_size - 2)
             {
                 legends[i]->setLabel("site"+QString::fromStdString(to_string(i+1)));
                 continue;
             }
 
+            // site最值线的图例
             legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");
         }
 

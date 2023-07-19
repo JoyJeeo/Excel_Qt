@@ -396,6 +396,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
             string attri = labels[i];
             // 获取site_part的对应数据点
             QVector<QVector<QPointF>> point_vecs = get_matrix_pointF(series_datas[attri]);
+
             // 获取初始化好的chart
             Chart* chart = this->initChart(attri,point_vecs);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置

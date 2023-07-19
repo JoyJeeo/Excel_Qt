@@ -124,7 +124,9 @@ void Main_Window::task_widget_all_attri_show()
             v_layout->addWidget(file_paths[i]);
             v_layout->addWidget(widgets[i]);
         }
-//        qDebug() << "0";
+        // 抓取窗口生成图片并保存
+//        QPixmap pixMap_ = QPixmap::grabWidget(main_widge);
+//        pixMap_.save("./Widgets.png");
 
         // 构造QScrollArea
         QScrollArea* scrollarea = new QScrollArea;
