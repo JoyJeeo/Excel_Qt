@@ -1,4 +1,6 @@
 release/Main_Window.o
+release/Button_All_Attri.o
+release/Button_Merge_File.o
 release/main.o
 release/Attri_Unit_UL.o
 release/File_To_Targetfile.o
@@ -9,5 +11,7 @@ release/Chart.o
 release/My_Chart_View.o
 release/Widget_All_Attri_Show.o
 release/moc_Main_Window.o
+release/moc_Button_All_Attri.o
+release/moc_Button_Merge_File.o
 release/moc_Chart.o
 release/moc_Widget_All_Attri_Show.o

@@ -19,7 +19,6 @@ Chart::Chart(QWidget* parent, QString _chartname)
         axisY = new QValueAxis(this);
         //在ui里面添加了一个Widget并把曲线图添加进去
         layout->addWidget(chartview); // chart显示器添加入布局中
-    //    setLayout(layout); // 将布局容器放入最大的widget布局容器中
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
         // 设置chartview观察器的大小范围
         chartview->setMinimumSize(500,500);
@@ -84,7 +83,8 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
     }
 }
 
-void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<double,double>& XI_line_data)
+void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
+                       const QMap<int,QVector<QPointF>>& series_data,const pair<double,double>& XI_line_data)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -114,69 +114,22 @@ void Chart::buildChart(const QVector<QVector<QPointF>>& series_data,const pair<d
         if(XI_line_data.first == INT_MIN && XI_line_data.second == INT_MAX)return;
 
         // 绘制数据线
-        construct_datas_series(series_data,data_series_width);
+        construct_datas_series(scatter_sites,site_max_parts,series_data,data_series_width);
+
         // 绘制最值线
-        construct_XI_line(XI_line_data,XI_series_width,series_data);
+        construct_XI_line(XI_line_data,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_legend_style();
+        construct_legend_style(scatter_sites);
 
     } catch (...) {
         qDebug() << "Chart::buildChart";
         throw;
     }
 
-
-//    int counter = 0;
-//    series.push_back(QVector<QLineSeries*>());
-//    series[0].push_back(new QLineSeries(this));
-//    series[0][counter]->setPen(QPen(Qt::blue,2,Qt::SolidLine));
-//    series[0][counter]->clear();
-//    for(int i=0; i<pointlist.size();i++)
-//        if(pointlist[i].x() == 0 && pointlist[i].y() == 0)
-//        {
-//            counter++;
-//            series[0].push_back(new QLineSeries(this));
-//            series[0][counter]->setPen(QPen(Qt::blue,2,Qt::SolidLine));
-//            series[0][counter]->clear();
-//        }
-//        else {
-//            series[0][counter]->append(pointlist[i].x(), pointlist[i].y());
-//        }
-//    }
-
-//    int colors[4]={Qt::darkBlue,Qt::darkRed,Qt::gray,Qt::darkYellow};
-//    for(int i = 0;i < 4;i++)
-//    {
-//        series[i]->setPen(QPen(Qt::GlobalColor(colors[i]),2,Qt::SolidLine));
-//        series[i]->clear();
-//        for(int i=0; i<pointlist.size();i++)
-//            series[i]->append(pointlist[i].x(), pointlist[i].y());
-
-//        qchart->setTitle(chartname);
-//        qchart->setAnimationOptions(QChart::SeriesAnimations);//设置曲线动画模式
-//        qchart->legend()->hide(); //隐藏图例【隐藏每条图线的具体描述】
-//        qchart->addSeries(series[i]);//输入数据【添加series曲线数据】
-//        // 设置x轴和y轴与series数据进行对应
-//        qchart->setAxisX(axisX, series[i]);
-//        qchart->setAxisY(axisY, series[i]);
-//    }
-    //创建数据源
-//    series->setPen(QPen(Qt::blue,3,Qt::SolidLine));
-//    series->clear();
-//    for(int i=0; i<pointlist.size();i++)
-//        series->append(pointlist[i].x(), pointlist[i].y());
-
-//    qchart->setTitle(chartname);
-//    qchart->setAnimationOptions(QChart::SeriesAnimations);//设置曲线动画模式
-//    qchart->legend()->hide(); //隐藏图例【隐藏每条图线的具体描述】
-//    qchart->addSeries(series);//输入数据【添加series曲线数据】
-//    // 设置x轴和y轴与series数据进行对应
-//    qchart->setAxisX(axisX, series);
-//    qchart->setAxisY(axisY, series);
-
 }
 
-void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data, int data_series_width)
+void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max_parts,
+                                   const QMap<int,QVector<QPointF>> &series_data, int data_series_width)
 {
     /*
         参数：
@@ -191,8 +144,12 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
-        for(int i = 0;i < series_data.size();i++)
+        int grp = 0;
+
+        for(size_t i = 0;i < scatter_sites.size();i++)
         {
+            int site = scatter_sites[i];
+//            qDebug() << site;
             // 起步：
             // 创建第一个线组
             QVector<QLineSeries*> t_vec;
@@ -204,36 +161,36 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
             // 将点组加入线组中
             t_vec.push_back(line);
             // 将点组容器加入线组容器中
-            series.push_back(t_vec);
+            series.insert(site,t_vec);
             // 记录当前线组的序号
-            int grp = 0;
+            grp = 0;
 
             // 遍历每组芯片内的点数据
-            for(int j = 0;j < series_data[i].size();)
+            for(int part = 1;part <= site_max_parts;)
             {
                 // 如果不为NULL点，则点不为(0,0)，正常添加点数据
-                if(series_data[i][j].x() != zero || series_data[i][j].y() != zero)
+                if(series_data[site][part].x() != zero || series_data[site][part].y() != zero)
                 {
-                    series[i][grp]->append(series_data[i][j]);
-                    j++;
+                    series[site][grp]->append(series_data[site][part]);
+                    part++;
                 }
                 // 如果为(0,0)点，则创建一个新的点组进行记录【实现分段处理】
                 else {
                     // 连续的(0,0)间断，需要进行跨越
-                    while(series_data[i][j].x() == zero && series_data[i][j].y() == zero)
+                    while(series_data[site][part].x() == zero && series_data[site][part].y() == zero)
                     {
                         // 防止连续++造成越界
-                        j++;
-                        if(j >= series_data[i].size()) break;
+                        part++;
+                        if(part > site_max_parts) break;
                     }
-                    // 没有数据点，不需要去构造线【当j已经越界时】
-                    if( j < series_data[i].size())
+                    // 没有数据点，不需要去构造线【当part已经越界时】
+                    if( part <= site_max_parts)
                     {
                         // 跳过了连续的(0,0)点
                         QLineSeries* t_line = new QLineSeries(this);
                         t_line->clear();
                         t_line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
-                        series[i].push_back(t_line);
+                        series[site].push_back(t_line);
                         grp++;
                     }
                 }
@@ -243,15 +200,17 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
         // 遍历series中的每条线，将生成好的多组线加入chart中
         // 直接遍历LineSeries 加入chart即可，因为line的颜色已经区分了每组site，
         //      因此间断的line并不会影响到chart生成的线数据
-        for(int i = 0;i < series.size();i++)
+        for(size_t i = 0;i < scatter_sites.size();i++)
         {
-            for(int j = 0;j < series[i].size();j++)
+            int site = scatter_sites[i];
+            // 这里的含义是series中的线组的part
+            for(int parts = 0;parts <= grp;parts++)
             {
                 // 添加LineSeries 加入chart
-                qchart->addSeries(series[i][j]);
+                qchart->addSeries(series[site][parts]);
                 // 设置x轴和y轴与LineSeries的点数据进行对应
-                qchart->setAxisX(axisX, series[i][j]);
-                qchart->setAxisY(axisY, series[i][j]);
+                qchart->setAxisX(axisX, series[site][parts]);
+                qchart->setAxisY(axisY, series[site][parts]);
             }
         }
 
@@ -262,7 +221,7 @@ void Chart::construct_datas_series(const QVector<QVector<QPointF> > &series_data
 }
 
 void Chart::construct_XI_line(const pair<double, double> &XI_line_data, int XI_series_width,
-                              const QVector<QVector<QPointF> > &series_data)
+                              int site_max_parts)
 {
     /*
         参数：
@@ -286,10 +245,10 @@ void Chart::construct_XI_line(const pair<double, double> &XI_line_data, int XI_s
         min_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
 
         // 遍历每组芯片内的点数据
-        for(int j = 0;j < series_data[0].size();j++)
+        for(int part = 1;part <= site_max_parts;part++)
         {
-            max_line->append(QPointF(j+1,XI_line_data.second));
-            min_line->append(QPointF(j+1,XI_line_data.first));
+            max_line->append(QPointF(part,XI_line_data.second));
+            min_line->append(QPointF(part,XI_line_data.first));
         }
         // 添加LineSeries 加入chart
         qchart->addSeries(max_line);
@@ -305,7 +264,7 @@ void Chart::construct_XI_line(const pair<double, double> &XI_line_data, int XI_s
     }
 }
 
-void Chart::construct_legend_style()
+void Chart::construct_legend_style(const vector<int> scatter_sites)
 {
     /*
         功能：
@@ -331,7 +290,9 @@ void Chart::construct_legend_style()
             // site数据线的图例
             if(i < legends_size - 2)
             {
-                legends[i]->setLabel("site"+QString::fromStdString(to_string(i+1)));
+                // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
+                int site = scatter_sites[i];
+                legends[i]->setLabel("site"+QString::fromStdString(to_string(site)));
                 continue;
             }
 

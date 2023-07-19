@@ -1,0 +1,55 @@
+STS8200 StationA
+Date:2023-7-18
+Tester ID:
+User:admin
+Program:D:\Huifeng\0718\V2201A01_FT_STS8200_4_A1p00_20230718\V2201A01_FT_STS8200_4_A1p00.pgs
+Handler: vhandler.dll
+Site: All Sites
+Lot Id:
+
+Average Test Time(ms): 1512
+Idle Time: 0 day 0:0:4
+Beginning Time: 2023-7-18 18:59:39
+Ending Time: 2023-7-18 18:59:45
+Total Testing Time: 0 day 0:0:1
+
+Total: 1
+Pass: 1   100.00%
+Fail: 0   0.00%
+SBin[1]   Pass__Default                   1   100.00%   1
+SBin[2]   Fail__Default                   0     0.00%   2
+SBin[5]   SiteCheck__AllFail              0     0.00%   5
+SBin[7]   Leakage_out_h__AllFail          0     0.00%   6
+SBin[11]  Absmax_vin__AllFail             0     0.00%   8
+SBin[12]  POR_rising__AllFail             0     0.00%   6
+SBin[13]  Ignd100__AllFail                0     0.00%   6
+SBin[14]  Ishd__AllFail                   0     0.00%   6
+SBin[16]  Vfb__AllFail                    0     0.00%   6
+SBin[19]  Ifb__AllFail                    0     0.00%   6
+SBin[15]  Ilimit__AllFail                 0     0.00%   6
+SBin[18]  Vdropout_5_50mA__AllFail        0     0.00%   6
+SBin[20]  Vline_regulation_5__AllFail        0     0.00%   6
+SBin[23]  Ven_low__AllFail                0     0.00%   6
+SBin[24]  Ien__AllFail                    0     0.00%   6
+SBin[25]  PG_rising__AllFail              0     0.00%   6
+SBin[26]  PG_low__AllFail                 0     0.00%   6
+SBin[27]  PG_leakage__AllFail             0     0.00%   6
+SBin[28]  PGDL_charg__AllFail             0     0.00%   6
+SBin[29]  PGDL_rising__AllFail            0     0.00%   6
+SBin[30]  PGDL_falling__AllFail           0     0.00%   6
+SBin[31]  PG_reaction__AllFail            0     0.00%   6
+SBin[22]  Tss__AllFail                    0     0.00%   6
+SBin[21]  Vload_regulation_5__AllFail        0     0.00%   6
+SBin[32]  Post_Ignd100__AllFail           0     0.00%   8
+SBin[33]  Post_Ishd__AllFail              0     0.00%   8
+SBin[8]   Post_Leakage_out_h__AllFail        0     0.00%   8
+SBin[9]   Post_Continuity_out__AllFail        0     0.00%   8
+
+ 
+ 
+SITE_NUM,PART_ID,PASSFG,SOFT_BIN,T_TIME,TEST_NUM,Continuity_out,Continuity_vin,Continuity_en,Continuity_pg,Continuity_pgdl,Continuity_fb,POR_rising,POR_falling,POR_hys,Ignd100,Ishd,Vfb,Vout_5,Ifb,Ilimit,Vdropout_5_50mA,Vdropout_5_300mA,Vline_regulation_5,Vout_6V,Vout_12V,Vout_20V,Vout_30V,Vout_40V,Vload_regulation_5,Vout_5mA,Vout_300mA,Ven_low,Ven_high,Ien,PG_rising,PG_hys,PG_low,PG_leakage,PGDL_charg,PGDL_rising,PGDL_falling,PG_reaction,Post_Ignd100,Post_Ishd,Post_Continuity_out,Post_Continuity_vin,Post_Continuity_en,Post_Continuity_pg,Post_Continuity_pgdl,Post_Continuity_fb,
+Unit,,,,ms,,V,V,V,V,V,V,V,V,V,uA,uA,V,V,uA,A,mV,mV,mV,V,V,V,V,V,mV,V,V,v,v,uA,%,%,V,uA,uA,V,V,om,uA,uA,V,V,V,V,V,V,
+LimitL,,,,,,0.100,-1.000,-1.000,-1.000,-1.000,-1.000,2.7200,,0.2000,,,1.2230,3.2280,,0.360,127.000,250.000,0.9300,,,,,,,,,0.350,0.640,,92.000,3.600,0.1210,,7.800,1.4900,0.2770,,,,0.100,-1.000,-1.000,-1.000,-1.000,-1.000,
+LimitU,,,,,,1.000,-0.100,-0.100,-0.100,-0.100,-0.100,2.9000,,0.4000,16.000,1.000,1.2730,3.3570,1.100,0.480,295.000,546.000,8.1000,,,,,,10.0000,,,0.890,1.450,0.500,94.000,6.700,0.3480,0.0120,14.100,1.9970,0.8110,2.000,16.000,1.000,1.000,-0.100,-0.100,-0.100,-0.100,-0.100,
+
+2,1,True,1,1512,45,0.513,-0.488,-0.564,-0.571,-0.641,-0.433,2.8054,2.5198,0.2856,7.538,0.744,1.2547,3.3283,0.138,0.415,172.875,355.948,1.1256,3.3266,,,,3.3278,3.2803,3.3284,3.3251,0.654,1.190,-0.006,92.964,4.522,0.2102,0.0004,9.212,1.7898,0.5763,0.004,7.546,0.698,0.512,-0.487,-0.562,-0.570,-0.640,-0.433,

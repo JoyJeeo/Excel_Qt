@@ -6,7 +6,7 @@
 #include <QFileDialog>
 #include <strings.h>
 
-const string File_To_Targetfile::total_task(const string& input_file_path)
+const string File_To_Targetfile::total_task(const string& input_file_path,string output_file_name)
 {
     /*
         功能：
@@ -15,17 +15,12 @@ const string File_To_Targetfile::total_task(const string& input_file_path)
     */
     try {
         // 动态获取程序的输出文件路径
-        QString qstr_outfile_path = profile_output_file_path();
+        QString qstr_outfile_path = profile_output_file_path(output_file_name);
         string str_outfile_path = qstring_to_string(qstr_outfile_path);
         set_output_file_path(str_outfile_path);
 
         // 动态获取输入文件的路径
-//        QString qstr_infile_path = profile_input_file_path();
-//        string str_infile_path = qstring_to_string(qstr_infile_path);
-//        // 如果没有输入文件
-//        if(str_infile_path.size() == 0){
-//            return str_infile_path;
-//        }
+        // 使用上层传入的文件路径进行操作
         set_input_file_path(input_file_path);
 
         // 打开输入文件
@@ -46,6 +41,20 @@ const string File_To_Targetfile::total_task(const string& input_file_path)
     } catch (...) {
         qDebug() << "File_To_Targetfile::total_task";
         throw;
+    }
+}
+
+const string File_To_Targetfile::merge_task(const QStringList &file_paths)
+{
+    try {
+        // 将多个单文件路径传入，解析合并出alls文件
+        merge_files_solo_data(file_paths);
+
+        // 合并后的文件，作为source_file，衔接上该类的总任务total_task
+        return total_task(ALLS_MERGE_FILE_PATH,"target_file.csv");
+    } catch (...) {
+        qDebug() << "string File_To_Targetfile::merge_task";
+        throw ;
     }
 }
 
@@ -165,7 +174,7 @@ void File_To_Targetfile::profile_col_row_num(const vector<vector<string> > &all_
             // 跳过无效的空行
             if(all_array[i].size() == 0)continue;
             // 找到目标数据的起点
-            if(all_array[i][0] == "SITE_NUM")
+            if(all_array[i][0] == target_str)
             {
                 // 如果找到目标，记录开始位置
                 targe_data_index = i;
@@ -207,32 +216,6 @@ File_To_Targetfile::tackle_file_get_target(const vector<vector<string>>& all_arr
             while(t_all_array[i].size() != cols_num) t_all_array[i].push_back(""); // 补0
             target_arrays.push_back(t_all_array[i]); // 将结果直接插入
         }
-
-//        bool flage = false; // 标记有效数据区开始的位置
-//        for(size_t i = 0;i < t_all_array.size();i++)
-//        {
-//            if(t_all_array[i].size() != cols_num)continue;
-////            if(t_all_array[i][0] == "SITE_NUM" )flage = true;
-////            else flage = true;
-//            else {
-//                for(size_t j = i;j < t_all_array.size();j++)
-//                {
-//                    // 输入的数据需要补0，长度不够要求
-//                    while(t_all_array[j].size() != cols_num) t_all_array[j].push_back(""); // 补0
-//                    target_arrays.push_back(t_all_array[j]); // 将结果直接插入
-//                }
-//                break;
-//            }
-//        }
-
-        // for(int i = 0;i < target_arrays.size();i++)
-        // {
-        //     for(int j = 0;j < target_arrays[i].size();j++)
-        //     {
-        //         cout<<target_arrays[i][j].size()<<" ";
-        //     }
-        //     cout<<endl;
-        // }
 
         // test_datas(target_arrays);
 
@@ -333,6 +316,7 @@ size_t File_To_Targetfile::get_vec_col_index_valid(const vector<vector<string>>&
     }
 }
 
+
 vector<vector<string>>
 File_To_Targetfile::tackle_file_get_ans(const vector<vector<string>>& rows_array,
                                         const vector<vector<string>>& cols_array)
@@ -375,38 +359,113 @@ File_To_Targetfile::tackle_file_get_ans(const vector<vector<string>>& rows_array
             }
         }
 
-
-        // 第一层循环，为了找到PASSFG的横坐标下标位置
-//        for(size_t i = 0;i < cols_array.size(); i++)
-//        {
-////            qDebug() << "i: "<< i ;
-//            if(cols_array[i][0] == "PASSFG")
-//            {
-//                // 第二层循环，为了找到FALSE的纵坐标下标位置
-//                for(size_t j = 0;j < cols_array[i].size();j++)
-//                {
-////                    qDebug() << (QString::fromStdString(cols_array[i][j]));
-//                    // 由于字符字符读入后可能被转换了大小，这里使用忽略大小写的方式进行处理
-//                    if(str_cmp_ignore_case(cols_array[i][j],"FALSE")) // i已经是一个定值了
-//                    {
-////                        qDebug() << "i: " << i << "j: "<<j;
-//                        // 第三层循环，为主循环，为了将标记为FALSE的所有数据中，为空的标记为NULL【这样的处理方式，在理论上更加严谨】
-//                        for(size_t k = 2;k < ans.size();k++)
-//                        {
-//                            if(ans[k][j].size() == 0) ans[k][j] = "NULL";
-//                        }
-//                    }
-//                }
-//                break;
-//            }
-//        }
-
         // test_datas(ans);
 
         return ans;
 
     } catch (...) {
         qDebug() << "File_To_Targetfile::tackle_file_get_ans";
+        throw;
+    }
+}
+
+void File_To_Targetfile::merge_files_solo_data (const QStringList& file_paths)
+{
+    /*
+        功能：
+            将多个单数据文件内容进行合并，合并为一个文件内容，使用第一个文件的头数据作为合并文件的指标数据,
+            并将合并内容后的结果存储在alls.csv文件中
+            【第一个文件内容的选取很重要】 【暂时情况】【！！！】
+    */
+    try {
+        vector<vector<string>> merge_datas;
+        size_t counter = 1;
+        // 依次获取单文件路径
+        // 填补merge_datas中的数据
+        for(auto path = file_paths.begin();path != file_paths.end();path++,counter++)
+        {
+            // 转换单文件路径为string
+            string t_path = (*path).toStdString();
+            // 打开该单数据文件
+            ifstream ifs = input_file_open(t_path);
+            // 将单数据文件内容全部读入程序中
+            vector<vector<string>> all_arrary = tackle_file_get_all(ifs);
+            // 分析单文件的有效数据SITE_NUM的起始位置和数据的有效长宽
+            profile_col_row_num(all_arrary);
+
+            // 一般非第一个文件时，直接读取最后数据即可
+            // 一般的单数据表，只用读取其中最后一行的数据即可
+            size_t all_array_end = all_arrary.size() - 1;
+            if(counter != 1)
+            {
+                // 输入的数据需要补0，长度不够要求
+                while(all_arrary[all_array_end].size() != cols_num) all_arrary[all_array_end].push_back(""); // 补0
+                // 将原数据的part_id与指定文件的part进行对应
+                all_arrary[all_array_end][1] = to_string(counter);
+                merge_datas.push_back(all_arrary[all_array_end]); // 将结果直接插入
+                continue;
+            }
+
+            // 第一个文件时，读取其表头数据作为所有数据的极限值
+            for(size_t i = targe_data_index;i <= all_array_end;i++)
+            {
+                // 输入的数据需要补0，长度不够要求
+                while(all_arrary[i].size() != cols_num) all_arrary[i].push_back(""); // 补0
+                merge_datas.push_back(all_arrary[i]); // 将结果直接插入
+            }
+        }
+
+        // 将合并好的文件生成在alls.csv中即可
+        // 获取alls.csv的存放路径
+        QString alls_file_path = profile_output_file_path("alls.csv");
+        string str_alls_file_path = qstring_to_string(alls_file_path);
+        set_alls_file_path(str_alls_file_path);
+        // 打开alls.csv文件，将合并好的数据放入进行存储
+        ofstream ofs = output_file_open(ALLS_MERGE_FILE_PATH);
+        // 将处理好的数据输出到target_file中
+        save_tackle_datas(ofs,merge_datas);
+        ofs.close();
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::merge_files_solo_data";
+        throw;
+    }
+}
+
+void File_To_Targetfile::update_data_part(string &data, int part)
+{
+    try {
+        int fst_bot = find_str_tag_dex(data,',',1);
+        int sec_bot = find_str_tag_dex(data,',',2);
+        string pre_str = data.substr(0,fst_bot+1);
+        string part_str = to_string(part);
+        string last_str = data.substr(sec_bot,data.size()-sec_bot);
+
+//        data = pre_str + part_str + last_str;
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::update_data_part";
+        throw ;
+    }
+}
+
+int File_To_Targetfile::find_str_tag_dex(const string &data, const char &c, int count)
+{
+    try {
+        int i = 0;
+        for(;i < data.size();i++)
+        {
+            if(data[i] == c)
+            {
+                count--;
+                if(count == 0)break;
+            }
+        }
+
+        return i;
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::find_str_tag_dex";
         throw;
     }
 }
@@ -466,6 +525,16 @@ void File_To_Targetfile::set_output_file_path(const string &path) noexcept
 string File_To_Targetfile::get_output_file_path() noexcept
 {
     return OUT_FILE_PATH;
+}
+
+void File_To_Targetfile::set_alls_file_path(const string &path) noexcept
+{
+    ALLS_MERGE_FILE_PATH = path;
+}
+
+string File_To_Targetfile::get_alls_file_path() noexcept
+{
+    return ALLS_MERGE_FILE_PATH;
 }
 
 void File_To_Targetfile::set_input_file_path(const string &path) noexcept
@@ -539,7 +608,7 @@ QString File_To_Targetfile::profile_input_file_path()
     }
 }
 
-QString File_To_Targetfile::profile_output_file_path(QString output_file_name)
+QString File_To_Targetfile::profile_output_file_path(string output_file_name)
 {
     /*
         函数功能：
@@ -553,7 +622,7 @@ QString File_To_Targetfile::profile_output_file_path(QString output_file_name)
     */
     try {
         QString output_file_path = QCoreApplication::applicationDirPath() +
-                                        QObject::tr("\\") + output_file_name; // target_file.csv
+                                        QObject::tr("\\") + QString::fromStdString(output_file_name); // target_file.csv
         return output_file_path;
 
     } catch (...) {

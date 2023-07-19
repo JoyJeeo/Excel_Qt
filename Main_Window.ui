@@ -6,26 +6,65 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>811</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>30</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="Button_All_Attri" name="btn_all_attri">
+       <property name="text">
+        <string>btn_all_attri</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Button_Merge_File" name="btn_merge">
+       <property name="text">
+        <string>btn_merge</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>811</width>
      <height>23</height>
     </rect>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Button_All_Attri</class>
+   <extends>QPushButton</extends>
+   <header location="global">actions\buttons\include\Button_All_Attri.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Button_Merge_File</class>
+   <extends>QPushButton</extends>
+   <header location="global">actions\buttons\include\Button_Merge_File.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
