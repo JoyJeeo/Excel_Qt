@@ -1,4 +1,5 @@
 debug/Main_Window.o
+debug/Button_All_Attri.o
 debug/main.o
 debug/Attri_Unit_UL.o
 debug/File_To_Targetfile.o
@@ -9,5 +10,6 @@ debug/Chart.o
 debug/My_Chart_View.o
 debug/Widget_All_Attri_Show.o
 debug/moc_Main_Window.o
+debug/moc_Button_All_Attri.o
 debug/moc_Chart.o
 debug/moc_Widget_All_Attri_Show.o

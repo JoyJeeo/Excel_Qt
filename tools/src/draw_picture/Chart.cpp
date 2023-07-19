@@ -19,7 +19,6 @@ Chart::Chart(QWidget* parent, QString _chartname)
         axisY = new QValueAxis(this);
         //在ui里面添加了一个Widget并把曲线图添加进去
         layout->addWidget(chartview); // chart显示器添加入布局中
-    //    setLayout(layout); // 将布局容器放入最大的widget布局容器中
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
         // 设置chartview观察器的大小范围
         chartview->setMinimumSize(500,500);

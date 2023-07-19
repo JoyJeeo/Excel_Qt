@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Main_Window.cpp \
+    actions/buttons/src/Button_All_Attri.cpp \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
@@ -30,6 +31,8 @@ SOURCES += \
 
 HEADERS += \
     Main_Window.h \
+    actions/Actions_Header_Proxy__01.h \
+    actions/buttons/include/Button_All_Attri.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
     tools/include/data_profile/File_To_Targetfile.h \
@@ -40,7 +43,6 @@ HEADERS += \
     tools/include/draw_picture/My_Chart_View.h \
     widgets/Widgets_Header_Proxy_01.h \
     widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
-    widgets/widget_all_attri_show/include/Widgets_Header_Proxy_01.h \
 
 FORMS += \
     Main_Window.ui
@@ -49,3 +51,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

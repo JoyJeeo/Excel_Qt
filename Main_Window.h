@@ -15,13 +15,10 @@ public:
     Main_Window(QWidget *parent = nullptr);
     ~Main_Window();
 
-    void total_task();
-
-public slots:
-    void task_widget_all_attri_show();
-
 private:
     Ui::Main_Window *ui;
+
+    void total_task();
 
 };
 #endif // MAIN_WINDOW_H
