@@ -37,6 +37,7 @@ private:
                      double axisX_k = 1, // 设置X轴的缩放大小
                      double axisY_k = 0.01 // 设置Y轴的缩放大小
                     );
+    void save_pic(QWidget* saved_widget,const QString& saved_path);
 
     // 设置纵坐标和最值线的数据，[为构造chart提供接口数据]
     // 获取属性单位

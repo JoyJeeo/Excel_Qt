@@ -6,6 +6,7 @@
 #include <QSizePolicy>
 #include <QFileDialog>
 
+extern size_t pic_pages;
 
 Button_All_Attri::Button_All_Attri(QWidget *parent)
     :QPushButton(parent)
@@ -60,6 +61,9 @@ void Button_All_Attri::task_widget_all_attri_show()
         // 构造QScrollArea
         construct_scrollarea();
 
+        // 页数清空【保证多文件读取时，产生的依然是当前显示的widgets内容相同，而不是一个又一个，造成文件名重复而被覆盖】
+        // 一个任务结束后，清空一次
+        pic_pages = 1;
     }
     catch(...){
         qDebug()<<"All_Attri_Button::task_widget_all_attri_show";
@@ -157,7 +161,9 @@ void Button_All_Attri::construct_scrollarea()
     try {
         // 构造QScrollArea
         scrollarea = new QScrollArea;
-        scrollarea->resize(1100,562);
+//        scrollarea->resize(1100,562);
+        scrollarea->resize(800,620);
+//        scrollarea->resize(595,842); // A4
         scrollarea->setWindowTitle("Volturrent: Chips Analysis");
         scrollarea->setWidgetResizable(true);
         scrollarea->setAttribute(Qt::WA_DeleteOnClose);

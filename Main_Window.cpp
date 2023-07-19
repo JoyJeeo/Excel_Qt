@@ -2,6 +2,9 @@
 #include "ui_Main_Window.h"
 #include <QDebug>
 
+// 照片的页数
+size_t pic_pages = 1;
+
 Main_Window::Main_Window(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Main_Window)
