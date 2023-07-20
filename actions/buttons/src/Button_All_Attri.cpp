@@ -49,7 +49,7 @@ void Button_All_Attri::task_widget_all_attri_show()
         // 如果没有任何打开的文件，则什么都不做
         if(input_file_paths.size() == 0)return;
         // 如果有选择需要打开的文件
-        construct_widgets_file_paths(input_file_paths,widgets,file_paths);
+        construct_widgets_file_paths();
 
         // 构造main_widget
         construct_main_widge();
@@ -58,7 +58,7 @@ void Button_All_Attri::task_widget_all_attri_show()
 //        save_pic(main_widge,"../PIC.png");
 
         // 构造QScrollArea
-        construct_scrollarea(main_widge);
+        construct_scrollarea();
 
     }
     catch(...){
@@ -76,9 +76,7 @@ QStringList Button_All_Attri::construct_input_file_paths() noexcept
                                          QObject::tr("File(*.csv);;All(*.*)")); // 设置可以筛选的文件类型
 }
 
-void Button_All_Attri::construct_widgets_file_paths(const QStringList &input_file_paths, // 传入参数的文件列表
-                                                  QVector<Widget_All_Attri_Show *> &widgets,
-                                                  QVector<QLabel *> &file_paths) // 传出参数，在函数内部进行构造
+void Button_All_Attri::construct_widgets_file_paths()
 {
     try {
         // 将容器先清空
@@ -154,7 +152,7 @@ void Button_All_Attri::construct_main_widge()
     }
 }
 
-void Button_All_Attri::construct_scrollarea(QWidget *widget)
+void Button_All_Attri::construct_scrollarea()
 {
     try {
         // 构造QScrollArea
@@ -163,7 +161,7 @@ void Button_All_Attri::construct_scrollarea(QWidget *widget)
         scrollarea->setWindowTitle("Volturrent: Chips Analysis");
         scrollarea->setWidgetResizable(true);
         scrollarea->setAttribute(Qt::WA_DeleteOnClose);
-        scrollarea->setWidget(widget);
+        scrollarea->setWidget(main_widge);
         scrollarea->show();
 
     } catch (...) {

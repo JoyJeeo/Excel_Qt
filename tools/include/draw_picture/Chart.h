@@ -22,22 +22,24 @@ public:
     ~Chart(){}
     void setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
                  QString _yname, qreal _ymin, qreal _ymax, int _ytickc);
-    void buildChart(const QVector<QVector<QPointF>>&,const pair<double,double>&);
+    void buildChart(const vector<int>& scatter_sites,int site_max_parts,
+                    const QMap<int,QVector<QPointF>>&,const pair<double,double>&);
 
     // 参数太多，没必要使用total_task来进行构造
 
 private:
     // 构造数据线
-    void construct_datas_series(const QVector<QVector<QPointF>>& series_data,int data_series_width);
+    void construct_datas_series(const vector<int>& scatter_sites,int site_max_parts,
+                                const QMap<int,QVector<QPointF>>& series_data,int data_series_width);
     // 构造最值线
     void construct_XI_line(const pair<double,double>& XI_line_data,int XI_series_width,
-                           const QVector<QVector<QPointF> > &series_data);
+                            int site_max_parts);
     // 设置chart的图里描述样式
-    void construct_legend_style();
+    void construct_legend_style(const vector<int> scatter_sites);
     QChart* qchart; // chart图表容器
     QChartView* chartview; // chart显示器容器，容纳chart图表
     //  My_Chart_View* chartview; // chart显示器容器，容纳chart图表
-    QVector<QVector<QLineSeries*>> series; // chart图表中的数据：折线图 // 由于可能出现断点，因此需要使用这种结构进行定义
+    QMap<int,QVector<QLineSeries*>> series; // chart图表中的数据：折线图 // 由于可能出现断点，因此需要使用这种结构进行定义
         // 横坐标代表每个site芯片【一组线】，纵坐标代表一组点，纵坐标中，是每组多个点构成的线数据
         // attri -> [site][Line_part] = [LineSeries] = many_points
 

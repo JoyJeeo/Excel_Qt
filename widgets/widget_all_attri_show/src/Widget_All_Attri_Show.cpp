@@ -29,6 +29,55 @@ const string Widget_All_Attri_Show::tackel_file_name()
     }
 }
 
+void Widget_All_Attri_Show::profile_scatter_sites()
+{
+    /*
+        获取scatter_sites，其是该类的一个属性，由private函数进行维护
+    */
+    try {
+        scatter_sites = datas->get_site_parts().get_Scatter_Site_Number();
+//        qDebug() << scatter_sites.size();
+//        exit(1);
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_scatter_sites";
+        throw;
+    }
+}
+
+void Widget_All_Attri_Show::profile_site_max_parts()
+{
+    try {
+       site_max_parts = datas->get_site_parts().get_Max_Part_Id();
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_site_max_parts";
+        throw ;
+    }
+}
+
+void Widget_All_Attri_Show::profile_site_list()
+{
+    try {
+        site_list = datas->get_site_parts().get_site_list();
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::profile_site_list";
+        throw;
+    }
+}
+
+void Widget_All_Attri_Show::test_for(QMap<int,QVector<QPointF>> &datas)
+{
+    for(size_t i = 0;i < scatter_sites.size();i++)
+    {
+        int site = scatter_sites[i];
+
+        // 遍历所有parts
+        for(int part = 1;part <= site_max_parts;part++)
+        {
+            qDebug() << datas[site][part];
+        }
+    }
+}
+
 const string Widget_All_Attri_Show::get_window_title() noexcept
 {
     // 由于不同文件夹中会有同名文件，因此使用绝对路径的方式加以文件区分
@@ -69,7 +118,7 @@ Widget_All_Attri_Show::~Widget_All_Attri_Show()
 }
 
 // 制作QList<QList<QPointF>>数据列表
-QVector<QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(const vector<vector<double>>& site_part_vals)
+QMap<int,QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(map<int,vector<double>>& site_part_vals)
 {
     /*
        功能：
@@ -83,39 +132,48 @@ QVector<QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(const vector<
     */
     try {
         // 返回值更换类型
-        QVector<QVector<QPointF>> ans;
+        // 获取sites
+        QMap<int,QVector<QPointF>> ans;
+        // 初始化ans
+        for(auto site : scatter_sites)
+        {
+            // 初始化所有数据为(0,0)作为数据为NULL时的断点标志
+            ans.insert(site,QVector<QPointF>(site_max_parts+1,QPointF(0,0)));
+        }
 
         // 将原本site_part_vals的数据:
         //      attri -> [site][part] = val ----> attri -> [site][part] = (part,val)
         // 只是将内部值转换为QPointF(列,数值) 并将 vector转换为QVector
-        for(size_t i = 0;i < site_part_vals.size();i++)
+        // 遍历site_part_vals
+        for(size_t i = 0;i < scatter_sites.size();i++)
         {
-            ans.push_back(QVector<QPointF>());
-            for(size_t j = 0;j < site_part_vals[i].size();j++)
+            int site = scatter_sites[i];
+            // 初始化所有数据为(0,0)作为数据为NULL时的断点标志
+//            ans.insert(site,QVector<QPointF>(site_max_parts+1,QPointF(0,0))); // 由数据的结构可知，过程中插入和直接初始化两者并不等价
+
+            // 遍历所有parts
+            for(int part = 1;part <= site_max_parts;part++)
             {
                 // 如果为NULL值,则用(0,0)作为断点标志
-                if(site_part_vals[i][j] == NULL_Number)
-                    ans[i].push_back(QPointF(0,0));
+                if(site_part_vals[site][part] == NULL_Number) continue;
                 // 如果正常数值，则存储将 val -> (part,val)
-                else
-                {
-                    size_t parts = j + 1; // 将第几个part再转回来
-                    ans[i].push_back(QPointF(parts,site_part_vals[i][j]));
-                }
+                ans[site][part] = QPointF(part,site_part_vals[site][part]);
             }
         }
+
+//        test_for(ans);
 
         return ans;
 
     } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::get_QVector";
+        qDebug() << "Widget_All_Attri_Show::get_matrix_pointF";
         throw;
     }
 }
 
 //初始化图表
 Chart* Widget_All_Attri_Show::initChart(const string& attri,
-                             const QVector<QVector<QPointF>>& point_vecs,
+                             const QMap<int,QVector<QPointF>>& site_points,
                              double axisX_k,
                              double axisY_k)
 {
@@ -163,9 +221,10 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                     // 纵坐标的分割线的条数
                     12
                     );
-
+        qDebug() << "3";
+        qDebug() << "scatter_sites.size(): " << scatter_sites.size();
         //绘制【注入数据点数值和最值】
-        chart->buildChart(point_vecs,XI_line_data);
+        chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data);
 
         return chart;
 
@@ -383,7 +442,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 
     try {
         // 获取attri -> [site][part]的series数据,存于map<string,vector<vector<double>>>中
-        map<string,vector<vector<double>>>series_datas = datas->get_series_datas();
+        map<string,map<int,vector<double>>> series_datas = datas->get_series_datas();
 
         // 获取target_file中有效的属性label
         auto labels = datas->get_labels();
@@ -395,10 +454,10 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
             // 获取site_part的对应数据点
-            QVector<QVector<QPointF>> point_vecs = get_matrix_pointF(series_datas[attri]);
-
+            QMap<int,QVector<QPointF>> site_points = get_matrix_pointF(series_datas[attri]);
+            qDebug() << "2";
             // 获取初始化好的chart
-            Chart* chart = this->initChart(attri,point_vecs);
+            Chart* chart = this->initChart(attri,site_points);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
         }
@@ -418,26 +477,22 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
         // 对原始数据进行处理和分析source_file -> target_file，获取目标文件的绝对路径
         // 【传入输入文件的路径，传出输出文件的路径】
         const string target_file_path = src_file_manager->total_task(input_file_path);
-        // 多文件开启时，不会有该判断的必要 // 如果没有选择文件，则为空，直接结束
-//        if(target_file_path.size() == 0)
-//        {
-//            // 返回false代表任务执行失败
-//            return false;
-//        }
+
         // 打开目标文件后，输入的文件名才会被修改
-        this->setWindowTitle(get_window_title().c_str()); // 设置Widget的窗口名称
+        // 设置Widget的窗口名称
+        this->setWindowTitle(get_window_title().c_str());
 
         // 输入文件路径获取成功
         ifstream ifs = src_file_manager->input_file_open(target_file_path);
         // 解析生成的target_file数据读入程序中
         datas->total_task(ifs);
+        // 初始化scatter_sites,site_max_parts
+        profile_scatter_sites();
+        profile_site_max_parts();
+        qDebug() << "1";
 
         // 开始对数据循环扫描进行绘画
         while_draw();
-
-        // 抓取窗口生成图片并保存
-    //    QPixmap pixMap_ = QPixmap::grabWidget(this);
-    //    pixMap_.save("./myImage.png");
 
         // 关闭打开的文件
         ifs.close();
@@ -449,4 +504,9 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
         qDebug() <<"Widget_All_Attri_Show::total_task()";
         throw;
     }
+}
+
+vector<int> Widget_All_Attri_Show::get_scatter_sites() noexcept
+{
+    return scatter_sites;
 }

@@ -52,7 +52,7 @@ public:
 
     Attri_Unit_Ul get_attri_uuls() noexcept;
 
-    map<string,vector<vector<double>>> get_series_datas() noexcept;
+    map<string,map<int,vector<double>>> get_series_datas() noexcept;
 
     const vector<string> get_labels() noexcept;
 
@@ -63,18 +63,25 @@ private:
     // 判断一个string是否为整数数字
     bool is_Integer_Numeric(const string &str);
     // 获取属性在m_source_target_file_vec中所对应的行索引值
-    size_t get_source_vec_row_index_by_attri(const string& attri);
+    size_t get_target_vec_row_index_by_attri(const string& attri);
     // 获取属性在m_source_target_file_vec中所对应的有效列索引值
-    size_t get_source_vec_col_index_valid();
+    size_t get_target_vec_col_index_valid();
+    // 动态分析表格中的属性，维护labels
     void profile_labels() noexcept;
 
-    // 获取主数据
-    vector<vector<string>> m_source_target_file_vec; // target_file中直接获取的数据
+    // test
+    void test_for(map<int,vector<double>>& datas);
+
+    // 全读取target_file中的数据
+    vector<vector<string>> m_target_file_vec;
 
     // 使用组合的方式，使用其他类的对象，这样便于数据封装与方法调用和实现
+    // 获取的主要Valid_datas
     Site_Part m_site_parts;
     Attri_Unit_Ul m_attri_uuls; // attri -> uul 他们之间具有直接的关系
-    map<string,vector<vector<double>>> m_series_datas;
+//    map<string,vector<vector<double>>> m_series_datas; // 因为attri和site都属于离散的数据，并不是连续的像part那样，因此必须解耦
+    map<string,map<int,vector<double>>> m_series_datas; // attri -> [ site -> [ val | index:part ] ] // attri,site都为唯一数据
+
 
     // 用于区分属性的分界点属性【数据表自身的"属性"】
     const string div_attri = "TEST_NUM";

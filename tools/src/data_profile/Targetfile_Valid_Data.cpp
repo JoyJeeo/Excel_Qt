@@ -22,15 +22,15 @@ void Targetfile_Valid_Data::profile_get_site_parts()
         for(size_t i = 0;i < 2;i++)
         {
             string attri;
-            for(size_t j = 0;j < m_source_target_file_vec[i].size();j++)
+            for(size_t j = 0;j < m_target_file_vec[i].size();j++)
             {
                 // 获取对应属性名称
-                if(j == 0) attri = m_source_target_file_vec[i][j];
+                if(j == 0) attri = m_target_file_vec[i][j];
                 // 从出现第一个整数数据处开始记录
-                if(is_Integer_Numeric(m_source_target_file_vec[i][j]))
+                if(is_Integer_Numeric(m_target_file_vec[i][j]))
                 {
                     // 获取 attri -> Integer
-                    m_site_parts.m_site_part[attri].push_back(stoi(m_source_target_file_vec[i][j]));
+                    m_site_parts.m_site_part[attri].push_back(stoi(m_target_file_vec[i][j]));
                 }
             }
         }
@@ -76,12 +76,12 @@ void Targetfile_Valid_Data::profile_get_attri_uuls()
 
     try {
         // 获取起点获取数据的位置
-        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1;
-        size_t end_col_dex = get_source_vec_col_index_valid();
+        size_t begin_row_dex = get_target_vec_row_index_by_attri(div_attri) + 1;
+        size_t end_col_dex = get_target_vec_col_index_valid();
 
-        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
+        for(size_t i = begin_row_dex;i < m_target_file_vec.size();i++)
         {
-            string attri=m_source_target_file_vec[i][0]; // 存储属性名称
+            string attri=m_target_file_vec[i][0]; // 存储属性名称
             string unit=""; // 初始化，有些属性可能并没有单位【这是合法的】
             double limitL=INT_MIN,limitU=INT_MAX; // 需要插入的data数据
 
@@ -89,16 +89,16 @@ void Targetfile_Valid_Data::profile_get_attri_uuls()
             for(size_t j = 0;j < end_col_dex;j++)
             {
                 // unit定义,未定义都存储
-                if(m_source_target_file_vec[0][j] == m_attri_uuls.m_Unit)
-                    unit = m_source_target_file_vec[i][j];
+                if(m_target_file_vec[0][j] == m_attri_uuls.m_Unit)
+                    unit = m_target_file_vec[i][j];
                 // limitL 定义的存储其值,未定义的存储INT_MIN
-                else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitL
-                        && m_source_target_file_vec[i][j].size() != 0)
-                    limitL = stod(m_source_target_file_vec[i][j]);
+                else if(m_target_file_vec[0][j] == m_attri_uuls.m_LimitL
+                        && m_target_file_vec[i][j].size() != 0)
+                    limitL = stod(m_target_file_vec[i][j]);
                 // limitU 定义的存储其值,未定义的存储INT_MAX
-                else if(m_source_target_file_vec[0][j] == m_attri_uuls.m_LimitU
-                        && m_source_target_file_vec[i][j].size() != 0)
-                    limitU = stod(m_source_target_file_vec[i][j]);
+                else if(m_target_file_vec[0][j] == m_attri_uuls.m_LimitU
+                        && m_target_file_vec[i][j].size() != 0)
+                    limitU = stod(m_target_file_vec[i][j]);
             }
             // 将attri -> uul插入
             m_attri_uuls.m_attri_uuls.insert(make_pair(attri,
@@ -115,8 +115,8 @@ void Targetfile_Valid_Data::profile_get_series_datas()
 {
     /*
         数据的结构类型:
-            获取每一组图像上的series所需要的信息,使用map<string,vector<vector<double>>>结构,
-                string存储attri属性,二维矩阵中横坐标代表site的编号,纵坐标代表site的第几次repeat
+            获取每一组图像上的series所需要的信息,使用map<string,map<int,vector<double>>>结构,
+                string存储attri属性,二维矩阵中key代表site的编号,纵坐标代表site的第几次repeat
 
         默认参数:
             设置的默认参数，与profile_get_uuls函数中的默认参数同理
@@ -125,32 +125,53 @@ void Targetfile_Valid_Data::profile_get_series_datas()
             对于空的主数据,以NULL_Number进行存储
     */
     try {
-        int sites = m_site_parts.get_Max_Site_Number(); // 芯片的个数
+//        int sites = m_site_parts.get_Max_Site_Number(); // 芯片的个数
+        // 初始化
+        vector<int> scatter_sites = m_site_parts.get_Scatter_Site_Number();
         int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
-        int site_dex = 0; // SITE_NUM在target_file表中的下标位置
-        int part_dex = 1; // PART_ID在target_file表中的下标位置
-        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1; // 与profile_get_uuls函数中同理
-        size_t begin_col_dex = get_source_vec_col_index_valid(); // 获取有效列
-
-        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
+        map<int,vector<double>> init_data;
+        // 初始化m_target_file_vec
+        for(auto site : scatter_sites)
         {
-            string attri = m_source_target_file_vec[i][0]; // 用来记录该行的属性值
-            vector<vector<double>> data(sites,vector<double>(parts,NULL_Number)); // 横坐标为芯片号，纵坐标为该芯片的第几次part，其中空数据以NULL_Number存储
+            // 按照site -> part值直接存储，省略下标转换，site，part直接对应实际数值
+            init_data.insert(make_pair(site,vector<double>(parts+1,NULL_Number)));
+        }
 
-            for(size_t j = begin_col_dex; j < m_source_target_file_vec[i].size();j++)
+        // 下标区
+        // SITE_NUM在target_file表中的下标位置
+        int site_dex = 0;
+        // PART_ID在target_file表中的下标位置
+        int part_dex = 1;
+
+        // 数据区
+        // 与profile_get_uuls函数中同理
+        size_t begin_row_dex = get_target_vec_row_index_by_attri(div_attri) + 1;
+        // 获取有效列
+        size_t begin_col_dex = get_target_vec_col_index_valid();
+
+        // 遍历填充m_series_datas
+        for(size_t i = begin_row_dex;i < m_target_file_vec.size();i++)
+        {
+            // 用来记录该行的属性值
+            string attri = m_target_file_vec[i][0];
+            // 使用init_data，加速初始化
+            map<int,vector<double>> data = init_data;
+
+            for(size_t j = begin_col_dex; j < m_target_file_vec[i].size();j++)
             {
-                // 正式读取主数据群数据，填充vector<vector<double>> data
-                if(m_source_target_file_vec[i][j] == "NULL")  continue;
+                // 正式读取主数据群数据，填充map<int,vector<double>> data
+                if(m_target_file_vec[i][j] == "NULL")  continue;
 
-                // 数据表中的site和part从1开始，程序中从0开始计数
                 // 转化行列下标
-                int row = stoi(m_source_target_file_vec[site_dex][j]) - 1;
-                int col = stoi(m_source_target_file_vec[part_dex][j]) - 1;
+                int site = stoi(m_target_file_vec[site_dex][j]);
+                int part = stoi(m_target_file_vec[part_dex][j]);
+//                qDebug() << row <<" : " << col;
                 // 转换行列后，获取数据
-                data[row][col] = stod(m_source_target_file_vec[i][j]);
+                data[site][part] = stod(m_target_file_vec[i][j]);
             }
             // 添加属性的主数据进map
-            m_series_datas.insert(make_pair(attri,data));// 乱序存储 但可以通过labels vector进行查看检索
+            // 乱序存储 但可以通过labels vector进行查看检索
+            m_series_datas.insert(make_pair(attri,data));
         }
 
     } catch (...) {
@@ -168,7 +189,10 @@ void Targetfile_Valid_Data::profile_get_datas()
     try {
         profile_get_site_parts();
         profile_get_attri_uuls();
+        // 【！！！】处理最复杂数据的函数
         profile_get_series_datas();
+
+//        test_for(m_series_datas["Continuity_out"]);
 
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::profile_get_datas";
@@ -180,7 +204,7 @@ void Targetfile_Valid_Data::profile_get_datas()
 void Targetfile_Valid_Data::load_target_vec(const ifstream& ifs)
 {
     /*
-        读取target_file中的表格数据读入程序中,存储在m_source_target_file_vec中
+        读取target_file中的表格数据读入程序中,存储在m_target_file_vec中
                             他是一个vector<vector<string>>的结构
     */
     try {
@@ -196,7 +220,7 @@ void Targetfile_Valid_Data::load_target_vec(const ifstream& ifs)
             {
                 arrays.push_back(array);
             }
-            m_source_target_file_vec.push_back(arrays);
+            m_target_file_vec.push_back(arrays);
             arrays.clear();
         }
 
@@ -228,7 +252,7 @@ bool Targetfile_Valid_Data::is_Integer_Numeric(const string &str)
 
 vector<vector<string>> Targetfile_Valid_Data::get_source_target_file_vec() noexcept
 {
-    return m_source_target_file_vec;
+    return m_target_file_vec;
 }
 
 Site_Part Targetfile_Valid_Data::get_site_parts() noexcept
@@ -241,7 +265,7 @@ Attri_Unit_Ul Targetfile_Valid_Data::get_attri_uuls() noexcept
     return m_attri_uuls;
 }
 
-map<string,vector<vector<double>>> Targetfile_Valid_Data::get_series_datas() noexcept
+map<string,map<int,vector<double>>> Targetfile_Valid_Data::get_series_datas() noexcept
 {
     return m_series_datas;
 }
@@ -256,7 +280,7 @@ pair<double,double> Targetfile_Valid_Data::get_attri_XI(const string& attri)
         double ans_min = INT_MAX;
         double ans_max = INT_MIN;
         // 获取属性对应的处理数据【在原本已经处理好的数据上进行遍历】
-        vector<vector<double>> vec = m_series_datas[attri];
+        map<int,vector<double>> vec = m_series_datas[attri];
         // 有数据时的正常情况
         for(size_t i = 0;i < vec.size();i++)
         {
@@ -282,17 +306,17 @@ pair<double,double> Targetfile_Valid_Data::get_attri_XI(const string& attri)
     }
 }
 
-// 获取属性在m_source_target_file_vec中所对应的列索引值
-size_t Targetfile_Valid_Data::get_source_vec_row_index_by_attri(const string& attri)
+// 获取属性在m_target_file_vec中所对应的列索引值
+size_t Targetfile_Valid_Data::get_target_vec_row_index_by_attri(const string& attri)
 {
     /*
         根据attri，通过依次遍历的方式，直接获取属性在targe_file中的横坐标索引数值
     */
     try {
         size_t i;
-        for(i = 0;i < m_source_target_file_vec.size();i++)
+        for(i = 0;i < m_target_file_vec.size();i++)
         {
-            if(m_source_target_file_vec[i][0] == attri)break;
+            if(m_target_file_vec[i][0] == attri)break;
         }
         return i;
 
@@ -302,7 +326,7 @@ size_t Targetfile_Valid_Data::get_source_vec_row_index_by_attri(const string& at
     }
 }
 
-size_t Targetfile_Valid_Data::get_source_vec_col_index_valid()
+size_t Targetfile_Valid_Data::get_target_vec_col_index_valid()
 {
     /*
         根据SITE_NUM中的整数数据，来作为有效列索引的起点位置，
@@ -313,9 +337,9 @@ size_t Targetfile_Valid_Data::get_source_vec_col_index_valid()
     try {
         size_t row; // SITE_NUM所在行
         size_t col;
-        for(row = 0,col = 0;col < m_source_target_file_vec[row].size();col++)
+        for(row = 0,col = 0;col < m_target_file_vec[row].size();col++)
         {
-            if(is_Integer_Numeric(m_source_target_file_vec[row][col]))
+            if(is_Integer_Numeric(m_target_file_vec[row][col]))
                 break;
         }
         return col;
@@ -337,15 +361,30 @@ void Targetfile_Valid_Data::profile_labels() noexcept
                 【有效数据从div_attri后开始】
     */
     try {
-        size_t begin_row_dex = get_source_vec_row_index_by_attri(div_attri) + 1;
-        for(size_t i = begin_row_dex;i < m_source_target_file_vec.size();i++)
+        size_t begin_row_dex = get_target_vec_row_index_by_attri(div_attri) + 1;
+        for(size_t i = begin_row_dex;i < m_target_file_vec.size();i++)
         {
-            this->labels.push_back(m_source_target_file_vec[i][0]);
+            this->labels.push_back(m_target_file_vec[i][0]);
         }
 
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::profile_labels";
         throw ;
+    }
+}
+
+void Targetfile_Valid_Data::test_for(map<int, vector<double>> &datas)
+{
+    vector<int> scatter_sites = m_site_parts.get_Scatter_Site_Number();
+    int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
+
+    for(size_t i = 0;i < scatter_sites.size();i++)
+    {
+        int site = scatter_sites[i];
+        for(int part = 1;part <= parts;part++)
+        {
+            qDebug() << datas[site][part];
+        }
     }
 }
 

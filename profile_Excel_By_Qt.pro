@@ -31,7 +31,6 @@ SOURCES += \
 
 HEADERS += \
     Main_Window.h \
-    actions/Actions_Header_Proxy__01.h \
     actions/buttons/include/Button_All_Attri.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \

@@ -74,11 +74,11 @@ ofstream File_To_Targetfile::output_file_open(const string& output_File_path)
     try {
         ofstream ofs;
         ofs.open(output_File_path,ios::out | ios::trunc);
-        if(!ofs.is_open())
-        {
-            cerr<<"please close the target_file.csv, open fail"<<endl;
-            exit(1);
-        }
+//        if(!ofs.is_open())
+//        {
+//            cerr<<"please close the target_file.csv, open fail"<<endl;
+//            exit(1);
+//        }
 
         return ofs;
 

@@ -20,15 +20,14 @@ public slots:
 
 protected:
     QStringList construct_input_file_paths() noexcept;
-    void construct_widgets_file_paths(const QStringList& input_file_paths,
-                                    QVector<Widget_All_Attri_Show*>& widgets,
-                                    QVector<QLabel*>& file_paths);
+    void construct_widgets_file_paths();
     void construct_main_widge();
-    void construct_scrollarea(QWidget* widget);
+    void construct_scrollarea();
 
 
     void save_pic(QWidget* saved_widget,const QString& saved_path);
 
+    // 这些对象，都是该按钮下触发槽后需要使用的属性对象
     // 获取多文件
     QStringList input_file_paths;
     // 将所有窗体都存在容器中
