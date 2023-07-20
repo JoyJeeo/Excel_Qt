@@ -144,6 +144,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
+        int grp = 0;
         qDebug() << "6";
         qDebug() << "scatter_sites.size(): " << scatter_sites.size();
         for(size_t i = 0;i < scatter_sites.size();i++)
@@ -163,7 +164,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
             // 将点组容器加入线组容器中
             series.insert(site,t_vec);
             // 记录当前线组的序号
-            int grp = 0;
+            grp = 0;
 
             // 遍历每组芯片内的点数据
             for(int part = 1;part <= site_max_parts;)
@@ -203,13 +204,14 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         for(size_t i = 0;i < scatter_sites.size();i++)
         {
             int site = scatter_sites[i];
-            for(int part = 1;part <= site_max_parts;part++)
+            // 这里的含义是series中的线组的part
+            for(int parts = 0;parts <= grp;parts++)
             {
                 // 添加LineSeries 加入chart
-                qchart->addSeries(series[site][part]);
+                qchart->addSeries(series[site][parts]);
                 // 设置x轴和y轴与LineSeries的点数据进行对应
-                qchart->setAxisX(axisX, series[site][part]);
-                qchart->setAxisY(axisY, series[site][part]);
+                qchart->setAxisX(axisX, series[site][parts]);
+                qchart->setAxisY(axisY, series[site][parts]);
             }
         }
         qDebug() << "5";

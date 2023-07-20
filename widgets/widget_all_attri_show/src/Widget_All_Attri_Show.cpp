@@ -190,9 +190,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         //设置坐标系
         // 设置X轴数据
         // 获取site_part
-        auto site_part = datas->get_site_parts();
-        // 获取PART_ID的最大值
-        size_t PART_ID_MAX = site_part.get_Max_Part_Id(); // 【！！！】【这里设计横坐标的解耦，之后处理】
+        auto site_part = datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
 
         // 设置Y轴数据
         // 获取属性单位
@@ -215,7 +213,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         // 设置坐标系的数值范围
         chart->setAxis(
                     // 横坐标
-                    "PART_ID",1,PART_ID_MAX,PART_ID_MAX,
+                    "PART_ID",1,site_max_parts,site_max_parts,
                     // 纵坐标
                     unit,realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
@@ -488,6 +486,7 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
         datas->total_task(ifs);
         // 初始化scatter_sites,site_max_parts
         profile_scatter_sites();
+        profile_site_list();
         profile_site_max_parts();
         qDebug() << "1";
 
