@@ -219,8 +219,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                     // 纵坐标的分割线的条数
                     12
                     );
-        qDebug() << "3";
-        qDebug() << "scatter_sites.size(): " << scatter_sites.size();
+
         //绘制【注入数据点数值和最值】
         chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data);
 
@@ -453,7 +452,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
             string attri = labels[i];
             // 获取site_part的对应数据点
             QMap<int,QVector<QPointF>> site_points = get_matrix_pointF(series_datas[attri]);
-            qDebug() << "2";
+
             // 获取初始化好的chart
             Chart* chart = this->initChart(attri,site_points);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
@@ -488,7 +487,7 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
         profile_scatter_sites();
         profile_site_list();
         profile_site_max_parts();
-        qDebug() << "1";
+
 
         // 开始对数据循环扫描进行绘画
         while_draw();
@@ -501,6 +500,33 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
 
     } catch(...){
         qDebug() <<"Widget_All_Attri_Show::total_task()";
+        throw;
+    }
+}
+
+bool Widget_All_Attri_Show::merge_task(const QStringList &alls_path)
+{
+    try {
+        const string target_file_path = src_file_manager->merge_task(alls_path);
+        this->setWindowTitle(get_window_title().c_str());
+
+        // 输入文件路径获取成功
+        ifstream ifs = src_file_manager->input_file_open(target_file_path);
+        // 解析生成的target_file数据读入程序中
+        datas->total_task(ifs);
+        // 初始化scatter_sites,site_max_parts
+        profile_scatter_sites();
+        profile_site_list();
+        profile_site_max_parts();
+
+        // 开始对数据循环扫描进行绘画
+        while_draw();
+
+        // 关闭打开的文件
+        ifs.close();
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::merge_task";
         throw;
     }
 }

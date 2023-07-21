@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Main_Window.cpp \
     actions/buttons/src/Button_All_Attri.cpp \
+    actions/buttons/src/Button_Merge_File.cpp \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
 HEADERS += \
     Main_Window.h \
     actions/buttons/include/Button_All_Attri.h \
+    actions/buttons/include/Button_Merge_File.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
     tools/include/data_profile/File_To_Targetfile.h \

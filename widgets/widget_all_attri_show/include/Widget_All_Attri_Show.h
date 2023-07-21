@@ -21,6 +21,9 @@ public:
 
     bool total_task(const string& input_file_path);
 
+    // 合并单文件的窗体
+    bool merge_task(const QStringList& alls_path);
+
     vector<int> get_scatter_sites() noexcept;
 
     int get_site_max_parts() noexcept;

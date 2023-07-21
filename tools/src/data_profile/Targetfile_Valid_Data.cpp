@@ -165,7 +165,7 @@ void Targetfile_Valid_Data::profile_get_series_datas()
                 // 转化行列下标
                 int site = stoi(m_target_file_vec[site_dex][j]);
                 int part = stoi(m_target_file_vec[part_dex][j]);
-//                qDebug() << row <<" : " << col;
+
                 // 转换行列后，获取数据
                 data[site][part] = stod(m_target_file_vec[i][j]);
             }

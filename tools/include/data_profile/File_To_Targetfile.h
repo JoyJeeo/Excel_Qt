@@ -23,14 +23,17 @@ public:
 
     // 直接实现该类的总任务
     // 将target_file文件的路径进行返回
-    const string total_task(const string& input_file_path);
+    const string total_task(const string& input_file_path,string output_file_name = "target_file.csv");
+
+    // 单数据多文件合并
+    const string merge_task(const QStringList& file_paths);
 
 private:
     // 动态获取输入文件的绝对路径
     QString profile_input_file_path();
 
     // 动态获取输出文件的绝对路径
-    QString profile_output_file_path(QString output_file_name = "target_file.csv");
+    QString profile_output_file_path(string output_file_name = "target_file.csv");
 
     // 将输入的QString -> string
     /*
@@ -49,13 +52,17 @@ private:
     void set_output_file_path(const string& path) noexcept;
     // 查看输出文件的路径
     string get_output_file_path() noexcept;
+    // 修改alls文件的路径
+    void set_alls_file_path(const string& path) noexcept;
+    // 查看alls文件的路径
+    string get_alls_file_path() noexcept;
 
     // 处理输入的源文件，获取目标数据后，读入内存中
     vector<vector<string>>
     tackle_file(const ifstream& ifs);
     vector<vector<string>>
     tackle_file_get_all(const ifstream& ifs);
-    // 获取并更新目标数据的长和宽更新数据【方便嵌套已有程序】
+    // 获取并更新目标数据的长和宽更新数据【方便嵌套已有程序】 // 【只用这一个分析，因为他们三个之间互相是有关系的】
     void profile_col_row_num(const vector<vector<string>>& all_array);
     vector<vector<string>>
     tackle_file_get_target(const vector<vector<string>>& all_array);
@@ -64,7 +71,7 @@ private:
     vector<vector<string>>
     tackle_file_get_cols(const vector<vector<string>>& target_arrays);
     vector<vector<string>>
-    tackle_file_get_ans(const vector<vector<string>>& rows_array,const vector<vector<string>>& cols_array);
+    tackle_file_get_ans(const vector<vector<string>>& rows_array,const vector<vector<string>>& cols_array); 
 
     // 将读入程序中的数据输出到文件中
     void save_tackle_datas(const ofstream& ofs,const vector<vector<string>>& datas);
@@ -80,6 +87,14 @@ private:
     // 获取属性在m_source_target_file_vec中所对应的有效列索引值【专门给cols_array中的数据使用】
     size_t get_vec_col_index_valid(const vector<vector<string>>& target_arrays);
 
+    // 【功能二】
+    // 多文件单数据合并功能【依然返回target_file的文件路径】
+    void merge_files_solo_data (const QStringList& file_paths);
+    // 将输入数据的part_id进行替换
+    void update_data_part(string& data,int part);
+    // 查找某个符号第几次出现再string中的位置
+    int find_str_tag_dex(const string& data,const char& c,int count);
+
 
 
 // 需要测试的属性名称【不需要指定属性，所有属性都进行显示即可】
@@ -93,11 +108,18 @@ private:
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
 // 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
+// 合并的输出文件的产生位置
+string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
+
+// 有效数据开始的起始位置
+const string target_str = "SITE_NUM";
+
 
 // 目标表的长和宽【以SITE_NUM作为目标数据的开始标记，更新目标数据的长和宽】
 size_t cols_num = 45;
 size_t rows_num = 45;
 size_t targe_data_index = 0; // 记录有效数据开始的起点
 };
+
 
 #endif // FILE_TO_TARGETFILE_H

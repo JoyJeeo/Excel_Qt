@@ -14,18 +14,31 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="Button_All_Attri" name="btn_all_attri">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>91</width>
-      <height>21</height>
+      <x>50</x>
+      <y>30</y>
+      <width>160</width>
+      <height>80</height>
      </rect>
     </property>
-    <property name="text">
-     <string>btn_all_attri</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="Button_All_Attri" name="btn_all_attri">
+       <property name="text">
+        <string>btn_all_attri</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Button_Merge_File" name="btn_merge">
+       <property name="text">
+        <string>btn_merge</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -45,6 +58,11 @@
    <class>Button_All_Attri</class>
    <extends>QPushButton</extends>
    <header location="global">actions\buttons\include\Button_All_Attri.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Button_Merge_File</class>
+   <extends>QPushButton</extends>
+   <header location="global">actions\buttons\include\Button_Merge_File.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

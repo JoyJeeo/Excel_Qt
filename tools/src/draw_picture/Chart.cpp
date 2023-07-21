@@ -112,10 +112,10 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
 
         // 【特殊最值处理】：如果没有数值存在时，图表什么都不画
         if(XI_line_data.first == INT_MIN && XI_line_data.second == INT_MAX)return;
-        qDebug() << "4";
+
         // 绘制数据线
         construct_datas_series(scatter_sites,site_max_parts,series_data,data_series_width);
-        qDebug() << "0";
+
         // 绘制最值线
         construct_XI_line(XI_line_data,XI_series_width,site_max_parts);
         // 修正图例样式
@@ -145,8 +145,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
         int grp = 0;
-        qDebug() << "6";
-        qDebug() << "scatter_sites.size(): " << scatter_sites.size();
+
         for(size_t i = 0;i < scatter_sites.size();i++)
         {
             int site = scatter_sites[i];
@@ -214,7 +213,6 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
                 qchart->setAxisY(axisY, series[site][parts]);
             }
         }
-        qDebug() << "5";
 
     } catch (...) {
         qDebug() << "Chart::construct_datas_series";
