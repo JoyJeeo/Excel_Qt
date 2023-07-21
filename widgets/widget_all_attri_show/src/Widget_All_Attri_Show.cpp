@@ -525,6 +525,9 @@ bool Widget_All_Attri_Show::merge_task(const QStringList &alls_path)
         // 关闭打开的文件
         ifs.close();
 
+        // 返回true代表任务执行成功
+        return true;
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::merge_task";
         throw;
