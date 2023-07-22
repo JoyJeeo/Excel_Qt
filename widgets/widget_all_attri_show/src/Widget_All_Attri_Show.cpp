@@ -196,7 +196,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         // 获取属性单位
         QString unit = profile_attri_unit(attri);
 
-        // 获取的数值的最值线的数值结果
+        // 获取的数值的最值线的数值结果【这里的最值线，实际并不是最值线，可以理解为是为了让Y更合理而配合最值权衡使用的中间值】【！！！之后需要进行进一步维护】
         auto XI_line_data = profile_data_series_XI(attri);
 
         // 对纵坐标的大小范围进行处理【而不是简单的通过get_ul_compare_attri_XI函数获取的最值】
@@ -221,7 +221,12 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                     );
 
         //绘制【注入数据点数值和最值】
-        chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data);
+        // 获取属性最值
+        auto attri_uul = datas->get_attri_uuls();
+        auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
+                                  attri_uul.m_attri_uuls[attri].m_LimitU);
+        // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
+        chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data,attri_XI);
 
         return chart;
 
@@ -290,10 +295,12 @@ pair<double, double> Widget_All_Attri_Show::profile_data_series_XI(const string 
          * 这里使用attri_XI作为判断最值线的主要条件，由其需求所导致
         */
         // 最小值构造
+        // 如果最值有数据，但是数据没有数据，那么就不画最值线
         if(attri_XI.first != INT_MIN && all_attri_XI.first == INT_MIN)
         {
             XI_line_data.first = all_attri_XI.first;
         }
+        // 如果数据有数据，但是最值没数据，那就不画最值线
         if(attri_XI.first == INT_MIN && all_attri_XI.first != INT_MIN)
         {
             // 对线进行倍数移动
@@ -507,6 +514,7 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
 bool Widget_All_Attri_Show::merge_task(const QStringList &alls_path)
 {
     try {
+        // 【与total_task相比，只做了读取原数据时的数据分析操作】
         const string target_file_path = src_file_manager->merge_task(alls_path);
         this->setWindowTitle(get_window_title().c_str());
 

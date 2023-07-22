@@ -22,6 +22,7 @@ Chart::Chart(QWidget* parent, QString _chartname)
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
         // 设置chartview观察器的大小范围
         chartview->setMinimumSize(500,500);
+//        chartview->setMinimumSize(500,380); // A4
 //        chartview->setMaximumSize(INT_MAX,INT_MAX); // 使用默认最大值
         // 设置chartview具有放大镜功能【！！！】
         chartview->setRubberBand(QChartView::RectangleRubberBand);
@@ -84,7 +85,8 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
 }
 
 void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
-                       const QMap<int,QVector<QPointF>>& series_data,const pair<double,double>& XI_line_data)
+                       const QMap<int,QVector<QPointF>>& series_data,const pair<double,double>& XI_line_data,
+                       const pair<double,double>& attri_XI)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -116,10 +118,10 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
         // 绘制数据线
         construct_datas_series(scatter_sites,site_max_parts,series_data,data_series_width);
 
-        // 绘制最值线
-        construct_XI_line(XI_line_data,XI_series_width,site_max_parts);
+        // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
+        construct_XI_line(attri_XI,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_legend_style(scatter_sites);
+        construct_legend_style(scatter_sites,attri_XI);
 
     } catch (...) {
         qDebug() << "Chart::buildChart";
@@ -220,8 +222,8 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
     }
 }
 
-void Chart::construct_XI_line(const pair<double, double> &XI_line_data, int XI_series_width,
-                              int site_max_parts)
+void Chart::construct_XI_line(const pair<double,double>& attri_XI,
+                              int XI_series_width,int site_max_parts)
 {
     /*
         参数：
@@ -233,38 +235,54 @@ void Chart::construct_XI_line(const pair<double, double> &XI_line_data, int XI_s
     */
     try {
         // 添加最值线【都是红色的虚线】
-        // 最大值线
-        QLineSeries* max_line = new QLineSeries(this);
-        // 初始化点组上生成线时的初始化数据
-        max_line->clear();
-        max_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
-        // 最小值线
-        QLineSeries* min_line = new QLineSeries(this);
-        // 初始化点组上生成线时的初始化数据
-        min_line->clear();
-        min_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
-
-        // 遍历每组芯片内的点数据
-        for(int part = 1;part <= site_max_parts;part++)
+        // 如果最大值线本身并不存在
+        if(attri_XI.second != INT_MAX)
         {
-            max_line->append(QPointF(part,XI_line_data.second));
-            min_line->append(QPointF(part,XI_line_data.first));
+            // 最大值线
+            QLineSeries* max_line = new QLineSeries(this);
+            // 初始化点组上生成线时的初始化数据
+            max_line->clear();
+            max_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
+
+            for(int part = 1;part <= site_max_parts;part++)
+            {
+                max_line->append(QPointF(part,attri_XI.second));
+            }
+
+            qchart->addSeries(max_line);
+            qchart->setAxisX(axisX, max_line);
+            qchart->setAxisY(axisY, max_line);
+
         }
-        // 添加LineSeries 加入chart
-        qchart->addSeries(max_line);
-        qchart->addSeries(min_line);
-        // 设置x轴和y轴与LineSeries的点数据进行对应
-        qchart->setAxisX(axisX, max_line);
-        qchart->setAxisY(axisY, max_line);
-        qchart->setAxisX(axisX, min_line);
-        qchart->setAxisY(axisY, min_line);
+
+        // 如果最小值线，本身并不存在
+        if(attri_XI.first != INT_MIN)
+        {
+            // 最小值线
+            QLineSeries* min_line = new QLineSeries(this);
+            // 初始化点组上生成线时的初始化数据
+            min_line->clear();
+            min_line->setPen(QPen(Qt::red,XI_series_width,Qt::DashLine));
+            // 遍历每组芯片内的点数据
+            for(int part = 1;part <= site_max_parts;part++)
+            {
+                min_line->append(QPointF(part,attri_XI.first));
+            }
+            // 添加LineSeries 加入chart
+            qchart->addSeries(min_line);
+            // 设置x轴和y轴与LineSeries的点数据进行对应
+            qchart->setAxisX(axisX, min_line);
+            qchart->setAxisY(axisY, min_line);
+
+        }
+
     } catch (...) {
         qDebug() << "Chart::construct_XI_line";
         throw;
     }
 }
 
-void Chart::construct_legend_style(const vector<int> scatter_sites)
+void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI)
 {
     /*
         功能：
@@ -284,21 +302,39 @@ void Chart::construct_legend_style(const vector<int> scatter_sites)
         QList<QLegendMarker *> legends = qchart->legend()->markers();
         size_t legends_size = legends.size();
 
+        // 计算最值线的存在个数
+        int max_line_num = 0;
+        if(attri_XI.first != INT_MIN)max_line_num++;
+        if(attri_XI.second != INT_MAX)max_line_num++;
+
         // 设置图例中的文字描述
-        for(size_t i = 0;i < legends_size;i++)
+        // 绘制数据图例
+        for(size_t i = 0;i < legends_size - max_line_num;i++)
         {
             // site数据线的图例
-            if(i < legends_size - 2)
-            {
-                // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
-                int site = scatter_sites[i];
-                legends[i]->setLabel("site"+QString::fromStdString(to_string(site)));
-                continue;
-            }
+            // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
+            int site = scatter_sites[i];
+            legends[i]->setLabel("site"+QString::fromStdString(to_string(site)));
+            continue;
 
-            // site最值线的图例
-            legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");
         }
+
+        // 绘制最值图例
+        // 判断最值线的绘制图例【图例的绘制顺序与绘制最值线时有关】
+        // 只有一条最值线存在时
+        if(max_line_num == 1)
+        {
+            legends[legends_size - max_line_num]->setLabel(
+                        attri_XI.second != INT_MAX ? "max_line" : "min_line");
+        }
+        // 两条最值线都存在时
+        if(max_line_num == 2)
+        {
+            legends[legends_size - max_line_num]->setLabel("max_line");
+            legends[legends_size - max_line_num + 1]->setLabel("min_line");
+        }
+        // site最值线的图例
+//        legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");
 
     } catch (...) {
         qDebug() << "Chart::construct_legend_style";

@@ -158,6 +158,7 @@ void Button_All_Attri::construct_scrollarea()
         // 构造QScrollArea
         scrollarea = new QScrollArea;
         scrollarea->resize(1100,562);
+//        scrollarea->resize(595,842); // A4
         scrollarea->setWindowTitle("Volturrent: Chips Analysis");
         scrollarea->setWidgetResizable(true);
         scrollarea->setAttribute(Qt::WA_DeleteOnClose);
