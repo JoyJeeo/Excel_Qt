@@ -149,7 +149,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         for(size_t i = 0;i < scatter_sites.size();i++)
         {
             int site = scatter_sites[i];
-            qDebug() << site;
+//            qDebug() << site;
             // 起步：
             // 创建第一个线组
             QVector<QLineSeries*> t_vec;

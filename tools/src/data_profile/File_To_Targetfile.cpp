@@ -217,32 +217,6 @@ File_To_Targetfile::tackle_file_get_target(const vector<vector<string>>& all_arr
             target_arrays.push_back(t_all_array[i]); // 将结果直接插入
         }
 
-//        bool flage = false; // 标记有效数据区开始的位置
-//        for(size_t i = 0;i < t_all_array.size();i++)
-//        {
-//            if(t_all_array[i].size() != cols_num)continue;
-////            if(t_all_array[i][0] == "SITE_NUM" )flage = true;
-////            else flage = true;
-//            else {
-//                for(size_t j = i;j < t_all_array.size();j++)
-//                {
-//                    // 输入的数据需要补0，长度不够要求
-//                    while(t_all_array[j].size() != cols_num) t_all_array[j].push_back(""); // 补0
-//                    target_arrays.push_back(t_all_array[j]); // 将结果直接插入
-//                }
-//                break;
-//            }
-//        }
-
-        // for(int i = 0;i < target_arrays.size();i++)
-        // {
-        //     for(int j = 0;j < target_arrays[i].size();j++)
-        //     {
-        //         cout<<target_arrays[i][j].size()<<" ";
-        //     }
-        //     cout<<endl;
-        // }
-
         // test_datas(target_arrays);
 
         return target_arrays;
@@ -384,32 +358,6 @@ File_To_Targetfile::tackle_file_get_ans(const vector<vector<string>>& rows_array
                 }
             }
         }
-
-
-        // 第一层循环，为了找到PASSFG的横坐标下标位置
-//        for(size_t i = 0;i < cols_array.size(); i++)
-//        {
-////            qDebug() << "i: "<< i ;
-//            if(cols_array[i][0] == "PASSFG")
-//            {
-//                // 第二层循环，为了找到FALSE的纵坐标下标位置
-//                for(size_t j = 0;j < cols_array[i].size();j++)
-//                {
-////                    qDebug() << (QString::fromStdString(cols_array[i][j]));
-//                    // 由于字符字符读入后可能被转换了大小，这里使用忽略大小写的方式进行处理
-//                    if(str_cmp_ignore_case(cols_array[i][j],"FALSE")) // i已经是一个定值了
-//                    {
-////                        qDebug() << "i: " << i << "j: "<<j;
-//                        // 第三层循环，为主循环，为了将标记为FALSE的所有数据中，为空的标记为NULL【这样的处理方式，在理论上更加严谨】
-//                        for(size_t k = 2;k < ans.size();k++)
-//                        {
-//                            if(ans[k][j].size() == 0) ans[k][j] = "NULL";
-//                        }
-//                    }
-//                }
-//                break;
-//            }
-//        }
 
         // test_datas(ans);
 

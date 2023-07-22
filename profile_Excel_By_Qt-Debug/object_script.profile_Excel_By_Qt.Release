@@ -10,7 +10,6 @@ release/Unit_Ul.o
 release/Chart.o
 release/My_Chart_View.o
 release/Widget_All_Attri_Show.o
-release/profile_excel_by_qt_plugin_import.o
 release/moc_Main_Window.o
 release/moc_Button_All_Attri.o
 release/moc_Button_Merge_File.o
