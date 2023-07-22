@@ -707,24 +707,9 @@ debug/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtabwidget.h \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/qicon.h \
 		ui_Main_Window.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtCore/QVariant \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/QApplication \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qapplication.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreapplication.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtCore/qeventloop.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdesktopwidget.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/qguiapplication.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/qinputmethod.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/QMenuBar \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qmenubar.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qmenu.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qaction.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qactiongroup.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/QStatusBar \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/qstatusbar.h \
-		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/QWidget \
 		../widgets/Widgets_Header_Proxy_01.h \
 		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../baseCodes/5.14.2/mingw73_32/include/QtWidgets/QWidget \
 		../tools/include/Tools_Header_Proxy_01.h \
 		../tools/include/data_profile/Targetfile_Valid_Data.h \
 		../tools/include/data_profile/Site_Part.h \
@@ -745,6 +730,7 @@ debug/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/QPen \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/qpen.h \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtGui/QFont \
+		../../../baseCodes/5.14.2/mingw73_32/include/QtCore/QVariant \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtCharts/QAbstractSeries \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtCharts/qabstractseries.h \
 		../../../baseCodes/5.14.2/mingw73_32/include/QtCore/QObject \

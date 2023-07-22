@@ -125,8 +125,10 @@ void Main_Window::task_widget_all_attri_show()
             v_layout->addWidget(widgets[i]);
         }
         // 抓取窗口生成图片并保存
-//        QPixmap pixMap_ = QPixmap::grabWidget(main_widge);
-//        pixMap_.save("./Widgets.png");
+        QPixmap pixMap_ = QPixmap::grabWidget(main_widge);
+//        pixMap_ =
+//                pixMap_.scaled(1082, 5000, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        pixMap_.save("./Widgets.png");
 
         // 构造QScrollArea
         QScrollArea* scrollarea = new QScrollArea;
