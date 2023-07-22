@@ -21,11 +21,12 @@ Chart::Chart(QWidget* parent, QString _chartname)
         layout->addWidget(chartview); // chart显示器添加入布局中
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
         // 设置chartview观察器的大小范围
-        chartview->setMinimumSize(500,500);
-//        chartview->setMinimumSize(500,380); // A4
+//        chartview->setMinimumSize(500,500);
+        chartview->setMinimumSize(350,320); // A4
 //        chartview->setMaximumSize(INT_MAX,INT_MAX); // 使用默认最大值
         // 设置chartview具有放大镜功能【！！！】
         chartview->setRubberBand(QChartView::RectangleRubberBand);
+
 
     } catch (...) {
         qDebug() << "Chart::Chart";
@@ -50,7 +51,8 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         // 设置坐标轴的描述字体和大小
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);
-        font.setPointSize(11);
+        font.setPointSize(8);
+//        font.setPointSize(11);
         font.setBold(true);
 
         // 设置X轴描述
@@ -296,7 +298,8 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         // 设置图例描述文字的字体
         QFont font = QFont("Consolas");
         font.setBold(true);
-        font.setPointSize(10);
+//        font.setPointSize(10);
+        font.setPointSize(6);
         qchart->legend()->setFont(font);
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();

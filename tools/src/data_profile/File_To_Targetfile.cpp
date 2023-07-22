@@ -376,6 +376,7 @@ void File_To_Targetfile::merge_files_solo_data (const QStringList& file_paths)
             将多个单数据文件内容进行合并，合并为一个文件内容，使用第一个文件的头数据作为合并文件的指标数据,
             并将合并内容后的结果存储在alls.csv文件中
             【第一个文件内容的选取很重要】 【暂时情况】【！！！】
+            【可以支持单文件读取，不支持多文件多数据读取合并】
     */
     try {
         vector<vector<string>> merge_datas;

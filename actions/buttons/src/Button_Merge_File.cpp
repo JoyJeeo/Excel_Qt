@@ -6,6 +6,7 @@
 #include <QSizePolicy>
 #include <QFileDialog>
 
+extern size_t pic_pages;
 
 Button_Merge_File::Button_Merge_File(QWidget *parent)
     :QPushButton(parent)
@@ -60,6 +61,8 @@ void Button_Merge_File::task_widget_merge_datas_show()
         // 构造QScrollArea
         construct_scrollarea();
 
+        // 页数清空
+        pic_pages = 1;
     }
     catch(...){
         qDebug()<<"Button_Merge_File::task_widget_merge_datas_show";
@@ -154,7 +157,8 @@ void Button_Merge_File::construct_scrollarea()
     try {
         // 构造QScrollArea
         scrollarea = new QScrollArea;
-        scrollarea->resize(1100,562);
+//        scrollarea->resize(1100,562);
+        scrollarea->resize(800,620);
 //        scrollarea->resize(595,842); // A4
         scrollarea->setWindowTitle("Volturrent: Chips Analysis");
         scrollarea->setWidgetResizable(true);

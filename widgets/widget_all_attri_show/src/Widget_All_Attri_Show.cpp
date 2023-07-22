@@ -1,5 +1,6 @@
 #include "../include/Widget_All_Attri_Show.h"
 
+extern size_t pic_pages;
 
 const string Widget_All_Attri_Show::tackel_file_name()
 {
@@ -105,6 +106,9 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         datas = new Targetfile_Valid_Data;
         this->pGridLayout = new QGridLayout(this); // 添加布局到主窗体中
         this->pGridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
+        this->pGridLayout->setHorizontalSpacing(0);
+        this->pGridLayout->setVerticalSpacing(0);
+//        this->pGridLayout->setSpacing(0);
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::Widget_All_Attri_Show";
@@ -233,6 +237,19 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::initChart";
         throw;
+    }
+}
+
+void Widget_All_Attri_Show::save_pic(QWidget *saved_widget, const QString &saved_path)
+{
+    try {
+        // 抓取窗口生成图片并保存
+        QPixmap pixMap_ = QPixmap::grabWidget(saved_widget);
+        pixMap_.save(saved_path);
+
+    } catch (...) {
+        qDebug() <<"Widget_All_Attri_Show::save_pic";
+        throw ;
     }
 }
 
@@ -451,9 +468,24 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
         // 获取target_file中有效的属性label
         auto labels = datas->get_labels();
 
+
+        // 循环存储图片，将图片进行存储
+        // 图片存储容器
+        QWidget* pic = new QWidget;
+        QGridLayout* pic_layout = new QGridLayout(pic);
+        pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
+        pic_layout->setHorizontalSpacing(0);
+        pic_layout->setVerticalSpacing(0);
+
+        // 纸张计算参数
+        int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
+        int page_chart_nums = 3; // 一页显示多少行
+        int page_charts = pic_row_obj_nums * page_chart_nums;
+
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
         // 将chart表格依次添加入主框体中，依次显示
-        for(size_t i = 0;i < labels.size();i++) // labels.size()
+        size_t i;
+        for(i = 0;i < labels.size();i++) // labels.size()
         {
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
@@ -464,7 +496,63 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
             Chart* chart = this->initChart(attri,site_points);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
+
+            // 存储并保存
+            // 填充pic 【会进行覆盖】
+            Chart* t_chart = this->initChart(attri,site_points);
+            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
+            int col = (i % pic_row_obj_nums + 1);
+            pic_layout->addWidget(t_chart,row,col);
+
+            // 6个chart一存储
+            if((i+1) % page_charts == 0)
+            {
+                QString path = "./PIC_" +
+                        // 计算当前是第几页
+                        // i / page_charts + 1
+                        QString::fromStdString(to_string(pic_pages))+
+                        QString(".png");
+//                qDebug() << path;
+                save_pic(pic,path);
+
+                // 页数++
+                pic_pages++;
+
+                // 生成其图片后，将布局内widget清空
+                delete pic_layout;
+                delete pic;
+                // 重新初始化pic、pic_layout
+                pic = new QWidget;
+                pic_layout = new QGridLayout(pic);
+                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
+                pic_layout->setHorizontalSpacing(0);
+                pic_layout->setVerticalSpacing(0);
+            }
         }
+//        qDebug() << "i: " << i;
+        // 最后一页是否被存储
+        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
+        {
+            // 没有存储，则将最有一页存储
+            QString path = "./PIC_" +
+                    // 将余页获取，并打印
+                    //i / page_charts + 1
+                    QString::fromStdString(to_string(pic_pages)) +
+                    QString(".png");
+//            qDebug() << "Into";
+//            qDebug() << path;
+            save_pic(pic,path);
+
+            // 页数++
+            pic_pages++;
+
+        }
+//        pic->show();
+
+        // 回收临时堆区内存
+        delete pic_layout;
+        delete pic;
+
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::while_draw";
