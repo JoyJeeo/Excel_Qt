@@ -73,7 +73,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         axisY->setTickCount(ytickc); // y轴设置实网格线的数量【也是一个大格】
         axisY->setMinorTickCount(1); // 设置y轴每个大格里面小刻度线的数目
         // 设置刻度线
-//        axisY->setTickType(QValueAxis::TickType::TicksFixed);
+        axisY->setTickType(QValueAxis::TickType::TicksFixed);
 
 
         // 将数轴添加入chart图表中
@@ -148,7 +148,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
-        int grp = 0;
+//        int grp = 0;
 
         for(size_t i = 0;i < scatter_sites.size();i++)
         {
@@ -167,7 +167,7 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
             // 将点组容器加入线组容器中
             series.insert(site,t_vec);
             // 记录当前线组的序号
-            grp = 0;
+            int grp = 0;
 
             // 遍历每组芯片内的点数据
             for(int part = 1;part <= site_max_parts;)
@@ -176,6 +176,8 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
                 if(series_data[site][part].x() != zero || series_data[site][part].y() != zero)
                 {
                     series[site][grp]->append(series_data[site][part]);
+                    series[site][grp]->setPointsVisible(); // 将具体点标注出来
+//                    series[site][grp]->setPointLabelsVisible(); // 点上出现具体数值
                     part++;
                 }
                 // 如果为(0,0)点，则创建一个新的点组进行记录【实现分段处理】
@@ -208,7 +210,8 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         {
             int site = scatter_sites[i];
             // 这里的含义是series中的线组的part
-            for(int parts = 0;parts <= grp;parts++)
+//            for(int parts = 0;parts <= grp;parts++)
+            for(int parts = 0;parts < series[site].size();parts++)
             {
                 // 添加LineSeries 加入chart
                 qchart->addSeries(series[site][parts]);
@@ -303,6 +306,8 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         qchart->legend()->setFont(font);
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();
+//        qDebug() << (QLineSeries*())
+
         size_t legends_size = legends.size();
 
         // 计算最值线的存在个数
@@ -312,13 +317,22 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
 
         // 设置图例中的文字描述
         // 绘制数据图例
+        // 只对数据线图例进行扫描设置
         for(size_t i = 0;i < legends_size - max_line_num;i++)
         {
             // site数据线的图例
             // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
             int site = scatter_sites[i];
+
+            // 将同一个site的多条part线跳过，只保留其中一个即可
+            int scope = series[site].size();
+            while(scope > 1)
+            {
+                legends[i]->setVisible(false);
+                scope--;i++;
+            }
+
             legends[i]->setLabel("site"+QString::fromStdString(to_string(site)));
-            continue;
 
         }
 

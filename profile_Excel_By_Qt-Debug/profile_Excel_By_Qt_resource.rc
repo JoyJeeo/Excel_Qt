@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	DISCARDABLE	"D:\\QT\\Codes\\Dev_Excel_Qt_file\\logo.ico"
+IDI_ICON1	ICON	DISCARDABLE	"C:\\Users\\yutao.zhang\\Desktop\\Dev_Excel_Qt_file\\logo.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0

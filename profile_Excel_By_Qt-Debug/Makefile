@@ -70,423 +70,423 @@ release-install: FORCE
 release-uninstall: FORCE
 	$(MAKE) -f $(MAKEFILE).Release uninstall
 
-Makefile: ../profile_Excel_By_Qt.pro ../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/qdevice.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/device_config.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/sanitize.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/gcc-base.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-base.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/angle.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows_vulkan_sdk.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-vulkan.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-win32.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-desktop.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/qconfig.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_accessibility_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bodymovin_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designercomponents_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_edid_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_egl_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_packetprotocol_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickshapes_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_theme_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uiplugin.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_zlib_private.pri \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_functions.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
+Makefile: ../profile_Excel_By_Qt.pro D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/qdevice.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/device_config.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/sanitize.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/gcc-base.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-base.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/angle.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows_vulkan_sdk.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-vulkan.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-win32.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-desktop.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/qconfig.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_accessibility_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bodymovin_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designercomponents_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_edid_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_egl_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_packetprotocol_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldebug_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldevtools_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickparticles_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickshapes_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_theme_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uiplugin.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_zlib_private.pri \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_functions.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
 		.qmake.stash \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/default_pre.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resolve_config.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds_post.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_post.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qml_debug.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/precompile_header.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/warn_on.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resources_functions.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resources.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/moc.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/opengl.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/uic.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qmake_use.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/file_copies.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/testcase_targets.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exceptions.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/yacc.prf \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/lex.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/default_pre.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resolve_config.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds_post.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/default_post.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qml_debug.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/precompile_header.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/warn_on.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resources_functions.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resources.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/moc.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/opengl.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/uic.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qmake_use.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/file_copies.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/testcase_targets.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exceptions.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/yacc.prf \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/lex.prf \
 		../profile_Excel_By_Qt.pro \
-		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Charts.prl \
-		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Widgets.prl \
-		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl \
-		../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl \
-		../../../baseCodes/5.14.2/mingw73_32/lib/qtmain.prl \
-		../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
+		D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Charts.prl \
+		D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Widgets.prl \
+		D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl \
+		D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl \
+		D:/QT/baseCodes/5.14.2/mingw73_32/lib/qtmain.prl \
+		D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/qdevice.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/device_config.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/sanitize.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/gcc-base.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-base.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/angle.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows_vulkan_sdk.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-vulkan.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-win32.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-desktop.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/qconfig.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_accessibility_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bodymovin_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designercomponents_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_edid_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_egl_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_packetprotocol_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldevtools_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickparticles_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickshapes_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_theme_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uiplugin.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_zlib_private.pri:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_functions.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/qdevice.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/device_config.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/sanitize.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/gcc-base.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-base.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/angle.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows_vulkan_sdk.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-vulkan.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/g++-win32.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/common/windows-desktop.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/qconfig.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3danimation_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dcore_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dextras_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dinput_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dlogic_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquick_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickanimation_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickextras_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickinput_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickrender_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3dquickscene2d_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_3drender_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_accessibility_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axbase_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axcontainer_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_axserver_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bodymovin_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_charts_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_concurrent_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_core_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_datavisualization_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_dbus_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designer_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_designercomponents_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_edid_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_egl_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fb_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_fontdatabase_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gamepad_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_gui_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_help_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_location_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimedia_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_network_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_networkauth_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_nfc_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_opengl_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_openglextensions_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_packetprotocol_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioning_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_positioningquick_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_printsupport_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_purchasing_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qml_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldebug_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmldevtools_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlmodels_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmltest_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qmlworkerscript_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3d_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dassetimport_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3drender_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick3dutils_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quick_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickcontrols2_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickparticles_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickshapes_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quicktemplates2_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_quickwidgets_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_remoteobjects_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_repparser_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_script_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scripttools_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_scxml_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sensors_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialbus_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_serialport_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_sql_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_svg_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_testlib_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_texttospeech_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_theme_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uiplugin.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_uitools_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_virtualkeyboard_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_webchannel_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_websockets_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_widgets_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_windowsuiautomation_support_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_winextras_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xml_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/modules/qt_lib_zlib_private.pri:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_functions.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
 .qmake.stash:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/default_pre.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resolve_config.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds_post.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/default_post.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qml_debug.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/precompile_header.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/warn_on.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qt.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resources_functions.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/resources.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/moc.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/opengl.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/uic.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/qmake_use.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/file_copies.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/testcase_targets.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/exceptions.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/yacc.prf:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/lex.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/default_pre.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resolve_config.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exclusive_builds_post.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/default_post.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qml_debug.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/precompile_header.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/warn_on.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qt.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resources_functions.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/resources.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/moc.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/opengl.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/uic.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/qmake_use.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/file_copies.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/win32/windows.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/testcase_targets.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/exceptions.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/yacc.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/lex.prf:
 ../profile_Excel_By_Qt.pro:
-../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Charts.prl:
-../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Widgets.prl:
-../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl:
-../../../baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl:
-../../../baseCodes/5.14.2/mingw73_32/lib/qtmain.prl:
-../../../baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
+D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Charts.prl:
+D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Widgets.prl:
+D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Gui.prl:
+D:/QT/baseCodes/5.14.2/mingw73_32/lib/Qt5Core.prl:
+D:/QT/baseCodes/5.14.2/mingw73_32/lib/qtmain.prl:
+D:/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
