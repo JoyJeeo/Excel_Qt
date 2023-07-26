@@ -1,4 +1,4 @@
-#include "../../include/data_profile/File_To_Targetfile.h"
+#include "tools/include/data_profile/File_To_Targetfile.h"
 
 #include <sstream>
 #include <algorithm>
@@ -14,6 +14,8 @@ const string File_To_Targetfile::total_task(const string& input_file_path,string
             2. 将输入文件处理后，生成目标文件，并将target_file的绝对路径进行返回
     */
     try {
+        // 分析项目路径
+        profile_pro_path();
         // 动态获取程序的输出文件路径
         QString qstr_outfile_path = profile_output_file_path(output_file_name);
         string str_outfile_path = qstring_to_string(qstr_outfile_path);
@@ -47,6 +49,8 @@ const string File_To_Targetfile::total_task(const string& input_file_path,string
 const string File_To_Targetfile::merge_task(const QStringList &file_paths)
 {
     try {
+        // 分析项目路径
+        profile_pro_path();
         // 将多个单文件路径传入，解析合并出alls文件
         merge_files_solo_data(file_paths);
 
@@ -55,6 +59,34 @@ const string File_To_Targetfile::merge_task(const QStringList &file_paths)
     } catch (...) {
         qDebug() << "string File_To_Targetfile::merge_task";
         throw ;
+    }
+}
+
+const string File_To_Targetfile::time_task(const QStringList &dir_paths)
+{
+    /*
+        功能：
+            将不同时刻的文件内容合并为一个文件，文件名为time，文件内容为多个No的数据，
+            将他们分别生成为一个独立文件，存在一个指定的文件夹中
+    */
+    try {
+        // 分析项目路径
+        profile_pro_path();
+
+        // 创建存储中间数据的文件夹
+
+
+        // 默认文件夹都存在
+        for(int i = 0;i < dir_paths.size();i++)
+        {
+            // 处理单文件夹
+//            tackle_single_dir(dir_paths[i]);
+
+        }
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::time_task";
+        throw;
     }
 }
 
@@ -471,6 +503,11 @@ int File_To_Targetfile::find_str_tag_dex(const string &data, const char &c, int 
     }
 }
 
+void File_To_Targetfile::profile_pro_path() noexcept
+{
+    pro_path = qstring_to_string(QCoreApplication::applicationDirPath());
+}
+
 void File_To_Targetfile::save_tackle_datas(const ofstream& ofs,const vector<vector<string>>& datas)
 {
     /*获得输出文件，将处理筛选过的数据写入输入文件中，作为中间文件进行使用*/
@@ -622,7 +659,7 @@ QString File_To_Targetfile::profile_output_file_path(string output_file_name)
 
     */
     try {
-        QString output_file_path = QCoreApplication::applicationDirPath() +
+        QString output_file_path = QString::fromStdString(pro_path) +
                                         QObject::tr("\\") + QString::fromStdString(output_file_name); // target_file.csv
         return output_file_path;
 

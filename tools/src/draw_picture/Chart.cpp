@@ -1,4 +1,4 @@
-#include "../../include/draw_picture/chart.h"
+#include "tools/include/draw_picture/chart.h"
 
 #include <QFont>
 #include <QLegendMarker>
@@ -36,6 +36,10 @@ Chart::Chart(QWidget* parent, QString _chartname)
 
 void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
              QString _yname, qreal _ymin, qreal _ymax, int _ytickc){
+    /*
+        说明：
+            纵坐标使用固定分隔，横坐标使用自定义分隔【有空维护】【！！！】
+    */
     try {
         xname = _xname; xmin = _xmin; xmax = _xmax; xtickc = _xtickc;
         yname = _yname; ymin = _ymin; ymax = _ymax; ytickc = _ytickc;
@@ -50,10 +54,19 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         ****************************************/
         // 设置坐标轴的描述字体和大小
         QFont font = QFont("Consolas");
+//        QFont font;
         font.setStyleStrategy(QFont::PreferAntialias);
-        font.setPointSize(8);
+//        font.setPointSize(1);
 //        font.setPointSize(11);
+        font.setPixelSize(11);
         font.setBold(true);
+
+        // 设置轴的字体大小
+        QFont axis_font = QFont("Consolas");
+        axis_font.setStyleStrategy(QFont::PreferAntialias);
+        axis_font.setPixelSize(11);
+        axisX->setLabelsFont(axis_font);
+        axisY->setLabelsFont(axis_font);axisX->setLabelsVisible(true);
 
         // 设置X轴描述
         axisX->setGridLineVisible(true);   //x轴网格线可见
@@ -107,6 +120,10 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
     */
     try {
         // 设置chart名称
+        QFont font = QFont("Consolas");
+        font.setPixelSize(11);
+        font.setBold(true);
+        qchart->setTitleFont(font);
         qchart->setTitle(chartname);
 
         // 设置数据线粗细
@@ -148,7 +165,6 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
         // 填充series中的数据
         // 遍历属性下的每组芯片
         qreal zero = 0.0;
-//        int grp = 0;
 
         for(size_t i = 0;i < scatter_sites.size();i++)
         {
@@ -156,16 +172,16 @@ void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max
 //            qDebug() << site;
             // 起步：
             // 创建第一个线组
-            QVector<QLineSeries*> t_vec;
+            QVector<QLineSeries*> t_line_vec;
             // 创建第一个点组
             QLineSeries* line = new QLineSeries(this);
             // 初始化点组上生成线时的初始化数据
             line->clear();
             line->setPen(QPen(this->colors[i],data_series_width,Qt::SolidLine));
             // 将点组加入线组中
-            t_vec.push_back(line);
+            t_line_vec.push_back(line);
             // 将点组容器加入线组容器中
-            series.insert(site,t_vec);
+            series.insert(site,t_line_vec);
             // 记录当前线组的序号
             int grp = 0;
 
@@ -300,9 +316,10 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         qchart->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries); // 设置图例的显示类型跟随曲线的类型显示
         // 设置图例描述文字的字体
         QFont font = QFont("Consolas");
+//        QFont font;
         font.setBold(true);
 //        font.setPointSize(10);
-        font.setPointSize(6);
+        font.setPixelSize(10);
         qchart->legend()->setFont(font);
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();

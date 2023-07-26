@@ -28,12 +28,15 @@ public:
     // 单数据多文件合并
     const string merge_task(const QStringList& file_paths);
 
+    // 不同时刻的同一个No比较
+    const string time_task(const QStringList& dir_paths);
+
 private:
     // 动态获取输入文件的绝对路径
     QString profile_input_file_path();
-
     // 动态获取输出文件的绝对路径
     QString profile_output_file_path(string output_file_name = "target_file.csv");
+
 
     // 将输入的QString -> string
     /*
@@ -95,21 +98,21 @@ private:
     // 查找某个符号第几次出现再string中的位置
     int find_str_tag_dex(const string& data,const char& c,int count);
 
+    // 【功能三】
+    void profile_pro_path() noexcept;
 
 
-// 需要测试的属性名称【不需要指定属性，所有属性都进行显示即可】
-//const vector<string> labels = {"SITE_NUM","PART_ID","Continuity_out","Continuity_vin1","Continuity_en","Continuity_pg",
-//"Continuity_pgdl","Continuity_fb","Leakage_out_l","Leakage_en_l","Leakage_pg_l","Leakage_pgdl_l","Leakage_fb_l",
-//"Ignd100","Ishd","Vfb","Vout_5","Ifb","Ilimit","Vdropout_5_50mA","Vdropout_5_300mA","Vline_regulation_5",
-//"Vload_regulation_33","Tss","Ven_low","Ven_high","Ien","PG_rising","PG_hys","PG_low","PG_leakage",
-//"PGDL_charg","PGDL_rising","PGDL_falling","PG_reaction"};
-
+// 项目所在的文件路径
+string pro_path = ".";
 // 可修改的输入文件的路径【通过函数接口可以进行修改】
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
 // 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
 // 合并的输出文件的产生位置
 string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
+
+// 中间文件存储的文件夹名称
+const string time_file_name = "TIME";
 
 // 有效数据开始的起始位置
 const string target_str = "SITE_NUM";

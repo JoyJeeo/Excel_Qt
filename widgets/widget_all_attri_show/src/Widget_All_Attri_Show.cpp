@@ -1,6 +1,10 @@
-#include "../include/Widget_All_Attri_Show.h"
+#include "widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h"
 
 extern size_t pic_pages;
+
+#include <QApplication>
+#include <QDir>
+#include <QDirIterator>
 
 const string Widget_All_Attri_Show::tackel_file_name()
 {
@@ -61,6 +65,61 @@ void Widget_All_Attri_Show::profile_site_list()
         site_list = datas->get_site_parts().get_site_list();
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::profile_site_list";
+        throw;
+    }
+}
+
+const QString Widget_All_Attri_Show::build_pic_dir()
+{
+    /*
+        功能：
+            将项目exe所在的路径下，存在PIC_FILE_NAME的文件
+    */
+    try {
+        QString pro_path = QCoreApplication::applicationDirPath();
+        QString ans = pro_path + "/" + PIC_FILE_NAME;
+
+        QDir pic_dir(ans);
+        // 判断文件是否已经存在
+        // 如果文件夹已经存在
+        if(!pic_dir.exists())
+        {
+            pic_dir.mkdir(ans);
+        }
+
+        return ans;
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::build_pic_dir";
+        throw;
+    }
+}
+
+void Widget_All_Attri_Show::clear_pic_dir(const QString &pic_dir)
+{
+    /*
+        功能：
+            只移除文件夹下的所有内容
+    */
+    try {
+        QDir dir(pic_dir);
+        if(dir.isEmpty()) return;
+
+        // 清空目录下的所有内容
+        // 第三个参数是QDir的过滤参数，这三个表示收集所有文件和目录，且不包含"."和".."目录。
+        // 因为只需要遍历第一层即可，所以第四个参数填QDirIterator::NoIteratorFlags
+        QDirIterator DirsIterator(pic_dir, QDir::Files | QDir::AllDirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
+        while(DirsIterator.hasNext())
+        {
+            if (!dir.remove(DirsIterator.next())) // 删除文件操作如果返回否，那它就是目录
+            {
+                QDir(DirsIterator.filePath()).removeRecursively(); // 删除目录本身以及它下属所有的文件及目录
+            }
+        }
+
+
+    } catch (...) {
+        qDebug() << "Widget_All_Attri_Show::clear_pic_dir";
         throw;
     }
 }
@@ -468,6 +527,11 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
         // 获取target_file中有效的属性label
         auto labels = datas->get_labels();
 
+        // 产生存储照片文件
+        // 将文件夹下的内容清空
+        QString pic_dir = build_pic_dir();
+        // 如果不是第一页开始，则不清空文件内容
+        if(pic_pages == 1) clear_pic_dir(pic_dir);
 
         // 循环存储图片，将图片进行存储
         // 图片存储容器
@@ -507,7 +571,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
             // 6个chart一存储
             if((i+1) % page_charts == 0)
             {
-                QString path = "./PIC_" +
+                QString path = pic_dir + "/PIC_" +
                         // 计算当前是第几页
                         // i / page_charts + 1
                         QString::fromStdString(to_string(pic_pages))+
@@ -534,7 +598,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
         if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
         {
             // 没有存储，则将最有一页存储
-            QString path = "./PIC_" +
+            QString path = pic_dir + "/PIC_" +
                     // 将余页获取，并打印
                     //i / page_charts + 1
                     QString::fromStdString(to_string(pic_pages)) +

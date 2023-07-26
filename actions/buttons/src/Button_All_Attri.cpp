@@ -25,8 +25,10 @@ void Button_All_Attri::total_task()
         设置按钮样式，并进行信号关联
     */
     try {
+        QFont font = QFont("Consolas");
+        font.setPixelSize(11);
         this->setText("Show all attributes");
-        this->setFont(QFont("Consolas")); // 设置字体样式
+        this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
 
         connect(this,&QPushButton::released,this,&Button_All_Attri::task_widget_all_attri_show);

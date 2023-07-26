@@ -3,7 +3,7 @@
 
 #include <QPushButton>
 #include <QLabel>
-#include "../../widgets/Widgets_Header_Proxy_01.h"
+#include "widgets/Widgets_Header_Proxy_01.h"
 
 class Button_All_Attri : public QPushButton
 {

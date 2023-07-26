@@ -61,7 +61,7 @@ SOURCES       = ..\Main_Window.cpp \
 		..\tools\src\data_profile\Unit_Ul.cpp \
 		..\tools\src\draw_picture\Chart.cpp \
 		..\tools\src\draw_picture\My_Chart_View.cpp \
-		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
+		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
 		release\moc_Main_Window.cpp \
 		release\moc_Button_All_Attri.cpp \
 		release\moc_Button_Merge_File.cpp \
@@ -139,7 +139,7 @@ clean: compiler_clean
 	-$(DEL_FILE) release\profile_Excel_By_Qt_resource_res.o
 
 distclean: clean 
-	-$(DEL_FILE) D:\QT\Codes\Dev_Excel_Qt_file\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) C:\Users\yutao.zhang\Desktop\Dev_Excel_Qt_file\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Release
 
@@ -279,7 +279,7 @@ release/moc_Main_Window.cpp: ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/QT/Codes/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o release\moc_Main_Window.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IC:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o release\moc_Main_Window.cpp
 
 release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -450,7 +450,7 @@ release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h 
 		../tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/QT/Codes/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o release\moc_Button_All_Attri.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IC:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o release\moc_Button_All_Attri.cpp
 
 release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -621,7 +621,7 @@ release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.
 		../tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/QT/Codes/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o release\moc_Button_Merge_File.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IC:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o release\moc_Button_Merge_File.cpp
 
 release/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
@@ -774,7 +774,7 @@ release/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		../tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/QT/Codes/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o release\moc_Chart.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IC:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o release\moc_Chart.cpp
 
 release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
@@ -937,7 +937,7 @@ release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/
 		../tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/QT/Codes/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o release\moc_Widget_All_Attri_Show.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IC:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o release\moc_Widget_All_Attri_Show.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1405,85 +1405,7 @@ release/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtabwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		ui_Main_Window.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QVariant \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcoreapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdesktopwidget.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qguiapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qinputmethod.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QMenuBar \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmenubar.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmenu.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qaction.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qactiongroup.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QStatusBar \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qstatusbar.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qboxlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayoutitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../actions/buttons/include/Button_All_Attri.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractbutton.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/draw_picture/Chart.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qabstractaxis.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartGlobal \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartglobal.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QtGlobal \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QPen \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qpen.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QFont \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qabstractseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QObject \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChart \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchart.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLegend \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlegend.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QGraphicsWidget \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicswidget.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicslayoutitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QBrush \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QMargins \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QGraphicsView \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsview.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qpainter.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtextoption.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsscene.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLineSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlineseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QXYSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qxyseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QHBoxLayout \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
-		../actions/buttons/include/Button_Merge_File.h
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Main_Window.o ..\Main_Window.cpp
 
 release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actions/buttons/include/Button_All_Attri.h \
@@ -2799,11 +2721,23 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h
+		../tools/include/draw_picture/My_Chart_View.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qapplication.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcoreapplication.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdesktopwidget.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qguiapplication.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qinputmethod.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDir \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdir.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDirIterator \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdiriterator.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Widget_All_Attri_Show.o ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp
 
-release/profile_excel_by_qt_plugin_import.o: D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profile_excel_by_qt_plugin_import.o D:/QT/Codes/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
+release/profile_excel_by_qt_plugin_import.o: C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profile_excel_by_qt_plugin_import.o C:/Users/yutao.zhang/Desktop/Dev_Excel_Qt_file/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
 
 release/moc_Main_Window.o: release/moc_Main_Window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_Main_Window.o release\moc_Main_Window.cpp

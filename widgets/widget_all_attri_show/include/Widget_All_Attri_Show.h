@@ -2,7 +2,7 @@
 #define WIDGET_ALL_ATTRI_SHOW_H
 
 #include <QWidget>
-#include "../../../tools/include/Tools_Header_Proxy_01.h"
+#include "tools/include/Tools_Header_Proxy_01.h"
 
 class Widget_All_Attri_Show : public QWidget
 {
@@ -64,6 +64,11 @@ private:
     // 记录芯片列表数据
     void profile_site_list();
 
+    // 创建照片存储文件夹
+    const QString build_pic_dir();
+    // 清空照片文件夹中的所有内容
+    void clear_pic_dir(const QString& pic_dir);
+
     // test
     void test_for(QMap<int,QVector<QPointF>>& site_part_vals);
 
@@ -81,6 +86,9 @@ private:
     int site_max_parts;
 
     string src_file_name;
+
+    // 存储分割图片的文件名
+    const QString PIC_FILE_NAME = "PICS";
 };
 
 #endif // WIDGET_ALL_ATTRI_SHOW_H
