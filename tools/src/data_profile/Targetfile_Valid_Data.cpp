@@ -339,7 +339,8 @@ size_t Targetfile_Valid_Data::get_target_vec_col_index_valid()
         size_t col;
         for(row = 0,col = 0;col < m_target_file_vec[row].size();col++)
         {
-            if(is_Integer_Numeric(m_target_file_vec[row][col]))
+            if(is_Integer_Numeric(m_target_file_vec[row][col]) ||
+                    is_Integer_Numeric(m_target_file_vec[row + 1][col]) )
                 break;
         }
         return col;
@@ -385,6 +386,118 @@ void Targetfile_Valid_Data::test_for(map<int, vector<double>> &datas)
         {
             qDebug() << datas[site][part];
         }
+    }
+}
+
+void Targetfile_Valid_Data::profile_get_time_datas()
+{
+    try {
+        profile_get_time_site_parts();
+        profile_get_time_attri_uuls();
+        profile_get_time_series_datas();
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_time_datas";
+        throw;
+    }
+}
+
+void Targetfile_Valid_Data::profile_get_time_site_parts()
+{
+    try {
+        // 获取有效列开始的位置
+        size_t valid_col = get_target_vec_col_index_valid();
+
+        for(size_t i = 0;i < 2;i++)
+        {
+            string attri;
+            for(size_t j = 0;j < m_target_file_vec[i].size();j++)
+            {
+                // 获取对应属性名称
+                if(j == 0) attri = m_target_file_vec[i][j];
+                // 从出现第一个整数数据处开始记录
+                if(j >= valid_col)
+                {
+                    // 获取 attri -> Integer
+                    // 当存储SITE时，为字符串
+                    if(i == 0)
+                        m_site_parts.m_time_site_part[attri].push_back(make_pair(m_target_file_vec[i][j],0));
+//                                push_back(m_target_file_vec[i][j]);
+                    // 当存储PART_ID时为int
+                    else
+//                        m_site_parts.m_site_part[attri].push_back(stoi(m_target_file_vec[i][j]));
+                        m_site_parts.m_time_site_part[attri].push_back(make_pair("0",stoi(m_target_file_vec[i][j])));
+                }
+            }
+        }
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_time_site_parts";
+        throw;
+    }
+}
+
+void Targetfile_Valid_Data::profile_get_time_attri_uuls()
+{
+    try {
+        profile_get_attri_uuls();
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_time_attri_uuls";
+        throw;
+    }
+}
+
+void Targetfile_Valid_Data::profile_get_time_series_datas()
+{
+    try {
+        // 初始化
+        vector<int> scatter_times = m_site_parts.get_Scatter_Site_Number();
+        int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
+        map<int,vector<double>> init_data;
+        // 初始化m_target_file_vec
+        for(auto site : scatter_sites)
+        {
+            // 按照site -> part值直接存储，省略下标转换，site，part直接对应实际数值
+            init_data.insert(make_pair(site,vector<double>(parts+1,NULL_Number)));
+        }
+
+        // 下标区
+        // SITE_NUM在target_file表中的下标位置
+        int site_dex = 0;
+        // PART_ID在target_file表中的下标位置
+        int part_dex = 1;
+
+        // 数据区
+        // 与profile_get_uuls函数中同理
+        size_t begin_row_dex = get_target_vec_row_index_by_attri(div_attri) + 1;
+        // 获取有效列
+        size_t begin_col_dex = get_target_vec_col_index_valid();
+
+        // 遍历填充m_series_datas
+        for(size_t i = begin_row_dex;i < m_target_file_vec.size();i++)
+        {
+            // 用来记录该行的属性值
+            string attri = m_target_file_vec[i][0];
+            // 使用init_data，加速初始化
+            map<int,vector<double>> data = init_data;
+
+            for(size_t j = begin_col_dex; j < m_target_file_vec[i].size();j++)
+            {
+                // 正式读取主数据群数据，填充map<int,vector<double>> data
+                if(m_target_file_vec[i][j] == "NULL")  continue;
+
+                // 转化行列下标
+                int site = stoi(m_target_file_vec[site_dex][j]);
+                int part = stoi(m_target_file_vec[part_dex][j]);
+
+                // 转换行列后，获取数据
+                data[site][part] = stod(m_target_file_vec[i][j]);
+            }
+            // 添加属性的主数据进map
+            // 乱序存储 但可以通过labels vector进行查看检索
+            m_series_datas.insert(make_pair(attri,data));
+        }
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_get_time_series_datas";
+        throw;
     }
 }
 
@@ -444,6 +557,17 @@ bool Targetfile_Valid_Data::total_task(const ifstream &ifs)
         return true;
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::total_task";
+        throw;
+    }
+}
+
+bool Targetfile_Valid_Data::time_task(const ifstream &ifs)
+{
+    try {
+        load_target_vec(ifs);
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::time_task";
         throw;
     }
 }

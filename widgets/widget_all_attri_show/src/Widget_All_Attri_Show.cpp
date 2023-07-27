@@ -5,6 +5,7 @@ extern size_t pic_pages;
 #include <QApplication>
 #include <QDir>
 #include <QDirIterator>
+#include <QSpacerItem>
 
 const string Widget_All_Attri_Show::tackel_file_name()
 {
@@ -73,7 +74,7 @@ const QString Widget_All_Attri_Show::build_pic_dir()
 {
     /*
         功能：
-            将项目exe所在的路径下，存在PIC_FILE_NAME的文件
+            将项目exe所在的路径下，存在PICS文件夹
     */
     try {
         QString pro_path = QCoreApplication::applicationDirPath();

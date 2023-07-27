@@ -41,9 +41,11 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(50, 30, 160, 80));
+        verticalLayoutWidget->setGeometry(QRect(50, 30, 151, 81));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         btn_all_attri = new Button_All_Attri(verticalLayoutWidget);
         btn_all_attri->setObjectName(QString::fromUtf8("btn_all_attri"));

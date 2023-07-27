@@ -19,11 +19,17 @@
      <rect>
       <x>50</x>
       <y>30</y>
-      <width>160</width>
-      <height>80</height>
+      <width>151</width>
+      <height>81</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinAndMaxSize</enum>
+     </property>
      <item>
       <widget class="Button_All_Attri" name="btn_all_attri">
        <property name="text">

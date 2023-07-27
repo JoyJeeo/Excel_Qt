@@ -26,7 +26,8 @@ void Button_All_Attri::total_task()
     */
     try {
         QFont font = QFont("Consolas");
-        font.setPixelSize(11);
+//        font.setPixelSize(11);
+        font.setPixelSize(15);
         this->setText("Show all attributes");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小

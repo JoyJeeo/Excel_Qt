@@ -1,9 +1,9 @@
 #ifndef FILE_TO_TARGETFILE_H
 #define FILE_TO_TARGETFILE_H
 
-#include<iostream>
-#include<fstream>
-#include<vector>
+#include <iostream>
+#include <fstream>
+#include <vector>
 #include <QString>
 #include <QDebug>
 using namespace std;
@@ -11,6 +11,7 @@ using namespace std;
 
 class File_To_Targetfile{
 public:
+    File_To_Targetfile();
     // 打开输入和输出文件
     ifstream input_file_open(const string& input_File_path);
     ofstream output_file_open(const string& out_File_path);
@@ -59,6 +60,10 @@ private:
     void set_alls_file_path(const string& path) noexcept;
     // 查看alls文件的路径
     string get_alls_file_path() noexcept;
+    // 修改timc文件的路径
+    void set_timc_file_path(const string& path) noexcept;
+    // 查看timc文件的路径
+    string get_timc_file_path() noexcept;
 
     // 处理输入的源文件，获取目标数据后，读入内存中
     vector<vector<string>>
@@ -100,19 +105,31 @@ private:
 
     // 【功能三】
     void profile_pro_path() noexcept;
+    // 创建存储时刻合并的文件夹
+    const QString build_time_dir();
+    // 清空时刻文件夹中的所有内容
+    void clear_time_dir(const QString& time_dir);
+    void tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool flage);
+    // 将同一时刻下的文件进行合并
+    void time_file_merge(const QStringList& file_paths,vector<vector<string>>& time_datas,
+                         bool flage,QString time_name);
+    // 分析时刻文件夹的时刻名称
+    QString profile_time_file_name(const string& dir_path);
 
 
 // 项目所在的文件路径
-string pro_path = ".";
+QString pro_path = ".";
 // 可修改的输入文件的路径【通过函数接口可以进行修改】
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
 // 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
 // 合并的输出文件的产生位置
 string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
+// 时刻文件的合并文件
+string TIME_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\TIME.csv";
 
 // 中间文件存储的文件夹名称
-const string time_file_name = "TIME";
+const string time_file_name = "timc";
 
 // 有效数据开始的起始位置
 const string target_str = "SITE_NUM";

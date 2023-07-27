@@ -26,7 +26,8 @@ void Button_Merge_File::total_task()
     */
     try {
         QFont font = QFont("Consolas");
-        font.setPixelSize(11);
+//        font.setPixelSize(11);
+        font.setPixelSize(15);
         this->setText("Merge solo data files");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小

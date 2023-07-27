@@ -5,6 +5,25 @@
 #include <QCoreApplication>
 #include <QFileDialog>
 #include <strings.h>
+#include <QDirIterator>
+#include <QDir>
+
+
+File_To_Targetfile::File_To_Targetfile()
+{
+    /*
+        产生该对象时，就应该存在的对象的"环境"
+        构造对象的工作环境
+    */
+    try {
+        // 分析项目路径
+        profile_pro_path();
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::File_To_Targetfile";
+        throw;
+    }
+}
 
 const string File_To_Targetfile::total_task(const string& input_file_path,string output_file_name)
 {
@@ -14,8 +33,6 @@ const string File_To_Targetfile::total_task(const string& input_file_path,string
             2. 将输入文件处理后，生成目标文件，并将target_file的绝对路径进行返回
     */
     try {
-        // 分析项目路径
-        profile_pro_path();
         // 动态获取程序的输出文件路径
         QString qstr_outfile_path = profile_output_file_path(output_file_name);
         string str_outfile_path = qstring_to_string(qstr_outfile_path);
@@ -49,8 +66,6 @@ const string File_To_Targetfile::total_task(const string& input_file_path,string
 const string File_To_Targetfile::merge_task(const QStringList &file_paths)
 {
     try {
-        // 分析项目路径
-        profile_pro_path();
         // 将多个单文件路径传入，解析合并出alls文件
         merge_files_solo_data(file_paths);
 
@@ -68,27 +83,172 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         功能：
             将不同时刻的文件内容合并为一个文件，文件名为time，文件内容为多个No的数据，
             将他们分别生成为一个独立文件，存在一个指定的文件夹中
+            【会生成很多的文件】
     */
     try {
-        // 分析项目路径
-        profile_pro_path();
-
         // 创建存储中间数据的文件夹
+//        // 存储文件
+//        QString time_files_path = build_time_dir();
+//        // 每次都清空time文件夹内容
+//        clear_time_dir(time_files_path);
 
+        // 用来收集所有时刻文件的数据
+        vector<vector<string>> time_datas;
 
         // 默认文件夹都存在
+        // 一批目录，就是一个true，因为是合成为一个文件
+        bool first_flage = true;
         for(int i = 0;i < dir_paths.size();i++)
         {
             // 处理单文件夹
-//            tackle_single_dir(dir_paths[i]);
-
+            tackle_single_dir(dir_paths[i],time_datas,first_flage);
+            if(i == 0)first_flage = false;
         }
+
+        // 将数据内容进行保存
+        // 创建时刻文件timc【做出源文件】
+        QString time_file_path = profile_output_file_path(time_file_name);
+        string str_time_file_path = qstring_to_string(time_file_path);
+        set_timc_file_path(str_time_file_path);
+        // 将数据写入文件中
+        ofstream ofs = output_file_open(TIME_FILE_PATH);
+        // 将处理好的数据输出到target_file中
+        save_tackle_datas(ofs,time_datas);
+        ofs.close();
+
+        // 调用total函数，生成翻转源文件的target_file文件【生成target_file】
+        return total_task(TIME_FILE_PATH);
+
 
     } catch (...) {
         qDebug() << "File_To_Targetfile::time_task";
         throw;
     }
 }
+
+void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool flage)
+{
+    /*
+        功能：
+
+    */
+    try {
+        // 获取文件夹内的所有文件名称
+        QDir dir(dir_path);
+        // 保证文件夹一定存在，且文件夹内部没有文件夹
+        // 只留下csv文件
+        QStringList filter;
+        filter << "*.csv";
+        dir.setNameFilters(filter);
+        // 提取目录内的文件信息生成列表
+        QList<QFileInfo> file_info(dir.entryInfoList());
+
+        // 获取文件夹中所有文件的绝对路径
+        QStringList list;
+        // 遍历文件夹内的所有csv文件
+        // 将csv文件的路径存在容器中
+        for(int i = 0;i < file_info.size();i++)
+        {
+//            qDebug() << file_info[i].fileName();
+            list << file_info[i].filePath();
+        }
+
+        // 分析文件夹的名称，获取文件内数据所在的时刻
+        QString time_name = profile_time_file_name(dir_path.toStdString());
+        // 获取处理好的数据
+        time_file_merge(list,time_datas,flage,time_name);
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::tackle_single_dir";
+        throw;
+    }
+}
+
+void File_To_Targetfile::time_file_merge(const QStringList &file_paths,
+                                                            vector<vector<string>>& time_datas,bool flage,
+                                         QString time_name)
+{
+    try {
+        static size_t counter = 1;
+        if(flage)
+        {
+            counter = 1;
+        }
+        // 依次获取单文件路径
+        // 填补merge_datas中的数据
+        for(auto path = file_paths.begin();path != file_paths.end();path++,counter++)
+        {
+            // 转换单文件路径为string
+            string t_path = (*path).toStdString();
+            // 打开该单数据文件
+            ifstream ifs = input_file_open(t_path);
+            // 将单数据文件内容全部读入程序中
+            vector<vector<string>> all_arrary = tackle_file_get_all(ifs);
+            // 分析单文件的有效数据SITE_NUM的起始位置和数据的有效长宽
+            profile_col_row_num(all_arrary);
+
+            // 一般非第一个文件时，直接读取最后数据即可
+            // 一般的单数据表，只用读取其中最后一行的数据即可
+            size_t all_array_end = all_arrary.size() - 1;
+            if(counter != 1)
+            {
+                // 输入的数据需要补0，长度不够要求
+                while(all_arrary[all_array_end].size() != cols_num) all_arrary[all_array_end].push_back(""); // 补0
+                // 将SITE_NUM的内容改为其所在文件夹的hr名称
+                all_arrary[all_array_end][0] = time_name.toStdString();
+                // 将原数据的part_id与指定文件的part进行对应
+                all_arrary[all_array_end][1] = to_string(counter);
+                time_datas.push_back(all_arrary[all_array_end]); // 将结果直接插入
+                continue;
+            }
+
+            // 第一个文件时，读取其表头数据作为所有数据的极限值
+            for(size_t i = targe_data_index;i <= all_array_end;i++)
+            {
+                // 输入的数据需要补0，长度不够要求
+                while(all_arrary[i].size() != cols_num) all_arrary[i].push_back(""); // 补0
+                if(i == all_array_end)
+                {
+                    // 将SITE_NUM的内容改为其所在文件夹的hr名称
+                    all_arrary[all_array_end][0] = time_name.toStdString();
+                }
+                time_datas.push_back(all_arrary[i]); // 将结果直接插入
+            }
+        }
+
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::time_file_merge";
+        throw;
+    }
+}
+
+QString File_To_Targetfile::profile_time_file_name(const string &dir_path)
+{
+    /*
+        功能：
+            获取文件夹中的有效时刻名称并返回
+    */
+    try {
+        // 分析获取文件名称
+        int len = dir_path.size();
+
+        //遍历找到文件夹的"_"位置
+        int _ = len - 1;
+        for(; _ > 0 ; _--)
+        {
+            if(dir_path[_] == '_')break;
+        }
+
+        // 默认找到了_位置
+        return QString::fromStdString(dir_path.substr(_ + 1,len - _));
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::profile_time_file_name";
+        throw;
+    }
+}
+
 
 ifstream File_To_Targetfile::input_file_open(const string& input_File_path)
 {
@@ -485,7 +645,7 @@ void File_To_Targetfile::update_data_part(string &data, int part)
 int File_To_Targetfile::find_str_tag_dex(const string &data, const char &c, int count)
 {
     try {
-        int i = 0;
+        size_t i = 0;
         for(;i < data.size();i++)
         {
             if(data[i] == c)
@@ -505,7 +665,57 @@ int File_To_Targetfile::find_str_tag_dex(const string &data, const char &c, int 
 
 void File_To_Targetfile::profile_pro_path() noexcept
 {
-    pro_path = qstring_to_string(QCoreApplication::applicationDirPath());
+    pro_path = QCoreApplication::applicationDirPath();
+}
+
+const QString File_To_Targetfile::build_time_dir()
+{
+    /*
+        功能：
+            保证项目所在的文件内存在TIME文件夹，存储时刻的合并文件
+        返回值：
+            返回创建的该文件的位置
+    */
+    try {
+        QString ans = pro_path + "/" + time_file_name;
+
+        QDir pic_dir(ans);
+        // 判断文件是否已经存在
+        // 如果文件夹已经存在
+        if(!pic_dir.exists())
+        {
+            pic_dir.mkdir(ans);
+        }
+
+        return ans;
+
+    } catch (...) {
+        qDebug() << "QString File_To_Targetfile::build_time_dir";
+        throw;
+    }
+}
+
+void File_To_Targetfile::clear_time_dir(const QString &time_dir)
+{
+    try {
+        QDir dir(time_dir);
+        if(dir.isEmpty()) return;
+
+        // 清空目录下的所有内容
+        // 第三个参数是QDir的过滤参数，这三个表示收集所有文件和目录，且不包含"."和".."目录。
+        // 因为只需要遍历第一层即可，所以第四个参数填QDirIterator::NoIteratorFlags
+        QDirIterator DirsIterator(time_dir, QDir::Files | QDir::AllDirs | QDir::NoDotAndDotDot, QDirIterator::NoIteratorFlags);
+        while(DirsIterator.hasNext())
+        {
+            if (!dir.remove(DirsIterator.next())) // 删除文件操作如果返回否，那它就是目录
+            {
+                QDir(DirsIterator.filePath()).removeRecursively(); // 删除目录本身以及它下属所有的文件及目录
+            }
+        }
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::clear_time_dir";
+        throw;
+    }
 }
 
 void File_To_Targetfile::save_tackle_datas(const ofstream& ofs,const vector<vector<string>>& datas)
@@ -573,6 +783,16 @@ void File_To_Targetfile::set_alls_file_path(const string &path) noexcept
 string File_To_Targetfile::get_alls_file_path() noexcept
 {
     return ALLS_MERGE_FILE_PATH;
+}
+
+void File_To_Targetfile::set_timc_file_path(const string &path) noexcept
+{
+    TIME_FILE_PATH = path;
+}
+
+string File_To_Targetfile::get_timc_file_path() noexcept
+{
+    return TIME_FILE_PATH;
 }
 
 void File_To_Targetfile::set_input_file_path(const string &path) noexcept
@@ -659,8 +879,8 @@ QString File_To_Targetfile::profile_output_file_path(string output_file_name)
 
     */
     try {
-        QString output_file_path = QString::fromStdString(pro_path) +
-                                        QObject::tr("\\") + QString::fromStdString(output_file_name); // target_file.csv
+        QString output_file_path = pro_path + "/" +
+                            QString::fromStdString(output_file_name); // target_file.csv
         return output_file_path;
 
     } catch (...) {

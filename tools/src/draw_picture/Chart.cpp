@@ -121,7 +121,7 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
     try {
         // 设置chart名称
         QFont font = QFont("Consolas");
-        font.setPixelSize(11);
+        font.setPixelSize(14);
         font.setBold(true);
         qchart->setTitleFont(font);
         qchart->setTitle(chartname);
