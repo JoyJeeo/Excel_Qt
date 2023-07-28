@@ -18,6 +18,7 @@
 #include <QtWidgets/QWidget>
 #include <actions\buttons\include\Button_All_Attri.h>
 #include <actions\buttons\include\Button_Merge_File.h>
+#include "actions\buttons\include\Button_Time_Compare.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -29,6 +30,7 @@ public:
     QVBoxLayout *verticalLayout;
     Button_All_Attri *btn_all_attri;
     Button_Merge_File *btn_merge;
+    Button_Time_Compare *btn_time_compare;
     QStatusBar *statusbar;
     QMenuBar *menubar;
 
@@ -41,9 +43,11 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(50, 30, 160, 80));
+        verticalLayoutWidget->setGeometry(QRect(50, 30, 151, 111));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         btn_all_attri = new Button_All_Attri(verticalLayoutWidget);
         btn_all_attri->setObjectName(QString::fromUtf8("btn_all_attri"));
@@ -55,13 +59,18 @@ public:
 
         verticalLayout->addWidget(btn_merge);
 
+        btn_time_compare = new Button_Time_Compare(verticalLayoutWidget);
+        btn_time_compare->setObjectName(QString::fromUtf8("btn_time_compare"));
+
+        verticalLayout->addWidget(btn_time_compare);
+
         Main_Window->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(Main_Window);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         Main_Window->setStatusBar(statusbar);
         menubar = new QMenuBar(Main_Window);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 811, 23));
+        menubar->setGeometry(QRect(0, 0, 811, 22));
         Main_Window->setMenuBar(menubar);
 
         retranslateUi(Main_Window);
@@ -74,6 +83,7 @@ public:
         Main_Window->setWindowTitle(QCoreApplication::translate("Main_Window", "MainWindow", nullptr));
         btn_all_attri->setText(QCoreApplication::translate("Main_Window", "btn_all_attri", nullptr));
         btn_merge->setText(QCoreApplication::translate("Main_Window", "btn_merge", nullptr));
+        btn_time_compare->setText(QCoreApplication::translate("Main_Window", "btn_time_compare", nullptr));
     } // retranslateUi
 
 };

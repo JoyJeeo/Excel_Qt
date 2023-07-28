@@ -1,4 +1,4 @@
-#include "../include/Button_All_Attri.h"
+#include "actions/buttons/include/Button_All_Attri.h"
 
 #include <QDebug>
 #include <QScrollArea>
@@ -95,7 +95,7 @@ void Button_All_Attri::construct_widgets_file_paths()
         // 设置label字体
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);
-        font.setPointSize(14);
+        font.setPixelSize(14);
         font.setBold(true);
         QPalette pe; // 调色板
         pe.setColor(QPalette::WindowText,QColor(91,155,213));

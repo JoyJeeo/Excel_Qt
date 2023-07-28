@@ -129,7 +129,7 @@ string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
 string TIME_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\TIME.csv";
 
 // 中间文件存储的文件夹名称
-const string time_file_name = "timc";
+const QString time_file_name = "timc";
 
 // 有效数据开始的起始位置
 const string target_str = "SITE_NUM";

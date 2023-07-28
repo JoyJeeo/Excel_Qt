@@ -30,6 +30,7 @@ void Main_Window::total_task()
     try {
         ui->btn_all_attri->total_task();
         ui->btn_merge->total_task();
+        ui->btn_time_compare->total_task();
 
     } catch (...) {
         qDebug() << "Main_Window::total_task";

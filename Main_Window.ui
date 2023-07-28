@@ -20,7 +20,7 @@
       <x>50</x>
       <y>30</y>
       <width>151</width>
-      <height>81</height>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,6 +44,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="Button_Time_Compare" name="btn_time_compare">
+       <property name="text">
+        <string>btn_time_compare</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -54,7 +61,7 @@
      <x>0</x>
      <y>0</y>
      <width>811</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -69,6 +76,11 @@
    <class>Button_Merge_File</class>
    <extends>QPushButton</extends>
    <header location="global">actions\buttons\include\Button_Merge_File.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Button_Time_Compare</class>
+   <extends>QPushButton</extends>
+   <header>actions\buttons\include\Button_Time_Compare.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

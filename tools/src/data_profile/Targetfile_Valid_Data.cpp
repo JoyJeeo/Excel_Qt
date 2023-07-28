@@ -277,19 +277,21 @@ pair<double,double> Targetfile_Valid_Data::get_attri_XI(const string& attri)
             pair: [first,second] = [INT_MIN,INT_MAX]
     */
     try {
+        vector<int> scatter_site = m_site_parts.get_Scatter_Site_Number();
         double ans_min = INT_MAX;
         double ans_max = INT_MIN;
         // 获取属性对应的处理数据【在原本已经处理好的数据上进行遍历】
         map<int,vector<double>> vec = m_series_datas[attri];
         // 有数据时的正常情况
-        for(size_t i = 0;i < vec.size();i++)
+        for(size_t i = 0;i < scatter_site.size();i++)
         {
-            for(size_t j = 0;j < vec[i].size();j++)
+            int site = scatter_site[i];
+            for(size_t j = 0;j < vec[site].size();j++)
             {
-                ans_max = max(ans_max,vec[i][j]);
+                ans_max = max(ans_max,vec[site][j]);
                 // 过滤有效的数据进行min的计算【因为数据为NULL的数值标记为了INT_MIN】
-                if(vec[i][j] == INT_MIN) continue;
-                ans_min = min(ans_min,vec[i][j]);
+                if(vec[site][j] == INT_MIN) continue;
+                ans_min = min(ans_min,vec[site][j]);
             }
         }
         // 数据全为NULL时的特殊情况
@@ -299,6 +301,28 @@ pair<double,double> Targetfile_Valid_Data::get_attri_XI(const string& attri)
             ans_max = INT_MAX;
         }
         return make_pair(ans_min,ans_max);//[最小值,最大值]
+//        double ans_min = INT_MAX;
+//        double ans_max = INT_MIN;
+//        // 获取属性对应的处理数据【在原本已经处理好的数据上进行遍历】
+//        map<int,vector<double>> vec = m_series_datas[attri];
+//        // 有数据时的正常情况
+//        for(size_t i = 0;i < vec.size();i++)
+//        {
+//            for(size_t j = 0;j < vec[i].size();j++)
+//            {
+//                ans_max = max(ans_max,vec[i][j]);
+//                // 过滤有效的数据进行min的计算【因为数据为NULL的数值标记为了INT_MIN】
+//                if(vec[i][j] == INT_MIN) continue;
+//                ans_min = min(ans_min,vec[i][j]);
+//            }
+//        }
+//        // 数据全为NULL时的特殊情况
+//        if(ans_min == INT_MAX && ans_max == INT_MIN)
+//        {
+//            ans_min = INT_MIN;
+//            ans_max = INT_MAX;
+//        }
+//        return make_pair(ans_min,ans_max);//[最小值,最大值]
 
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::get_attri_XI";
@@ -351,7 +375,7 @@ size_t Targetfile_Valid_Data::get_target_vec_col_index_valid()
     }
 }
 
-void Targetfile_Valid_Data::profile_labels() noexcept
+void Targetfile_Valid_Data::profile_labels()
 {
     /*
         功能：
@@ -449,14 +473,14 @@ void Targetfile_Valid_Data::profile_get_time_series_datas()
 {
     try {
         // 初始化
-        vector<int> scatter_times = m_site_parts.get_Scatter_Site_Number();
-        int parts = m_site_parts.get_Max_Part_Id(); // repeat的组数
-        map<int,vector<double>> init_data;
+        vector<string> scatter_time_site = m_site_parts.get_Scatter_Time_Site_Number();
+        int parts = m_site_parts.get_Max_Time_Part_Id(); // repeat的组数
+        map<string,vector<double>> init_data;
         // 初始化m_target_file_vec
-        for(auto site : scatter_sites)
+        for(auto time_site : scatter_time_site)
         {
             // 按照site -> part值直接存储，省略下标转换，site，part直接对应实际数值
-            init_data.insert(make_pair(site,vector<double>(parts+1,NULL_Number)));
+            init_data.insert(make_pair(time_site,vector<double>(parts+1,NULL_Number)));
         }
 
         // 下标区
@@ -477,7 +501,7 @@ void Targetfile_Valid_Data::profile_get_time_series_datas()
             // 用来记录该行的属性值
             string attri = m_target_file_vec[i][0];
             // 使用init_data，加速初始化
-            map<int,vector<double>> data = init_data;
+            map<string,vector<double>> data = init_data;
 
             for(size_t j = begin_col_dex; j < m_target_file_vec[i].size();j++)
             {
@@ -485,18 +509,29 @@ void Targetfile_Valid_Data::profile_get_time_series_datas()
                 if(m_target_file_vec[i][j] == "NULL")  continue;
 
                 // 转化行列下标
-                int site = stoi(m_target_file_vec[site_dex][j]);
+                string time_site = m_target_file_vec[site_dex][j];
                 int part = stoi(m_target_file_vec[part_dex][j]);
 
                 // 转换行列后，获取数据
-                data[site][part] = stod(m_target_file_vec[i][j]);
+                data[time_site][part] = stod(m_target_file_vec[i][j]);
             }
             // 添加属性的主数据进map
             // 乱序存储 但可以通过labels vector进行查看检索
-            m_series_datas.insert(make_pair(attri,data));
+            m_time_series_datas.insert(make_pair(attri,data));
         }
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::profile_get_time_series_datas";
+        throw;
+    }
+}
+
+void Targetfile_Valid_Data::profile_time_labels()
+{
+    try {
+        profile_labels();
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::profile_time_labels()";
         throw;
     }
 }
@@ -544,6 +579,94 @@ const vector<string> Targetfile_Valid_Data::get_labels() noexcept
     return labels;
 }
 
+map<string, map<string, vector<double>>> Targetfile_Valid_Data::get_time_series_datas() noexcept
+{
+    return this->m_time_series_datas;
+}
+
+const vector<string> Targetfile_Valid_Data::get_time_labels() noexcept
+{
+    return get_labels();
+}
+
+Site_Part Targetfile_Valid_Data::get_time_site_parts() noexcept
+{
+    return get_site_parts();
+}
+
+Attri_Unit_Ul Targetfile_Valid_Data::get_time_attri_uuls() noexcept
+{
+    return get_attri_uuls();
+}
+
+vector<vector<string> > Targetfile_Valid_Data::get_timc_target_file_vec() noexcept
+{
+    return get_source_target_file_vec();
+}
+
+pair<double, double> Targetfile_Valid_Data::get_time_attri_XI(const string &attri)
+{
+    try {
+        vector<string> scatter_time_site = m_site_parts.get_Scatter_Time_Site_Number();
+        double ans_min = INT_MAX;
+        double ans_max = INT_MIN;
+        // 获取属性对应的处理数据【在原本已经处理好的数据上进行遍历】
+        map<string,vector<double>> vec = m_time_series_datas[attri];
+        // 有数据时的正常情况
+        for(size_t i = 0;i < scatter_time_site.size();i++)
+        {
+            string time_site = scatter_time_site[i];
+            for(size_t j = 0;j < vec[time_site].size();j++)
+            {
+                ans_max = max(ans_max,vec[time_site][j]);
+                // 过滤有效的数据进行min的计算【因为数据为NULL的数值标记为了INT_MIN】
+                if(vec[time_site][j] == INT_MIN) continue;
+                ans_min = min(ans_min,vec[time_site][j]);
+            }
+        }
+        // 数据全为NULL时的特殊情况
+        if(ans_min == INT_MAX && ans_max == INT_MIN)
+        {
+            ans_min = INT_MIN;
+            ans_max = INT_MAX;
+        }
+        return make_pair(ans_min,ans_max);//[最小值,最大值]
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::get_time_attri_XI";
+        throw;
+    }
+}
+
+pair<double, double> Targetfile_Valid_Data::get_time_ul_compare_attri_XI(const string &attri)
+{
+    try {
+        pair<double,double> attri_XI = get_time_attri_XI(attri); // [first,second] = [INT_MIN,INT_MAX]
+        auto uul = m_attri_uuls.m_attri_uuls[attri]; // attri -> uul
+        pair<double,double> ul_XI = make_pair(uul.m_LimitL,uul.m_LimitU); // [first,second] = [INT_MIN,INT_MAX]
+        pair<double,double> ans;
+
+        // 两个数值比较,每个数值有两种情况,这时的比较实际只有两种情况:
+        //      1. a b 都为正常值
+        //      2. a b 其中一个为特殊值INT_*,特殊值的话,那么直接min->max / max->min则必然获取其有效且正确的最值
+        // 获取最小值
+        if((ans.first = min(ul_XI.first,attri_XI.first)) == INT_MIN)
+        {
+            ans.first = max(ul_XI.first,attri_XI.first);
+        }
+        // 获取最大值
+        if((ans.second = max(ul_XI.second,attri_XI.second)) == INT_MAX)
+        {
+            ans.second = min(ul_XI.second,attri_XI.second);
+        }
+
+        return ans;
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::get_time_ul_compare_attri_XI";
+        throw;
+    }
+}
+
 bool Targetfile_Valid_Data::total_task(const ifstream &ifs)
 {
     /*执行该类的总任务*/
@@ -565,6 +688,8 @@ bool Targetfile_Valid_Data::time_task(const ifstream &ifs)
 {
     try {
         load_target_vec(ifs);
+        profile_get_time_datas();
+        profile_time_labels();
 
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::time_task";

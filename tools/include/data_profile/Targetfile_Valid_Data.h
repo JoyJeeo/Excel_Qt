@@ -41,6 +41,17 @@ public:
 
     const vector<string> get_labels() noexcept;
 
+    // 【功能三】
+    map<string,map<string,vector<double>>> get_time_series_datas() noexcept;
+    const vector<string> get_time_labels() noexcept;
+    Site_Part get_time_site_parts() noexcept;
+    Attri_Unit_Ul get_time_attri_uuls() noexcept;
+    vector<vector<string>> get_timc_target_file_vec() noexcept;
+    pair<double,double> get_time_attri_XI(const string& attri);
+    pair<double,double> get_time_ul_compare_attri_XI(const string& attri);
+
+
+
     // total_task
     bool total_task(const ifstream& ifs);
 
@@ -67,7 +78,7 @@ private:
     // 获取属性在m_source_target_file_vec中所对应的有效列索引值
     size_t get_target_vec_col_index_valid();
     // 动态分析表格中的属性，维护labels
-    void profile_labels() noexcept;
+    void profile_labels();
 
     // test
     void test_for(map<int,vector<double>>& datas);
@@ -91,6 +102,8 @@ private:
     void profile_get_time_attri_uuls();
     // 获取线的数据组，实际就是获取map<string,vector<vector<double>>>
     void profile_get_time_series_datas();
+    // 动态分析表格中的属性，维护labels
+    void profile_time_labels();
 
     // 用于区分属性的分界点属性【数据表自身的"属性"】
     const string div_attri = "TEST_NUM";

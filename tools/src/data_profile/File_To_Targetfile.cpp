@@ -107,7 +107,7 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
 
         // 将数据内容进行保存
         // 创建时刻文件timc【做出源文件】
-        QString time_file_path = profile_output_file_path(time_file_name);
+        QString time_file_path = profile_output_file_path(time_file_name.toStdString());
         string str_time_file_path = qstring_to_string(time_file_path);
         set_timc_file_path(str_time_file_path);
         // 将数据写入文件中

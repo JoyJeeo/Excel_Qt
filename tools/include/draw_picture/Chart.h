@@ -26,6 +26,11 @@ public:
                     const QMap<int,QVector<QPointF>>&,const pair<double,double>&,
                     const pair<double,double>&);
 
+    // 【功能三】
+    void time_buildChart(const vector<string>& scatter_sites,int site_max_parts,
+                    const QMap<string,QVector<QPointF>>&,const pair<double,double>&,
+                    const pair<double,double>&);
+
     // 参数太多，没必要使用total_task来进行构造
 
 private:
@@ -37,6 +42,19 @@ private:
                            int XI_series_width,int site_max_parts);
     // 设置chart的图里描述样式
     void construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI);
+
+    // 【功能三】
+    // 构造数据线
+    void construct_time_datas_series(const vector<string>& scatter_time_sites,int site_max_parts,
+                                const QMap<string,QVector<QPointF>>& time_series_data,int data_series_width);
+    // 构造最值线
+    void construct_time_XI_line(const pair<double,double>& attri_XI,
+                           int XI_series_width,int site_max_parts);
+    // 设置chart的图里描述样式
+    void construct_time_legend_style(const vector<string> scatter_time_sites,const pair<double,double>& attri_XI);
+    QMap<string,QVector<QLineSeries*>> time_series;
+
+
     QChart* qchart; // chart图表容器
     QChartView* chartview; // chart显示器容器，容纳chart图表
     //  My_Chart_View* chartview; // chart显示器容器，容纳chart图表
