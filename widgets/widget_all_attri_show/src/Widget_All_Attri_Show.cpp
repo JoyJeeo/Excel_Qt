@@ -206,21 +206,22 @@ QMap<string,QVector<QPointF>> Widget_All_Attri_Show::get_time_matrix_pointF(map<
         for(auto time_site : scatter_time_sites)
         {
             // 初始化所有数据为(0,0)作为数据为NULL时的断点标志
-            ans.insert(time_site,QVector<QPointF>(site_max_parts+1,QPointF(0,0)));
+            ans.insert(time_site,QVector<QPointF>(time_site_max_parts+1,QPointF(0,0)));
         }
 
         // 将原本site_part_vals的数据:
         //      attri -> [site][part] = val ----> attri -> [site][part] = (part,val)
         // 只是将内部值转换为QPointF(列,数值) 并将 vector转换为QVector
         // 遍历site_part_vals
-        for(size_t i = 0;i < scatter_sites.size();i++)
+        for(size_t i = 0;i < scatter_time_sites.size();i++)
         {
             string time_site = scatter_time_sites[i];
             // 初始化所有数据为(0,0)作为数据为NULL时的断点标志
 //            ans.insert(site,QVector<QPointF>(site_max_parts+1,QPointF(0,0))); // 由数据的结构可知，过程中插入和直接初始化两者并不等价
 
             // 遍历所有parts
-            for(int part = 1;part <= site_max_parts;part++)
+            for(int part = 1;part <= time_site_max_parts;part++)
+
             {
                 // 如果为NULL值,则用(0,0)作为断点标志
                 if(time_datas[time_site][part] == NULL_Number) continue;
@@ -273,7 +274,7 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         // 设置坐标系的数值范围
         chart->setAxis(
                     // 横坐标
-                    "PART_ID",1,site_max_parts,site_max_parts,
+                    "PART_ID",1,time_site_max_parts,time_site_max_parts,
                     // 纵坐标
                     unit,realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
@@ -286,7 +287,7 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
-        chart->time_buildChart(scatter_time_sites,site_max_parts,time_points,XI_line_data,attri_XI);
+        chart->time_buildChart(scatter_time_sites,time_site_max_parts,time_points,XI_line_data,attri_XI);
 
         return chart;
 

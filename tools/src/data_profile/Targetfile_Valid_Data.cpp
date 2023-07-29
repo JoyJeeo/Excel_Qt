@@ -413,6 +413,28 @@ void Targetfile_Valid_Data::test_for(map<int, vector<double>> &datas)
     }
 }
 
+void Targetfile_Valid_Data::test_for(map<string, vector<double>> &datas)
+{
+    try {
+        vector<string> scatter_time_sites = m_site_parts.get_Scatter_Time_Site_Number();
+        int parts = m_site_parts.get_Max_Time_Part_Id(); // repeat的组数
+
+        for(size_t i = 0;i < scatter_time_sites.size();i++)
+        {
+            string time_site = scatter_time_sites[i];
+            for(int part = 1;part <= parts;part++)
+            {
+                qDebug() << QString::fromStdString(time_site) << " " << part << " "
+                            <<  datas[time_site][part];
+            }
+        }
+
+    } catch (...) {
+        qDebug() << "Targetfile_Valid_Data::test_for";
+        throw;
+    }
+}
+
 void Targetfile_Valid_Data::profile_get_time_datas()
 {
     try {
@@ -519,6 +541,9 @@ void Targetfile_Valid_Data::profile_get_time_series_datas()
             // 乱序存储 但可以通过labels vector进行查看检索
             m_time_series_datas.insert(make_pair(attri,data));
         }
+
+//        test_for(m_time_series_datas["Continuity_out"]);
+
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::profile_get_time_series_datas";
         throw;

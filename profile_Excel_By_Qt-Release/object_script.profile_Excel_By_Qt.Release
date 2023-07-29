@@ -1,6 +1,7 @@
 release/Main_Window.o
 release/Button_All_Attri.o
 release/Button_Merge_File.o
+release/Button_Time_Compare.o
 release/main.o
 release/Attri_Unit_UL.o
 release/File_To_Targetfile.o
@@ -14,5 +15,6 @@ release/profile_excel_by_qt_plugin_import.o
 release/moc_Main_Window.o
 release/moc_Button_All_Attri.o
 release/moc_Button_Merge_File.o
+release/moc_Button_Time_Compare.o
 release/moc_Chart.o
 release/moc_Widget_All_Attri_Show.o

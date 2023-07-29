@@ -82,6 +82,7 @@ private:
 
     // test
     void test_for(map<int,vector<double>>& datas);
+    void test_for(map<string,vector<double>>& datas);
 
     // 全读取target_file中的数据
     vector<vector<string>> m_target_file_vec;

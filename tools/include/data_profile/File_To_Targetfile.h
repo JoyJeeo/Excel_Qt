@@ -109,10 +109,10 @@ private:
     const QString build_time_dir();
     // 清空时刻文件夹中的所有内容
     void clear_time_dir(const QString& time_dir);
-    void tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool flage);
+    void tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool& flage);
     // 将同一时刻下的文件进行合并
     void time_file_merge(const QStringList& file_paths,vector<vector<string>>& time_datas,
-                         bool flage,QString time_name);
+                         bool& flage,QString time_name);
     // 分析时刻文件夹的时刻名称
     QString profile_time_file_name(const string& dir_path);
 
@@ -129,7 +129,7 @@ string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
 string TIME_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\TIME.csv";
 
 // 中间文件存储的文件夹名称
-const QString time_file_name = "timc";
+const QString time_file_name = "timc.csv";
 
 // 有效数据开始的起始位置
 const string target_str = "SITE_NUM";

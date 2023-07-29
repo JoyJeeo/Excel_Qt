@@ -97,12 +97,12 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
 
         // 默认文件夹都存在
         // 一批目录，就是一个true，因为是合成为一个文件
+        // 控制了获取哪个数据的头数据
         bool first_flage = true;
         for(int i = 0;i < dir_paths.size();i++)
         {
             // 处理单文件夹
             tackle_single_dir(dir_paths[i],time_datas,first_flage);
-            if(i == 0)first_flage = false;
         }
 
         // 将数据内容进行保存
@@ -117,7 +117,7 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         ofs.close();
 
         // 调用total函数，生成翻转源文件的target_file文件【生成target_file】
-        return total_task(TIME_FILE_PATH);
+        return total_task(TIME_FILE_PATH,"target_file.csv");
 
 
     } catch (...) {
@@ -126,7 +126,7 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
     }
 }
 
-void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool flage)
+void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool& flage)
 {
     /*
         功能：
@@ -154,9 +154,9 @@ void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string
         }
 
         // 分析文件夹的名称，获取文件内数据所在的时刻
-        QString time_name = profile_time_file_name(dir_path.toStdString());
+        QString time_dir_name = profile_time_file_name(dir_path.toStdString());
         // 获取处理好的数据
-        time_file_merge(list,time_datas,flage,time_name);
+        time_file_merge(list,time_datas,flage,time_dir_name);
 
     } catch (...) {
         qDebug() << "File_To_Targetfile::tackle_single_dir";
@@ -165,15 +165,19 @@ void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string
 }
 
 void File_To_Targetfile::time_file_merge(const QStringList &file_paths,
-                                                            vector<vector<string>>& time_datas,bool flage,
+                                         vector<vector<string>>& time_datas,bool& flage,
                                          QString time_name)
 {
+    /*
+        说明：
+            一个时刻文件下的多个no芯片，按照part进行标记，
+            因此，每个时刻文件下，都会有这依次多的no芯片，进行相互比较
+        功能：
+            将一个时刻下的多个no芯片数据进行合并到统一的数据存储区中time_datas
+    */
     try {
-        static size_t counter = 1;
-        if(flage)
-        {
-            counter = 1;
-        }
+        // 一个文件夹下的内容的part，都是从1开始计算的
+        size_t counter = 1;
         // 依次获取单文件路径
         // 填补merge_datas中的数据
         for(auto path = file_paths.begin();path != file_paths.end();path++,counter++)
@@ -190,7 +194,10 @@ void File_To_Targetfile::time_file_merge(const QStringList &file_paths,
             // 一般非第一个文件时，直接读取最后数据即可
             // 一般的单数据表，只用读取其中最后一行的数据即可
             size_t all_array_end = all_arrary.size() - 1;
-            if(counter != 1)
+
+            // 【数据获取】
+            // 只有当flage为true时，才获取数据的头数据，否则只获取元数据
+            if(!flage)
             {
                 // 输入的数据需要补0，长度不够要求
                 while(all_arrary[all_array_end].size() != cols_num) all_arrary[all_array_end].push_back(""); // 补0
@@ -214,6 +221,8 @@ void File_To_Targetfile::time_file_merge(const QStringList &file_paths,
                 }
                 time_datas.push_back(all_arrary[i]); // 将结果直接插入
             }
+            // 很好的控制了数据的一次有效性 【必须在内部控制标记的变化，引用传入】
+            flage = false;
         }
 
 
@@ -497,7 +506,8 @@ size_t File_To_Targetfile::get_vec_col_index_valid(const vector<vector<string>>&
         size_t col;
         for(row = 0,col = 0;col < target_arrays[row].size();col++)
         {
-            if(is_Integer_Numeric(target_arrays[row][col]))
+            // SITE_NUM不一定为整数
+            if(is_Integer_Numeric(target_arrays[row][col]) || is_Integer_Numeric(target_arrays[row+1][col]))
                 break;
         }
         return col;
@@ -532,7 +542,7 @@ File_To_Targetfile::tackle_file_get_ans(const vector<vector<string>>& rows_array
 //            }
 //        }
 
-//        test_datas(cols_array);
+//        test_datas(ans);
 
         // 遍历数据区，所有为空的位置，都用NULL直接填充即可
         //【符合要求，PASSFG为TRUE时，依然可能会有属性的数据为空，画图会崩溃，必须填充NULL】
