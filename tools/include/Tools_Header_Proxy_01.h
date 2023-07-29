@@ -7,6 +7,7 @@
 #include "data_profile/SITE_PART.h"
 #include "data_profile/File_To_Targetfile.h"
 #include "data_profile/Unit_Ul.h"
+#include "data_profile/Make_Ration_File.h"
 
 // draw_picture
 #include "draw_picture/Chart.h"

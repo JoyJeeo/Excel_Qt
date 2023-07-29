@@ -24,6 +24,7 @@ SOURCES += \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
+    tools/src/data_profile/Make_Ration_File.cpp \
     tools/src/data_profile/Site_Part.cpp \
     tools/src/data_profile/Targetfile_Valid_Data.cpp \
     tools/src/data_profile/Unit_Ul.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
     tools/include/data_profile/File_To_Targetfile.h \
+    tools/include/data_profile/Make_Ration_File.h \
     tools/include/data_profile/Site_Part.h \
     tools/include/data_profile/Targetfile_Valid_Data.h \
     tools/include/data_profile/Unit_Ul.h \

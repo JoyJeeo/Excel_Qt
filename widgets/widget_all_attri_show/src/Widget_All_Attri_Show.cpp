@@ -108,16 +108,16 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
         // 循环存储图片，将图片进行存储
         // 图片存储容器
-        QWidget* pic = new QWidget;
-        QGridLayout* pic_layout = new QGridLayout(pic);
-        pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
-        pic_layout->setHorizontalSpacing(0);
-        pic_layout->setVerticalSpacing(0);
+//        QWidget* pic = new QWidget;
+//        QGridLayout* pic_layout = new QGridLayout(pic);
+//        pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
+//        pic_layout->setHorizontalSpacing(0);
+//        pic_layout->setVerticalSpacing(0);
 
-        // 纸张计算参数
-        int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
-        int page_chart_nums = 3; // 一页显示多少行
-        int page_charts = pic_row_obj_nums * page_chart_nums;
+//        // 纸张计算参数
+//        int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
+//        int page_chart_nums = 3; // 一页显示多少行
+//        int page_charts = pic_row_obj_nums * page_chart_nums;
 
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
         // 将chart表格依次添加入主框体中，依次显示
@@ -136,59 +136,59 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
             // 存储并保存
             // 填充pic 【会进行覆盖】
-            Chart* t_chart = this->time_initChart(attri,time_site_points);
-            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
-            int col = (i % pic_row_obj_nums + 1);
-            pic_layout->addWidget(t_chart,row,col);
+//            Chart* t_chart = this->time_initChart(attri,time_site_points);
+//            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
+//            int col = (i % pic_row_obj_nums + 1);
+//            pic_layout->addWidget(t_chart,row,col);
 
-            // 6个chart一存储
-            if((i+1) % page_charts == 0)
-            {
-                QString path = pic_dir + "/PIC_" +
-                        // 计算当前是第几页
-                        // i / page_charts + 1
-                        QString::fromStdString(to_string(pic_pages))+
-                        QString(".png");
-//                qDebug() << path;
-                save_pic(pic,path);
+//            // 6个chart一存储
+//            if((i+1) % page_charts == 0)
+//            {
+//                QString path = pic_dir + "/PIC_" +
+//                        // 计算当前是第几页
+//                        // i / page_charts + 1
+//                        QString::fromStdString(to_string(pic_pages))+
+//                        QString(".png");
+////                qDebug() << path;
+//                save_pic(pic,path);
 
-                // 页数++
-                pic_pages++;
+//                // 页数++
+//                pic_pages++;
 
-                // 生成其图片后，将布局内widget清空
-                delete pic_layout;
-                delete pic;
-                // 重新初始化pic、pic_layout
-                pic = new QWidget;
-                pic_layout = new QGridLayout(pic);
-                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
-                pic_layout->setHorizontalSpacing(0);
-                pic_layout->setVerticalSpacing(0);
-            }
+//                // 生成其图片后，将布局内widget清空
+//                delete pic_layout;
+//                delete pic;
+//                // 重新初始化pic、pic_layout
+//                pic = new QWidget;
+//                pic_layout = new QGridLayout(pic);
+//                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
+//                pic_layout->setHorizontalSpacing(0);
+//                pic_layout->setVerticalSpacing(0);
+//            }
         }
 //        qDebug() << "i: " << i;
         // 最后一页是否被存储
-        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
-        {
-            // 没有存储，则将最有一页存储
-            QString path = pic_dir + "/PIC_" +
-                    // 将余页获取，并打印
-                    //i / page_charts + 1
-                    QString::fromStdString(to_string(pic_pages)) +
-                    QString(".png");
-//            qDebug() << "Into";
-//            qDebug() << path;
-            save_pic(pic,path);
+//        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
+//        {
+//            // 没有存储，则将最有一页存储
+//            QString path = pic_dir + "/PIC_" +
+//                    // 将余页获取，并打印
+//                    //i / page_charts + 1
+//                    QString::fromStdString(to_string(pic_pages)) +
+//                    QString(".png");
+////            qDebug() << "Into";
+////            qDebug() << path;
+//            save_pic(pic,path);
 
-            // 页数++
-            pic_pages++;
+//            // 页数++
+//            pic_pages++;
 
-        }
-//        pic->show();
+//        }
+////        pic->show();
 
-        // 回收临时堆区内存
-        delete pic_layout;
-        delete pic;
+//        // 回收临时堆区内存
+//        delete pic_layout;
+//        delete pic;
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::time_while_draw";
@@ -1041,6 +1041,8 @@ bool Widget_All_Attri_Show::time_task(const QStringList &dir_path)
         // 初始化scatter_time_sites,time_site_max_parts
         profile_scatter_time_sites();
         profile_time_site_max_parts();
+
+
 
         // 开始对数据循环扫描进行绘画
         time_while_draw();

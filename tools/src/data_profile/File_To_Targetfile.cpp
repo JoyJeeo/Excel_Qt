@@ -116,6 +116,9 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         save_tackle_datas(ofs,time_datas);
         ofs.close();
 
+        // 生成ration.csv文件
+//        make_ration_file(time_datas);
+
         // 调用total函数，生成翻转源文件的target_file文件【生成target_file】
         return total_task(TIME_FILE_PATH,"target_file.csv");
 
