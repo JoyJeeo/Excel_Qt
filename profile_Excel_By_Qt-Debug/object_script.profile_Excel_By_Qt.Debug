@@ -5,6 +5,7 @@ debug/Button_Time_Compare.o
 debug/main.o
 debug/Attri_Unit_UL.o
 debug/File_To_Targetfile.o
+debug/Make_Ration_File.o
 debug/Site_Part.o
 debug/Targetfile_Valid_Data.o
 debug/Unit_Ul.o

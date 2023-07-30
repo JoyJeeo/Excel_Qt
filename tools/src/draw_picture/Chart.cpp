@@ -75,7 +75,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         axisX->setTitleFont(font);
         axisX->setRange(xmin, xmax);    //设置x轴的数据范围
         axisX->setTickCount(xtickc);       //x轴设置实网格线的数量【也是一个大格】
-        axisX->setMinorTickCount(1);   //设置x轴每个大格里面小刻度线的数目
+        axisX->setMinorTickCount(0);   //设置x轴每个大格里面小刻度线的数目
 
         // 设置Y轴描述
         axisY->setGridLineVisible(true); // y轴网格线可见

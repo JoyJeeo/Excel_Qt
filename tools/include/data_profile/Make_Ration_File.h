@@ -12,10 +12,10 @@ class Make_Ration_File
             生成ration.csv的源文件所需的数据，并返回
     */
 public:
-    Make_Ration_File(vector<vector<string>> time_datas);
+    Make_Ration_File();
     ~Make_Ration_File();
 
-    vector<vector<string>> make_ration_file();
+    vector<vector<string>> make_ration_file(vector<vector<string>> time_datas);
 
 private:
 
@@ -30,8 +30,6 @@ private:
     void profile_end_row_T0();
     // 获取纵坐标的有效位置
     void profile_begin_col();
-    // 判断一个string是否为整数数字
-    bool is_Integer_Numeric(const string &str);
 
     // 记录原始的时刻文件数据[time_datas]
     vector<vector<string>> m_source_datas;

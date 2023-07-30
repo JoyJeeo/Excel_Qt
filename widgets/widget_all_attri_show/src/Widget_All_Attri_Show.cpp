@@ -35,67 +35,69 @@ const string Widget_All_Attri_Show::tackel_file_name()
     }
 }
 
-void Widget_All_Attri_Show::profile_scatter_sites()
-{
-    /*
-        获取scatter_sites，其是该类的一个属性，由private函数进行维护
-    */
-    try {
-        scatter_sites = datas->get_site_parts().get_Scatter_Site_Number();
-//        qDebug() << scatter_sites.size();
-//        exit(1);
-    } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::profile_scatter_sites";
-        throw;
-    }
-}
+//void Widget_All_Attri_Show::profile_scatter_sites()
+//{
+//    /*
+//        获取scatter_sites，其是该类的一个属性，由private函数进行维护
+//    */
+//    try {
+//        scatter_sites = datas->get_site_parts().get_Scatter_Site_Number();
+////        qDebug() << scatter_sites.size();
+////        exit(1);
+//    } catch (...) {
+//        qDebug() << "Widget_All_Attri_Show::profile_scatter_sites";
+//        throw;
+//    }
+//}
 
-void Widget_All_Attri_Show::profile_site_max_parts()
-{
-    try {
-       site_max_parts = datas->get_site_parts().get_Max_Part_Id();
-    } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::profile_site_max_parts";
-        throw ;
-    }
-}
+//void Widget_All_Attri_Show::profile_site_max_parts()
+//{
+//    try {
+//       site_max_parts = datas->get_site_parts().get_Max_Part_Id();
+//    } catch (...) {
+//        qDebug() << "Widget_All_Attri_Show::profile_site_max_parts";
+//        throw ;
+//    }
+//}
 
-void Widget_All_Attri_Show::profile_site_list()
-{
-    try {
-        site_list = datas->get_site_parts().get_site_list();
-    } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::profile_site_list";
-        throw;
-    }
-}
+//void Widget_All_Attri_Show::profile_site_list()
+//{
+//    try {
+//        site_list = datas->get_site_parts().get_site_list();
+//    } catch (...) {
+//        qDebug() << "Widget_All_Attri_Show::profile_site_list";
+//        throw;
+//    }
+//}
 
-void Widget_All_Attri_Show::profile_scatter_time_sites()
-{
-    try {
-        scatter_time_sites = datas->get_site_parts().get_Scatter_Time_Site_Number();
+//void Widget_All_Attri_Show::profile_scatter_time_sites()
+//{
+//    try {
+//        scatter_time_sites = datas->get_site_parts().get_Scatter_Time_Site_Number();
 
-    } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::profile_scatter_time_sites";
-        throw;
-    }
-}
+//    } catch (...) {
+//        qDebug() << "Widget_All_Attri_Show::profile_scatter_time_sites";
+//        throw;
+//    }
+//}
 
-void Widget_All_Attri_Show::profile_time_site_max_parts()
-{
-    try {
-        time_site_max_parts = datas->get_site_parts().get_Max_Time_Part_Id();
-    } catch (...) {
-        qDebug() << "Widget_All_Attri_Show::profile_time_site_max_parts";
-        throw;
-    }
-}
+//void Widget_All_Attri_Show::profile_time_site_max_parts()
+//{
+//    try {
+//        time_site_max_parts = datas->get_site_parts().get_Max_Time_Part_Id();
+//    } catch (...) {
+//        qDebug() << "Widget_All_Attri_Show::profile_time_site_max_parts";
+//        throw;
+//    }
+//}
 
 void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 {
     try {
         // 获取attri -> [site][part]的series数据,存于map<string,vector<vector<double>>>中
         map<string,map<string,vector<double>>> time_series_datas = datas->get_time_series_datas();
+        map<string,map<string,vector<double>>> ration_time_series_datas =
+                ration_datas->get_time_series_datas();
 
         // 获取target_file中有效的属性label
         auto labels = datas->get_time_labels();
@@ -108,87 +110,139 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
         // 循环存储图片，将图片进行存储
         // 图片存储容器
-//        QWidget* pic = new QWidget;
-//        QGridLayout* pic_layout = new QGridLayout(pic);
-//        pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
-//        pic_layout->setHorizontalSpacing(0);
-//        pic_layout->setVerticalSpacing(0);
+        QWidget* pic = new QWidget;
+        QGridLayout* pic_layout = new QGridLayout(pic);
+        pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
+        pic_layout->setHorizontalSpacing(0);
+        pic_layout->setVerticalSpacing(0);
 
-//        // 纸张计算参数
-//        int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
-//        int page_chart_nums = 3; // 一页显示多少行
-//        int page_charts = pic_row_obj_nums * page_chart_nums;
+        // 纸张计算参数
+        int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
+        int page_chart_nums = 3; // 一页显示多少行
+        int page_charts = pic_row_obj_nums * page_chart_nums;
 
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
         // 将chart表格依次添加入主框体中，依次显示
         size_t i;
-        for(i = 0;i < labels.size();i++) // labels.size()
+        for(i = 0;i < labels.size();) // labels.size()
         {
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
             // 获取site_part的对应数据点
-            QMap<string,QVector<QPointF>> time_site_points = get_time_matrix_pointF(time_series_datas[attri]);
+            QMap<string,QVector<QPointF>> time_site_points = get_time_matrix_pointF(time_series_datas[attri],datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                                                                    datas->get_site_parts().get_Max_Time_Part_Id());
+            QMap<string,QVector<QPointF>> ration_time_site_points =
+                    get_time_matrix_pointF(ration_time_series_datas[attri],ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                           ration_datas->get_site_parts().get_Max_Time_Part_Id());
 
+            // 【生成数据区chart】
             // 获取初始化好的chart
-            Chart* chart = this->time_initChart(attri,time_site_points);
+            Chart* chart = this->time_initChart(attri,time_site_points,datas,
+                                                datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                                datas->get_site_parts().get_Max_Time_Part_Id());
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
 
             // 存储并保存
             // 填充pic 【会进行覆盖】
-//            Chart* t_chart = this->time_initChart(attri,time_site_points);
-//            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
-//            int col = (i % pic_row_obj_nums + 1);
-//            pic_layout->addWidget(t_chart,row,col);
+            Chart* t_chart = this->time_initChart(attri,time_site_points,datas,
+                                                  datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                                  datas->get_site_parts().get_Max_Time_Part_Id());
+            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
+            int col = (i % pic_row_obj_nums + 1);
+            pic_layout->addWidget(t_chart,row,col);
 
-//            // 6个chart一存储
-//            if((i+1) % page_charts == 0)
-//            {
-//                QString path = pic_dir + "/PIC_" +
-//                        // 计算当前是第几页
-//                        // i / page_charts + 1
-//                        QString::fromStdString(to_string(pic_pages))+
-//                        QString(".png");
-////                qDebug() << path;
-//                save_pic(pic,path);
+            // 6个chart一存储
+            if((i+1) % page_charts == 0)
+            {
+                QString path = pic_dir + "/PIC_" +
+                        // 计算当前是第几页
+                        // i / page_charts + 1
+                        QString::fromStdString(to_string(pic_pages))+
+                        QString(".png");
+//                qDebug() << path;
+                save_pic(pic,path);
 
-//                // 页数++
-//                pic_pages++;
+                // 页数++
+                pic_pages++;
 
-//                // 生成其图片后，将布局内widget清空
-//                delete pic_layout;
-//                delete pic;
-//                // 重新初始化pic、pic_layout
-//                pic = new QWidget;
-//                pic_layout = new QGridLayout(pic);
-//                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
-//                pic_layout->setHorizontalSpacing(0);
-//                pic_layout->setVerticalSpacing(0);
-//            }
+                // 生成其图片后，将布局内widget清空
+                delete pic_layout;
+                delete pic;
+                // 重新初始化pic、pic_layout
+                pic = new QWidget;
+                pic_layout = new QGridLayout(pic);
+                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
+                pic_layout->setHorizontalSpacing(0);
+                pic_layout->setVerticalSpacing(0);
+            }
+            // 切换i
+            i++;
+
+            Chart* ration_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
+                                                       ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                                       ration_datas->get_site_parts().get_Max_Time_Part_Id());
+            // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
+            this->pGridLayout->addWidget(ration_chart,i/row_obj_nums+1,i%row_obj_nums+1);
+
+            t_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
+                                           ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
+                                           ration_datas->get_site_parts().get_Max_Time_Part_Id());;
+            row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
+            col = (i % pic_row_obj_nums + 1);
+            pic_layout->addWidget(t_chart,row,col);
+
+            // 6个chart一存储
+            if((i+1) % page_charts == 0)
+            {
+                QString path = pic_dir + "/PIC_" +
+                        // 计算当前是第几页
+                        // i / page_charts + 1
+                        QString::fromStdString(to_string(pic_pages))+
+                        QString(".png");
+//                qDebug() << path;
+                save_pic(pic,path);
+
+                // 页数++
+                pic_pages++;
+
+                // 生成其图片后，将布局内widget清空
+                delete pic_layout;
+                delete pic;
+                // 重新初始化pic、pic_layout
+                pic = new QWidget;
+                pic_layout = new QGridLayout(pic);
+                pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
+                pic_layout->setHorizontalSpacing(0);
+                pic_layout->setVerticalSpacing(0);
+            }
+            // [!!!]
+            i++;
+
         }
 //        qDebug() << "i: " << i;
         // 最后一页是否被存储
-//        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
-//        {
-//            // 没有存储，则将最有一页存储
-//            QString path = pic_dir + "/PIC_" +
-//                    // 将余页获取，并打印
-//                    //i / page_charts + 1
-//                    QString::fromStdString(to_string(pic_pages)) +
-//                    QString(".png");
-////            qDebug() << "Into";
-////            qDebug() << path;
-//            save_pic(pic,path);
+        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
+        {
+            // 没有存储，则将最有一页存储
+            QString path = pic_dir + "/PIC_" +
+                    // 将余页获取，并打印
+                    //i / page_charts + 1
+                    QString::fromStdString(to_string(pic_pages)) +
+                    QString(".png");
+//            qDebug() << "Into";
+//            qDebug() << path;
+            save_pic(pic,path);
 
-//            // 页数++
-//            pic_pages++;
+            // 页数++
+            pic_pages++;
 
-//        }
-////        pic->show();
+        }
+//        pic->show();
 
-//        // 回收临时堆区内存
-//        delete pic_layout;
-//        delete pic;
+        // 回收临时堆区内存
+        delete pic_layout;
+        delete pic;
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::time_while_draw";
@@ -196,7 +250,9 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
     }
 }
 
-QMap<string,QVector<QPointF>> Widget_All_Attri_Show::get_time_matrix_pointF(map<string,vector<double>> &time_datas)
+QMap<string,QVector<QPointF>> Widget_All_Attri_Show::get_time_matrix_pointF(map<string,vector<double>> &time_datas,
+                                                                            const vector<string>& scatter_time_sites,
+                                                                            int time_site_max_parts)
 {
     try {
         // 返回值更换类型
@@ -241,7 +297,11 @@ QMap<string,QVector<QPointF>> Widget_All_Attri_Show::get_time_matrix_pointF(map<
 
 Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                                              const QMap<string, QVector<QPointF>> &time_points,
-                                             double axisX_k, double axisY_k)
+                                             Targetfile_Valid_Data* Datas,
+                                             const vector<string>& scatter_time_sites,
+                                             int time_site_max_parts,
+                                             double axisX_k, double axisY_k
+                                             )
 {
 
     try {
@@ -251,14 +311,14 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         //设置坐标系
         // 设置X轴数据
         // 获取site_part
-        auto site_part = datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
+        auto site_part = Datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
 
         // 设置Y轴数据
         // 获取属性单位
-        QString unit = profile_time_attri_unit(attri);
+        QString unit = profile_time_attri_unit(attri,Datas);
 
         // 获取的数值的最值线的数值结果【这里的最值线，实际并不是最值线，可以理解为是为了让Y更合理而配合最值权衡使用的中间值】【！！！之后需要进行进一步维护】
-        auto XI_line_data = profile_time_data_series_XI(attri);
+        auto XI_line_data = profile_time_data_series_XI(attri,Datas);
 
         // 对纵坐标的大小范围进行处理【而不是简单的通过get_ul_compare_attri_XI函数获取的最值】
         // 获取倍距
@@ -283,7 +343,7 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
 
         //绘制【注入数据点数值和最值】
         // 获取属性最值
-        auto attri_uul = datas->get_time_attri_uuls();
+        auto attri_uul = Datas->get_time_attri_uuls();
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
@@ -297,10 +357,16 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
     }
 }
 
-QString Widget_All_Attri_Show::profile_time_attri_unit(const string &attri)
+QString Widget_All_Attri_Show::profile_time_attri_unit(const string &attri,
+                                                       Targetfile_Valid_Data* Datas)
 {
     try {
-        return profile_attri_unit(attri);
+        auto attri_uul = Datas->get_attri_uuls();
+        // 获取属性的单位
+        string unit = attri_uul.m_attri_uuls[attri].m_Unit;
+
+        // 转换为QString
+        return QString::fromStdString(unit);
 
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::profile_time_attri_unit";
@@ -308,11 +374,13 @@ QString Widget_All_Attri_Show::profile_time_attri_unit(const string &attri)
     }
 }
 
-pair<double, double> Widget_All_Attri_Show::profile_time_data_series_XI(const string &attri, double zoom)
+pair<double, double> Widget_All_Attri_Show::profile_time_data_series_XI(const string &attri,
+                                                                        Targetfile_Valid_Data* Datas,
+                                                                        double zoom)
 {
     try {
         // 获取attri_uul
-        auto attri_uul = datas->get_time_attri_uuls();
+        auto attri_uul = Datas->get_time_attri_uuls();
 
         //设置坐标系
         // 获取最值
@@ -320,7 +388,7 @@ pair<double, double> Widget_All_Attri_Show::profile_time_data_series_XI(const st
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 获取所有属性值的最值
-        auto all_attri_XI = datas->get_time_attri_XI(attri); // 【修改数据获取方式】
+        auto all_attri_XI = Datas->get_time_attri_XI(attri); // 【修改数据获取方式】
 
         // 经过attri_XI和all_attri_XI对比后，综合获取的数值的最值线的数值结果
         auto XI_line_data = attri_XI;
@@ -452,7 +520,9 @@ void Widget_All_Attri_Show::clear_pic_dir(const QString &pic_dir)
     }
 }
 
-void Widget_All_Attri_Show::test_for(QMap<int,QVector<QPointF>> &datas)
+void Widget_All_Attri_Show::test_for(QMap<int,QVector<QPointF>> &datas,
+                                     const vector<int>& scatter_sites,
+                                     int site_max_parts)
 {
     for(size_t i = 0;i < scatter_sites.size();i++)
     {
@@ -491,6 +561,7 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         resize(800,800);
         src_file_manager = new File_To_Targetfile;
         datas = new Targetfile_Valid_Data;
+        ration_datas = new Targetfile_Valid_Data;
         this->pGridLayout = new QGridLayout(this); // 添加布局到主窗体中
         this->pGridLayout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
         this->pGridLayout->setHorizontalSpacing(0);
@@ -509,7 +580,9 @@ Widget_All_Attri_Show::~Widget_All_Attri_Show()
 }
 
 // 制作QList<QList<QPointF>>数据列表
-QMap<int,QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(map<int,vector<double>>& site_part_vals)
+QMap<int,QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(map<int,vector<double>>& site_part_vals,
+                                                                    const vector<int>& scatter_sites,
+                                                                    int site_max_parts)
 {
     /*
        功能：
@@ -565,8 +638,11 @@ QMap<int,QVector<QPointF>> Widget_All_Attri_Show::get_matrix_pointF(map<int,vect
 //初始化图表
 Chart* Widget_All_Attri_Show::initChart(const string& attri,
                              const QMap<int,QVector<QPointF>>& site_points,
+                            const vector<int>& scatter_sites,
+                            int site_max_parts,
                              double axisX_k,
-                             double axisY_k)
+                             double axisY_k
+                            )
 {
     /*
         这里设置y轴的放大倍数默认为1.2,留一个接口,为放大镜功能做准备
@@ -604,7 +680,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         // 设置坐标系的数值范围
         chart->setAxis(
                     // 横坐标
-                    "PART_ID",1,site_max_parts,site_max_parts,
+                    "PART_ID",1,site_max_parts,site_max_parts ,
                     // 纵坐标
                     unit,realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
@@ -882,16 +958,19 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
             // 获取site_part的对应数据点
-            QMap<int,QVector<QPointF>> site_points = get_matrix_pointF(series_datas[attri]);
+            QMap<int,QVector<QPointF>> site_points = get_matrix_pointF(series_datas[attri],datas->get_site_parts().get_Scatter_Site_Number(),
+                                                                       datas->get_site_parts().get_Max_Part_Id());
 
             // 获取初始化好的chart
-            Chart* chart = this->initChart(attri,site_points);
+            Chart* chart = this->initChart(attri,site_points,datas->get_site_parts().get_Scatter_Site_Number(),
+                                           datas->get_site_parts().get_Max_Part_Id());
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
 
             // 存储并保存
             // 填充pic 【会进行覆盖】
-            Chart* t_chart = this->initChart(attri,site_points);
+            Chart* t_chart = this->initChart(attri,site_points,datas->get_site_parts().get_Scatter_Site_Number(),
+                                             datas->get_site_parts().get_Max_Part_Id());
             int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
             int col = (i % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
@@ -971,9 +1050,9 @@ bool Widget_All_Attri_Show::total_task(const string& input_file_path)
         // 解析生成的target_file数据读入程序中
         datas->total_task(ifs);
         // 初始化scatter_sites,site_max_parts
-        profile_scatter_sites();
-        profile_site_list();
-        profile_site_max_parts();
+//        profile_scatter_sites();
+//        profile_site_list();
+//        profile_site_max_parts();
 
 
         // 开始对数据循环扫描进行绘画
@@ -1003,9 +1082,9 @@ bool Widget_All_Attri_Show::merge_task(const QStringList &files_path)
         // 解析生成的target_file数据读入程序中
         datas->total_task(ifs);
         // 初始化scatter_sites,site_max_parts
-        profile_scatter_sites();
-        profile_site_list();
-        profile_site_max_parts();
+//        profile_scatter_sites();
+//        profile_site_list();
+//        profile_site_max_parts();
 
         // 开始对数据循环扫描进行绘画
         while_draw();
@@ -1039,9 +1118,14 @@ bool Widget_All_Attri_Show::time_task(const QStringList &dir_path)
         // timc文件的文件内容比较特殊，需要特殊的time_task函数进行处理
         datas->time_task(ifs);
         // 初始化scatter_time_sites,time_site_max_parts
-        profile_scatter_time_sites();
-        profile_time_site_max_parts();
+//        profile_scatter_time_sites();
+//        profile_time_site_max_parts();
 
+        // 分析ration文件
+        const string ration_target_file_path = src_file_manager->ration_task();
+        cout << ration_target_file_path << endl;
+        ifs = src_file_manager->input_file_open(ration_target_file_path);
+        ration_datas->time_task(ifs);
 
 
         // 开始对数据循环扫描进行绘画
@@ -1059,17 +1143,17 @@ bool Widget_All_Attri_Show::time_task(const QStringList &dir_path)
     }
 }
 
-vector<int> Widget_All_Attri_Show::get_scatter_sites() noexcept
-{
-    return scatter_sites;
-}
+//vector<int> Widget_All_Attri_Show::get_scatter_sites() noexcept
+//{
+//    return scatter_sites;
+//}
 
-vector<string> Widget_All_Attri_Show::get_scatter_time_sites() noexcept
-{
-    return this->scatter_time_sites;
-}
+//vector<string> Widget_All_Attri_Show::get_scatter_time_sites() noexcept
+//{
+//    return this->scatter_time_sites;
+//}
 
-int Widget_All_Attri_Show::get_time_site_max_parts() noexcept
-{
-    return this->time_site_max_parts;
-}
+//int Widget_All_Attri_Show::get_time_site_max_parts() noexcept
+//{
+//    return this->time_site_max_parts;
+//}

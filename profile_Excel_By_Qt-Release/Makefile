@@ -262,6 +262,7 @@ Makefile: ../profile_Excel_By_Qt.pro C:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/qt_config.prf \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++/qmake.conf \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/exclusive_builds.prf \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/toolchain.prf \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/default_pre.prf \
@@ -302,7 +303,6 @@ Makefile: ../profile_Excel_By_Qt.pro C:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g
 		C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Gui.prl \
 		C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Core.prl \
 		C:/QT/Qt5.14.2_MinGW_static/lib/qtmain.prl \
-		.qmake.stash \
 		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/spec_pre.prf:
@@ -497,6 +497,7 @@ C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/qt_functions.prf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/qt_config.prf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++/qmake.conf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/exclusive_builds.prf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/toolchain.prf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/default_pre.prf:
@@ -537,7 +538,6 @@ C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Widgets.prl:
 C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Gui.prl:
 C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Core.prl:
 C:/QT/Qt5.14.2_MinGW_static/lib/qtmain.prl:
-.qmake.stash:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=qtquickcompiler"

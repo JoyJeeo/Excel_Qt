@@ -247,6 +247,7 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../../QT/QtBase/5.14.2/mingw73_32/mks
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/qt_config.prf \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/toolchain.prf \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/default_pre.prf \
@@ -276,7 +277,6 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../../QT/QtBase/5.14.2/mingw73_32/mks
 		../../../../QT/QtBase/5.14.2/mingw73_32/lib/Qt5Gui.prl \
 		../../../../QT/QtBase/5.14.2/mingw73_32/lib/Qt5Core.prl \
 		../../../../QT/QtBase/5.14.2/mingw73_32/lib/qtmain.prl \
-		.qmake.stash \
 		../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/spec_pre.prf:
@@ -456,6 +456,7 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../../QT/QtBase/5.14.2/mingw73_32/mks
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/qt_config.prf:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/win32-g++/qmake.conf:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/exclusive_builds.prf:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/toolchain.prf:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/default_pre.prf:
@@ -485,7 +486,6 @@ Makefile: ../profile_Excel_By_Qt.pro ../../../../QT/QtBase/5.14.2/mingw73_32/mks
 ../../../../QT/QtBase/5.14.2/mingw73_32/lib/Qt5Gui.prl:
 ../../../../QT/QtBase/5.14.2/mingw73_32/lib/Qt5Core.prl:
 ../../../../QT/QtBase/5.14.2/mingw73_32/lib/qtmain.prl:
-.qmake.stash:
 ../../../../QT/QtBase/5.14.2/mingw73_32/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

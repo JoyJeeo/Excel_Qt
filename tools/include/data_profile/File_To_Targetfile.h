@@ -6,6 +6,7 @@
 #include <vector>
 #include <QString>
 #include <QDebug>
+#include "Make_Ration_File.h"
 using namespace std;
 //#define endl '\n'
 
@@ -31,6 +32,8 @@ public:
 
     // 不同时刻的同一个No比较
     const string time_task(const QStringList& dir_paths);
+    // 生成ration的task【耦合】 // 这个任务必须在time_task任务执行完成，使用完target文件后，才应该可以被调用
+    const string ration_task();
 
 private:
     // 动态获取输入文件的绝对路径
@@ -64,6 +67,10 @@ private:
     void set_timc_file_path(const string& path) noexcept;
     // 查看timc文件的路径
     string get_timc_file_path() noexcept;
+    // 修改ration文件的路径
+    void set_ration_file_path(const string& path) noexcept;
+    // 查看ration文件的路径
+    string get_ration_file_path() noexcept;
 
     // 处理输入的源文件，获取目标数据后，读入内存中
     vector<vector<string>>
@@ -115,6 +122,8 @@ private:
                          bool& flage,QString time_name);
     // 分析时刻文件夹的时刻名称
     QString profile_time_file_name(const string& dir_path);
+    // 分析timc文件内容，生成ration文件数据的对象
+    Make_Ration_File ration_maker;
 
 
 // 项目所在的文件路径
@@ -126,10 +135,13 @@ string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
 // 合并的输出文件的产生位置
 string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
 // 时刻文件的合并文件
-string TIME_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\TIME.csv";
+string TIME_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\timc.csv";
+// 变动率数据文件的文件位置
+string RATION_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\ration.csv";
 
 // 中间文件存储的文件夹名称
 const QString time_file_name = "timc.csv";
+const QString ration_file_name = "ration.csv";
 
 // 有效数据开始的起始位置
 const string target_str = "SITE_NUM";

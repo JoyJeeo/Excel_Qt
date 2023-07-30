@@ -5,6 +5,7 @@ release/Button_Time_Compare.o
 release/main.o
 release/Attri_Unit_UL.o
 release/File_To_Targetfile.o
+release/Make_Ration_File.o
 release/Site_Part.o
 release/Targetfile_Valid_Data.o
 release/Unit_Ul.o

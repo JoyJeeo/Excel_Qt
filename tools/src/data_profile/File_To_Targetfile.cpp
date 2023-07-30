@@ -9,6 +9,7 @@
 #include <QDir>
 
 
+
 File_To_Targetfile::File_To_Targetfile()
 {
     /*
@@ -116,15 +117,45 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         save_tackle_datas(ofs,time_datas);
         ofs.close();
 
-        // 生成ration.csv文件
-//        make_ration_file(time_datas);
+        // 生成ration.csv文件 // 【这里可以使用一个类，专门用来分析数据文件，将分析好的文件，交给当前这个类，进行数据反转，专门生成target_file文件，进行解耦】
+        vector<vector<string>> ration_datas = ration_maker.make_ration_file(time_datas);
+//        for(int i = 0;i<ration_datas.size();i++)
+//        {
+//            for(int j = 0;j < ration_datas[i].size();j++)
+//            {
+//                cout << ration_datas[i][j] << " ";
+//            }
+//            cout<<endl;
+//        }
+        QString ration_file_path = profile_output_file_path(ration_file_name.toStdString());
+        string str_ration_file_path = qstring_to_string(ration_file_path);
+        set_ration_file_path(str_ration_file_path);
+        // 将数据写入文件中
+        ofs = output_file_open(RATION_FILE_PATH);
+        // 将处理好的数据输出到target_file中
+        save_tackle_datas(ofs,ration_datas);
+        ofs.close();
 
-        // 调用total函数，生成翻转源文件的target_file文件【生成target_file】
+        // 调用total函数，生成timc的翻转源文件的target_file文件【生成target_file】
         return total_task(TIME_FILE_PATH,"target_file.csv");
 
 
     } catch (...) {
         qDebug() << "File_To_Targetfile::time_task";
+        throw;
+    }
+}
+
+const string File_To_Targetfile::ration_task()
+{
+    /*
+        功能：
+            将已经生成好的ration文件，翻转生成ration_target文件并返回地址
+    */
+    try {
+        return total_task(RATION_FILE_PATH,"ration_target_file.csv");
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::ration_task";
         throw;
     }
 }
@@ -806,6 +837,16 @@ void File_To_Targetfile::set_timc_file_path(const string &path) noexcept
 string File_To_Targetfile::get_timc_file_path() noexcept
 {
     return TIME_FILE_PATH;
+}
+
+void File_To_Targetfile::set_ration_file_path(const string &path) noexcept
+{
+    RATION_FILE_PATH = path;
+}
+
+string File_To_Targetfile::get_ration_file_path() noexcept
+{
+    return RATION_FILE_PATH;
 }
 
 void File_To_Targetfile::set_input_file_path(const string &path) noexcept

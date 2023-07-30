@@ -38,6 +38,8 @@ private:
     // 初始化chart
     Chart* initChart(const string& attri, // 指定为某个属性创建chart
                      const QMap<int,QVector<QPointF>>& point_vecs, // 设置创建chart需要的点组数据
+                     const vector<int>& scatter_sites,
+                     int site_max_parts,
                      double axisX_k = 1, // 设置X轴的缩放大小
                      double axisY_k = 0.01 // 设置Y轴的缩放大小
                     );
@@ -58,35 +60,42 @@ private:
                                             const pair<double,double>& Y_XI);
 
     // 制作QList<QList<QPointF>>数据列表，[为初始化chart提供数据接口数据]
-    QMap<int,QVector<QPointF>> get_matrix_pointF(map<int,vector<double>>&);
+    QMap<int,QVector<QPointF>> get_matrix_pointF(map<int,vector<double>>& site_part_vals,
+                                                 const vector<int>& scatter_sites,
+                                                 int site_max_parts);
 
     // 获取被处理的input文件名
     const string tackel_file_name();
-    // 记录scatter_sites，由内部维护
-    void profile_scatter_sites();
-    // 记录芯片的最大轮次
-    void profile_site_max_parts();
-    // 记录芯片列表数据
-    void profile_site_list();
+//    // 记录scatter_sites，由内部维护
+//    void profile_scatter_sites();
+//    // 记录芯片的最大轮次
+//    void profile_site_max_parts();
+//    // 记录芯片列表数据
+//    void profile_site_list();
 
     // 【功能三】
-    // 记录scatter_time_sites，由内部维护
-    void profile_scatter_time_sites();
-    // 记录芯片的最大轮次
-    void profile_time_site_max_parts();
+//     记录scatter_time_sites，由内部维护
+//    void profile_scatter_time_sites();
+//    // 记录芯片的最大轮次
+//    void profile_time_site_max_parts();
     // 循环绘制折线图chart
     void time_while_draw(int row_obj_nums = 2);
     // 制作QList<QList<QPointF>>数据列表，[为初始化chart提供数据接口数据]
-    QMap<string,QVector<QPointF>> get_time_matrix_pointF(map<string,vector<double>>& time_datas);
+    QMap<string,QVector<QPointF>> get_time_matrix_pointF(map<string,vector<double>>& time_datas,
+                                                         const vector<string>& scatter_time_sites,
+                                                         int time_site_max_parts);
     // 初始化chart
     Chart* time_initChart(const string& attri, // 指定为某个属性创建chart
-                     const QMap<string,QVector<QPointF>>& time_points, // 设置创建chart需要的点组数据
+                    const QMap<string,QVector<QPointF>>& time_points, // 设置创建chart需要的点组数据
+                    Targetfile_Valid_Data* Datas,
+                      const vector<string>& scatter_time_sites,
+                      int time_site_max_parts,
                      double axisX_k = 1, // 设置X轴的缩放大小
                      double axisY_k = 0.01 // 设置Y轴的缩放大小
                     );
-    QString profile_time_attri_unit(const string& attri);
+    QString profile_time_attri_unit(const string& attri,Targetfile_Valid_Data* Datas);
     // 获取数据线的最值线数据
-    pair<double,double> profile_time_data_series_XI(const string& attri,double zoom = 0.05);
+    pair<double,double> profile_time_data_series_XI(const string& attri,Targetfile_Valid_Data* Datas,double zoom = 0.05);
     // 获取缩放后的最值数据【基本通用】
     double profile_time_zoom_dist_XI(const pair<double,double>& time_data_XI);
     // 获取纵坐标的最值数据
@@ -101,7 +110,9 @@ private:
     void clear_pic_dir(const QString& pic_dir);
 
     // test
-    void test_for(QMap<int,QVector<QPointF>>& site_part_vals);
+    void test_for(QMap<int,QVector<QPointF>>& site_part_vals,
+                  const vector<int>& scatter_sites,
+                  int site_max_parts);
 
 
     // 【这几个对象，必须存在于窗体这个类内定义，而不是其他类内，因为这是专属于这个窗体的功能，而不是其他窗体的功能】
@@ -110,15 +121,18 @@ private:
     Targetfile_Valid_Data* datas; // 目标文件读取分析管理器
 
     // 【功能三】
-    vector<string> scatter_time_sites;
-    int time_site_max_parts;
+//    vector<string> scatter_time_sites;
+//    int time_site_max_parts;
+    // 专门获取ration文件内容的target文件分析对象
+    Targetfile_Valid_Data* ration_datas;
 
+    // 【不应该出现在窗体中，因为一个窗体中，可能会有很多不同的chart，而不唯一】
     // 所有芯片的site
-    vector<int> scatter_sites;
+//    vector<int> scatter_sites;
     // 芯片列表 site_list
-    vector<int> site_list;
+//    vector<int> site_list;
     // 芯片的最大轮次，其一定为该类的属性，但不一定是画图中的横坐标
-    int site_max_parts;
+//    int site_max_parts;
 
     string src_file_name;
 
