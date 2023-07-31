@@ -27,7 +27,8 @@ void Button_All_Attri::total_task()
     try {
         QFont font = QFont("Consolas");
 //        font.setPixelSize(11);
-        font.setPixelSize(15);
+        font.setPixelSize(18);
+//        font.setBold(true);
         this->setText("Show all attributes");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
@@ -95,7 +96,7 @@ void Button_All_Attri::construct_widgets_file_paths()
         // 设置label字体
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);
-        font.setPixelSize(14);
+        font.setPixelSize(20);
         font.setBold(true);
         QPalette pe; // 调色板
         pe.setColor(QPalette::WindowText,QColor(91,155,213));

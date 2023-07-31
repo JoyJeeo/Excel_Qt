@@ -549,7 +549,7 @@ all: release-all debug-all  FORCE
 clean: release-clean debug-clean  FORCE
 distclean: release-distclean debug-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) D:\MyDesktop\work\Dev_Excel_Qt_branch\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) E:\branch_Dev_Excel_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
 
 release-mocclean:
 	$(MAKE) -f $(MAKEFILE).Release mocclean

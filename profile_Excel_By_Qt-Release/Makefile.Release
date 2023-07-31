@@ -16,7 +16,7 @@ CXX           = g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -O2 -Wall -Wextra -Wextra -ffunction-sections -fdata-sections $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextra -ffunction-sections -fdata-sections -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\..\Dev_Excel_Qt_branch -I. -IC:\QT\Qt5.14.2_MinGW_static\include -IC:\QT\Qt5.14.2_MinGW_static\include\QtCharts -IC:\QT\Qt5.14.2_MinGW_static\include\QtWidgets -IC:\QT\Qt5.14.2_MinGW_static\include\QtGui -IC:\QT\Qt5.14.2_MinGW_static\include\QtCore -Irelease -I. -IC:\QT\Qt5.14.2_MinGW_static\mkspecs\win32-g++ 
+INCPATH       = -I..\..\branch_Dev_Excel_Qt -I. -IC:\QT\Qt5.14.2_MinGW_static\include -IC:\QT\Qt5.14.2_MinGW_static\include\QtCharts -IC:\QT\Qt5.14.2_MinGW_static\include\QtWidgets -IC:\QT\Qt5.14.2_MinGW_static\include\QtGui -IC:\QT\Qt5.14.2_MinGW_static\include\QtCore -Irelease -I. -IC:\QT\Qt5.14.2_MinGW_static\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -static -Wl,-s -Wl,--gc-sections -Wl,-subsystem,windows -mthreads
 LIBS        =        C:\QT\Qt5.14.2_MinGW_static\plugins\styles\libqwindowsvistastyle.a C:\QT\Qt5.14.2_MinGW_static\plugins\platforms\libqwindows.a -lwinspool -lshlwapi -lwtsapi32 C:\QT\Qt5.14.2_MinGW_static\lib\libQt5EventDispatcherSupport.a C:\QT\Qt5.14.2_MinGW_static\lib\libQt5FontDatabaseSupport.a C:\QT\Qt5.14.2_MinGW_static\lib\libqtfreetype.a -ldwrite -ld2d1 C:\QT\Qt5.14.2_MinGW_static\lib\libQt5ThemeSupport.a C:\QT\Qt5.14.2_MinGW_static\lib\libQt5AccessibilitySupport.a C:\QT\Qt5.14.2_MinGW_static\lib\libQt5WindowsUIAutomationSupport.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqgif.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqicns.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqico.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqjpeg.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqtga.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqtiff.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqwbmp.a C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\libqwebp.a C:\QT\Qt5.14.2_MinGW_static\lib\libQt5Charts.a C:\QT\Qt5.14.2_MinGW_static\lib\libQt5Widgets.a -luxtheme -ldwmapi C:\QT\Qt5.14.2_MinGW_static\lib\libQt5Gui.a -ld3d11 -ldxgi -ldxguid C:\QT\Qt5.14.2_MinGW_static\lib\libqtlibpng.a C:\QT\Qt5.14.2_MinGW_static\lib\libqtharfbuzz.a -lcomdlg32 -loleaut32 -limm32 -lglu32 -lopengl32 -lgdi32 C:\QT\Qt5.14.2_MinGW_static\lib\libQt5Core.a -lmpr -luserenv -lversion C:\QT\Qt5.14.2_MinGW_static\lib\libqtpcre2.a -lnetapi32 -lws2_32 -ladvapi32 -lkernel32 -lole32 -lshell32 -luuid -luser32 -lwinmm release\profile_Excel_By_Qt_resource_res.o  -lglu32 -lopengl32 -lgdi32 -luser32 -lmingw32 C:\QT\Qt5.14.2_MinGW_static\lib\libqtmain.a -lshell32 
@@ -63,7 +63,7 @@ SOURCES       = ..\Main_Window.cpp \
 		..\tools\src\data_profile\Unit_Ul.cpp \
 		..\tools\src\draw_picture\Chart.cpp \
 		..\tools\src\draw_picture\My_Chart_View.cpp \
-		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
+		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
 		release\moc_Main_Window.cpp \
 		release\moc_Button_All_Attri.cpp \
 		release\moc_Button_Merge_File.cpp \
@@ -142,14 +142,14 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\..\profile_Excel_By_Qt.pro C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\spec_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\qdevice.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\device_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\sanitize.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\gcc-base.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\g++-base.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\angle.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\windows_vulkan_sdk.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\windows-vulkan.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\g++-win32.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\windows-desktop.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\qconfig.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axbase.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axbase_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axcontainer.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axcontainer_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axserver.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axserver_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bluetooth.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bluetooth_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bodymovin_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bootstrap_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_charts.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_charts_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_concurrent.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_concurrent_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_core.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_core_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_dbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_dbus_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_edid_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_fb_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gamepad.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gamepad_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gui.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gui_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_help.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_help_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimedia.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimedia_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_network.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_network_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_networkauth.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_networkauth_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_nfc.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_nfc_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_opengl.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_opengl_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_openglextensions.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_openglextensions_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_printsupport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_printsupport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_purchasing.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_purchasing_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmldebug_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlmodels.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmltest.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmltest_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3d.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3d_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3drender.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3drender_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dutils.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickparticles_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickshapes_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickwidgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_remoteobjects.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_repparser.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_repparser_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_script.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_script_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scripttools.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scripttools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scxml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scxml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sensors.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sensors_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialbus_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sql.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sql_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_svg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_svg_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_testlib.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_testlib_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_texttospeech.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_texttospeech_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_theme_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uiplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uitools.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uitools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_widgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_widgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_winextras.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_winextras_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_zlib_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_assimp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_dsengine.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qdirect2d.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qgenericbearer.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qgif.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qicns.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qico.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qjpeg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qminimal.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_debugger.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_inspector.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_local.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_messages.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_native.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_nativedebugger.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_preview.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_profiler.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_quickprofiler.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_server.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_tcp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qoffscreen.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsqlite.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsqlodbc.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsvg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsvgicon.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtaudio_windows.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtexttospeech_sapi.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtga.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtiff.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtmedia_audioengine.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtmultimedia_m3u.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtpassthrucanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtpeakcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_plugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_shakeplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensors_generic.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsysteccanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qttinycanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtuiotouchplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvectorcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_hangul.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_openwnn.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_pinyin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_tcime.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_thai.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboardplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwbmp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwebp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwindows.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwindowsvistastyle.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qxdgdesktopportal.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_uip.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_windowsprintersupport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_xinputgamepad.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt_functions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\win32-g++\qmake.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\spec_post.prf .qmake.stash C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exclusive_builds.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\toolchain.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\default_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\default_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resolve_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exclusive_builds_post.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\default_post.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\build_pass.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resources_functions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qtquickcompiler.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\precompile_header.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\warn_on.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\gc_binaries.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resources.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\moc.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\opengl.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\uic.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qmake_use.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\file_copies.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\windows.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\testcase_targets.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exceptions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\yacc.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro C:\QT\Qt5.14.2_MinGW_static\plugins\styles\qwindowsvistastyle.prl C:\QT\Qt5.14.2_MinGW_static\plugins\platforms\qwindows.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qgif.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qicns.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qico.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qjpeg.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qtga.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qtiff.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qwbmp.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qwebp.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Charts.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Widgets.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Gui.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Core.prl C:\QT\Qt5.14.2_MinGW_static\lib\qtmain.prl      C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\data\dummy.cpp ..\Main_Window.h ..\actions\buttons\include\Button_All_Attri.h ..\actions\buttons\include\Button_Merge_File.h ..\actions\buttons\include\Button_Time_Compare.h ..\tools\include\Tools_Header_Proxy_01.h ..\tools\include\data_profile\Attri_Unit_Ul.h ..\tools\include\data_profile\File_To_Targetfile.h ..\tools\include\data_profile\Make_Ration_File.h ..\tools\include\data_profile\Site_Part.h ..\tools\include\data_profile\Targetfile_Valid_Data.h ..\tools\include\data_profile\Unit_Ul.h ..\tools\include\draw_picture\Chart.h ..\tools\include\draw_picture\My_Chart_View.h ..\widgets\Widgets_Header_Proxy_01.h ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h  ..\Main_Window.cpp ..\actions\buttons\src\Button_All_Attri.cpp ..\actions\buttons\src\Button_Merge_File.cpp ..\actions\buttons\src\Button_Time_Compare.cpp ..\main.cpp ..\tools\src\data_profile\Attri_Unit_UL.cpp ..\tools\src\data_profile\File_To_Targetfile.cpp ..\tools\src\data_profile\Make_Ration_File.cpp ..\tools\src\data_profile\Site_Part.cpp ..\tools\src\data_profile\Targetfile_Valid_Data.cpp ..\tools\src\data_profile\Unit_Ul.cpp ..\tools\src\draw_picture\Chart.cpp ..\tools\src\draw_picture\My_Chart_View.cpp ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp ..\Main_Window.ui    
+	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\profile_Excel_By_Qt.pro C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\spec_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\qdevice.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\device_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\sanitize.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\gcc-base.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\g++-base.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\angle.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\windows_vulkan_sdk.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\windows-vulkan.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\g++-win32.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\common\windows-desktop.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\qconfig.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axbase.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axbase_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axcontainer.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axcontainer_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axserver.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_axserver_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bluetooth.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bluetooth_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bodymovin_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_bootstrap_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_charts.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_charts_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_concurrent.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_concurrent_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_core.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_core_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_dbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_dbus_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_edid_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_fb_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gamepad.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gamepad_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gui.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_gui_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_help.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_help_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimedia.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimedia_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_network.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_network_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_networkauth.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_networkauth_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_nfc.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_nfc_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_opengl.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_opengl_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_openglextensions.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_openglextensions_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_printsupport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_printsupport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_purchasing.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_purchasing_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmldebug_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlmodels.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmltest.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmltest_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3d.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3d_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3drender.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3drender_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dutils.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quick_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickparticles_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickshapes_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickwidgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_remoteobjects.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_repparser.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_repparser_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_script.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_script_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scripttools.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scripttools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scxml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_scxml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sensors.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sensors_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialbus_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_serialport_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sql.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_sql_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_svg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_svg_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_testlib.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_testlib_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_texttospeech.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_texttospeech_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_theme_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uiplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uitools.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_uitools_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_widgets.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_widgets_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_winextras.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_winextras_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xml.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xml_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_lib_zlib_private.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_assimp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_dsengine.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qdirect2d.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qgenericbearer.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qgif.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qicns.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qico.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qjpeg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qminimal.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_debugger.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_inspector.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_local.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_messages.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_native.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_nativedebugger.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_preview.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_profiler.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_quickprofiler.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_server.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qmldbg_tcp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qoffscreen.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsqlite.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsqlodbc.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsvg.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qsvgicon.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtaudio_windows.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtexttospeech_sapi.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtga.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtiff.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtmedia_audioengine.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtmultimedia_m3u.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtpassthrucanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtpeakcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_plugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensorgestures_shakeplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsensors_generic.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtsysteccanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qttinycanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtuiotouchplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvectorcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualcanbus.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_hangul.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_openwnn.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_pinyin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_tcime.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboard_thai.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qtvirtualkeyboardplugin.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwbmp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwebp.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwindows.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qwindowsvistastyle.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_qxdgdesktopportal.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_uip.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_windowsprintersupport.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\modules\qt_plugin_xinputgamepad.pri C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt_functions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\win32-g++\qmake.conf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\spec_post.prf .qmake.stash C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exclusive_builds.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\toolchain.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\default_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\default_pre.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resolve_config.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exclusive_builds_post.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\default_post.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\build_pass.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resources_functions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qtquickcompiler.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\precompile_header.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\warn_on.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qt.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\gc_binaries.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\resources.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\moc.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\opengl.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\uic.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\qmake_use.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\file_copies.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\win32\windows.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\testcase_targets.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\exceptions.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\yacc.prf C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro C:\QT\Qt5.14.2_MinGW_static\plugins\styles\qwindowsvistastyle.prl C:\QT\Qt5.14.2_MinGW_static\plugins\platforms\qwindows.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qgif.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qicns.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qico.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qjpeg.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qtga.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qtiff.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qwbmp.prl C:\QT\Qt5.14.2_MinGW_static\plugins\imageformats\qwebp.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Charts.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Widgets.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Gui.prl C:\QT\Qt5.14.2_MinGW_static\lib\Qt5Core.prl C:\QT\Qt5.14.2_MinGW_static\lib\qtmain.prl      C:\QT\Qt5.14.2_MinGW_static\mkspecs\features\data\dummy.cpp ..\Main_Window.h ..\actions\buttons\include\Button_All_Attri.h ..\actions\buttons\include\Button_Merge_File.h ..\actions\buttons\include\Button_Time_Compare.h ..\tools\include\Tools_Header_Proxy_01.h ..\tools\include\data_profile\Attri_Unit_Ul.h ..\tools\include\data_profile\File_To_Targetfile.h ..\tools\include\data_profile\Make_Ration_File.h ..\tools\include\data_profile\Site_Part.h ..\tools\include\data_profile\Targetfile_Valid_Data.h ..\tools\include\data_profile\Unit_Ul.h ..\tools\include\draw_picture\Chart.h ..\tools\include\draw_picture\My_Chart_View.h ..\widgets\Widgets_Header_Proxy_01.h ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h  ..\Main_Window.cpp ..\actions\buttons\src\Button_All_Attri.cpp ..\actions\buttons\src\Button_Merge_File.cpp ..\actions\buttons\src\Button_Time_Compare.cpp ..\main.cpp ..\tools\src\data_profile\Attri_Unit_UL.cpp ..\tools\src\data_profile\File_To_Targetfile.cpp ..\tools\src\data_profile\Make_Ration_File.cpp ..\tools\src\data_profile\Site_Part.cpp ..\tools\src\data_profile\Targetfile_Valid_Data.cpp ..\tools\src\data_profile\Unit_Ul.cpp ..\tools\src\draw_picture\Chart.cpp ..\tools\src\draw_picture\My_Chart_View.cpp ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp ..\Main_Window.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\Main_Window.o release\Button_All_Attri.o release\Button_Merge_File.o release\Button_Time_Compare.o release\main.o release\Attri_Unit_UL.o release\File_To_Targetfile.o release\Make_Ration_File.o release\Site_Part.o release\Targetfile_Valid_Data.o release\Unit_Ul.o release\Chart.o release\My_Chart_View.o release\Widget_All_Attri_Show.o release\profile_excel_by_qt_plugin_import.o release\moc_Main_Window.o release\moc_Button_All_Attri.o release\moc_Button_Merge_File.o release\moc_Button_Time_Compare.o release\moc_Chart.o release\moc_Widget_All_Attri_Show.o
 	-$(DEL_FILE) release\profile_Excel_By_Qt_resource_res.o
 
 distclean: clean 
-	-$(DEL_FILE) D:\MyDesktop\work\Dev_Excel_Qt_branch\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) E:\branch_Dev_Excel_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Release
 
@@ -289,7 +289,7 @@ release/moc_Main_Window.cpp: ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o release\moc_Main_Window.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o release\moc_Main_Window.cpp
 
 release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -402,20 +402,20 @@ release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h 
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -458,10 +458,10 @@ release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h 
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o release\moc_Button_All_Attri.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o release\moc_Button_All_Attri.cpp
 
 release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -574,20 +574,20 @@ release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -630,10 +630,10 @@ release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o release\moc_Button_Merge_File.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o release\moc_Button_Merge_File.cpp
 
 release/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Compare.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -746,20 +746,20 @@ release/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Comp
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -802,10 +802,10 @@ release/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Comp
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Time_Compare.h -o release\moc_Button_Time_Compare.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Time_Compare.h -o release\moc_Button_Time_Compare.cpp
 
 release/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
@@ -958,7 +958,7 @@ release/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		../tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o release\moc_Chart.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o release\moc_Chart.cpp
 
 release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
@@ -1065,17 +1065,17 @@ release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1119,10 +1119,10 @@ release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		release/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -ID:/MyDesktop/work/Dev_Excel_Qt_branch -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o release\moc_Widget_All_Attri_Show.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/release/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o release\moc_Widget_All_Attri_Show.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1246,20 +1246,20 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1302,7 +1302,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -1413,20 +1413,20 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1469,7 +1469,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -1580,20 +1580,20 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1636,7 +1636,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h
 	C:\QT\Qt5.14.2_MinGW_static\bin\uic.exe ..\Main_Window.ui -o ui_Main_Window.h
 
 compiler_yacc_decl_make_all:
@@ -1760,90 +1760,10 @@ release/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtabwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		ui_Main_Window.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QVariant \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcoreapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdesktopwidget.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qguiapplication.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qinputmethod.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QMenuBar \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmenubar.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmenu.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qaction.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qactiongroup.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QStatusBar \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qstatusbar.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qboxlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayoutitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../actions/buttons/include/Button_All_Attri.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractbutton.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qabstractaxis.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartGlobal \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartglobal.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QtGlobal \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QPen \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qpen.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QFont \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qabstractseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QObject \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChart \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchart.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLegend \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlegend.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QGraphicsWidget \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicswidget.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicslayoutitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsitem.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/QBrush \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QMargins \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QGraphicsView \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsview.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qpainter.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtextoption.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsscene.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLineSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlineseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QXYSeries \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qxyseries.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QHBoxLayout \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
-		../actions/buttons/include/Button_Merge_File.h \
-		../actions/buttons/include/Button_Time_Compare.h
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Main_Window.o ..\Main_Window.cpp
 
-release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actions/buttons/include/Button_All_Attri.h \
+release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -1954,20 +1874,20 @@ release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actio
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2010,7 +1930,7 @@ release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actio
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
@@ -2021,7 +1941,7 @@ release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actio
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Button_All_Attri.o ..\actions\buttons\src\Button_All_Attri.cpp
 
-release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../actions/buttons/include/Button_Merge_File.h \
+release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -2132,20 +2052,20 @@ release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../act
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2188,7 +2108,7 @@ release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../act
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
@@ -2199,7 +2119,7 @@ release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../act
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Button_Merge_File.o ..\actions\buttons\src\Button_Merge_File.cpp
 
-release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../actions/buttons/include/Button_Time_Compare.h \
+release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Time_Compare.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -2310,20 +2230,20 @@ release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ..
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../widgets/Widgets_Header_Proxy_01.h \
-		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2366,7 +2286,7 @@ release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ..
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
@@ -2514,8 +2434,8 @@ release/main.o: ../main.cpp ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\main.cpp
 
-release/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../tools/include/data_profile/Attri_Unit_UL.h \
-		../tools/include/data_profile/Unit_Ul.h \
+release/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_UL.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -2583,7 +2503,7 @@ release/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../tools/in
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Attri_Unit_UL.o ..\tools\src\data_profile\Attri_Unit_UL.cpp
 
-release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp ../tools/include/data_profile/File_To_Targetfile.h \
+release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstring.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qchar.h \
@@ -2650,7 +2570,7 @@ release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp .
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QCoreApplication \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcoreapplication.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h \
@@ -2703,7 +2623,7 @@ release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp .
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDir
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\File_To_Targetfile.o ..\tools\src\data_profile\File_To_Targetfile.cpp
 
-release/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../tools/include/data_profile/Make_Ration_File.h \
+release/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -2771,7 +2691,7 @@ release/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../to
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Make_Ration_File.o ..\tools\src\data_profile\Make_Ration_File.cpp
 
-release/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../tools/include/data_profile/SITE_PART.h \
+release/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -2839,8 +2759,8 @@ release/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../tools/include/da
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Site_Part.o ..\tools\src\data_profile\Site_Part.cpp
 
-release/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.cpp ../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+release/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -2906,11 +2826,11 @@ release/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Targetfile_Valid_Data.o ..\tools\src\data_profile\Targetfile_Valid_Data.cpp
 
-release/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../tools/include/data_profile/Unit_Ul.h \
+release/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -2978,7 +2898,7 @@ release/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../tools/include/data_p
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Unit_Ul.o ..\tools\src\data_profile\Unit_Ul.cpp
 
-release/Chart.o: ../tools/src/draw_picture/Chart.cpp ../tools/include/draw_picture/chart.h \
+release/Chart.o: ../tools/src/draw_picture/Chart.cpp ../../../branch_Dev_Excel_Qt/tools/include/draw_picture/chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3126,13 +3046,13 @@ release/Chart.o: ../tools/src/draw_picture/Chart.cpp ../tools/include/draw_pictu
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLegendMarker \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlegendmarker.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Chart.o ..\tools\src\draw_picture\Chart.cpp
 
-release/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../tools/include/draw_picture/My_Chart_View.h \
+release/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3270,7 +3190,7 @@ release/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../tools/in
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\My_Chart_View.o ..\tools\src\draw_picture\My_Chart_View.cpp
 
-release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp ../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp ../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3375,17 +3295,17 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../tools/include/Tools_Header_Proxy_01.h \
-		../tools/include/data_profile/Targetfile_Valid_Data.h \
-		../tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../tools/include/data_profile/Attri_Unit_Ul.h \
-		../tools/include/data_profile/Unit_Ul.h \
-		../tools/include/data_profile/SITE_PART.h \
-		../tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../tools/include/data_profile/Make_Ration_File.h \
-		../tools/include/draw_picture/Chart.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3429,7 +3349,7 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qapplication.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcoreapplication.h \
@@ -3445,8 +3365,8 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Widget_All_Attri_Show.o ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp
 
-release/profile_excel_by_qt_plugin_import.o: D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profile_excel_by_qt_plugin_import.o D:/MyDesktop/work/Dev_Excel_Qt_branch/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
+release/profile_excel_by_qt_plugin_import.o: E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profile_excel_by_qt_plugin_import.o E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
 
 release/moc_Main_Window.o: release/moc_Main_Window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_Main_Window.o release\moc_Main_Window.cpp
