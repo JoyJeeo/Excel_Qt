@@ -635,11 +635,34 @@ void File_To_Targetfile::merge_files_solo_data (const QStringList& file_paths)
             size_t all_array_end = all_arrary.size() - 1;
             if(counter != 1)
             {
-                // 输入的数据需要补0，长度不够要求
-                while(all_arrary[all_array_end].size() != cols_num) all_arrary[all_array_end].push_back(""); // 补0
-                // 将原数据的part_id与指定文件的part进行对应
-                all_arrary[all_array_end][1] = to_string(counter);
-                merge_datas.push_back(all_arrary[all_array_end]); // 将结果直接插入
+                // 将以下的数据，全部插入【不只是单独数据插入】
+                // 找到targe_data_index往下为空的行，找到数据的起始位置start_data_index
+                bool start_data_flage = false;
+                for(size_t i = targe_data_index;i <= all_array_end;i++)
+                {
+                    // 【适配所有种情况的数据插入合并】
+                    // 找到了起始位置i后的下一位，开始存储数据
+                    if(start_data_flage)
+                    {
+                        // 输入的数据需要补0，长度不够要求
+                        while(all_arrary[i].size() != cols_num) all_arrary[i].push_back(""); // 补0
+                        // 将原数据的part_id与指定文件的part进行对应
+                        all_arrary[i][1] = to_string(counter);
+                        merge_datas.push_back(all_arrary[i]); // 将结果直接插入
+                        continue; // 防止多次判断
+                    }
+                    // 判断找到数据区域的起始i
+                    if(!start_data_flage && all_arrary[i].size() == 0)
+                    {
+                        start_data_flage = true;
+                    }
+                }
+                // 【求稳定性时，只需要直接插入1个数据即可】
+//                // 输入的数据需要补0，长度不够要求
+//                while(all_arrary[all_array_end].size() != cols_num) all_arrary[all_array_end].push_back(""); // 补0
+//                // 将原数据的part_id与指定文件的part进行对应
+//                all_arrary[all_array_end][1] = to_string(counter);
+//                merge_datas.push_back(all_arrary[all_array_end]); // 将结果直接插入
                 continue;
             }
 

@@ -1,0 +1,57 @@
+STS8200 StationA
+Date:2023-8-2
+Tester ID:
+User:admin
+Program:D:\TestProgram\V0021\Siyuan\V2201A01_FT_STS8200_4_A1p00_20230728\V2201A01_FT_STS8200_4_A1p00.pgs
+Handler: vhandler.dll
+Site: All Sites
+Lot Id:
+
+Average Test Time(ms): 1694
+Idle Time: 0 day 0:2:55
+Beginning Time: 2023-8-2 15:39:43
+Ending Time: 2023-8-2 15:42:40
+Total Testing Time: 0 day 0:0:1
+
+Total: 2
+Pass: 0   0.00%
+Fail: 2   100.00%
+SBin[1]   Pass__Default                   0     0.00%   1
+SBin[2]   Fail__Default                   0     0.00%   2
+SBin[5]   SiteCheck__AllFail              0     0.00%   5
+SBin[7]   Leakage_out_h__AllFail          0     0.00%   6
+SBin[11]  Absmax_vin__AllFail             0     0.00%   8
+SBin[12]  POR_rising__AllFail             0     0.00%   6
+SBin[13]  Ignd100__AllFail                0     0.00%   6
+SBin[17]  Vout_5__AllFail                 0     0.00%   6
+SBin[14]  Ishd__AllFail                   2   100.00%   6
+SBin[16]  Vfb__AllFail                    0     0.00%   6
+SBin[19]  Ifb__AllFail                    0     0.00%   6
+SBin[15]  Ilimit__AllFail                 0     0.00%   6
+SBin[18]  Vdropout_5_50mA__AllFail        0     0.00%   6
+SBin[20]  Vline_regulation_5__AllFail        0     0.00%   6
+SBin[23]  Ven_low__AllFail                0     0.00%   6
+SBin[24]  Ien__AllFail                    0     0.00%   6
+SBin[25]  PG_rising__AllFail              0     0.00%   6
+SBin[26]  PG_low__AllFail                 0     0.00%   6
+SBin[27]  PG_leakage__AllFail             0     0.00%   6
+SBin[28]  PGDL_charg__AllFail             0     0.00%   6
+SBin[29]  PGDL_rising__AllFail            0     0.00%   6
+SBin[30]  PGDL_falling__AllFail           0     0.00%   6
+SBin[31]  PG_reaction__AllFail            0     0.00%   6
+SBin[22]  Tss__AllFail                    0     0.00%   6
+SBin[21]  Vload_regulation_5__AllFail        0     0.00%   6
+SBin[32]  Post_Ignd100__AllFail           0     0.00%   8
+SBin[33]  Post_Ishd__AllFail              0     0.00%   8
+SBin[8]   Post_Leakage_out_h__AllFail        0     0.00%   8
+SBin[9]   Post_Continuity_out__AllFail        0     0.00%   8
+
+ 
+ 
+SITE_NUM,PART_ID,PASSFG,SOFT_BIN,T_TIME,TEST_NUM,Continuity_out,Continuity_vin,Continuity_en,Continuity_pg,Continuity_pgdl,Continuity_fb,Leakage_out_h,Leakage_out_l,Leakage_vin_h,Leakage_en_h,Leakage_en_l,Leakage_pg_h,Leakage_pg_l,Leakage_pgdl_h,Leakage_pgdl_l,Leakage_fb_h,Leakage_fb_l,Ignd100,Ignd_30mA,Ignd_300mA,Ishd,Vfb,Vout_5,Ifb,Ilimit,Vdropout_5_50mA,Vdropout_5_300mA,Vline_regulation_5,Vout_6V,Vout_12V,Vout_20V,Vout_30V,Vout_40V,Vload_regulation_5,Vout_5mA,Vout_300mA,Tss,Ven_low,Ven_high,Ien,PG_rising,PG_hys,PG_low,PG_leakage,PGDL_charg,PGDL_rising,PGDL_falling,PG_reaction,Post_Ishd,Post_Ignd100,Post_Ignd_30mA,Post_Ignd_300mA1,Post_Leakage_out_h,Post_Leakage_out_l,Post_Leakage_vin_h,Post_Leakage_en_h,Post_Leakage_en_l,Post_Leakage_pg_h,Post_Leakage_pg_l,Post_Leakage_pgdl_h,Post_Leakage_pgdl_l,Post_Leakage_fb_h,Post_Leakage_fb_l,Post_Continuity_out,Post_Continuity_vin,Post_Continuity_en,Post_Continuity_pg,Post_Continuity_pgdl,Post_Continuity_fb,
+Unit,,,,ms,,V,V,V,V,V,V,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,V,V,uA,A,mV,mV,mV,V,V,V,V,V,mV,V,V,mS,v,v,uA,%,%,V,uA,uA,V,V,om,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,uA,V,V,V,V,V,V,
+LimitL,,,,,,0.100,-1.000,-1.000,-1.000,-1.000,-1.000,-10.000,-5.000,-10.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,,,,,1.2230,3.2280,,0.360,127.000,250.000,,,,,,,,,,0.7030,0.350,0.640,,92.000,3.600,0.1210,,7.800,1.4900,0.2770,,,,,,-10.000,-5.000,-10.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,-5.000,0.100,-1.000,-1.000,-1.000,-1.000,-1.000,
+LimitU,,,,,,1.000,-0.100,-0.100,-0.100,-0.100,-0.100,10.000,5.000,10.000,5.000,5.000,5.000,5.000,5.000,5.000,5.000,5.000,16.000,22.000,95.000,1.000,1.2730,3.3570,1.100,0.480,295.000,546.000,8.1000,,,,,,10.0000,,,1.0170,0.890,1.450,0.500,94.000,6.700,0.3480,0.0120,14.100,1.9970,0.8110,2.000,1.000,16.000,22.000,95.000,10.000,5.000,10.000,5.000,5.000,5.000,5.000,5.000,5.000,5.000,5.000,1.000,-0.100,-0.100,-0.100,-0.100,-0.100,
+
+1,1,False,14,1694,69,0.315,-0.271,-0.342,-0.351,-0.398,-0.330,,3.365,,,0.003,,-0.011,,0.017,,0.320,12.010,20.726,73.615,1.087,1.2449,3.2944,0.420,0.389,241.949,493.769,0.6259,3.2945,,,,3.2951,7.7438,3.2964,3.2887,0.9130,0.526,1.200,0.104,93.109,6.011,0.2317,0.0063,10.230,1.6404,0.4635,0.006,1.007,12.088,20.737,73.675,,3.665,,,-0.009,,0.001,,0.028,,0.325,0.314,-0.269,-0.340,-0.349,-0.396,-0.329,
+2,1,False,14,1694,69,0.319,-0.275,-0.345,-0.355,-0.402,-0.333,,2.956,,,-0.018,,0.008,,0.013,,0.340,12.124,20.926,74.328,1.141,1.2421,3.2817,0.426,0.393,242.283,494.484,0.8206,3.2822,,,,3.2830,8.1812,3.2844,3.2762,0.8914,0.525,1.200,0.070,93.070,6.015,0.2322,0.0063,10.261,1.6502,0.4594,0.006,1.024,12.137,20.934,74.373,,3.204,,,-0.016,,0.018,,0.010,,0.340,0.317,-0.273,-0.343,-0.353,-0.400,-0.332,
