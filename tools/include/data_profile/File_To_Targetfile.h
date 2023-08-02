@@ -78,7 +78,8 @@ private:
     vector<vector<string>>
     tackle_file_get_all(const ifstream& ifs);
     // 获取并更新目标数据的长和宽更新数据【方便嵌套已有程序】 // 【只用这一个分析，因为他们三个之间互相是有关系的】
-    void profile_col_row_num(const vector<vector<string>>& all_array);
+    // 由于数据可能存在编码问题，可能需要修改all_array中的部分数据为目标数据
+    void profile_col_row_num(vector<vector<string>>& all_array);
     vector<vector<string>>
     tackle_file_get_target(const vector<vector<string>>& all_array);
     vector<vector<string>>

@@ -350,6 +350,11 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         qchart->legend()->setAlignment(Qt::AlignRight); // 设置图例靠右显示
         qchart->legend()->setBackgroundVisible(false); // 设置图例背景不可见
         qchart->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries); // 设置图例的显示类型跟随曲线的类型显示
+        chartview->setStyleSheet("QLegend{"
+                                 "overflow:scroll;"
+                                 "bottom: 10;"
+                                 "data: data"
+                                 "}");
         // 设置图例描述文字的字体
         QFont font = QFont("Consolas");
 //        QFont font;

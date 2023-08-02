@@ -342,6 +342,8 @@ File_To_Targetfile::tackle_file(const ifstream& ifs)
     try {
         vector<vector<string>> ans;
         vector<vector<string>> all_array = tackle_file_get_all(ifs);
+//        qDebug() << "00000";
+//        test_datas(all_array);
         profile_col_row_num(all_array); // 处理获取目标数据的相关参数
         vector<vector<string>> target_arrays = tackle_file_get_target(all_array);
         vector<vector<string>> rows_array = tackle_file_get_rows(target_arrays);
@@ -388,7 +390,7 @@ File_To_Targetfile::tackle_file_get_all(const ifstream& ifs)
     }
 }
 
-void File_To_Targetfile::profile_col_row_num(const vector<vector<string> > &all_array)
+void File_To_Targetfile::profile_col_row_num(vector<vector<string> > &all_array)
 {
     /*
         参数：
@@ -402,13 +404,36 @@ void File_To_Targetfile::profile_col_row_num(const vector<vector<string> > &all_
         // 初始化目标数据的行列数
         rows_num = 0,cols_num = 0,targe_data_index = 0;
         // 记录数据有效的标记
-        bool flage = false;
+        bool valid_row_flage = false;
         // 遍历分析目标数据的行列数
+        // 判断是否找到了目标点
+        bool target_index_flage = false;
         for(size_t i = 0; i < all_array.size(); i++)
         {
             // 跳过无效的空行
-            if(all_array[i].size() == 0)continue;
+            if(all_array[i].size() == 0 || all_array[i][0].size() == 0)continue;
             // 找到目标数据的起点
+            // 非理想情况，则判断后跳回重新判断理想位置【必须位于target_str判断你的前方，进行i值和数据的修正】
+            if(all_array[i][0] == "Unit" && !target_index_flage) // "Unit"点
+            {
+                // 进来这里，说明前面没找到目标点，则对目标点做重新修改后，重新判断
+                i -= 1;
+                all_array[i][0] = target_str;
+            }
+            else if(all_array[i][0] == "LimitL" && !target_index_flage) // "LimitL"点
+            {
+                // 进来这里，说明前面没找到目标点，则对目标点做重新修改后，重新判断
+                i -= 2;
+                all_array[i][0] = target_str;
+            }
+            else if(all_array[i][0] == "LimitU" && !target_index_flage) // "LimitU"点
+            {
+                // 进来这里，说明前面没找到目标点，则对目标点做重新修改后，重新判断
+                i -= 3;
+                all_array[i][0] = target_str;
+            }
+
+            // 理想情况，找到目标的起点位置
             if(all_array[i][0] == target_str)
             {
                 // 如果找到目标，记录开始位置
@@ -416,11 +441,12 @@ void File_To_Targetfile::profile_col_row_num(const vector<vector<string> > &all_
                 // 目标位置的字符串个数，即cols_num的有效列数
                 cols_num = all_array[i].size();
                 // 设置从此刻开始，记录有效行的个数
-                flage = true;
+                valid_row_flage = true;
+                target_index_flage = true;
             }
 
             // 如果满足flage，则rows_num++
-            if(flage)
+            if(valid_row_flage)
             {
                 rows_num++;
             }
@@ -613,10 +639,12 @@ void File_To_Targetfile::merge_files_solo_data (const QStringList& file_paths)
             并将合并内容后的结果存储在alls.csv文件中
             【第一个文件内容的选取很重要】 【暂时情况】【！！！】
             【可以支持单文件读取，不支持多文件多数据读取合并】
+                支持了多数据文件的读取合并，【兼容单数据文件的读取合并】，一个文件内的site对应唯一且相同的part_id
     */
     try {
         vector<vector<string>> merge_datas;
         size_t counter = 1;
+//        qDebug() << file_paths;
         // 依次获取单文件路径
         // 填补merge_datas中的数据
         for(auto path = file_paths.begin();path != file_paths.end();path++,counter++)
@@ -652,7 +680,8 @@ void File_To_Targetfile::merge_files_solo_data (const QStringList& file_paths)
                         continue; // 防止多次判断
                     }
                     // 判断找到数据区域的起始i
-                    if(!start_data_flage && all_arrary[i].size() == 0)
+                    // 可能在未补充行长之前，某些行的长度并不符合实际数据中的要求长度
+                    if((all_arrary[i].size() == 0 || all_arrary[i][0].size() == 0) && !start_data_flage)
                     {
                         start_data_flage = true;
                     }
