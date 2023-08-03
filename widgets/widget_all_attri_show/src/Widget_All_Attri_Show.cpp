@@ -147,7 +147,7 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
             // 填充pic 【会进行覆盖】
             Chart* t_chart = this->time_initChart(attri,time_site_points,datas,
                                                   datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                                  datas->get_site_parts().get_Max_Time_Part_Id());
+                                                  datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2);
             int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
             int col = (i % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
@@ -187,7 +187,7 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
             t_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                            ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                           ration_datas->get_site_parts().get_Max_Time_Part_Id());;
+                                           ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2);
             row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
             col = (i % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
@@ -300,13 +300,13 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                                              Targetfile_Valid_Data* Datas,
                                              const vector<string>& scatter_time_sites,
                                              int time_site_max_parts,
-                                             double axisX_k, double axisY_k
-                                             )
+                                             double axisX_k, double axisY_k,
+                                             int choice)
 {
 
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
-        Chart* chart = new Chart(this,attri.c_str()); // 局部对象
+        Chart* chart = new Chart(this,attri.c_str(),choice); // 局部对象
 
         //设置坐标系
         // 设置X轴数据
@@ -338,8 +338,8 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                     // 纵坐标
                     unit,realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
-                    12
-                    );
+                    12,
+                    choice);
 
         //绘制【注入数据点数值和最值】
         // 获取属性最值
@@ -347,7 +347,7 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
-        chart->time_buildChart(scatter_time_sites,time_site_max_parts,time_points,XI_line_data,attri_XI);
+        chart->time_buildChart(scatter_time_sites,time_site_max_parts,time_points,XI_line_data,attri_XI,choice);
 
         return chart;
 
@@ -641,7 +641,8 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                             const vector<int>& scatter_sites,
                             int site_max_parts,
                              double axisX_k,
-                             double axisY_k
+                             double axisY_k,
+                            int choice
                             )
 {
     /*
@@ -652,7 +653,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
     */
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
-        Chart* chart = new Chart(this,attri.c_str()); // 局部对象
+        Chart* chart = new Chart(this,attri.c_str(),choice); // 局部对象
 
         //设置坐标系
         // 设置X轴数据
@@ -684,8 +685,8 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                     // 纵坐标
                     unit,realY_XI.first,realY_XI.second,
                     // 纵坐标的分割线的条数
-                    12
-                    );
+                    12,
+                    choice);
 
         //绘制【注入数据点数值和最值】
         // 获取属性最值
@@ -693,7 +694,7 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
-        chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data,attri_XI);
+        chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data,attri_XI,choice);
 
         return chart;
 
@@ -970,7 +971,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
             // 存储并保存
             // 填充pic 【会进行覆盖】
             Chart* t_chart = this->initChart(attri,site_points,datas->get_site_parts().get_Scatter_Site_Number(),
-                                             datas->get_site_parts().get_Max_Part_Id());
+                                             datas->get_site_parts().get_Max_Part_Id(),1,0.01,2);
             int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
             int col = (i % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);

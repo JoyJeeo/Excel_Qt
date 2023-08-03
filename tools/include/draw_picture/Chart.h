@@ -18,18 +18,18 @@ class Chart : public QWidget
     Q_OBJECT
 
 public:
-    Chart(QWidget* parent = 0, QString _chartname = "折线图");
+    Chart(QWidget* parent = 0, QString _chartname = "折线图",int choice = 0);
     ~Chart(){}
     void setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
-                 QString _yname, qreal _ymin, qreal _ymax, int _ytickc);
+                 QString _yname, qreal _ymin, qreal _ymax, int _ytickc,int choice = 0);
     void buildChart(const vector<int>& scatter_sites,int site_max_parts,
                     const QMap<int,QVector<QPointF>>&,const pair<double,double>&,
-                    const pair<double,double>&);
+                    const pair<double,double>&,int choice = 0);
 
     // 【功能三】
     void time_buildChart(const vector<string>& scatter_sites,int site_max_parts,
                     const QMap<string,QVector<QPointF>>&,const pair<double,double>&,
-                    const pair<double,double>&);
+                    const pair<double,double>&,int choice = 0);
 
     // 参数太多，没必要使用total_task来进行构造
 
@@ -41,7 +41,7 @@ private:
     void construct_XI_line(const pair<double,double>& attri_XI,
                            int XI_series_width,int site_max_parts);
     // 设置chart的图里描述样式
-    void construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI);
+    void construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI,int choice = 0);
 
     // 【功能三】
     // 构造数据线
@@ -51,7 +51,7 @@ private:
     void construct_time_XI_line(const pair<double,double>& attri_XI,
                            int XI_series_width,int site_max_parts);
     // 设置chart的图里描述样式
-    void construct_time_legend_style(const vector<string> scatter_time_sites,const pair<double,double>& attri_XI);
+    void construct_time_legend_style(const vector<string> scatter_time_sites,const pair<double,double>& attri_XI,int choice = 0);
     QMap<string,QVector<QLineSeries*>> time_series;
 
 

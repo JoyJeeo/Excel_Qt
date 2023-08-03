@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-Chart::Chart(QWidget* parent, QString _chartname)
+Chart::Chart(QWidget* parent, QString _chartname,int choice)
     :QWidget(parent),chartname(_chartname){
     try {
         // [先不初始化所有线]
@@ -22,7 +22,23 @@ Chart::Chart(QWidget* parent, QString _chartname)
         chartview->setRenderHint(QPainter::Antialiasing);//防止图形走样：抗锯齿 // 设置渲染效果
         // 设置chartview观察器的大小范围
 //        chartview->setMinimumSize(500,500);
-        chartview->setMinimumSize(350,320); // A4
+        switch(choice)
+        {
+        case 0:
+            // 默认为0，电脑显示A4大小
+            chartview->setMinimumSize(350,320); // A4
+            break;
+        case 1:
+            // 生成图片的大小
+            chartview->setMinimumSize(770,320);
+            break;
+        case 2:
+            // 更大的图片大小
+            chartview->setMinimumSize(770,770);
+            break;
+        }
+
+
 //        chartview->setMaximumSize(INT_MAX,INT_MAX); // 使用默认最大值
         // 设置chartview具有放大镜功能【！！！】
         chartview->setRubberBand(QChartView::RectangleRubberBand);
@@ -35,7 +51,8 @@ Chart::Chart(QWidget* parent, QString _chartname)
 }
 
 void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
-             QString _yname, qreal _ymin, qreal _ymax, int _ytickc){
+             QString _yname, qreal _ymin, qreal _ymax, int _ytickc,
+                    int choice){
     /*
         说明：
             纵坐标使用固定分隔，横坐标使用自定义分隔【有空维护】【！！！】
@@ -58,13 +75,38 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
         font.setStyleStrategy(QFont::PreferAntialias);
 //        font.setPointSize(1);
 //        font.setPointSize(11);
-        font.setPixelSize(11);
+        switch (choice) {
+        case 0:
+            // 专门用于电脑显示
+            font.setPixelSize(11);
+            break;
+        case 1:
+            font.setPixelSize(15);
+            break;
+        case 2:
+            // 存储更大的图片
+            font.setPixelSize(17);
+            break;
+        }
+
         font.setBold(true);
 
         // 设置轴的字体大小
         QFont axis_font = QFont("Consolas");
         axis_font.setStyleStrategy(QFont::PreferAntialias);
-        axis_font.setPixelSize(11);
+        switch (choice) {
+        case 0:
+            // 专门用于电脑显示
+            axis_font.setPixelSize(11);
+            break;
+        case 1:
+            axis_font.setPixelSize(15);
+            break;
+        case 2:
+            // 存储更大的图片
+            axis_font.setPixelSize(17);
+            break;
+        }
         axisX->setLabelsFont(axis_font);
         axisY->setLabelsFont(axis_font);axisX->setLabelsVisible(true);
 
@@ -102,7 +144,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
 void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
                        const QMap<int,QVector<QPointF>>& series_data,
                        const pair<double,double>& XI_line_data,
-                       const pair<double,double>& attri_XI)
+                       const pair<double,double>& attri_XI,int choice)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -122,7 +164,19 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
     try {
         // 设置chart名称
         QFont font = QFont("Consolas");
-        font.setPixelSize(17);
+        switch (choice) {
+        case 0:
+            // 专门用于电脑显示
+            font.setPixelSize(15);
+            break;
+        case 1:
+            font.setPixelSize(20);
+            break;
+        case 2:
+            // 存储更大的图片
+            font.setPixelSize(23);
+            break;
+        }
         font.setBold(true);
         qchart->setTitleFont(font);
         qchart->setTitle(chartname);
@@ -141,7 +195,7 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
         construct_XI_line(attri_XI,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_legend_style(scatter_sites,attri_XI);
+        construct_legend_style(scatter_sites,attri_XI,choice);
 
     } catch (...) {
         qDebug() << "Chart::buildChart";
@@ -153,12 +207,24 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
 void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_max_parts,
                             const QMap<string,QVector<QPointF> > & time_series_data,
                             const pair<double, double> & XI_line_data,
-                            const pair<double, double> & attri_XI)
+                            const pair<double, double> & attri_XI,int choice)
 {
     try {
         // 设置chart名称
         QFont font = QFont("Consolas");
-        font.setPixelSize(17);
+        switch (choice) {
+        case 0:
+            // 专门用于电脑显示
+            font.setPixelSize(15);
+            break;
+        case 1:
+            font.setPixelSize(20);
+            break;
+        case 2:
+            // 存储更大的图片
+            font.setPixelSize(23);
+            break;
+        }
         font.setBold(true);
         qchart->setTitleFont(font);
         qchart->setTitle(chartname);
@@ -177,7 +243,7 @@ void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_ma
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
         construct_time_XI_line(attri_XI,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_time_legend_style(scatter_time_sites,attri_XI);
+        construct_time_legend_style(scatter_time_sites,attri_XI,choice);
 
     } catch (...) {
         qDebug() << "Chart::time_buildChart";
@@ -339,7 +405,7 @@ void Chart::construct_XI_line(const pair<double,double>& attri_XI,
     }
 }
 
-void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI)
+void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI,int choice)
 {
     /*
         功能：
@@ -350,17 +416,22 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         qchart->legend()->setAlignment(Qt::AlignRight); // 设置图例靠右显示
         qchart->legend()->setBackgroundVisible(false); // 设置图例背景不可见
         qchart->legend()->setMarkerShape(QLegend::MarkerShapeFromSeries); // 设置图例的显示类型跟随曲线的类型显示
-        chartview->setStyleSheet("QLegend{"
-                                 "overflow:scroll;"
-                                 "bottom: 10;"
-                                 "data: data"
-                                 "}");
         // 设置图例描述文字的字体
         QFont font = QFont("Consolas");
 //        QFont font;
         font.setBold(true);
 //        font.setPointSize(10);
-        font.setPixelSize(10);
+        switch (choice) {
+        case 0:
+            font.setPixelSize(10);
+            break;
+        case 1:
+            font.setPixelSize(12);
+            break;
+        case 2:
+            font.setPixelSize(18);
+            break;
+        }
         qchart->legend()->setFont(font);
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();
@@ -520,7 +591,7 @@ void Chart::construct_time_XI_line(const pair<double, double> &attri_XI, int XI_
 }
 
 void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
-                                        const pair<double, double> &attri_XI)
+                                        const pair<double, double> &attri_XI,int choice)
 {
     try {
         // 设置线条图例
@@ -532,7 +603,18 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
 //        QFont font;
         font.setBold(true);
 //        font.setPointSize(10);
-        font.setPixelSize(10);
+//        font.setPixelSize(10);
+        switch (choice) {
+        case 0:
+            font.setPixelSize(10);
+            break;
+        case 1:
+            font.setPixelSize(12);
+            break;
+        case 2:
+            font.setPixelSize(18);
+            break;
+        }
         qchart->legend()->setFont(font);
         // 获取所有图例的markers，修改图里描述内容
         QList<QLegendMarker *> legends = qchart->legend()->markers();

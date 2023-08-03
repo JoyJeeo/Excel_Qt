@@ -41,8 +41,9 @@ private:
                      const vector<int>& scatter_sites,
                      int site_max_parts,
                      double axisX_k = 1, // 设置X轴的缩放大小
-                     double axisY_k = 0.01 // 设置Y轴的缩放大小
-                    );
+                     double axisY_k = 0.01, // 设置Y轴的缩放大小
+                    int choice = 0
+                );
 
     void save_pic(QWidget* saved_widget,const QString& saved_path);
 
@@ -91,8 +92,8 @@ private:
                       const vector<string>& scatter_time_sites,
                       int time_site_max_parts,
                      double axisX_k = 1, // 设置X轴的缩放大小
-                     double axisY_k = 0.01 // 设置Y轴的缩放大小
-                    );
+                     double axisY_k = 0.01, // 设置Y轴的缩放大小
+                    int choice = 0);
     QString profile_time_attri_unit(const string& attri,Targetfile_Valid_Data* Datas);
     // 获取数据线的最值线数据
     pair<double,double> profile_time_data_series_XI(const string& attri,Targetfile_Valid_Data* Datas,double zoom = 0.05);
