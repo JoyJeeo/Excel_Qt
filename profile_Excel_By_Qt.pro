@@ -23,6 +23,7 @@ SOURCES += \
     actions/buttons/src/Button_Time_Compare.cpp \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
+    tools/src/data_profile/Axis_Y_Step.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
     tools/src/data_profile/Make_Ration_File.cpp \
     tools/src/data_profile/Site_Part.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     actions/buttons/include/Button_Time_Compare.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
+    tools/include/data_profile/Axis_Y_Step.h \
     tools/include/data_profile/File_To_Targetfile.h \
     tools/include/data_profile/Make_Ration_File.h \
     tools/include/data_profile/Site_Part.h \

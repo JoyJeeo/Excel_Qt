@@ -44,6 +44,10 @@ private:
                      double axisY_k = 0.01, // 设置Y轴的缩放大小
                     int choice = 0
                 );
+    int profile_y_axis_line_nums(const pair<double,double>& y_axis_XI,double step);
+    pair<double,double> profile_y_axis_ans(const pair<double, double> &attri_XI,
+                                           const pair<double, double> &XI_line_data,
+                                           bool &flage,double step,int &lines);
 
     void save_pic(QWidget* saved_widget,const QString& saved_path);
 
