@@ -568,6 +568,9 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
         this->pGridLayout->setVerticalSpacing(0);
 //        this->pGridLayout->setSpacing(0);
 
+        // 初始化step分配器
+        y_stepor = new Axis_Y_Step();
+
     } catch (...) {
         qDebug() << "Widget_All_Attri_Show::Widget_All_Attri_Show";
         throw;
@@ -658,22 +661,15 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         //设置坐标系
         // 设置X轴数据
         // 获取site_part
-        auto site_part = datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
+//        auto site_part = datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
 
         // 设置Y轴数据
         // 获取属性单位
         QString unit = profile_attri_unit(attri);
 
         // 【构造坐标轴】
-        Axis_Y_Step y_steper;
-        map<string,double> y_steps = y_steper.get_steps();
-        double step = y_steps[attri]; // 获取项目的step
-
-        // 获取attri_uul
-        auto attri_uul = datas->get_attri_uuls();
-        // 获取属性最值
-        auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
-                                  attri_uul.m_attri_uuls[attri].m_LimitU);
+        map<string,double> y_steps = y_stepor->get_steps();
+        double step = y_steps[attri]; // 获取项目的step, step一定是正数
 
         // 获取的数值的最值线的数值结果【这里的最值线，实际并不是最值线，可以理解为是为了让Y更合理而配合最值权衡使用的中间值】【！！！之后需要进行进一步维护】
         auto XI_line_data = profile_data_series_XI(attri);
@@ -683,9 +679,9 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
 //        double zoom_dist = profile_zoom_dist_XI(XI_line_data);
 
         // 计算y轴需要的一切接口数据
-        bool flage = false;
         int lines = 12;
-        auto y_axis_around = profile_y_axis_ans(attri_XI,XI_line_data,flage,step,lines);
+        auto all_attri_XI = datas->get_attri_XI(attri);
+        auto y_axis_around = profile_y_axis_ans(all_attri_XI,XI_line_data,step,lines);
 
         // 获取理论上初始纵坐标的的数值
 //        auto Y_XI = profile_Y_XI(XI_line_data,zoom_dist,axisY_k);
@@ -706,6 +702,12 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
                     choice);
 
         //绘制【注入数据点数值和最值】
+        // 获取attri_uul
+        auto attri_uul = datas->get_attri_uuls();
+        // 获取属性最值
+        auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
+                                  attri_uul.m_attri_uuls[attri].m_LimitU);
+
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
         chart->buildChart(scatter_sites,site_max_parts,site_points,XI_line_data,attri_XI,choice);
 
@@ -719,34 +721,45 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
 
 int Widget_All_Attri_Show::profile_y_axis_line_nums(const pair<double, double> &y_axis_XI,double step)
 {
+    /*
+        功能：
+            计算cover住的时间线的个数
+    */
     try {
-        double interval = abs(y_axis_XI.second - y_axis_XI.first);
+        int factor = 100000; // 由于精度损失，造成浮点数取整出错，通过转换为整数后进行运算
+        unsigned long long interval = abs(y_axis_XI.second - y_axis_XI.first) * factor;
+        unsigned long long t_step = step * factor;
         int line_nums = 0;
 
         // 向上取整线的条数
         // 如果step为1时
-        if(step == 1)
-        {
-            // 如果乘积相等，则说明
-            if(interval * step == interval)
-            {
-                line_nums = interval;
-            }
-            else {
-                line_nums = (int)(interval + 1);
-            }
-        }
+//        if(t_step == (unsigned long long)1 * factor)
+//        {
+//            // 如果乘积相等，则说明
+//            if(interval * t_step == interval)
+//            {
+//                line_nums = interval;
+//            }
+//            else {
+//                line_nums = (int)(interval + 1);
+//            }
+//        }
         // 如果step不为1时
-        else {
-            int dex = interval / step;
-            if(dex * step == interval)
+//        else {
+            int dex = interval / t_step;
+            // 可以取整
+            if(dex * t_step == interval)
             {
                 line_nums = dex;
             }
+            // 向上取整
             else {
-                line_nums = dex + 2; // step非1时的特殊情况
+                line_nums = dex + 1; // step非1时的特殊情况
             }
-        }
+//        }
+
+        // 都需要++，就可以实现数据线对数据的完全cover
+        line_nums++;
 
         return line_nums;
 
@@ -756,9 +769,9 @@ int Widget_All_Attri_Show::profile_y_axis_line_nums(const pair<double, double> &
     }
 }
 
-pair<double, double> Widget_All_Attri_Show::profile_y_axis_ans(const pair<double, double> &attri_XI,
+pair<double, double> Widget_All_Attri_Show::profile_y_axis_ans(const pair<double, double> &all_attri_XI,
                                                                const pair<double, double> &XI_line_data,
-                                                               bool &flage,double step,int &lines)
+                                                               double step,int &lines)
 {
     try {
         pair<double, double> ans;
@@ -766,16 +779,20 @@ pair<double, double> Widget_All_Attri_Show::profile_y_axis_ans(const pair<double
         if(XI_line_data.first == INT_MIN && XI_line_data.second == INT_MAX)
         {
             ans = make_pair(-1.1,1.1);
-            flage = false;
             lines = 12;
         }
         else {
-            auto cover_data = attri_XI;
-            int add_n = 4;
+            // 获取cover数值
+            auto cover_data = make_pair(
+                        min(all_attri_XI.first,XI_line_data.first),
+                        max(all_attri_XI.second,XI_line_data.second)
+                        ) ;
+
+            int add_n = 2;
 //            qDebug() << step;
-            lines = profile_y_axis_line_nums(cover_data,step);
+            lines = profile_y_axis_line_nums(cover_data,step); // 算cover住的实际线数
             // 更新一次可能因为四舍五入而多增加的线造成的数值变更
-            cover_data.second = cover_data.first + lines * step;
+            cover_data.second = cover_data.first + (lines - 1) * step;
 
             // 留出add_n空余
             cover_data.first -= abs(add_n*step);
@@ -784,8 +801,9 @@ pair<double, double> Widget_All_Attri_Show::profile_y_axis_ans(const pair<double
             // 更新线的个数
             lines += add_n * 2;
 
+//            lines++; // qt对数值线的计算规则 (interval / (线数 + 1))【实际线数的基础上，需要计入跨度线数+1】
+
             ans = cover_data;
-            flage = true;
         }
 
         return ans;

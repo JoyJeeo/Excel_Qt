@@ -4,6 +4,7 @@ debug/Button_Merge_File.o
 debug/Button_Time_Compare.o
 debug/main.o
 debug/Attri_Unit_UL.o
+debug/Axis_Y_Step.o
 debug/File_To_Targetfile.o
 debug/Make_Ration_File.o
 debug/Site_Part.o

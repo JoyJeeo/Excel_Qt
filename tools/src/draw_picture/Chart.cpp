@@ -26,7 +26,8 @@ Chart::Chart(QWidget* parent, QString _chartname,int choice)
         {
         case 0:
             // 默认为0，电脑显示A4大小
-            chartview->setMinimumSize(350,320); // A4
+//            chartview->setMinimumSize(350,320); // A4
+            chartview->setMinimumSize(350,600); // A4
             break;
         case 1:
             // 生成图片的大小
@@ -34,7 +35,7 @@ Chart::Chart(QWidget* parent, QString _chartname,int choice)
             break;
         case 2:
             // 更大的图片大小
-            chartview->setMinimumSize(770,770);
+            chartview->setMinimumSize(1500,1800);
             break;
         }
 
@@ -471,13 +472,15 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         if(max_line_num == 1)
         {
             legends[legends_size - max_line_num]->setLabel(
-                        attri_XI.second != INT_MAX ? "max_line" : "min_line");
+                        attri_XI.second != INT_MAX ?
+                        QString::fromStdString("max_line: " + to_string(attri_XI.second))  :
+                        QString::fromStdString("min_line: " + to_string(attri_XI.first)));
         }
         // 两条最值线都存在时
         if(max_line_num == 2)
         {
-            legends[legends_size - max_line_num]->setLabel("max_line");
-            legends[legends_size - max_line_num + 1]->setLabel("min_line");
+            legends[legends_size - max_line_num]->setLabel(QString::fromStdString("max_line: " + to_string(attri_XI.second)));
+            legends[legends_size - max_line_num + 1]->setLabel(QString::fromStdString("min_line: " + to_string(attri_XI.first)));
         }
         // site最值线的图例
 //        legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");

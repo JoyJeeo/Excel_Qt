@@ -47,7 +47,7 @@ private:
     int profile_y_axis_line_nums(const pair<double,double>& y_axis_XI,double step);
     pair<double,double> profile_y_axis_ans(const pair<double, double> &attri_XI,
                                            const pair<double, double> &XI_line_data,
-                                           bool &flage,double step,int &lines);
+                                           double step,int &lines);
 
     void save_pic(QWidget* saved_widget,const QString& saved_path);
 
@@ -118,6 +118,9 @@ private:
     void test_for(QMap<int,QVector<QPointF>>& site_part_vals,
                   const vector<int>& scatter_sites,
                   int site_max_parts);
+
+    // 坐标轴的step数据
+    Axis_Y_Step* y_stepor;
 
 
     // 【这几个对象，必须存在于窗体这个类内定义，而不是其他类内，因为这是专属于这个窗体的功能，而不是其他窗体的功能】
