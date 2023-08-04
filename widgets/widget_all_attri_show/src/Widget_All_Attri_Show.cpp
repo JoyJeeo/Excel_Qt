@@ -102,6 +102,10 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
         // 获取target_file中有效的属性label
         auto labels = datas->get_time_labels();
+//        for(auto x : labels)
+//        {
+//            cout << x << endl;
+//        }
 
         // 产生存储照片文件
         // 将文件夹下的内容清空
@@ -124,11 +128,12 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart
         // 将chart表格依次添加入主框体中，依次显示
-        size_t i;
-        for(i = 0;i < labels.size();) // labels.size()
+        size_t counter = 0; // 用来专门计算图片chart的个数；i需要负责labels的查看
+        for(size_t i = 0;i < labels.size();i++) // labels.size()
         {
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
+//            cout << attri << endl;
             // 获取site_part的对应数据点
             QMap<string,QVector<QPointF>> time_site_points = get_time_matrix_pointF(time_series_datas[attri],datas->get_site_parts().get_Scatter_Time_Site_Number(),
                                                                                     datas->get_site_parts().get_Max_Time_Part_Id());
@@ -142,19 +147,19 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
                                                 datas->get_site_parts().get_Scatter_Time_Site_Number(),
                                                 datas->get_site_parts().get_Max_Time_Part_Id());
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
-            this->pGridLayout->addWidget(chart,i/row_obj_nums+1,i%row_obj_nums+1);
+            this->pGridLayout->addWidget(chart,counter/row_obj_nums+1,counter%row_obj_nums+1);
 
             // 存储并保存
             // 填充pic 【会进行覆盖】
             Chart* t_chart = this->time_initChart(attri,time_site_points,datas,
                                                   datas->get_site_parts().get_Scatter_Time_Site_Number(),
                                                   datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2);
-            int row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
-            int col = (i % pic_row_obj_nums + 1);
+            int row = ((counter/pic_row_obj_nums) % page_chart_nums + 1);
+            int col = (counter % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
 
             // 6个chart一存储
-            if((i+1) % page_charts == 0)
+            if((counter+1) % page_charts == 0)
             {
                 QString path = pic_dir + "/PIC_" +
                         // 计算当前是第几页
@@ -178,23 +183,23 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
                 pic_layout->setVerticalSpacing(0);
             }
             // 切换i
-            i++;
+            counter++;
 
             Chart* ration_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                                        ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
                                                        ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,0,1);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
-            this->pGridLayout->addWidget(ration_chart,i/row_obj_nums+1,i%row_obj_nums+1);
+            this->pGridLayout->addWidget(ration_chart,counter/row_obj_nums+1,counter%row_obj_nums+1);
 
             t_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                            ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
                                            ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2,1);
-            row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
-            col = (i % pic_row_obj_nums + 1);
+            row = ((counter/pic_row_obj_nums) % page_chart_nums + 1);
+            col = (counter % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
 
             // 6个chart一存储
-            if((i+1) % page_charts == 0)
+            if((counter+1) % page_charts == 0)
             {
                 QString path = pic_dir + "/PIC_" +
                         // 计算当前是第几页
@@ -218,12 +223,12 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
                 pic_layout->setVerticalSpacing(0);
             }
             // [!!!]
-            i++;
+            counter++;
 
         }
-//        qDebug() << "i: " << i;
+
         // 最后一页是否被存储
-        if(i % page_charts != 0) // i出来时已经i++了，这里不需要i+1
+        if(counter % page_charts != 0) // i出来时已经i++了，这里不需要i+1
         {
             // 没有存储，则将最有一页存储
             QString path = pic_dir + "/PIC_" +
@@ -1269,7 +1274,7 @@ bool Widget_All_Attri_Show::time_task(const QStringList &dir_path)
 
         // 分析ration文件
         const string ration_target_file_path = src_file_manager->ration_task();
-        cout << ration_target_file_path << endl;
+//        cout << ration_target_file_path << endl;
         ifs = src_file_manager->input_file_open(ration_target_file_path);
         ration_datas->time_task(ifs);
 

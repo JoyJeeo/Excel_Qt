@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 void Targetfile_Valid_Data::profile_get_site_parts()
