@@ -670,6 +670,11 @@ Chart* Widget_All_Attri_Show::initChart(const string& attri,
         // 【构造坐标轴】
         map<string,double> y_steps = y_stepor->get_steps();
         double step = y_steps[attri]; // 获取项目的step, step一定是正数
+        // 如果step没有设置，则默认step为1，如果需要修改其step，则会在step文件中意识到没有这个step
+        if(step == 0)
+        {
+           step = 1;
+        }
 
         // 获取的数值的最值线的数值结果【这里的最值线，实际并不是最值线，可以理解为是为了让Y更合理而配合最值权衡使用的中间值】【！！！之后需要进行进一步维护】
         auto XI_line_data = profile_data_series_XI(attri);
