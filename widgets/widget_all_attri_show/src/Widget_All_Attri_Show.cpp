@@ -7,6 +7,7 @@ extern size_t pic_pages;
 #include <QDirIterator>
 #include <QSpacerItem>
 
+
 const string Widget_All_Attri_Show::tackel_file_name()
 {
     /*
@@ -181,13 +182,13 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
             Chart* ration_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                                        ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                                       ration_datas->get_site_parts().get_Max_Time_Part_Id());
+                                                       ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,0,1);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(ration_chart,i/row_obj_nums+1,i%row_obj_nums+1);
 
             t_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                            ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                           ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2);
+                                           ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2,1);
             row = ((i/pic_row_obj_nums) % page_chart_nums + 1);
             col = (i % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
@@ -301,33 +302,57 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                                              const vector<string>& scatter_time_sites,
                                              int time_site_max_parts,
                                              double axisX_k, double axisY_k,
-                                             int choice)
+                                             int show_choice,int y_step_choice)
 {
 
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
-        Chart* chart = new Chart(this,attri.c_str(),choice); // 局部对象
+        Chart* chart = new Chart(this,attri.c_str(),show_choice); // 局部对象
 
         //设置坐标系
         // 设置X轴数据
         // 获取site_part
-        auto site_part = Datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
+//        auto site_part = Datas->get_site_parts(); // 【！！！】【这里设计横坐标的解耦，之后处理】
 
         // 设置Y轴数据
         // 获取属性单位
         QString unit = profile_time_attri_unit(attri,Datas);
 
+        // 【构造坐标轴】
+        map<string,double> y_steps = y_stepor->get_steps();
+        double step = 1;
+        // 选择step应该使用的大小
+        switch (y_step_choice) {
+        case 0:// 如果为datas区域
+            {
+                step = y_steps[attri]; // 获取项目的step, step一定是正数
+                // 如果step没有设置，则默认step为1，如果需要修改其step，则会在step文件中意识到没有这个step
+                if(step == 0)
+                {
+                   step = 1;
+                }
+            }
+            break;
+        case 1:// 如果为ration区域
+            step = 2; // 以2%为step
+            break;
+        }
+
         // 获取的数值的最值线的数值结果【这里的最值线，实际并不是最值线，可以理解为是为了让Y更合理而配合最值权衡使用的中间值】【！！！之后需要进行进一步维护】
         auto XI_line_data = profile_time_data_series_XI(attri,Datas);
 
-        // 对纵坐标的大小范围进行处理【而不是简单的通过get_ul_compare_attri_XI函数获取的最值】
-        // 获取倍距
-        double zoom_dist = profile_time_zoom_dist_XI(XI_line_data);
-        // 获取理论上初始纵坐标的的数值
-        auto Y_XI = profile_time_Y_XI(XI_line_data,zoom_dist,axisY_k);
+//        // 对纵坐标的大小范围进行处理【而不是简单的通过get_ul_compare_attri_XI函数获取的最值】
+//        // 获取倍距
+//        double zoom_dist = profile_time_zoom_dist_XI(XI_line_data);
+//        // 获取理论上初始纵坐标的的数值
+//        auto Y_XI = profile_time_Y_XI(XI_line_data,zoom_dist,axisY_k);
 
-        // 综合处理最值线和理论纵坐标，使得初始数据图更[美观]
-        auto realY_XI = profile_time_generalY_XI(XI_line_data,Y_XI);
+//        // 综合处理最值线和理论纵坐标，使得初始数据图更[美观]
+//        auto realY_XI = profile_time_generalY_XI(XI_line_data,Y_XI);
+
+        int lines = 12;
+        auto all_attri_XI = Datas->get_time_attri_XI(attri);
+        auto y_axis_around = profile_y_axis_ans(all_attri_XI,XI_line_data,step,lines);
 
         // 应该使用最大最小值之间的倍距来作为放大和缩小的依据【而不应该是线本身的数值】
         // 【灵活设置图像的放大缩小】
@@ -336,10 +361,10 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                     // 横坐标
                     "PART_ID",1,time_site_max_parts,time_site_max_parts,
                     // 纵坐标
-                    unit,realY_XI.first,realY_XI.second,
+                    unit,y_axis_around.first,y_axis_around.second,
                     // 纵坐标的分割线的条数
-                    12,
-                    choice);
+                    lines,
+                    show_choice);
 
         //绘制【注入数据点数值和最值】
         // 获取属性最值
@@ -347,7 +372,7 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         auto attri_XI = make_pair(attri_uul.m_attri_uuls[attri].m_LimitL,
                                   attri_uul.m_attri_uuls[attri].m_LimitU);
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
-        chart->time_buildChart(scatter_time_sites,time_site_max_parts,time_points,XI_line_data,attri_XI,choice);
+        chart->time_buildChart(scatter_time_sites,time_site_max_parts,time_points,XI_line_data,attri_XI,show_choice);
 
         return chart;
 

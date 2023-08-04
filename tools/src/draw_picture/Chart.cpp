@@ -6,6 +6,12 @@
 #include <string>
 using namespace std;
 
+const int pic_chart_len_size = 1500;
+const int pic_chart_hight_size = 1800;
+const int pic_chart_name_size = 50;
+const int pic_legend_size = 35;
+const int pic_axis_size = 35;
+
 Chart::Chart(QWidget* parent, QString _chartname,int choice)
     :QWidget(parent),chartname(_chartname){
     try {
@@ -35,7 +41,7 @@ Chart::Chart(QWidget* parent, QString _chartname,int choice)
             break;
         case 2:
             // 更大的图片大小
-            chartview->setMinimumSize(1500,1800);
+            chartview->setMinimumSize(pic_chart_len_size,pic_chart_hight_size);
             break;
         }
 
@@ -86,7 +92,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
             break;
         case 2:
             // 存储更大的图片
-            font.setPixelSize(17);
+            font.setPixelSize(pic_axis_size);
             break;
         }
 
@@ -105,7 +111,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
             break;
         case 2:
             // 存储更大的图片
-            axis_font.setPixelSize(17);
+            axis_font.setPixelSize(pic_axis_size);
             break;
         }
         axisX->setLabelsFont(axis_font);
@@ -175,7 +181,7 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
             break;
         case 2:
             // 存储更大的图片
-            font.setPixelSize(23);
+            font.setPixelSize(pic_chart_name_size);
             break;
         }
         font.setBold(true);
@@ -223,7 +229,7 @@ void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_ma
             break;
         case 2:
             // 存储更大的图片
-            font.setPixelSize(23);
+            font.setPixelSize(pic_chart_name_size);
             break;
         }
         font.setBold(true);
@@ -430,7 +436,7 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
             font.setPixelSize(12);
             break;
         case 2:
-            font.setPixelSize(18);
+            font.setPixelSize(pic_legend_size);
             break;
         }
         qchart->legend()->setFont(font);
@@ -615,7 +621,7 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
             font.setPixelSize(12);
             break;
         case 2:
-            font.setPixelSize(18);
+            font.setPixelSize(pic_legend_size);
             break;
         }
         qchart->legend()->setFont(font);
@@ -658,13 +664,15 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
         if(max_line_num == 1)
         {
             legends[legends_size - max_line_num]->setLabel(
-                        attri_XI.second != INT_MAX ? "max_line" : "min_line");
+                        attri_XI.second != INT_MAX ?
+                        QString::fromStdString("max_line: " + to_string(attri_XI.second))  :
+                        QString::fromStdString("min_line: " + to_string(attri_XI.first)));
         }
         // 两条最值线都存在时
         if(max_line_num == 2)
         {
-            legends[legends_size - max_line_num]->setLabel("max_line");
-            legends[legends_size - max_line_num + 1]->setLabel("min_line");
+            legends[legends_size - max_line_num]->setLabel(QString::fromStdString("max_line: " + to_string(attri_XI.second)));
+            legends[legends_size - max_line_num + 1]->setLabel(QString::fromStdString("min_line: " + to_string(attri_XI.first)));
         }
         // site最值线的图例
 //        legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");
