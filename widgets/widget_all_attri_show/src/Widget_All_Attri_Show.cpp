@@ -26,7 +26,8 @@ const string Widget_All_Attri_Show::tackel_file_name()
             if(in_file_path[i] == '/' || in_file_path[i] == '\\')break;
         }
         // 设置获取的文件名
-        src_file_name = in_file_path.substr(i+1,in_file_path.size()-i+1);
+//        src_file_name = in_file_path.substr(i+1,in_file_path.size()-i+1);
+        src_file_name = in_file_path.substr(i+1,in_file_path.size() - (i+1));
 //        qDebug() << src_file_name.c_str();
         return src_file_name;
 
