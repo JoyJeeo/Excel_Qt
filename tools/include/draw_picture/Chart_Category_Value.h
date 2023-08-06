@@ -1,77 +1,63 @@
-#ifndef CHART_H
-#define CHART_H
+#ifndef CHART_CATEGORY_VALUE_H
+#define CHART_CATEGORY_VALUE_H
 
 #include <QChartView>
 #include <QChart>
 #include <QLineSeries>
 #include <QHBoxLayout>
 #include <QValueAxis>
+#include <QCategoryAxis>
 #include <QDebug>
 #include <map>
-#include "My_Chart_View.h"
-
 using namespace std;
 
 QT_CHARTS_USE_NAMESPACE
-class Chart : public QWidget
+class Chart_Category_Value : public QWidget
 {
     Q_OBJECT
 
 public:
-    Chart(QWidget* parent = 0, QString _chartname = "折线图",int choice = 0);
-    ~Chart(){}
-    void setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
-                 QString _yname, qreal _ymin, qreal _ymax, int _ytickc,int choice = 0);
-    void buildChart(const vector<int>& scatter_sites,int site_max_parts,
-                    const QMap<int,QVector<QPointF>>&,const pair<double,double>&,
-                    const pair<double,double>&,int pic_choice = 0);
+    Chart_Category_Value(QWidget* parent = 0, QString _chartname = "折线图",int pic_choice = 0);
+    ~Chart_Category_Value();
 
-    // 【功能三】
-    void time_buildChart(const vector<string>& scatter_sites,int site_max_parts,
-                    const QMap<string,QVector<QPointF>>&,const pair<double,double>&,
-                    const pair<double,double>&,int pic_choice = 0);
-
-    // 参数太多，没必要使用total_task来进行构造
+    void setAxis(QString _xname, const vector<int>& _xdatas,int _xtickc,
+                 QString _yname, qreal _ymin, qreal _ymax, int _ytickc,int pic_choice = 0);
+    void buildChart(const vector<string>& scatter_site,const vector<int>& scatter_part,
+                    const QMap<string,QVector<QPointF>>& series_data,
+                    const pair<double, double>& XI_line_data,
+                    const pair<double, double>& attri_XI,int pic_choice = 0);
 
 private:
+    // 【方法区】
+    // 具体建chart的方法
     // 构造数据线
-    void construct_datas_series(const vector<int>& scatter_sites,int site_max_parts,
-                                const QMap<int,QVector<QPointF>>& series_data,int data_series_width);
+    void construct_datas_series(const vector<string>& scatter_site,const vector<int>& scatter_part,
+                                const QMap<string,QVector<QPointF>>& series_data,
+                                int data_series_width);
     // 构造最值线
     void construct_XI_line(const pair<double,double>& attri_XI,
-                           int XI_series_width,int site_max_parts);
+                           int XI_series_width,const vector<int>& scatter_part);
     // 设置chart的图里描述样式
-    void construct_legend_style(const vector<int> scatter_sites,const pair<double,double>& attri_XI,int choice = 0);
+    void construct_legend_style(const vector<string> scatter_site,
+                                const pair<double,double>& attri_XI,
+                                int pic_choice = 0);
 
-    // 【功能三】
-    // 构造数据线
-    void construct_time_datas_series(const vector<string>& scatter_time_sites,int site_max_parts,
-                                const QMap<string,QVector<QPointF>>& time_series_data,int data_series_width);
-    // 构造最值线
-    void construct_time_XI_line(const pair<double,double>& attri_XI,
-                           int XI_series_width,int site_max_parts);
-    // 设置chart的图里描述样式
-    void construct_time_legend_style(const vector<string> scatter_time_sites,const pair<double,double>& attri_XI,int choice = 0);
-    QMap<string,QVector<QLineSeries*>> time_series;
-
+    // 【对象区】
+    QMap<string,QVector<QLineSeries*>> series;
 
     QChart* qchart; // chart图表容器
     QChartView* chartview; // chart显示器容器，容纳chart图表
-    //  My_Chart_View* chartview; // chart显示器容器，容纳chart图表
-    QMap<int,QVector<QLineSeries*>> series; // chart图表中的数据：折线图 // 由于可能出现断点，因此需要使用这种结构进行定义
-        // 横坐标代表每个site芯片【一组线】，纵坐标代表一组点，纵坐标中，是每组多个点构成的线数据
-        // attri -> [site][Line_part] = [LineSeries] = many_points
 
     QHBoxLayout* layout; // 一个水平布局【必须有一个自己的layout才能显示控件】
-    QValueAxis* axisX; // 数据轴
+    QCategoryAxis* axisX; // 数据轴
     QValueAxis* axisY;
 
     QString chartname; // chart图表名称
     //坐标轴参数
     QString xname; // x轴名称
-    qreal xmin; // x轴最小值
-    qreal xmax; // x轴最大值
+    vector<int> xdatas;
     int xtickc; // x轴上的实线个数
+
     QString yname; // y轴名称
     qreal ymin; // y轴最小值
     qreal ymax; // y轴最大值
@@ -100,13 +86,8 @@ private:
         QColor(126, 209, 72),QColor(64, 218, 62),QColor(195, 50, 226),QColor(47, 195, 111),QColor(167, 97, 221),
         QColor(92, 208, 94),QColor(189, 30, 194),QColor(105, 194, 169),QColor(221, 79, 181),QColor(63, 222, 99),
         QColor(179, 94, 231),QColor(50, 200, 117),QColor(197, 71, 202),QColor(80, 187, 109),QColor(145, 204, 47)
-//        Qt::black,Qt::blue,Qt::yellow,Qt::green,
-//        Qt::darkGreen,Qt::darkCyan,Qt::darkMagenta,
-//        Qt::gray,Qt::cyan,Qt::lightGray,
-//        Qt::magenta,
-//            Qt::darkBlue,Qt::darkRed,Qt::darkGray,Qt::darkYellow,
 
     }; // 线条颜色筛选
 };
 
-#endif // CHART_H
+#endif // CHART_CATEGORY_VALUE_H

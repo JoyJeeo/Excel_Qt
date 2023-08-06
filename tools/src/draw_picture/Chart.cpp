@@ -151,7 +151,7 @@ void Chart::setAxis(QString _xname, qreal _xmin, qreal _xmax, int _xtickc,
 void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
                        const QMap<int,QVector<QPointF>>& series_data,
                        const pair<double,double>& XI_line_data,
-                       const pair<double,double>& attri_XI,int choice)
+                       const pair<double,double>& attri_XI,int pic_choice)
 {
     /*
         参数：QVector<QVector<QPointF>> series_data:
@@ -171,7 +171,7 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
     try {
         // 设置chart名称
         QFont font = QFont("Consolas");
-        switch (choice) {
+        switch (pic_choice) {
         case 0:
             // 专门用于电脑显示
             font.setPixelSize(15);
@@ -202,7 +202,7 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
         construct_XI_line(attri_XI,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_legend_style(scatter_sites,attri_XI,choice);
+        construct_legend_style(scatter_sites,attri_XI,pic_choice);
 
     } catch (...) {
         qDebug() << "Chart::buildChart";
@@ -214,12 +214,12 @@ void Chart::buildChart(const vector<int>& scatter_sites,int site_max_parts,
 void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_max_parts,
                             const QMap<string,QVector<QPointF> > & time_series_data,
                             const pair<double, double> & XI_line_data,
-                            const pair<double, double> & attri_XI,int choice)
+                            const pair<double, double> & attri_XI,int pic_choice)
 {
     try {
         // 设置chart名称
         QFont font = QFont("Consolas");
-        switch (choice) {
+        switch (pic_choice) {
         case 0:
             // 专门用于电脑显示
             font.setPixelSize(15);
@@ -250,7 +250,7 @@ void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_ma
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
         construct_time_XI_line(attri_XI,XI_series_width,site_max_parts);
         // 修正图例样式
-        construct_time_legend_style(scatter_time_sites,attri_XI,choice);
+        construct_time_legend_style(scatter_time_sites,attri_XI,pic_choice);
 
     } catch (...) {
         qDebug() << "Chart::time_buildChart";
@@ -259,7 +259,8 @@ void Chart::time_buildChart(const vector<string> &scatter_time_sites,int site_ma
 }
 
 void Chart::construct_datas_series(const vector<int>& scatter_sites,int site_max_parts,
-                                   const QMap<int,QVector<QPointF>> &series_data, int data_series_width)
+                                   const QMap<int,QVector<QPointF>> &series_data,
+                                   int data_series_width)
 {
     /*
         参数：

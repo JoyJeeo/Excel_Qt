@@ -35,6 +35,9 @@ public:
     // 生成ration的task【耦合】 // 这个任务必须在time_task任务执行完成，使用完target文件后，才应该可以被调用
     const string ration_task();
 
+    // 功能四
+    const string temperature_task(const QStringList& file_paths);
+
 private:
     // 动态获取输入文件的绝对路径
     QString profile_input_file_path();

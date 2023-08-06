@@ -7,7 +7,7 @@
 #include <strings.h>
 #include <QDirIterator>
 #include <QDir>
-
+#include "tools/include/data_profile/Make_Temperature_File.h"
 
 
 File_To_Targetfile::File_To_Targetfile()
@@ -156,6 +156,20 @@ const string File_To_Targetfile::ration_task()
         return total_task(RATION_FILE_PATH,"ration_target_file.csv");
     } catch (...) {
         qDebug() << "File_To_Targetfile::ration_task";
+        throw;
+    }
+}
+
+const string File_To_Targetfile::temperature_task(const QStringList &file_paths)
+{
+    try {
+        Make_Temperature_File temperature_filor;
+        string temperature_file_path = temperature_filor.total_task(file_paths);
+
+        return total_task(temperature_file_path);
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::temperature_task";
         throw;
     }
 }

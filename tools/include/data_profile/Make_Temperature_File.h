@@ -26,7 +26,7 @@ private:
     ofstream output_file_open(const string& out_file_path);
 
     // 单文件处理
-    void tackle_solo_file(const QString& file_path); // 1
+    void tackle_solo_file(const QString& file_path,bool first_file_flage);
 
     // 获得单文件的文件名
     string profile_solo_file_name(const QString& file_path);
@@ -36,16 +36,19 @@ private:
     pair<vector<string>,string> profile_siteNo_temperature(const string& file_name);
 
     // 文件内容全读入对象容器中【局部对象】 // 获取all_array
-    vector<vector<string>> tackle_solo_file_get_all(const ifstream& ifs); // 2
+    vector<vector<string>> tackle_solo_file_get_all(const ifstream& ifs);
 
     // 分析单文件的目标数据位置所需的参数
     void profile_target_data_params(vector<vector<string>>& all_array, // 由于数据为rawdata,因此可能需要修改补充其内容
                                     size_t& rows_num,
                                     size_t& cols_num,
-                                    size_t& target_data_index); // 3
+                                    size_t& target_data_index);
 
     // 获取目标数据【此时返回的目标数据，即为理论上不存在乱码的，补齐空位的data】
-    vector<vector<string>> tackle_solo_file_get_target(const vector<vector<string>>& all_array); // 4
+    vector<vector<string>> tackle_solo_file_get_target(vector<vector<string>>& all_array, // 可能需要补""空，不能const传入
+                                                       size_t rows_num,
+                                                       size_t cols_num,
+                                                       size_t target_data_index); // 4
 
     // 分析头数据与体数据的分界点位置
     void profile_div_index(const vector<vector<string>>& target_datas,
