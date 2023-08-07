@@ -18,7 +18,8 @@
 #include <QtWidgets/QWidget>
 #include <actions\buttons\include\Button_All_Attri.h>
 #include <actions\buttons\include\Button_Merge_File.h>
-#include "actions\buttons\include\Button_Time_Compare.h"
+#include <actions\buttons\include\Button_Temperature.h>
+#include <actions\buttons\include\Button_Time_Compare.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -31,6 +32,7 @@ public:
     Button_All_Attri *btn_all_attri;
     Button_Merge_File *btn_merge;
     Button_Time_Compare *btn_time_compare;
+    Button_Temperature *btn_temperature;
     QStatusBar *statusbar;
     QMenuBar *menubar;
 
@@ -43,7 +45,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(50, 30, 151, 111));
+        verticalLayoutWidget->setGeometry(QRect(50, 30, 191, 191));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -64,13 +66,18 @@ public:
 
         verticalLayout->addWidget(btn_time_compare);
 
+        btn_temperature = new Button_Temperature(verticalLayoutWidget);
+        btn_temperature->setObjectName(QString::fromUtf8("btn_temperature"));
+
+        verticalLayout->addWidget(btn_temperature);
+
         Main_Window->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(Main_Window);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         Main_Window->setStatusBar(statusbar);
         menubar = new QMenuBar(Main_Window);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 811, 22));
+        menubar->setGeometry(QRect(0, 0, 811, 29));
         Main_Window->setMenuBar(menubar);
 
         retranslateUi(Main_Window);
@@ -84,6 +91,7 @@ public:
         btn_all_attri->setText(QCoreApplication::translate("Main_Window", "btn_all_attri", nullptr));
         btn_merge->setText(QCoreApplication::translate("Main_Window", "btn_merge", nullptr));
         btn_time_compare->setText(QCoreApplication::translate("Main_Window", "btn_time_compare", nullptr));
+        btn_temperature->setText(QCoreApplication::translate("Main_Window", "btn_temperature", nullptr));
     } // retranslateUi
 
 };

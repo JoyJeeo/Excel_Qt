@@ -63,7 +63,7 @@ void Button_Time_Compare::task_widget_time_file_comp_show()
         construct_main_widge();
 
         // 将widgets窗体内容进行保存
-        save_pic(main_widge,"./ALL_ATTRI_PIC.png");
+        save_pic(main_widge,"./TIME_COMPARE_PIC.png");
 
         // 构造QScrollArea
         construct_scrollarea();

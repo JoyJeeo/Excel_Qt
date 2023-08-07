@@ -20,6 +20,7 @@ SOURCES += \
     Main_Window.cpp \
     actions/buttons/src/Button_All_Attri.cpp \
     actions/buttons/src/Button_Merge_File.cpp \
+    actions/buttons/src/Button_Temperature.cpp \
     actions/buttons/src/Button_Time_Compare.cpp \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
@@ -35,12 +36,14 @@ SOURCES += \
     tools/src/draw_picture/Chart.cpp \
     tools/src/draw_picture/Chart_Category_Value.cpp \
     tools/src/draw_picture/My_Chart_View.cpp \
-    widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp
+    widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp \
+    widgets/widget_temperature_show/src/Widget_Temperature_Show.cpp
 
 HEADERS += \
     Main_Window.h \
     actions/buttons/include/Button_All_Attri.h \
     actions/buttons/include/Button_Merge_File.h \
+    actions/buttons/include/Button_Temperature.h \
     actions/buttons/include/Button_Time_Compare.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
@@ -58,6 +61,7 @@ HEADERS += \
     tools/include/draw_picture/My_Chart_View.h \
     widgets/Widgets_Header_Proxy_01.h \
     widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+    widgets/widget_temperature_show/include/Widget_Temperature_Show.h
 
 FORMS += \
     Main_Window.ui

@@ -26,7 +26,7 @@ vector<string> Scatter_Site_X_Part::get_scatter_string_site()
         for(string site : site_list)
         {
             // 迭代器本身也在更新，因此必须这样动态调用迭代器
-            if(find(scatter_str_site.begin(),scatter_str_site.end(),site) != scatter_str_site.end())
+            if(find(scatter_str_site.begin(),scatter_str_site.end(),site) == scatter_str_site.end())
             {
                 scatter_str_site.push_back(site);
             }
@@ -53,7 +53,7 @@ vector<int> Scatter_Site_X_Part::get_scatter_int_site()
         for(string site : site_list)
         {
             int val = stoi(site);
-            if(find(scatter_int_site.begin(),scatter_int_site.end(),val) != scatter_int_site.end())
+            if(find(scatter_int_site.begin(),scatter_int_site.end(),val) == scatter_int_site.end())
             {
                 scatter_int_site.push_back(val);
             }
@@ -76,7 +76,7 @@ vector<int> Scatter_Site_X_Part::get_x_part()
         for(string part_str : part_list)
         {
             int part_int = stoi(part_str);
-            if(find(parts.begin(),parts.end(),part_int) != parts.end())
+            if(find(parts.begin(),parts.end(),part_int) == parts.end())
             {
                 parts.push_back(part_int);
             }

@@ -212,6 +212,9 @@ void Make_Temperature_File::tackle_solo_file(const QString &file_path,bool first
         // 将文件内容全部读入程序中
         vector<vector<string>> all_array = tackle_solo_file_get_all(ifs);
 
+        // 关闭读入流
+        ifs.close();
+
         // 获取目标数据区参数
         size_t rows_num = 0;
         size_t cols_num = 0;
@@ -451,8 +454,9 @@ vector<vector<string>> Make_Temperature_File::get_body_datas(const vector<vector
     }
 }
 
-vector<vector<string>> Make_Temperature_File::update_body_datas(const vector<vector<string>> &body_datas,
-                                                                const pair<vector<string>,string> &steers)
+vector<vector<string>> Make_Temperature_File::update_body_datas(
+                                    const vector<vector<string>> &body_datas,
+                                    const pair<vector<string>,string> &steers)
 {
     /*
         功能：
@@ -469,7 +473,8 @@ vector<vector<string>> Make_Temperature_File::update_body_datas(const vector<vec
     try {
         vector<vector<string>> update_body;
 
-        for(size_t i = 0;i < body_datas.size();i++)
+        // 为了防止测试机给出多余的数据造成越界问题，这里循环使用steers.first明确指明的site数，这样多余的数据，在程序内就会被删除掉
+        for(size_t i = 0;i < steers.first.size();i++)
         {
             update_body.push_back(body_datas[i]);
             // 修改SITE_NUM
@@ -532,6 +537,8 @@ void Make_Temperature_File::save_datas()
             }
             ofs<<endl;
         }
+
+        ofs.close();
 
     } catch (...) {
         qDebug() << "Make_Temperature_File::save_datas";

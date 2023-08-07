@@ -130,6 +130,8 @@ void Axis_Y_Step::total_task()
         // 提取文件内容
         tackle_file(ifs);
 
+        ifs.close();
+
 
     } catch (...) {
         qDebug() << "Axis_Y_Step::total_task";

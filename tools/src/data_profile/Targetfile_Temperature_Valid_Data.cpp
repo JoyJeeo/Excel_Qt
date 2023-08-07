@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 
+extern int NULL_Number;
+
 Targetfile_Temperature_Valid_Data::Targetfile_Temperature_Valid_Data()
 {
 
@@ -28,6 +30,8 @@ void Targetfile_Temperature_Valid_Data::total_task(const string target_file_path
         profile_valid_datas();
         // 分析所有属性
         profile_labels();
+
+        ifs.close();
 
     } catch (...) {
         qDebug() << "Targetfile_Temperature_Valid_Data::total_task";
@@ -197,9 +201,9 @@ void Targetfile_Temperature_Valid_Data::profile_valid_col()
 void Targetfile_Temperature_Valid_Data::profile_valid_datas()
 {
     try {
-        void profile_site_part();
-        void profile_uul();
-        void profile_series_data();
+        profile_site_part();
+        profile_uul();
+        profile_series_data();
 
     } catch (...) {
         qDebug() << "Targetfile_Temperature_Valid_Data::profile_valid_datas";
@@ -236,6 +240,7 @@ void Targetfile_Temperature_Valid_Data::profile_site_part()
                 m_site_part.m_attri_site_part[attri].push_back(m_all_array[i][j]);
             }
         }
+
     } catch (...) {
         qDebug() << "Targetfile_Temperature_Valid_Data::profile_site_part";
         throw;

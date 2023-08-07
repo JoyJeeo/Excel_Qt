@@ -5,9 +5,6 @@
 #include "Attri_Unit_Ul.h"
 #include <QDebug>
 
-// NULL的取固定值
-const int NULL_Number = INT_MIN;
-
 
 // 获取数据表中所有数据拆分后形成的有效数据的类【直接使用类来对目标数据进行封装的方法，很好的实现数据的处理和代码的逻辑实现】
 class Targetfile_Valid_Data // 数据表中有效数据的拆分结果

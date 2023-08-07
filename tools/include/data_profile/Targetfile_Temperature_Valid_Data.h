@@ -9,8 +9,6 @@
 #include "Scatter_Site_X_Part.h"
 using namespace std;
 
-extern const int NULL_Number;
-
 class Targetfile_Temperature_Valid_Data
 {
 public:

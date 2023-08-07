@@ -5,6 +5,9 @@
 #include <iostream>
 using namespace std;
 
+// NULL的取固定值
+int NULL_Number = INT_MIN;
+
 void Targetfile_Valid_Data::profile_get_site_parts()
 {
     /*

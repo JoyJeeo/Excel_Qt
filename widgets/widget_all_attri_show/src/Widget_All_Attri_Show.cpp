@@ -1,6 +1,7 @@
 #include "widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h"
 
 extern size_t pic_pages;
+extern int NULL_Number;
 
 #include <QApplication>
 #include <QDir>

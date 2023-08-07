@@ -19,8 +19,8 @@
      <rect>
       <x>50</x>
       <y>30</y>
-      <width>151</width>
-      <height>111</height>
+      <width>191</width>
+      <height>191</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -51,6 +51,13 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="Button_Temperature" name="btn_temperature">
+       <property name="text">
+        <string>btn_temperature</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
   </widget>
@@ -61,7 +68,7 @@
      <x>0</x>
      <y>0</y>
      <width>811</width>
-     <height>22</height>
+     <height>29</height>
     </rect>
    </property>
   </widget>
@@ -80,7 +87,12 @@
   <customwidget>
    <class>Button_Time_Compare</class>
    <extends>QPushButton</extends>
-   <header>actions\buttons\include\Button_Time_Compare.h</header>
+   <header location="global">actions\buttons\include\Button_Time_Compare.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Button_Temperature</class>
+   <extends>QPushButton</extends>
+   <header location="global">actions\buttons\include\Button_Temperature.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

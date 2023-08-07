@@ -6,11 +6,11 @@
 #include <string>
 using namespace std;
 
-const int pic_chart_len_size = 1500;
-const int pic_chart_hight_size = 1800;
-const int pic_chart_name_size = 50;
-const int pic_legend_size = 35;
-const int pic_axis_size = 35;
+static const int pic_chart_len_size = 1500;
+static const int pic_chart_hight_size = 1800;
+static const int pic_chart_name_size = 50;
+static const int pic_legend_size = 35;
+static const int pic_axis_size = 35;
 
 Chart::Chart(QWidget* parent, QString _chartname,int choice)
     :QWidget(parent),chartname(_chartname){
@@ -455,11 +455,12 @@ void Chart::construct_legend_style(const vector<int> scatter_sites,const pair<do
         // 设置图例中的文字描述
         // 绘制数据图例
         // 只对数据线图例进行扫描设置
+        size_t counter = 0; // 单独记录vector的对象
         for(size_t i = 0;i < legends_size - max_line_num;i++)
         {
             // site数据线的图例
             // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
-            int site = scatter_sites[i];
+            int site = scatter_sites[counter++];
 
             // 将同一个site的多条part线跳过，只保留其中一个即可
             int scope = series[site].size();
@@ -640,11 +641,12 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
         // 设置图例中的文字描述
         // 绘制数据图例
         // 只对数据线图例进行扫描设置
+        size_t counter = 0; // 【一个逆天BUG】
         for(size_t i = 0;i < legends_size - max_line_num;i++)
         {
             // site数据线的图例
             // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
-            string time_site = scatter_time_sites[i];
+            string time_site = scatter_time_sites[counter++];
 
             // 将同一个site的多条part线跳过，只保留其中一个即可
             int scope = time_series[time_site].size();

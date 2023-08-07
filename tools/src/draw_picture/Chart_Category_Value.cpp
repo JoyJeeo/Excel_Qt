@@ -6,11 +6,11 @@
 #include <string>
 using namespace std;
 
-const int pic_chart_len_size = 1500;
-const int pic_chart_hight_size = 1800;
-const int pic_chart_name_size = 50;
-const int pic_legend_size = 35;
-const int pic_axis_size = 35;
+static const int pic_chart_len_size = 1500;
+static const int pic_chart_hight_size = 1800;
+static const int pic_chart_name_size = 50;
+static const int pic_legend_size = 35;
+static const int pic_axis_size = 35;
 
 Chart_Category_Value::Chart_Category_Value(QWidget *parent, QString _chartname, int pic_choice)
     :QWidget(parent),chartname(_chartname)
@@ -127,11 +127,30 @@ void Chart_Category_Value::setAxis(QString _xname, const vector<int> &_xdatas,in
         axisX->setLabelFormat("%s");   //设置x轴的刻度标签格式
         axisX->setTitleText(xname);  //设置x轴的描述
         axisX->setTitleFont(font);
-        axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionCenter); // 设置标签的位置
+        axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue); // 设置标签的位置
         //设置x轴的数据范围
         for(int part : xdatas)
         {
-            axisX->append(QString::fromStdString(to_string(part)),part);
+            // 更改温度映射
+            int part_id = 0;
+            switch (part) {
+            case -40:
+                part_id = 1;
+                break;
+            case 0:
+                part_id = 2;
+                break;
+            case 25:
+                part_id = 3;
+                break;
+            case 85:
+                part_id = 4;
+                break;
+            case 125:
+                part_id = 5;
+                break;
+            }
+            axisX->append(QString::fromStdString(to_string(part)) + "℃",part_id);
         }
         axisX->setTickCount(xtickc);       //x轴设置实网格线的数量【也是一个大格】
         axisX->setMinorTickCount(0);   //设置x轴每个大格里面小刻度线的数目
@@ -160,9 +179,9 @@ void Chart_Category_Value::setAxis(QString _xname, const vector<int> &_xdatas,in
 
 void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
                                       const vector<int> &scatter_part,
-                                      const QMap<string, QVector<QPointF>> &series_data,
-                                      const pair<double, double> &XI_line_data,
-                                      const pair<double, double> &attri_XI,
+                                      const QMap<string, QMap<int,QPointF>> &series_data,
+                                      const pair<double, double> &XI_proxy_data,
+                                      const pair<double, double> &attri_define_XI,
                                       int pic_choice)
 {
     try {
@@ -191,15 +210,15 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
         int XI_series_width = 3;
 
         // 【特殊最值处理】：如果没有数值存在时，图表什么都不画
-        if(XI_line_data.first == INT_MIN && XI_line_data.second == INT_MAX)return;
+        if(XI_proxy_data.first == INT_MIN && XI_proxy_data.second == INT_MAX)return;
 
         // 绘制数据线
         construct_datas_series(scatter_site,scatter_part,series_data,data_series_width);
 
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
-        construct_XI_line(attri_XI,XI_series_width,scatter_part);
+        construct_XI_line(attri_define_XI,XI_series_width,scatter_part);
         // 修正图例样式
-        construct_legend_style(scatter_site,attri_XI,pic_choice);
+        construct_legend_style(scatter_site,attri_define_XI,pic_choice);
 
     } catch (...) {
         qDebug() << "Chart_Category_Value::buildChart";
@@ -209,7 +228,7 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
 
 void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_site,
                                                   const vector<int> &scatter_part,
-                                                  const QMap<string, QVector<QPointF>> &series_data,
+                                                  const QMap<string, QMap<int,QPointF>> &series_data,
                                                   int data_series_width)
 {
     try {
@@ -294,14 +313,14 @@ void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_
     }
 }
 
-void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_XI,
+void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_define_XI,
                                              int XI_series_width,
                                              const vector<int> &scatter_part)
 {
     try {
         // 添加最值线【都是红色的虚线】
         // 如果最大值线本身并不存在
-        if(attri_XI.second != INT_MAX)
+        if(attri_define_XI.second != INT_MAX)
         {
             // 最大值线
             QLineSeries* max_line = new QLineSeries(this);
@@ -312,7 +331,7 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_X
             for(size_t j = 0;j < scatter_part.size();j++)
             {
                 int part = scatter_part[j];
-                max_line->append(QPointF(part,attri_XI.second));
+                max_line->append(QPointF(part,attri_define_XI.second));
             }
 
             qchart->addSeries(max_line);
@@ -322,7 +341,7 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_X
         }
 
         // 如果最小值线，本身并不存在
-        if(attri_XI.first != INT_MIN)
+        if(attri_define_XI.first != INT_MIN)
         {
             // 最小值线
             QLineSeries* min_line = new QLineSeries(this);
@@ -333,7 +352,7 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_X
             for(size_t j = 0;j < scatter_part.size();j++)
             {
                 int part = scatter_part[j];
-                min_line->append(QPointF(part,attri_XI.first));
+                min_line->append(QPointF(part,attri_define_XI.first));
             }
             // 添加LineSeries 加入chart
             qchart->addSeries(min_line);
@@ -350,7 +369,7 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_X
 }
 
 void Chart_Category_Value::construct_legend_style(const vector<string> scatter_site,
-                                                  const pair<double, double> &attri_XI,
+                                                  const pair<double, double> &attri_define_XI,
                                                   int pic_choice)
 {
     try {
@@ -384,17 +403,18 @@ void Chart_Category_Value::construct_legend_style(const vector<string> scatter_s
 
         // 计算最值线的存在个数
         int max_line_num = 0;
-        if(attri_XI.first != INT_MIN)max_line_num++;
-        if(attri_XI.second != INT_MAX)max_line_num++;
+        if(attri_define_XI.first != INT_MIN)max_line_num++;
+        if(attri_define_XI.second != INT_MAX)max_line_num++;
 
         // 设置图例中的文字描述
         // 绘制数据图例
         // 只对数据线图例进行扫描设置
+        size_t counter = 0; // 单独记录vector的问题
         for(size_t i = 0;i < legends_size - max_line_num;i++)
         {
             // site数据线的图例
             // 线的绘制顺序，与芯片的顺序是一致的，由于绘制时都使用scatter_sites作为遍历顺序的依据
-            string site = scatter_site[i];
+            string site = scatter_site[counter++];
 
             // 将同一个site的多条part线跳过，只保留其中一个即可
             int scope = series[site].size();
@@ -414,17 +434,17 @@ void Chart_Category_Value::construct_legend_style(const vector<string> scatter_s
         if(max_line_num == 1)
         {
             legends[legends_size - max_line_num]->setLabel(
-                        attri_XI.second != INT_MAX ?
-                        QString::fromStdString("max_line: " + to_string(attri_XI.second))  :
-                        QString::fromStdString("min_line: " + to_string(attri_XI.first)));
+                        attri_define_XI.second != INT_MAX ?
+                        QString::fromStdString("max_line: " + to_string(attri_define_XI.second))  :
+                        QString::fromStdString("min_line: " + to_string(attri_define_XI.first)));
         }
         // 两条最值线都存在时
         if(max_line_num == 2)
         {
             legends[legends_size - max_line_num]->setLabel(
-                        QString::fromStdString("max_line: " + to_string(attri_XI.second)));
+                        QString::fromStdString("max_line: " + to_string(attri_define_XI.second)));
             legends[legends_size - max_line_num + 1]->setLabel(
-                        QString::fromStdString("min_line: " + to_string(attri_XI.first)));
+                        QString::fromStdString("min_line: " + to_string(attri_define_XI.first)));
         }
 
     } catch (...) {

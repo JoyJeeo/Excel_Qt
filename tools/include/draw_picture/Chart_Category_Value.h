@@ -14,6 +14,9 @@ using namespace std;
 QT_CHARTS_USE_NAMESPACE
 class Chart_Category_Value : public QWidget
 {
+    /*
+        一个相对通用的chart构造类
+    */
     Q_OBJECT
 
 public:
@@ -22,24 +25,26 @@ public:
 
     void setAxis(QString _xname, const vector<int>& _xdatas,int _xtickc,
                  QString _yname, qreal _ymin, qreal _ymax, int _ytickc,int pic_choice = 0);
-    void buildChart(const vector<string>& scatter_site,const vector<int>& scatter_part,
-                    const QMap<string,QVector<QPointF>>& series_data,
-                    const pair<double, double>& XI_line_data,
-                    const pair<double, double>& attri_XI,int pic_choice = 0);
+    void buildChart(const vector<string> &scatter_site,
+                    const vector<int> &scatter_part,
+                    const QMap<string, QMap<int,QPointF>> &series_data,
+                    const pair<double, double> &XI_proxy_data,
+                    const pair<double, double> &attri_define_XI,
+                    int pic_choice = 0);
 
 private:
     // 【方法区】
     // 具体建chart的方法
     // 构造数据线
     void construct_datas_series(const vector<string>& scatter_site,const vector<int>& scatter_part,
-                                const QMap<string,QVector<QPointF>>& series_data,
+                                const QMap<string, QMap<int,QPointF>> &series_data,
                                 int data_series_width);
     // 构造最值线
-    void construct_XI_line(const pair<double,double>& attri_XI,
+    void construct_XI_line(const pair<double,double>& attri_define_XI,
                            int XI_series_width,const vector<int>& scatter_part);
     // 设置chart的图里描述样式
     void construct_legend_style(const vector<string> scatter_site,
-                                const pair<double,double>& attri_XI,
+                                const pair<double,double>& attri_define_XI,
                                 int pic_choice = 0);
 
     // 【对象区】
