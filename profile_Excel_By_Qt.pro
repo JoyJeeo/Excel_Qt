@@ -28,6 +28,7 @@ SOURCES += \
     tools/src/data_profile/File_To_Targetfile.cpp \
     tools/src/data_profile/Make_Ration_File.cpp \
     tools/src/data_profile/Make_Temperature_File.cpp \
+    tools/src/data_profile/Make_Timc_File.cpp \
     tools/src/data_profile/Scatter_Site_X_Part.cpp \
     tools/src/data_profile/Site_Part.cpp \
     tools/src/data_profile/Targetfile_Temperature_Valid_Data.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     tools/include/data_profile/File_To_Targetfile.h \
     tools/include/data_profile/Make_Ration_File.h \
     tools/include/data_profile/Make_Temperature_File.h \
+    tools/include/data_profile/Make_Timc_File.h \
     tools/include/data_profile/Scatter_Site_X_Part.h \
     tools/include/data_profile/Site_Part.h \
     tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \

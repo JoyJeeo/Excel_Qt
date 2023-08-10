@@ -720,6 +720,8 @@ bool Targetfile_Valid_Data::time_task(const ifstream &ifs)
         profile_get_time_datas();
         profile_time_labels();
 
+        return true;
+
     } catch (...) {
         qDebug() << "Targetfile_Valid_Data::time_task";
         throw;

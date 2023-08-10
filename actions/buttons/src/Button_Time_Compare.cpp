@@ -36,7 +36,8 @@ void Button_Time_Compare::total_task()
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
 
-        connect(this,&QPushButton::released,this,&Button_Time_Compare::task_widget_time_file_comp_show);
+        connect(this,&QPushButton::released,this,
+                &Button_Time_Compare::task_widget_time_file_comp_show);
 
     } catch (...) {
         qDebug() << "Button_Time_Compare::total_task";

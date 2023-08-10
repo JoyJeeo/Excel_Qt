@@ -14,11 +14,11 @@ public:
     ~Make_Temperature_File();
 
     // 该类处理完所有温度数据后，只需要将生成的文件路径返回即可
-    const string total_task(const QStringList& file_paths);
+    const string make_temperature_file(const QStringList& file_paths);
 
 private:
 
-// 【方法区】
+// 【方法区】 【之后拆分为函数参数获取区 ！！！】
     // 获取文件读入流
     ifstream input_file_open(const string& input_file_path);
 
@@ -48,7 +48,7 @@ private:
     vector<vector<string>> tackle_solo_file_get_target(vector<vector<string>>& all_array, // 可能需要补""空，不能const传入
                                                        size_t rows_num,
                                                        size_t cols_num,
-                                                       size_t target_data_index); // 4
+                                                       size_t target_data_index);
 
     // 分析头数据与体数据的分界点位置
     void profile_div_index(const vector<vector<string>>& target_datas,

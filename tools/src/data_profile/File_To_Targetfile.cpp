@@ -8,6 +8,7 @@
 #include <QDirIterator>
 #include <QDir>
 #include "tools/include/data_profile/Make_Temperature_File.h"
+#include "tools/include/data_profile/Make_Timc_File.h"
 
 
 File_To_Targetfile::File_To_Targetfile()
@@ -88,56 +89,70 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
     */
     try {
         // 创建存储中间数据的文件夹
-//        // 存储文件
+        // 存储文件
 //        QString time_files_path = build_time_dir();
 //        // 每次都清空time文件夹内容
 //        clear_time_dir(time_files_path);
 
-        // 用来收集所有时刻文件的数据
-        vector<vector<string>> time_datas;
+//         用来收集所有时刻文件的数据
+//        ///////////////////////////////
+//        vector<vector<string>> time_datas;
 
-        // 默认文件夹都存在
-        // 一批目录，就是一个true，因为是合成为一个文件
-        // 控制了获取哪个数据的头数据
-        bool first_flage = true;
-        for(int i = 0;i < dir_paths.size();i++)
-        {
-            // 处理单文件夹
-            tackle_single_dir(dir_paths[i],time_datas,first_flage);
-        }
+//        // 默认文件夹都存在
+//        // 一批目录，就是一个true，因为是合成为一个文件
+//        // 控制了获取哪个数据的头数据
+//        bool first_flage = true;
+//        for(int i = 0;i < dir_paths.size();i++)
+//        {
+//            // 处理单文件夹
+//            tackle_single_dir(dir_paths[i],time_datas,first_flage);
+//        }
 
-        // 将数据内容进行保存
-        // 创建时刻文件timc【做出源文件】
-        QString time_file_path = profile_output_file_path(time_file_name.toStdString());
-        string str_time_file_path = qstring_to_string(time_file_path);
-        set_timc_file_path(str_time_file_path);
-        // 将数据写入文件中
-        ofstream ofs = output_file_open(TIME_FILE_PATH);
-        // 将处理好的数据输出到target_file中
-        save_tackle_datas(ofs,time_datas);
-        ofs.close();
+//        // 将数据内容进行保存
+//        // 创建时刻文件timc【做出源文件】
+//        QString time_file_path = profile_output_file_path(time_file_name.toStdString());
+//        string str_time_file_path = qstring_to_string(time_file_path);
+//        set_timc_file_path(str_time_file_path);
+//        // 将数据写入文件中
+//        ofstream ofs = output_file_open(TIME_FILE_PATH);
+//        // 将处理好的数据输出到target_file中
+//        save_tackle_datas(ofs,time_datas);
+//        ofs.close();
+        /////////////////////////////////////////////////
+
+        // new timc.csv
+        Make_Timc_File timc_filor;
+        const string timc_file_path = timc_filor.make_timc_file(dir_paths);
+        set_timc_file_path(timc_file_path);
 
         // 生成ration.csv文件 // 【这里可以使用一个类，专门用来分析数据文件，将分析好的文件，交给当前这个类，进行数据反转，专门生成target_file文件，进行解耦】
-        vector<vector<string>> ration_datas = ration_maker.make_ration_file(time_datas);
-//        for(int i = 0;i<ration_datas.size();i++)
-//        {
-//            for(int j = 0;j < ration_datas[i].size();j++)
-//            {
-//                cout << ration_datas[i][j] << " ";
-//            }
-//            cout<<endl;
-//        }
-        QString ration_file_path = profile_output_file_path(ration_file_name.toStdString());
-        string str_ration_file_path = qstring_to_string(ration_file_path);
-        set_ration_file_path(str_ration_file_path);
-        // 将数据写入文件中
-        ofs = output_file_open(RATION_FILE_PATH);
-        // 将处理好的数据输出到target_file中
-        save_tackle_datas(ofs,ration_datas);
-        ofs.close();
+        ///////////////////////////////////////////////////////////////////////////
+//        vector<vector<string>> ration_datas = ration_maker.make_ration_file(time_datas);
+////        for(int i = 0;i<ration_datas.size();i++)
+////        {
+////            for(int j = 0;j < ration_datas[i].size();j++)
+////            {
+////                cout << ration_datas[i][j] << " ";
+////            }
+////            cout<<endl;
+////        }
+//        QString ration_file_path = profile_output_file_path(ration_file_name.toStdString());
+//        string str_ration_file_path = qstring_to_string(ration_file_path);
+//        set_ration_file_path(str_ration_file_path);
+//        // 将数据写入文件中
+//        ofs = output_file_open(RATION_FILE_PATH);
+//        // 将处理好的数据输出到target_file中
+//        save_tackle_datas(ofs,ration_datas);
+//        ofs.close();
+        /////////////////////////////////////////////////////////////////
+
+        // new ration file
+        Make_Ration_File ration_filor;
+        const string ration_file_path = ration_filor.make_ration_file(timc_file_path);
+        set_ration_file_path(ration_file_path);
 
         // 调用total函数，生成timc的翻转源文件的target_file文件【生成target_file】
-        return total_task(TIME_FILE_PATH,"target_file.csv");
+        return total_task(timc_file_path,"target_file.csv");
 
 
     } catch (...) {
@@ -164,7 +179,7 @@ const string File_To_Targetfile::temperature_task(const QStringList &file_paths)
 {
     try {
         Make_Temperature_File temperature_filor;
-        string temperature_file_path = temperature_filor.total_task(file_paths);
+        string temperature_file_path = temperature_filor.make_temperature_file(file_paths);
 
         return total_task(temperature_file_path);
 
@@ -174,7 +189,8 @@ const string File_To_Targetfile::temperature_task(const QStringList &file_paths)
     }
 }
 
-void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,bool& flage)
+void File_To_Targetfile::tackle_single_dir(QString dir_path,vector<vector<string>>& time_datas,
+                                           bool& flage)
 {
     /*
         功能：

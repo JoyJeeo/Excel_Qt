@@ -97,7 +97,7 @@ private:
                       int time_site_max_parts,
                      double axisX_k = 1, // 设置X轴的缩放大小
                      double axisY_k = 0.01, // 设置Y轴的缩放大小
-                    int show_choice = 0,int y_step_choice = 0);
+                    int show_choice = 0,int y_step_choice = 0,bool is_ration = false);
     QString profile_time_attri_unit(const string& attri,Targetfile_Valid_Data* Datas);
     // 获取数据线的最值线数据
     pair<double,double> profile_time_data_series_XI(const string& attri,Targetfile_Valid_Data* Datas,double zoom = 0.05);

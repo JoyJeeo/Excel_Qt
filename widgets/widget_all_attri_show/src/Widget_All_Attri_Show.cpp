@@ -189,13 +189,13 @@ void Widget_All_Attri_Show::time_while_draw(int row_obj_nums)
 
             Chart* ration_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                                        ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                                       ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,0,1);
+                                                       ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,0,1,true);
             // (widget,row,col) 物件和在网格布局管理器中的横纵坐标位置
             this->pGridLayout->addWidget(ration_chart,counter/row_obj_nums+1,counter%row_obj_nums+1);
 
             t_chart = this->time_initChart(attri,ration_time_site_points,ration_datas,
                                            ration_datas->get_site_parts().get_Scatter_Time_Site_Number(),
-                                           ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2,1);
+                                           ration_datas->get_site_parts().get_Max_Time_Part_Id(),1,0.01,2,1,true);
             row = ((counter/pic_row_obj_nums) % page_chart_nums + 1);
             col = (counter % pic_row_obj_nums + 1);
             pic_layout->addWidget(t_chart,row,col);
@@ -309,7 +309,8 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
                                              const vector<string>& scatter_time_sites,
                                              int time_site_max_parts,
                                              double axisX_k, double axisY_k,
-                                             int show_choice,int y_step_choice)
+                                             int show_choice,int y_step_choice,
+                                             bool is_ration)
 {
 
     try {
@@ -364,9 +365,17 @@ Chart *Widget_All_Attri_Show::time_initChart(const string &attri,
         // 应该使用最大最小值之间的倍距来作为放大和缩小的依据【而不应该是线本身的数值】
         // 【灵活设置图像的放大缩小】
         // 设置坐标系的数值范围
+        int t_begin = 1;
+        int ration_len_num = time_site_max_parts;
+        if(is_ration)
+        {
+            t_begin++;
+            ration_len_num--;
+        }
         chart->setAxis(
                     // 横坐标
-                    "PART_ID",1,time_site_max_parts,time_site_max_parts,
+//                    "Hr",1,time_site_max_parts,time_site_max_parts,
+                    "Hr",t_begin,time_site_max_parts,ration_len_num,
                     // 纵坐标
                     unit,y_axis_around.first,y_axis_around.second,
                     // 纵坐标的分割线的条数

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <QString>
 using namespace std;
 
 class Make_Ration_File
@@ -15,9 +16,17 @@ public:
     Make_Ration_File();
     ~Make_Ration_File();
 
-    vector<vector<string>> make_ration_file(vector<vector<string>> time_datas);
+    const string make_ration_file(const string& timc_file_path);
 
 private:
+// 【方法区】
+    // 获取文件读入流
+    ifstream input_file_open(const string& input_file_path);
+    // 获取文件内容写出流
+    ofstream output_file_open(const string& out_file_path);
+
+    // 文件内容全读入对象容器中【局部对象】 // 获取all_array
+    vector<vector<string>> tackle_file_get_all(const ifstream& ifs);
 
     // 记录目标的最终结果数据[ration_datas]
 //    vector<vector<string>> m_target_datas;
@@ -31,14 +40,26 @@ private:
     // 获取纵坐标的有效位置
     void profile_begin_col();
 
+    // 获取文件的保存路径
+    void profile_output_file_path() noexcept;
+
+    // 保存文件
+    void save_datas(const vector<vector<string>>& ration_datas);
+
     // 记录原始的时刻文件数据[time_datas]
-    vector<vector<string>> m_source_datas;
+    vector<vector<string>> timc_datas;
 
     // T0开始的位置
     int begin_row_T0;
     int end_row_T0;
     int begin_col;
 
+    // 生成的时刻文件的具体路径
+    QString ration_file_path = "";
+
+
+    // 生成的timc文件的文件名
+    const QString ration_file_name = "ration.csv";
 };
 
 #endif // MAKE_RATION_FILE_H

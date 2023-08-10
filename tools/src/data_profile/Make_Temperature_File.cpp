@@ -22,7 +22,7 @@ Make_Temperature_File::~Make_Temperature_File()
 
 }
 
-const string Make_Temperature_File::total_task(const QStringList &file_paths)
+const string Make_Temperature_File::make_temperature_file(const QStringList &file_paths)
 {
     /*
         功能：
@@ -546,7 +546,7 @@ void Make_Temperature_File::save_datas()
     }
 }
 
-void Make_Temperature_File::test_datas(const vector<vector<string> > &arrays)
+void Make_Temperature_File::test_datas(const vector<vector<string>> &arrays)
 {
     try {
         for(size_t i = 0;i < arrays.size(); i++)

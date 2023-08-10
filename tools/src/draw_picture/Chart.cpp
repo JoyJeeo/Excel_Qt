@@ -657,7 +657,7 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
             }
 
             // 直接显示time_site自己的 时间编号即可
-            legends[i]->setLabel(QString::fromStdString(time_site));
+            legends[i]->setLabel("No_"+ QString::fromStdString(time_site));
 
         }
 

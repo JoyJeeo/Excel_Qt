@@ -9,6 +9,7 @@ release/Axis_Y_Step.o
 release/File_To_Targetfile.o
 release/Make_Ration_File.o
 release/Make_Temperature_File.o
+release/Make_Timc_File.o
 release/Scatter_Site_X_Part.o
 release/Site_Part.o
 release/Targetfile_Temperature_Valid_Data.o
