@@ -6,6 +6,7 @@
 #include <iostream>
 #include <QDir>
 #include <sstream>
+#include <QFlags>
 
 Make_Timc_File::Make_Timc_File()
 {
@@ -192,6 +193,11 @@ string Make_Timc_File::profile_dir_name(const QString &dir_path)
     }
 }
 
+//bool qsort_cmp(const QFileInfo& a,const QFileInfo& b)
+//{
+//    return a.path() < b.path();
+//}
+
 QList<QFileInfo> Make_Timc_File::profile_dir_inner_file_infos(const QString &dir_path,
                                                              const QString &need_files)
 {
@@ -209,9 +215,17 @@ QList<QFileInfo> Make_Timc_File::profile_dir_inner_file_infos(const QString &dir
         QStringList filter;
         filter << need_files; // filter
         dir.setNameFilters(filter);
+//        dir.setSorting(QDir::Name);
 
         // 提取目录内的文件信息生成列表
         QList<QFileInfo> file_infos(dir.entryInfoList());
+
+//        // 获取的文件信息，按照文件名进行排序
+        sort(file_infos.begin(),file_infos.end(),[](const QFileInfo& a,const QFileInfo& b){
+            return !((a.fileName().length() > b.fileName().length()) ||
+                    (a.fileName().length() == b.fileName().length() && a.fileName() > b.fileName()));
+        });
+
 
         return file_infos;
 
