@@ -28,28 +28,31 @@ private:
     // 处理单一文件夹内容
     void tackle_single_dir(const QString& dir_path,bool& first_file_flage);
     // 处理单一文件内容
-    void tackle_single_file(const string& dir_name,const QString& file_path,
+    void tackle_single_file(const string& time_name,const QString& file_path,
                             bool& first_file_flage);
 
 
 
     // 【获取函数参数的函数】
-    // 获取文件夹名称
+    // 获取时刻名称
     string profile_dir_name(const QString& dir_path);
-    // 过滤文件夹内文件内容，获取文件夹内文件信息
+    // 获取文件夹内需要的文件内容，并按文件名大小排序，获取文件夹内文件信息
     QList<QFileInfo> profile_dir_inner_file_infos(const QString& dir_path,
-                                                  const QString& file_filter = "*.csv");
+                                                  const QString& need_files = "*.csv");
     // 获取文件夹内文件路径
     QStringList profile_dir_inner_file_paths(const QList<QFileInfo>& file_infos);
 
     // 获取修改后的文件名称No_...【命名规范以'N数字'的形式命名文件夹内文件的名称】
     string profile_no_name(const QString& file_path);
 
+// 【分析名称需要的参数函数】 //
     // 获取任意文件的'/'后的名称
     string profile_path_to_name(const QString& path);
-
+    // 获取下划线的位置
+    int profile_underline_index(const string& name);
     // 获取文件名的.的下标位置
     int profile_nameDot_index(const string& name);
+//////////////////////////////////////////////
 
     // 文件内容全读入对象容器中【局部对象】 // 获取all_array
     vector<vector<string>> tackle_solo_file_get_all(const ifstream& ifs);

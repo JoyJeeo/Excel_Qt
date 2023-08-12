@@ -25,34 +25,63 @@ private:
     // 获取文件内容写出流
     ofstream output_file_open(const string& out_file_path);
 
+    // 初始化timc_datas
+    void init_timc_datas(const string& timc_file_path);
+
+    // 初始化ration_datas
+    void init_ration_datas();
+
+    // 构造ration_datas
+    void build_ration_datas();
+
+    // 保存构造号的ration_datas进入ration.csv文件中
+    void save_datas();
+
+
+// 【函数参数分析获取】
     // 文件内容全读入对象容器中【局部对象】 // 获取all_array
     vector<vector<string>> tackle_file_get_all(const ifstream& ifs);
 
-    // 记录目标的最终结果数据[ration_datas]
-//    vector<vector<string>> m_target_datas;
 
+    // 分析timc文件获取有效数据的index位置
     // 限制下标确定函数的 指挥者
     void director_indexs();
     // 获取初始时间T0开始的位置
-    void profile_begin_row_T0();
-    // 获取初始时间T0结束的位置
-    void profile_end_row_T0();
-    // 获取纵坐标的有效位置
-    void profile_begin_col();
+    void profile_end_head_begin_T0_body();
+    // 获取初始时间T0结束的位置的下一位
+    void profile_end_T0_body_begin_other_body();
+    // 获取有效数据的列位置
+    void profile_valid_col();
+
+
+    // 获取并修正timc文件的头数据
+    void profile_ration_head();
+
+    // 移动T0后的数据到前面
+    void move_other_data();
+
+    // 修改数据区的数据，转换为变动率
+    void update_valid_datas();
+
+    // 变动率需要调用的计算算法
+    double algorithm_ration_data(double T1,double T0);
+
 
     // 获取文件的保存路径
     void profile_output_file_path() noexcept;
 
-    // 保存文件
-    void save_datas(const vector<vector<string>>& ration_datas);
 
-    // 记录原始的时刻文件数据[time_datas]
+
+// 【对象区】
+    // 记录原始的时刻文件数据[timc.csv]
     vector<vector<string>> timc_datas;
+    // 记录目标的最终结果数据[ration.csv]
+    vector<vector<string>> ration_datas;
 
-    // T0开始的位置
-    int begin_row_T0;
-    int end_row_T0;
-    int begin_col;
+    // 分析timc文件关键数据的下标位置
+    size_t end_head_begin_T0_body;
+    size_t end_T0_body_begin_other_body;
+    size_t valid_col;
 
     // 生成的时刻文件的具体路径
     QString ration_file_path = "";
@@ -60,6 +89,9 @@ private:
 
     // 生成的timc文件的文件名
     const QString ration_file_name = "ration.csv";
+
+    // 记录目标数据的分界点
+    const string div_str = "";
 };
 
 #endif // MAKE_RATION_FILE_H

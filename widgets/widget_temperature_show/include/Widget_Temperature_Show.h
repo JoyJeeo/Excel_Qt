@@ -24,18 +24,19 @@ private:
     void while_draw(int row_obj_nums = 2); // 设置网格管理器默认一行的窗体个数
     // 初始化chart
     Chart_Category_Value* initChart(const string& attri, // 指定为某个属性创建chart
-                     const QMap<string,QMap<int,QPointF>>& series_datas, // 设置创建chart需要的点组数据
+                     const QMap<string,QMap<string,QPointF>>& series_datas, // 设置创建chart需要的点组数据
                      const vector<string>& scatter_site,
-                     const vector<int>& scatter_part,
+                     const vector<string>& scatter_part,
                     int pic_choice = 0,
-                     const QString& _xname = "corelation");
+                     const QString& _xname = "corelation",
+                                    const string& x_axis_unit = "℃");
 
 
     // 【获取程序参数】
     // 制作QList<QList<QPointF>>数据列表，[为初始化chart提供数据接口数据]
-    QMap<string,QMap<int,QPointF>> get_matrix_pointF(map<string,map<int,double>>& site_part_vals,
+    QMap<string,QMap<string,QPointF>> get_matrix_pointF(map<string,map<string,double>>& site_part_vals,
                                                  const vector<string>& scatter_site,
-                                                 const vector<int>& scatter_part
+                                                 const vector<string>& scatter_part
                                                  );
     // 分析定义的最值与数据最值之间的所有可能情况，将数据传出，作为二者当前情况的判断依据
     pair<double,double> profile_define_value_XI_proxy(const string& attri);

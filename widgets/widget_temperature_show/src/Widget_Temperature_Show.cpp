@@ -70,7 +70,7 @@ void Widget_Temperature_Show::while_draw(int row_obj_nums)
 {
     try {
         // 获取attri -> [site][part]的series数据,存于map<string,vector<vector<double>>>中
-        map<string,map<string,map<int,double>>> series_datas = datas->get_series_datas();
+        map<string,map<string,map<string,double>>> series_datas = datas->get_series_datas();
 
         // 获取target_file中有效的属性label
         auto labels = datas->get_labels();
@@ -95,7 +95,7 @@ void Widget_Temperature_Show::while_draw(int row_obj_nums)
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
             // 获取site_part的对应数据点
-            QMap<string,QMap<int,QPointF>> site_points = get_matrix_pointF(series_datas[attri],
+            QMap<string,QMap<string,QPointF>> site_points = get_matrix_pointF(series_datas[attri],
                                                                            datas->get_scatter_site(),
                                                                            datas->get_scatter_part()
                                                                             );
@@ -128,11 +128,12 @@ void Widget_Temperature_Show::while_draw(int row_obj_nums)
 }
 
 Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
-                                          const QMap<string, QMap<int, QPointF>> &series_datas,
+                                          const QMap<string, QMap<string, QPointF>> &series_datas,
                                           const vector<string> &scatter_site,
-                                          const vector<int> &scatter_part,
+                                          const vector<string> &scatter_part,
                                           int pic_choice,
-                                          const QString& _xname)
+                                          const QString& _xname,
+                                          const string& x_axis_unit)
 {
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
@@ -168,12 +169,12 @@ Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
         // 设置坐标系的数值范围
         chart->setAxis(
                     // 横坐标
-                    _xname,scatter_part,scatter_part.size(),
+                    _xname,datas->get_part_map(),datas->get_part_map().size(),
                     // 纵坐标
                     unit,y_axis_around.first,y_axis_around.second,
                     // 纵坐标的分割线的条数
                     lines,
-                    pic_choice);
+                    pic_choice,x_axis_unit);
 
         //绘制【注入数据点数值和最值】
         // 获取属性最值
@@ -192,19 +193,19 @@ Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
 }
 
 
-QMap<string,QMap<int,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
-        map<string, map<int, double>> &site_part_vals,
+QMap<string,QMap<string,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
+        map<string, map<string, double>> &site_part_vals,
         const vector<string> &scatter_site,
-        const vector<int> &scatter_part)
+        const vector<string> &scatter_part)
 {
     try {
         // 返回值更换类型
         // 获取sites
-        QMap<string,QMap<int,QPointF>> ans;
+        QMap<string,QMap<string,QPointF>> ans;
         // 初始化ans
         for(string site : scatter_site)
         {
-            for(int part : scatter_part)
+            for(string part : scatter_part)
             {
                 // 初始化所有数据为(0,0)作为数据为NULL时的断点标志
 //                ans.insert(site,QVector<QPointF>(site_max_parts+1,QPointF(0,0)));
@@ -215,6 +216,8 @@ QMap<string,QMap<int,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
         // 将原本site_part_vals的数据:
         //      attri -> [site][part] = val ----> attri -> [site][part] = (part,val)
         // 只是将内部值转换为QPointF(列,数值) 并将 vector转换为QVector
+        // 获取映射表
+        map<string,int> part_map = datas->get_part_map();
         // 遍历site_part_vals
         for(size_t i = 0;i < scatter_site.size();i++)
         {
@@ -223,31 +226,31 @@ QMap<string,QMap<int,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
             // 遍历所有parts
             for(size_t j = 0;j < scatter_part.size();j++)
             {
-                int part = scatter_part[j];
+                string part = scatter_part[j];
                 // 如果为NULL值,则用(0,0)作为断点标志
                 if(site_part_vals[site][part] == NULL_Number) continue;
                 // 如果正常数值，则存储将 val -> (part,val)
                 // 更改温度映射
-                int part_id = 0;
-                switch (part) {
-                case -40:
-                    part_id = 1;
-                    break;
-                case 0:
-                    part_id = 2;
-                    break;
-                case 25:
-                    part_id = 3;
-                    break;
-                case 85:
-                    part_id = 4;
-                    break;
-                case 125:
-                    part_id = 5;
-                    break;
-                }
+//                int part_id = 0;
+//                switch (part) {
+//                case -40:
+//                    part_id = 1;
+//                    break;
+//                case 0:
+//                    part_id = 2;
+//                    break;
+//                case 25:
+//                    part_id = 3;
+//                    break;
+//                case 85:
+//                    part_id = 4;
+//                    break;
+//                case 125:
+//                    part_id = 5;
+//                    break;
+//                }
                 // 为了可以均分，这里将温度数值进行映射
-                ans[site][part] = QPointF(part_id,site_part_vals[site][part]);
+                ans[site][part] = QPointF(part_map[part],site_part_vals[site][part]);
             }
         }
 

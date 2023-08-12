@@ -9,6 +9,7 @@
 #include <QDir>
 #include "tools/include/data_profile/Make_Temperature_File.h"
 #include "tools/include/data_profile/Make_Timc_File.h"
+#include "tools/include/data_profile/Make_Ration_File.h"
 
 
 File_To_Targetfile::File_To_Targetfile()
@@ -147,9 +148,9 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         /////////////////////////////////////////////////////////////////
 
         // new ration file
-        Make_Ration_File ration_filor;
-        const string ration_file_path = ration_filor.make_ration_file(timc_file_path);
-        set_ration_file_path(ration_file_path);
+//        Make_Ration_File ration_filor;
+//        const string ration_file_path = ration_filor.make_ration_file(timc_file_path);
+//        set_ration_file_path(ration_file_path);
 
         // 调用total函数，生成timc的翻转源文件的target_file文件【生成target_file】
         return total_task(timc_file_path,"target_file.csv");
@@ -168,7 +169,11 @@ const string File_To_Targetfile::ration_task()
             将已经生成好的ration文件，翻转生成ration_target文件并返回地址
     */
     try {
-        return total_task(RATION_FILE_PATH,"ration_target_file.csv");
+        Make_Ration_File ration_filor;
+        const string ration_file_path = ration_filor.make_ration_file(TIME_FILE_PATH);
+        set_ration_file_path(ration_file_path);
+
+        return total_task(ration_file_path,"ration_target_file.csv");
     } catch (...) {
         qDebug() << "File_To_Targetfile::ration_task";
         throw;

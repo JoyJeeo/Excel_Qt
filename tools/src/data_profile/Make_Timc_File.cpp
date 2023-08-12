@@ -6,7 +6,6 @@
 #include <iostream>
 #include <QDir>
 #include <sstream>
-#include <QFlags>
 
 Make_Timc_File::Make_Timc_File()
 {
@@ -87,7 +86,7 @@ void Make_Timc_File::tackle_single_dir(const QString &dir_path, bool &first_file
 {
     try {
         // 获取文件夹的时刻名称
-        string dir_name = profile_dir_name(dir_path);
+        string time_name = profile_dir_name(dir_path);
 
         // 获取文件夹中所需的文件信息
         QList<QFileInfo> file_infos = profile_dir_inner_file_infos(dir_path);
@@ -98,7 +97,7 @@ void Make_Timc_File::tackle_single_dir(const QString &dir_path, bool &first_file
         // 遍历所有文件的绝对路径并处理所有文件
         for(int i = 0;i < file_paths.size();i++)
         {
-            tackle_single_file(dir_name,file_paths[i],first_file_flage);
+            tackle_single_file(time_name,file_paths[i],first_file_flage);
         }
 
     } catch (...) {
@@ -107,7 +106,7 @@ void Make_Timc_File::tackle_single_dir(const QString &dir_path, bool &first_file
     }
 }
 
-void Make_Timc_File::tackle_single_file(const string &dir_name, const QString &file_path,
+void Make_Timc_File::tackle_single_file(const string &time_name, const QString &file_path,
                                         bool &first_file_flage)
 {
     try {
@@ -115,7 +114,7 @@ void Make_Timc_File::tackle_single_file(const string &dir_name, const QString &f
         string no_name = profile_no_name(file_path);
 
         // 获取单文件的修改建议
-        auto steer = make_pair(no_name,dir_name);
+        auto steer = make_pair(no_name,time_name);
 
         // 获取文件的输入流
         ifstream ifs = input_file_open(file_path.toStdString());
@@ -179,13 +178,20 @@ string Make_Timc_File::profile_dir_name(const QString &dir_path)
             文件夹的命名规则：*_时间
     */
     try {
-        string dir_name =  profile_path_to_name(dir_path);
+        // 获取文件夹的文件名
+        string integral_dir_name =  profile_path_to_name(dir_path);
 
-        // 除去'_'获得真实的文件名
-        dir_name = dir_name.substr(1,dir_name.size() - 1);
+        // 获取文件名的下划线位置
+        int underlline_index = profile_underline_index(integral_dir_name);
+        // 除去'_'获得文件名中的时间
+        underlline_index++;
+
+        // 获取变动率时间
+        string time_name = integral_dir_name.substr(underlline_index,
+                                              integral_dir_name.size() - underlline_index);
 
 
-        return dir_name;
+        return time_name;
 
     } catch (...) {
         qDebug() << "Make_Timc_File::profile_dir_name";
@@ -222,8 +228,9 @@ QList<QFileInfo> Make_Timc_File::profile_dir_inner_file_infos(const QString &dir
 
 //        // 获取的文件信息，按照文件名进行排序
         sort(file_infos.begin(),file_infos.end(),[](const QFileInfo& a,const QFileInfo& b){
-            return !((a.fileName().length() > b.fileName().length()) ||
-                    (a.fileName().length() == b.fileName().length() && a.fileName() > b.fileName()));
+            // 排序时，文件名的长度大小应该作为判断的依据之一，否则容易出现排序混乱
+            return (a.fileName().length() < b.fileName().length()) ||
+                    (a.fileName().length() == b.fileName().length() && a.fileName() < b.fileName());
         });
 
 
@@ -263,17 +270,18 @@ string Make_Timc_File::profile_no_name(const QString &file_path)
             将N12.csv -> No_12进行返回
     */
     try {
-        // 设置获取的文件名
-        string file_name = profile_path_to_name(file_path);
+        // 获取完整的文件名
+        string integral_file_name = profile_path_to_name(file_path);
 
         // 获取文件名中dot的位置
-        int dot_index = profile_nameDot_index(file_name);
+        int dot_index = profile_nameDot_index(integral_file_name);
+        // 不算dot本身
+        dot_index--;
 
         // 获取修改后的文件名【No_...】
-        file_name = // "No_" +
-                file_name.substr(1,dot_index - 1); // 不算'.'本身
+        string no_name = "No_" + integral_file_name.substr(1,dot_index - 1 + 1); // 不算'.'本身
 
-        return file_name;
+        return no_name;
 
     } catch (...) {
         qDebug() << "Make_Timc_File::profile_file_name";
@@ -304,6 +312,23 @@ string Make_Timc_File::profile_path_to_name(const QString &path)
 
     } catch (...) {
         qDebug() << "Make_Timc_File::profile_path_to_name";
+        throw;
+    }
+}
+
+int Make_Timc_File::profile_underline_index(const string &name)
+{
+    try {
+        size_t i = -1;
+        for(i = name.size() - 1;i >= 0;i--)
+        {
+            if(name[i] == '_')break;
+        }
+
+        return i;
+
+    } catch (...) {
+        qDebug() << "Make_Timc_File::profile_underline_index";
         throw;
     }
 }

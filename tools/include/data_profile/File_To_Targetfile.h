@@ -6,7 +6,6 @@
 #include <vector>
 #include <QString>
 #include <QDebug>
-#include "Make_Ration_File.h"
 using namespace std;
 //#define endl '\n'
 

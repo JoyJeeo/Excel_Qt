@@ -29,115 +29,19 @@ const string Make_Ration_File::make_ration_file(const string& timc_file_path)
             将读入的数据，分析生成ration中所需要的数据，并返回
     */
     try {
-        // 获取文件读入流
-        ifstream ifs = input_file_open(timc_file_path);
-        // 读入容器中
-        timc_datas = tackle_file_get_all(ifs);
-        ifs.close();
+        // 初始化timc_datas
+        init_timc_datas(timc_file_path);
 
         // 指挥初始化类环境
         director_indexs();
 
-        // 计算ration数据存储容器的初始化大小
-        int row_len = timc_datas.size() - (end_row_T0 - begin_row_T0 + 1);
-        int col_len = timc_datas[0].size();
-        // 以空字符串为初始化
-        vector<vector<string>> ration_datas(row_len,vector<string>(col_len,""));
+        init_ration_datas();
 
-        // 读取数据头
-        for(int i = 0;i < begin_row_T0;i++)
-        {
-            if(i == 0 || i == begin_row_T0 - 1)
-            {
-                ration_datas[i] = timc_datas[i];
-                continue;
-            }
-
-            for(size_t j = 0;j < timc_datas[i].size();j++)
-            {
-                if(j >= begin_col)
-                {
-                    switch (i) {
-                        case 1 :
-                            ration_datas[i][j] = "%";
-                            break;
-                        case 2 :
-                            ration_datas[i][j] = "-10";
-                            break;
-                        case 3:
-                            ration_datas[i][j] = "10";
-                            break;
-                    }
-                    continue;
-                }
-                ration_datas[i][j] = timc_datas[i][j];
-            }
-        }
-
-
-        // 将some_time -> T0 的名称
-//        string T0_site = timc_datas[begin_row_T0][0];
-        // 搬运和修改部分数据
-        for(size_t i = end_row_T0 + 1,counter = begin_row_T0;i < timc_datas.size();i++,counter++)
-        {
-            for(int j = 0;j < begin_col;j++)
-            {
-                // 获取some_time -> T0
-//                if( j != 0)
-//                {
-//                    ration_datas[counter][j] = timc_datas[i][j];
-//                    continue;
-//                }
-                // 获取其余数据
-                ration_datas[counter][j] = timc_datas[i][j];
-                        // + "->" + T0_site;
-            }
-        }
-
-        // 分析并获取ration文件主数据
-        // 对比数据T0数据区
-        // 本质上类似于在"填表格"
-        // 计算两个时刻之间的间隔数
-        int hr_n = end_row_T0 - begin_row_T0 + 1;
-        // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】
-        int n = 0;
-        for(int T0_row = begin_row_T0;T0_row <= end_row_T0;T0_row++,n++)
-        {
-            for(size_t col = begin_col;col < timc_datas[T0_row].size();col++)
-            {
-                for(size_t some_row = end_row_T0 + 1 + n,counter = begin_row_T0 + n // 每一列计算时，都需要进行更新
-                    ;some_row < timc_datas.size();some_row += hr_n,counter += hr_n)
-                {
-                    // 保证两个都有数值【任何一方没有出现数值，都认为是不应该显示情况】
-                    if(timc_datas[T0_row][col].size() == 0 || timc_datas[some_row][col].size() == 0)
-                        continue;
-
-                    double T0_data = stod(timc_datas[T0_row][col]);
-                    double some_data = stod(timc_datas[some_row][col]);
-                    // 算法分析生成的变动率数据 (未来 - 过去) / 过去
-                    // 如果分母为0，则该位置数据，按照空来计 // 如果pre数据为0，则也认为是不需要进行显示的
-                    if(T0_data == 0.0)
-                    {
-                        ration_datas[counter][col] = "";
-                        continue;
-                    }
-                    // 按照%进行比较的
-                    double ans_data = (some_data - T0_data) / T0_data * 100;
-                    // 将double数据转换为string字符串[√]
-                    ration_datas[counter][col] = to_string(ans_data);
-
-//                    if(counter == 5 && col == 6)
-//                    {
-//                        qDebug() << "0";
-//                    }
-//                    qDebug() << T0_row << " " << some_row << " " << col;
-                }
-            }
-        }
+        build_ration_datas();
 
 
         // 保存ration_datas进入ration文件中
-        save_datas(ration_datas);
+        save_datas();
 
         return ration_file_path.toStdString();
 
@@ -184,6 +88,78 @@ ofstream Make_Ration_File::output_file_open(const string &out_file_path)
     }
 }
 
+void Make_Ration_File::init_timc_datas(const string &timc_file_path)
+{
+    try {
+        // 初始化timc_datas
+        ifstream ifs = input_file_open(timc_file_path);
+        timc_datas = tackle_file_get_all(ifs);
+        ifs.close();
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::init_timc_datas";
+        throw;
+    }
+}
+
+void Make_Ration_File::init_ration_datas()
+{
+    try {
+        // 初始化ration_datas
+        // 计算ration数据存储容器的初始化大小
+        int row_len = timc_datas.size() - (end_T0_body_begin_other_body - end_head_begin_T0_body );
+        int col_len = timc_datas[0].size();
+        // 以空字符串为初始化
+        ration_datas = vector<vector<string>>(row_len,vector<string>(col_len,""));
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::init_ration_datas";
+        throw;
+    }
+}
+
+void Make_Ration_File::build_ration_datas()
+{
+    try {
+        // 获取并修正timc文件的头数据
+        void profile_ration_head();
+
+        // 移动T0后的数据到前面
+        void move_other_data();
+
+        // 修改数据区的数据，转换为变动率
+        void update_valid_datas();
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::build_ration_datas";
+        throw;
+    }
+}
+
+void Make_Ration_File::save_datas()
+{
+    try {
+        // 获取文件输出流
+        ofstream ofs = output_file_open(ration_file_path.toStdString());
+
+        // 将时刻数据内容写出
+        for(size_t i = 0;i < ration_datas.size(); i++)
+        {
+            for(size_t j = 0;j < ration_datas[i].size();j++)
+            {
+                ofs<<ration_datas[i][j]<<",";
+            }
+            ofs<<endl;
+        }
+
+        ofs.close();
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::save_datas";
+        throw;
+    }
+}
+
 vector<vector<string>> Make_Ration_File::tackle_file_get_all(const ifstream &ifs)
 {
     try {
@@ -215,60 +191,195 @@ vector<vector<string>> Make_Ration_File::tackle_file_get_all(const ifstream &ifs
     }
 }
 
-void Make_Ration_File::profile_begin_row_T0()
+void Make_Ration_File::profile_end_head_begin_T0_body()
 {
     try {
         for(size_t i = 0;i < timc_datas.size();i++)
         {
-            if(timc_datas[i][0].size() == 0)
+            if(timc_datas[i][0] == this->div_str || timc_datas[i][0].size() == 0 ||
+                    timc_datas[i].size() == 0)
             {
-                begin_row_T0 = i + 1;
+                end_head_begin_T0_body = i;
+                end_head_begin_T0_body++;
                 break;
             }
         }
 
     } catch (...) {
-        qDebug() << "Make_Ration_File::profile_begin_row_T0";
+        qDebug() << "Make_Ration_File::profile_end_head_begin_T0_body";
         throw;
     }
 }
 
-void Make_Ration_File::profile_end_row_T0()
+void Make_Ration_File::profile_end_T0_body_begin_other_body()
 {
     try {
-        // 标记初始T0的hr
-        const string tag = timc_datas[begin_row_T0][0];
-        for(size_t i = begin_row_T0 + 1;i < timc_datas.size();i++)
+        // 标记初始T0的数值
+        int attri_col = 0;
+        const string tag = timc_datas[end_head_begin_T0_body][attri_col];
+        for(size_t i = end_head_begin_T0_body + 1;i < timc_datas.size();i++)
         {
-            if(timc_datas[i][0] == tag)
+            if(timc_datas[i][attri_col] == tag)
             {
-                end_row_T0 = i - 1;
+                end_T0_body_begin_other_body = i;
                 break;
             }
         }
 
     } catch (...) {
-        qDebug() << "Make_Ration_File::profile_end_row_T0";
+        qDebug() << "Make_Ration_File::profile_end_T0_body_begin_other_body";
         throw;
     }
 }
 
-void Make_Ration_File::profile_begin_col()
+void Make_Ration_File::profile_valid_col()
 {
     try {
         // 有效列开始位置的前一位
-        const string tag = "TEST_NUM";
+        const string tag = "TEST_NUM"; // 不是【SITE_NUM】
         for(size_t row = 0,col = 0;col < timc_datas[row].size();col++)
         {
             if(timc_datas[row][col] == tag)
             {
-                begin_col = col + 1 < timc_datas[row].size() ? col + 1 : -1;
+                valid_col = col;
+                valid_col++;
                 break;
             }
         }
 
     } catch (...) {
-        qDebug() << "Make_Ration_File::profile_begin_col";
+        qDebug() << "Make_Ration_File::profile_valid_col";
+        throw;
+    }
+}
+
+void Make_Ration_File::profile_ration_head()
+{
+    try {
+        size_t attri_row = 0,null_row = end_head_begin_T0_body - 1;
+
+        // 读取数据头
+        for(size_t i = 0;i < end_head_begin_T0_body;i++)
+        {
+            if(i == attri_row || i == null_row)
+            {
+                ration_datas[i] = timc_datas[i];
+                continue;
+            }
+
+            for(size_t j = 0;j < timc_datas[i].size();j++)
+            {
+                if(j >= valid_col)
+                {
+                    switch (i) {
+                        case 1 : // unit_row
+                            ration_datas[i][j] = "%";
+                            break;
+                        case 2 : // limitL_row
+                            ration_datas[i][j] = "-10";
+                            break;
+                        case 3: // limitU_row
+                            ration_datas[i][j] = "10";
+                            break;
+                    }
+                    continue;
+                }
+                ration_datas[i][j] = timc_datas[i][j];
+            }
+        }
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::profile_ration_head";
+        throw;
+    }
+}
+
+void Make_Ration_File::move_other_data()
+{
+    try {
+        // 设置前排数据索引和移动数据索引的开始位置
+        size_t pre_index = end_head_begin_T0_body;
+        size_t move_index = end_T0_body_begin_other_body;
+
+        // 搬运和修改部分数据
+        for(;move_index < timc_datas.size() && pre_index < timc_datas.size();
+            move_index++,pre_index++)
+        {
+            for(size_t j = 0;j < valid_col;j++)
+            {
+                // 从timc向ration搬运其余数据
+                ration_datas[pre_index][j] = timc_datas[move_index][j];
+            }
+        }
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::move_other_data";
+        throw;
+    }
+}
+
+void Make_Ration_File::update_valid_datas()
+{
+    try {
+        // 分析并获取ration文件主数据
+        // 对比数据T0数据区
+        // 本质上类似于在"填表格"
+
+        // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】【获取不同时刻】
+        int T0_offset = 0;
+        // 计算两个时刻之间的间隔数【其后每个时刻之间计算都以这个间隔为基础】【相同时刻的跨度】
+        int interval_time = end_T0_body_begin_other_body - end_head_begin_T0_body;
+
+        // 计算有效数据
+        for(size_t row_T0 = end_head_begin_T0_body;row_T0 < end_T0_body_begin_other_body;
+            row_T0++,T0_offset++) // 将时刻的no偏移,同步到其他时刻上
+        {
+            for(size_t col = valid_col;col < timc_datas[row_T0].size();col++)
+            {
+                for(size_t row_other = end_T0_body_begin_other_body + T0_offset,
+                    // timc计算结果存入ration的结果中
+                    row_ration_record = end_T0_body_begin_other_body + T0_offset;
+                    row_other < timc_datas.size();
+                    row_other += interval_time,row_ration_record += interval_time)
+                {
+                    // 【排除所有不应该被用来计算的情况】
+                    // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】
+                    if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
+                        continue;
+
+                    double T0 = stod(timc_datas[row_T0][col]);
+                    double T1 = stod(timc_datas[row_other][col]);
+                    // 如果分母为0
+                    if(T0 == 0.0)
+                        continue;
+
+                    // 【可以被计算的情况】
+                    // 获取算法的计算结果
+                    double ans_data = algorithm_ration_data(T1,T0);
+
+                    // 将double数据转换为string字符串存储[√]
+                    // 将timc的计算结果 -> ration结果中存储
+                    ration_datas[row_ration_record][col] = to_string(ans_data);
+                }
+            }
+        }
+    } catch (...) {
+        qDebug() << "Make_Ration_File::update_valid_datas";
+        throw;
+    }
+}
+
+double Make_Ration_File::algorithm_ration_data(double T1, double T0)
+{
+    try {
+
+        // 按照%进行比较的
+        double ans = ((T1 - T0) / T0) * 100;
+
+        return ans;
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::algorithm_ration_data";
         throw;
     }
 }
@@ -279,29 +390,6 @@ void Make_Ration_File::profile_output_file_path() noexcept
             "/" + ration_file_name;
 }
 
-void Make_Ration_File::save_datas(const vector<vector<string>>& ration_datas)
-{
-    try {
-        // 获取文件输出流
-        ofstream ofs = output_file_open(ration_file_path.toStdString());
-
-        // 将时刻数据内容写出
-        for(size_t i = 0;i < ration_datas.size(); i++)
-        {
-            for(size_t j = 0;j < ration_datas[i].size();j++)
-            {
-                ofs<<ration_datas[i][j]<<",";
-            }
-            ofs<<endl;
-        }
-
-        ofs.close();
-
-    } catch (...) {
-        qDebug() << "Make_Ration_File::save_datas";
-        throw;
-    }
-}
 
 void Make_Ration_File::director_indexs()
 {
@@ -310,9 +398,9 @@ void Make_Ration_File::director_indexs()
             指挥有顺序关系的函数按照指定顺序执行【人为指定】
     */
     try {
-        profile_begin_row_T0();
-        profile_end_row_T0();
-        profile_begin_col();
+        profile_end_head_begin_T0_body();
+        profile_end_T0_body_begin_other_body();
+        profile_valid_col();
 
     } catch (...) {
         qDebug() << "Make_Ration_File::director_indexs";

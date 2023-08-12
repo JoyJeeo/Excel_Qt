@@ -42,12 +42,12 @@ void Targetfile_Temperature_Valid_Data::total_task(const string target_file_path
 pair<double, double> Targetfile_Temperature_Valid_Data::get_attri_value_XI(const string &attri) noexcept
 {
     vector<string> scatter_site = m_site_part.get_scatter_string_site();
-    vector<int> scatter_part = m_site_part.get_x_part();
+    vector<string> scatter_part = m_site_part.get_scatter_string_part();
 
     double ans_min = INT_MAX;
     double ans_max = INT_MIN;
     // 获取属性对应的处理数据【在原本已经处理好的数据上进行遍历】
-    map<string,map<int,double>> datas = m_series_data[attri];
+    map<string,map<string,double>> datas = m_series_data[attri];
 
     // 有数据时的正常情况
     for(size_t i = 0;i < scatter_site.size();i++)
@@ -55,7 +55,7 @@ pair<double, double> Targetfile_Temperature_Valid_Data::get_attri_value_XI(const
         string site = scatter_site[i];
         for(size_t j = 0;j < scatter_part.size();j++)
         {
-            int part = scatter_part[j];
+            string part = scatter_part[j];
             ans_max = max(ans_max,datas[site][part]);
             // 过滤有效的数据进行min的计算【因为数据为NULL的数值标记为了INT_MIN】
             if(datas[site][part] == INT_MIN) continue;
@@ -92,10 +92,10 @@ vector<string> Targetfile_Temperature_Valid_Data::get_scatter_site()
     }
 }
 
-vector<int> Targetfile_Temperature_Valid_Data::get_scatter_part()
+vector<string> Targetfile_Temperature_Valid_Data::get_scatter_part()
 {
     try {
-        return m_site_part.get_x_part();
+        return m_site_part.get_scatter_string_part();
 
     } catch (...) {
         qDebug() << "Targetfile_Temperature_Valid_Data::get_scatter_part";
@@ -103,12 +103,17 @@ vector<int> Targetfile_Temperature_Valid_Data::get_scatter_part()
     }
 }
 
+map<string, int> Targetfile_Temperature_Valid_Data::get_part_map() noexcept
+{
+    return m_part_map;
+}
+
 string Targetfile_Temperature_Valid_Data::get_attri_unit(const string &attri) noexcept
 {
     return m_uul.m_attri_uuls[attri].m_Unit;
 }
 
-map<string, map<string, map<int, double>>> Targetfile_Temperature_Valid_Data::get_series_datas() noexcept
+map<string, map<string, map<string, double>>> Targetfile_Temperature_Valid_Data::get_series_datas() noexcept
 {
     return m_series_data;
 }
@@ -185,10 +190,11 @@ void Targetfile_Temperature_Valid_Data::profile_valid_col()
         size_t row; // SITE_NUM所在行
         size_t& col = valid_col;
 
-        for(row = 1,col = 0;col < m_all_array[row].size();col++)
+        for(row = 0,col = 0;col < m_all_array[row].size();col++)
         {
             // part_id一定为整数
-            if(is_Integer_Numeric(m_all_array[row][col]))
+            if(m_all_array[row][col] == this->div_col)
+                col++;
                 break;
         }
 
@@ -204,6 +210,7 @@ void Targetfile_Temperature_Valid_Data::profile_valid_datas()
         profile_site_part();
         profile_uul();
         profile_series_data();
+        profile_part_map();
 
     } catch (...) {
         qDebug() << "Targetfile_Temperature_Valid_Data::profile_valid_datas";
@@ -288,8 +295,8 @@ void Targetfile_Temperature_Valid_Data::profile_series_data()
     try {
         // 初始化
         vector<string> scatter_site = m_site_part.get_scatter_string_site();
-        vector<int> scatter_part = m_site_part.get_x_part();
-        map<string,map<int,double>> init_data;
+        vector<string> scatter_part = m_site_part.get_scatter_string_part();
+        map<string,map<string,double>> init_data;
 
         // 初始化init_data
         for(auto site : scatter_site)
@@ -314,7 +321,7 @@ void Targetfile_Temperature_Valid_Data::profile_series_data()
             // 用来记录该行的属性值
             string attri = m_all_array[i][attri_col];
             // 使用init_data，加速初始化
-            map<string,map<int,double>> data = init_data;
+            map<string,map<string,double>> data = init_data;
 
             for(size_t j = valid_col; j < m_all_array[i].size();j++)
             {
@@ -323,7 +330,7 @@ void Targetfile_Temperature_Valid_Data::profile_series_data()
 
                 // 转化行列下标
                 string site = m_all_array[site_dex][j];
-                int part = stoi(m_all_array[part_dex][j]);
+                string part = m_all_array[part_dex][j];
 
                 // 转换行列后，获取数据
                 data[site][part] = stod(m_all_array[i][j]);
@@ -339,21 +346,24 @@ void Targetfile_Temperature_Valid_Data::profile_series_data()
     }
 }
 
-
-bool Targetfile_Temperature_Valid_Data::is_Integer_Numeric(const string &str)
+void Targetfile_Temperature_Valid_Data::profile_part_map()
 {
     try {
-        auto it = str.begin();
-        while (it != str.end() && std::isdigit(*it)) {
-            it++;
+        vector<string> part_str = get_scatter_part();
+
+        for(size_t i = 0;i < part_str.size();i++)
+        {
+            int no = i + 1;
+            // 获取横坐标的映射数据
+            m_part_map.insert(make_pair(part_str[i],no));
         }
-        return !str.empty() && it == str.end();
 
     } catch (...) {
-        qDebug() << "Targetfile_Temperature_Valid_Data::is_Integer_Numeric";
+        qDebug() << "Targetfile_Temperature_Valid_Data::profile_part_map";
         throw;
     }
 }
+
 
 size_t Targetfile_Temperature_Valid_Data::get_row_index_by_attri(const string &attri)
 {

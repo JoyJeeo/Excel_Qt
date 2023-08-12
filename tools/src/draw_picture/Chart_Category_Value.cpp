@@ -4,6 +4,7 @@
 #include <QLegendMarker>
 #include <QList>
 #include <string>
+#include <map>
 using namespace std;
 
 static const int pic_chart_len_size = 1500;
@@ -64,9 +65,9 @@ Chart_Category_Value::~Chart_Category_Value()
     }
 }
 
-void Chart_Category_Value::setAxis(QString _xname, const vector<int> &_xdatas,int _xtickc,
+void Chart_Category_Value::setAxis(QString _xname, const map<string,int> &_xdatas,int _xtickc,
                                    QString _yname, qreal _ymin, qreal _ymax, int _ytickc,
-                                   int pic_choice)
+                                   int pic_choice,const string& _x_unit)
 {
     try {
         xname = _xname; xdatas = _xdatas; xtickc = _xtickc;
@@ -129,29 +130,7 @@ void Chart_Category_Value::setAxis(QString _xname, const vector<int> &_xdatas,in
         axisX->setTitleFont(font);
         axisX->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue); // 设置标签的位置
         //设置x轴的数据范围
-        for(int part : xdatas)
-        {
-            // 更改温度映射
-            int part_id = 0;
-            switch (part) {
-            case -40:
-                part_id = 1;
-                break;
-            case 0:
-                part_id = 2;
-                break;
-            case 25:
-                part_id = 3;
-                break;
-            case 85:
-                part_id = 4;
-                break;
-            case 125:
-                part_id = 5;
-                break;
-            }
-            axisX->append(QString::fromStdString(to_string(part)) + "℃",part_id);
-        }
+        build_x_axis(_x_unit);
         axisX->setTickCount(xtickc);       //x轴设置实网格线的数量【也是一个大格】
         axisX->setMinorTickCount(0);   //设置x轴每个大格里面小刻度线的数目
 
@@ -178,8 +157,9 @@ void Chart_Category_Value::setAxis(QString _xname, const vector<int> &_xdatas,in
 }
 
 void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
-                                      const vector<int> &scatter_part,
-                                      const QMap<string, QMap<int,QPointF>> &series_data,
+                                      const vector<string> &scatter_part,
+                                      const map<string,int> &part_map,
+                                      const QMap<string, QMap<string,QPointF>> &series_data,
                                       const pair<double, double> &XI_proxy_data,
                                       const pair<double, double> &attri_define_XI,
                                       int pic_choice)
@@ -216,7 +196,7 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
         construct_datas_series(scatter_site,scatter_part,series_data,data_series_width);
 
         // 绘制最值线 // 【最值线的绘制，只与attri_XI有关】
-        construct_XI_line(attri_define_XI,XI_series_width,scatter_part);
+        construct_XI_line(attri_define_XI,XI_series_width,scatter_part,part_map);
         // 修正图例样式
         construct_legend_style(scatter_site,attri_define_XI,pic_choice);
 
@@ -226,9 +206,23 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
     }
 }
 
+void Chart_Category_Value::build_x_axis(const string& x_unit)
+{
+    try {
+        for(auto block : xdatas)
+        {
+            axisX->append(QString::fromStdString(block.first + x_unit),block.second);
+        }
+
+    } catch (...) {
+        qDebug() << "Chart_Category_Value::build_x_axis";
+        throw;
+    }
+}
+
 void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_site,
-                                                  const vector<int> &scatter_part,
-                                                  const QMap<string, QMap<int,QPointF>> &series_data,
+                                                  const vector<string> &scatter_part,
+                                                  const QMap<string, QMap<string,QPointF>> &series_data,
                                                   int data_series_width)
 {
     try {
@@ -258,7 +252,7 @@ void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_
             // 遍历每组芯片内的点数据
             for(size_t j = 0;j < scatter_part.size();)
             {
-                int part = scatter_part[j];
+                string part = scatter_part[j];
                 // 如果不为NULL点，则点不为(0,0)，正常添加点数据
                 if(series_data[site][part].x() != zero || series_data[site][part].y() != zero)
                 {
@@ -315,7 +309,8 @@ void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_
 
 void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_define_XI,
                                              int XI_series_width,
-                                             const vector<int> &scatter_part)
+                                             const vector<string> &scatter_part,
+                                             const map<string,int>& part_map)
 {
     try {
         // 添加最值线【都是红色的虚线】
@@ -330,8 +325,9 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_d
 
             for(size_t j = 0;j < scatter_part.size();j++)
             {
-                int part = scatter_part[j];
-                max_line->append(QPointF(part,attri_define_XI.second));
+                string part = scatter_part[j];
+                part_map[part];
+                max_line->append(QPointF(part_map[part],attri_define_XI.second));
             }
 
             qchart->addSeries(max_line);
