@@ -30,7 +30,7 @@ void Button_Temperature::total_task()
 //        font.setPixelSize(11);
         font.setPixelSize(18);
 //        font.setBold(true);
-        this->setText("Temperatures Show");
+        this->setText(" Temperatures Analysis ");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
 
@@ -93,7 +93,7 @@ void Button_Temperature::construct_widgets_file_paths()
 
         // 遍历所有需要打开的多文件
         // 依次创建draw窗体
-        Widget_Temperature_Show* widget = nullptr;
+        widget = nullptr;
         // 设置label字体
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);

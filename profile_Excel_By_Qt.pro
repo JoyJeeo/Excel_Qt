@@ -40,7 +40,8 @@ SOURCES += \
     tools/src/draw_picture/Chart_Category_Value.cpp \
     tools/src/draw_picture/My_Chart_View.cpp \
     widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp \
-    widgets/widget_temperature_show/src/Widget_Temperature_Show.cpp
+    widgets/widget_temperature_show/src/Widget_Temperature_Show.cpp \
+    widgets/widget_time_show/src/Widget_Time_Show.cpp
 
 HEADERS += \
     Main_Window.h \
@@ -67,7 +68,8 @@ HEADERS += \
     tools/include/draw_picture/My_Chart_View.h \
     widgets/Widgets_Header_Proxy_01.h \
     widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
-    widgets/widget_temperature_show/include/Widget_Temperature_Show.h
+    widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+    widgets/widget_time_show/include/Widget_Time_Show.h
 
 FORMS += \
     Main_Window.ui

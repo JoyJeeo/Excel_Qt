@@ -76,7 +76,7 @@ pair<double, double> Targetfile_Temperature_Valid_Data::get_attri_define_XI(cons
     return make_pair(m_uul.m_attri_uuls[attri].m_LimitL,m_uul.m_attri_uuls[attri].m_LimitU);
 }
 
-vector<vector<string> > Targetfile_Temperature_Valid_Data::get_temperature_target_file_vec() noexcept
+vector<vector<string> > Targetfile_Temperature_Valid_Data::get_target_file_vec() noexcept
 {
     return m_all_array;
 }
@@ -194,8 +194,10 @@ void Targetfile_Temperature_Valid_Data::profile_valid_col()
         {
             // part_id一定为整数
             if(m_all_array[row][col] == this->div_col)
+            {
                 col++;
                 break;
+            }
         }
 
     } catch (...) {

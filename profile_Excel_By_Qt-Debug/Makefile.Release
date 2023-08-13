@@ -62,16 +62,19 @@ SOURCES       = ..\Main_Window.cpp \
 		..\tools\src\data_profile\Make_Ration_File.cpp \
 		..\tools\src\data_profile\Make_Temperature_File.cpp \
 		..\tools\src\data_profile\Make_Timc_File.cpp \
-		..\tools\src\data_profile\Scatter_Site_X_Part.cpp \
+		..\tools\src\data_profile\Scatter_Site_Scatter_Part.cpp \
 		..\tools\src\data_profile\Site_Part.cpp \
+		..\tools\src\data_profile\Targetfile_Ration_Valid_Data.cpp \
 		..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp \
+		..\tools\src\data_profile\Targetfile_Time_Valid_Data.cpp \
 		..\tools\src\data_profile\Targetfile_Valid_Data.cpp \
 		..\tools\src\data_profile\Unit_Ul.cpp \
 		..\tools\src\draw_picture\Chart.cpp \
 		..\tools\src\draw_picture\Chart_Category_Value.cpp \
 		..\tools\src\draw_picture\My_Chart_View.cpp \
 		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp \
-		..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp release\moc_Main_Window.cpp \
+		..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp \
+		..\widgets\widget_time_show\src\Widget_Time_Show.cpp release\moc_Main_Window.cpp \
 		release\moc_Button_All_Attri.cpp \
 		release\moc_Button_Merge_File.cpp \
 		release\moc_Button_Temperature.cpp \
@@ -79,7 +82,8 @@ SOURCES       = ..\Main_Window.cpp \
 		release\moc_Chart.cpp \
 		release\moc_Chart_Category_Value.cpp \
 		release\moc_Widget_All_Attri_Show.cpp \
-		release\moc_Widget_Temperature_Show.cpp
+		release\moc_Widget_Temperature_Show.cpp \
+		release\moc_Widget_Time_Show.cpp
 OBJECTS       = release/Main_Window.o \
 		release/Button_All_Attri.o \
 		release/Button_Merge_File.o \
@@ -92,9 +96,11 @@ OBJECTS       = release/Main_Window.o \
 		release/Make_Ration_File.o \
 		release/Make_Temperature_File.o \
 		release/Make_Timc_File.o \
-		release/Scatter_Site_X_Part.o \
+		release/Scatter_Site_Scatter_Part.o \
 		release/Site_Part.o \
+		release/Targetfile_Ration_Valid_Data.o \
 		release/Targetfile_Temperature_Valid_Data.o \
+		release/Targetfile_Time_Valid_Data.o \
 		release/Targetfile_Valid_Data.o \
 		release/Unit_Ul.o \
 		release/Chart.o \
@@ -102,6 +108,7 @@ OBJECTS       = release/Main_Window.o \
 		release/My_Chart_View.o \
 		release/Widget_All_Attri_Show.o \
 		release/Widget_Temperature_Show.o \
+		release/Widget_Time_Show.o \
 		release/moc_Main_Window.o \
 		release/moc_Button_All_Attri.o \
 		release/moc_Button_Merge_File.o \
@@ -110,7 +117,8 @@ OBJECTS       = release/Main_Window.o \
 		release/moc_Chart.o \
 		release/moc_Chart_Category_Value.o \
 		release/moc_Widget_All_Attri_Show.o \
-		release/moc_Widget_Temperature_Show.o
+		release/moc_Widget_Temperature_Show.o \
+		release/moc_Widget_Time_Show.o
 
 DIST          =  ..\Main_Window.h \
 		..\actions\buttons\include\Button_All_Attri.h \
@@ -124,9 +132,11 @@ DIST          =  ..\Main_Window.h \
 		..\tools\include\data_profile\Make_Ration_File.h \
 		..\tools\include\data_profile\Make_Temperature_File.h \
 		..\tools\include\data_profile\Make_Timc_File.h \
-		..\tools\include\data_profile\Scatter_Site_X_Part.h \
+		..\tools\include\data_profile\Scatter_Site_Scatter_Part.h \
 		..\tools\include\data_profile\Site_Part.h \
+		..\tools\include\data_profile\Targetfile_Ration_Valid_Data.h \
 		..\tools\include\data_profile\Targetfile_Temperature_Valid_Data.h \
+		..\tools\include\data_profile\Targetfile_Time_Valid_Data.h \
 		..\tools\include\data_profile\Targetfile_Valid_Data.h \
 		..\tools\include\data_profile\Unit_Ul.h \
 		..\tools\include\draw_picture\Chart.h \
@@ -134,7 +144,8 @@ DIST          =  ..\Main_Window.h \
 		..\tools\include\draw_picture\My_Chart_View.h \
 		..\widgets\Widgets_Header_Proxy_01.h \
 		..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h \
-		..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h ..\Main_Window.cpp \
+		..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h \
+		..\widgets\widget_time_show\include\Widget_Time_Show.h ..\Main_Window.cpp \
 		..\actions\buttons\src\Button_All_Attri.cpp \
 		..\actions\buttons\src\Button_Merge_File.cpp \
 		..\actions\buttons\src\Button_Temperature.cpp \
@@ -146,16 +157,19 @@ DIST          =  ..\Main_Window.h \
 		..\tools\src\data_profile\Make_Ration_File.cpp \
 		..\tools\src\data_profile\Make_Temperature_File.cpp \
 		..\tools\src\data_profile\Make_Timc_File.cpp \
-		..\tools\src\data_profile\Scatter_Site_X_Part.cpp \
+		..\tools\src\data_profile\Scatter_Site_Scatter_Part.cpp \
 		..\tools\src\data_profile\Site_Part.cpp \
+		..\tools\src\data_profile\Targetfile_Ration_Valid_Data.cpp \
 		..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp \
+		..\tools\src\data_profile\Targetfile_Time_Valid_Data.cpp \
 		..\tools\src\data_profile\Targetfile_Valid_Data.cpp \
 		..\tools\src\data_profile\Unit_Ul.cpp \
 		..\tools\src\draw_picture\Chart.cpp \
 		..\tools\src\draw_picture\Chart_Category_Value.cpp \
 		..\tools\src\draw_picture\My_Chart_View.cpp \
 		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp \
-		..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp
+		..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp \
+		..\widgets\widget_time_show\src\Widget_Time_Show.cpp
 QMAKE_TARGET  = profile_Excel_By_Qt
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = profile_Excel_By_Qt.exe
@@ -178,10 +192,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\..\profile_Excel_By_Qt.pro D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\spec_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\qdevice.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\device_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\sanitize.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\gcc-base.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\g++-base.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\angle.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\windows-vulkan.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\g++-win32.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\windows-desktop.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\qconfig.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_zlib_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt_functions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\win32-g++\qmake.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exclusive_builds.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\toolchain.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\default_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\default_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resolve_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\default_post.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\build_pass.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qml_debug.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\precompile_header.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\warn_on.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resources_functions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resources.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\moc.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\opengl.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\uic.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qmake_use.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\file_copies.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\windows.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\testcase_targets.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exceptions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\yacc.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Charts.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Widgets.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Gui.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Core.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\qtmain.prl    D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp ..\Main_Window.h ..\actions\buttons\include\Button_All_Attri.h ..\actions\buttons\include\Button_Merge_File.h ..\actions\buttons\include\Button_Temperature.h ..\actions\buttons\include\Button_Time_Compare.h ..\tools\include\Tools_Header_Proxy_01.h ..\tools\include\data_profile\Attri_Unit_Ul.h ..\tools\include\data_profile\Axis_Y_Step.h ..\tools\include\data_profile\File_To_Targetfile.h ..\tools\include\data_profile\Make_Ration_File.h ..\tools\include\data_profile\Make_Temperature_File.h ..\tools\include\data_profile\Make_Timc_File.h ..\tools\include\data_profile\Scatter_Site_X_Part.h ..\tools\include\data_profile\Site_Part.h ..\tools\include\data_profile\Targetfile_Temperature_Valid_Data.h ..\tools\include\data_profile\Targetfile_Valid_Data.h ..\tools\include\data_profile\Unit_Ul.h ..\tools\include\draw_picture\Chart.h ..\tools\include\draw_picture\Chart_Category_Value.h ..\tools\include\draw_picture\My_Chart_View.h ..\widgets\Widgets_Header_Proxy_01.h ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h ..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h  ..\Main_Window.cpp ..\actions\buttons\src\Button_All_Attri.cpp ..\actions\buttons\src\Button_Merge_File.cpp ..\actions\buttons\src\Button_Temperature.cpp ..\actions\buttons\src\Button_Time_Compare.cpp ..\main.cpp ..\tools\src\data_profile\Attri_Unit_UL.cpp ..\tools\src\data_profile\Axis_Y_Step.cpp ..\tools\src\data_profile\File_To_Targetfile.cpp ..\tools\src\data_profile\Make_Ration_File.cpp ..\tools\src\data_profile\Make_Temperature_File.cpp ..\tools\src\data_profile\Make_Timc_File.cpp ..\tools\src\data_profile\Scatter_Site_X_Part.cpp ..\tools\src\data_profile\Site_Part.cpp ..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp ..\tools\src\data_profile\Targetfile_Valid_Data.cpp ..\tools\src\data_profile\Unit_Ul.cpp ..\tools\src\draw_picture\Chart.cpp ..\tools\src\draw_picture\Chart_Category_Value.cpp ..\tools\src\draw_picture\My_Chart_View.cpp ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp ..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp ..\Main_Window.ui    
+	$(ZIP) profile_Excel_By_Qt.zip $(SOURCES) $(DIST) ..\..\profile_Excel_By_Qt.pro D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\spec_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\qdevice.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\device_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\sanitize.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\gcc-base.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\g++-base.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\angle.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\windows-vulkan.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\g++-win32.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\common\windows-desktop.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\qconfig.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\modules\qt_lib_zlib_private.pri D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt_functions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\win32-g++\qmake.conf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exclusive_builds.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\toolchain.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\default_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\default_pre.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resolve_config.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\default_post.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\build_pass.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qml_debug.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\precompile_header.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\warn_on.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qt.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resources_functions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\resources.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\moc.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\opengl.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\uic.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\qmake_use.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\file_copies.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\win32\windows.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\testcase_targets.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\exceptions.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\yacc.prf D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\lex.prf ..\profile_Excel_By_Qt.pro D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Charts.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Widgets.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Gui.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\Qt5Core.prl D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\lib\qtmain.prl    D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp ..\Main_Window.h ..\actions\buttons\include\Button_All_Attri.h ..\actions\buttons\include\Button_Merge_File.h ..\actions\buttons\include\Button_Temperature.h ..\actions\buttons\include\Button_Time_Compare.h ..\tools\include\Tools_Header_Proxy_01.h ..\tools\include\data_profile\Attri_Unit_Ul.h ..\tools\include\data_profile\Axis_Y_Step.h ..\tools\include\data_profile\File_To_Targetfile.h ..\tools\include\data_profile\Make_Ration_File.h ..\tools\include\data_profile\Make_Temperature_File.h ..\tools\include\data_profile\Make_Timc_File.h ..\tools\include\data_profile\Scatter_Site_Scatter_Part.h ..\tools\include\data_profile\Site_Part.h ..\tools\include\data_profile\Targetfile_Ration_Valid_Data.h ..\tools\include\data_profile\Targetfile_Temperature_Valid_Data.h ..\tools\include\data_profile\Targetfile_Time_Valid_Data.h ..\tools\include\data_profile\Targetfile_Valid_Data.h ..\tools\include\data_profile\Unit_Ul.h ..\tools\include\draw_picture\Chart.h ..\tools\include\draw_picture\Chart_Category_Value.h ..\tools\include\draw_picture\My_Chart_View.h ..\widgets\Widgets_Header_Proxy_01.h ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h ..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h ..\widgets\widget_time_show\include\Widget_Time_Show.h  ..\Main_Window.cpp ..\actions\buttons\src\Button_All_Attri.cpp ..\actions\buttons\src\Button_Merge_File.cpp ..\actions\buttons\src\Button_Temperature.cpp ..\actions\buttons\src\Button_Time_Compare.cpp ..\main.cpp ..\tools\src\data_profile\Attri_Unit_UL.cpp ..\tools\src\data_profile\Axis_Y_Step.cpp ..\tools\src\data_profile\File_To_Targetfile.cpp ..\tools\src\data_profile\Make_Ration_File.cpp ..\tools\src\data_profile\Make_Temperature_File.cpp ..\tools\src\data_profile\Make_Timc_File.cpp ..\tools\src\data_profile\Scatter_Site_Scatter_Part.cpp ..\tools\src\data_profile\Site_Part.cpp ..\tools\src\data_profile\Targetfile_Ration_Valid_Data.cpp ..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp ..\tools\src\data_profile\Targetfile_Time_Valid_Data.cpp ..\tools\src\data_profile\Targetfile_Valid_Data.cpp ..\tools\src\data_profile\Unit_Ul.cpp ..\tools\src\draw_picture\Chart.cpp ..\tools\src\draw_picture\Chart_Category_Value.cpp ..\tools\src\draw_picture\My_Chart_View.cpp ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp ..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp ..\widgets\widget_time_show\src\Widget_Time_Show.cpp ..\Main_Window.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\Main_Window.o release\Button_All_Attri.o release\Button_Merge_File.o release\Button_Temperature.o release\Button_Time_Compare.o release\main.o release\Attri_Unit_UL.o release\Axis_Y_Step.o release\File_To_Targetfile.o release\Make_Ration_File.o release\Make_Temperature_File.o release\Make_Timc_File.o release\Scatter_Site_X_Part.o release\Site_Part.o release\Targetfile_Temperature_Valid_Data.o release\Targetfile_Valid_Data.o release\Unit_Ul.o release\Chart.o release\Chart_Category_Value.o release\My_Chart_View.o release\Widget_All_Attri_Show.o release\Widget_Temperature_Show.o release\moc_Main_Window.o release\moc_Button_All_Attri.o release\moc_Button_Merge_File.o release\moc_Button_Temperature.o release\moc_Button_Time_Compare.o release\moc_Chart.o release\moc_Chart_Category_Value.o release\moc_Widget_All_Attri_Show.o release\moc_Widget_Temperature_Show.o
+	-$(DEL_FILE) release\Main_Window.o release\Button_All_Attri.o release\Button_Merge_File.o release\Button_Temperature.o release\Button_Time_Compare.o release\main.o release\Attri_Unit_UL.o release\Axis_Y_Step.o release\File_To_Targetfile.o release\Make_Ration_File.o release\Make_Temperature_File.o release\Make_Timc_File.o release\Scatter_Site_Scatter_Part.o release\Site_Part.o release\Targetfile_Ration_Valid_Data.o release\Targetfile_Temperature_Valid_Data.o release\Targetfile_Time_Valid_Data.o release\Targetfile_Valid_Data.o release\Unit_Ul.o release\Chart.o release\Chart_Category_Value.o release\My_Chart_View.o release\Widget_All_Attri_Show.o release\Widget_Temperature_Show.o release\Widget_Time_Show.o release\moc_Main_Window.o release\moc_Button_All_Attri.o release\moc_Button_Merge_File.o release\moc_Button_Temperature.o release\moc_Button_Time_Compare.o release\moc_Chart.o release\moc_Chart_Category_Value.o release\moc_Widget_All_Attri_Show.o release\moc_Widget_Temperature_Show.o release\moc_Widget_Time_Show.o
 	-$(DEL_FILE) release\profile_Excel_By_Qt_resource_res.o
 
 distclean: clean 
@@ -207,9 +221,9 @@ compiler_moc_predefs_clean:
 release/moc_predefs.h: D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -Wextra -Wextra -dM -E -o release\moc_predefs.h D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: release/moc_Main_Window.cpp release/moc_Button_All_Attri.cpp release/moc_Button_Merge_File.cpp release/moc_Button_Temperature.cpp release/moc_Button_Time_Compare.cpp release/moc_Chart.cpp release/moc_Chart_Category_Value.cpp release/moc_Widget_All_Attri_Show.cpp release/moc_Widget_Temperature_Show.cpp
+compiler_moc_header_make_all: release/moc_Main_Window.cpp release/moc_Button_All_Attri.cpp release/moc_Button_Merge_File.cpp release/moc_Button_Temperature.cpp release/moc_Button_Time_Compare.cpp release/moc_Chart.cpp release/moc_Chart_Category_Value.cpp release/moc_Widget_All_Attri_Show.cpp release/moc_Widget_Temperature_Show.cpp release/moc_Widget_Time_Show.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_Main_Window.cpp release\moc_Button_All_Attri.cpp release\moc_Button_Merge_File.cpp release\moc_Button_Temperature.cpp release\moc_Button_Time_Compare.cpp release\moc_Chart.cpp release\moc_Chart_Category_Value.cpp release\moc_Widget_All_Attri_Show.cpp release\moc_Widget_Temperature_Show.cpp
+	-$(DEL_FILE) release\moc_Main_Window.cpp release\moc_Button_All_Attri.cpp release\moc_Button_Merge_File.cpp release\moc_Button_Temperature.cpp release\moc_Button_Time_Compare.cpp release\moc_Chart.cpp release\moc_Chart_Category_Value.cpp release\moc_Widget_All_Attri_Show.cpp release\moc_Widget_Temperature_Show.cpp release\moc_Widget_Time_Show.cpp
 release/moc_Main_Window.cpp: ../Main_Window.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QMainWindow \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qmainwindow.h \
@@ -446,11 +460,15 @@ release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h 
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -499,6 +517,7 @@ release/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h 
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		release/moc_predefs.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o release\moc_Button_All_Attri.cpp
@@ -627,11 +646,15 @@ release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -680,6 +703,7 @@ release/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		release/moc_predefs.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o release\moc_Button_Merge_File.cpp
@@ -808,11 +832,15 @@ release/moc_Button_Temperature.cpp: ../actions/buttons/include/Button_Temperatur
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -861,6 +889,7 @@ release/moc_Button_Temperature.cpp: ../actions/buttons/include/Button_Temperatur
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		release/moc_predefs.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Temperature.h -o release\moc_Button_Temperature.cpp
@@ -989,11 +1018,15 @@ release/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Comp
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -1042,6 +1075,7 @@ release/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Comp
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		release/moc_predefs.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Time_Compare.h -o release\moc_Button_Time_Compare.cpp
@@ -1468,11 +1502,15 @@ release/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -1640,11 +1678,15 @@ release/moc_Widget_Temperature_Show.cpp: ../widgets/widget_temperature_show/incl
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -1696,6 +1738,182 @@ release/moc_Widget_Temperature_Show.cpp: ../widgets/widget_temperature_show/incl
 		release/moc_predefs.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h -o release\moc_Widget_Temperature_Show.cpp
+
+release/moc_Widget_Time_Show.cpp: ../widgets/widget_time_show/include/Widget_Time_Show.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QWidget \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qwidget.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtguiglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtgui-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmargins.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrect.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsize.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpalette.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qcolor.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qrgb.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qrgba64.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qbrush.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qmatrix.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpolygon.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qregion.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdatastream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qline.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtransform.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpainterpath.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qimage.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpixelformat.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpixmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfont.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfontmetrics.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfontinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qcursor.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qkeysequence.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qset.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qurl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qurlquery.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfile.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfiledevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qvector2d.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QString \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QAbstractAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qabstractaxis.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartGlobal \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QtGlobal \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QPen \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpen.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QFont \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QVariant \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QAbstractSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qabstractseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QObject \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChart \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchart.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QLegend \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qlegend.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QGraphicsWidget \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicswidget.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicslayoutitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QBrush \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QMargins \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QGraphicsView \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpainter.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtextoption.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qframe.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsscene.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QLineSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qlineseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QXYSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qxyseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QHBoxLayout \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qboxlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgridlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QValueAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qvalueaxis.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
+		release/moc_predefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/bin/moc.exe
+	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Debug/release/moc_predefs.h -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtANGLE -ID:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore -I. -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/QT/QtBase/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/QT/QtBase/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_time_show\include\Widget_Time_Show.h -o release\moc_Widget_Time_Show.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1833,11 +2051,15 @@ ui_Main_Window.h: ../Main_Window.ui \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -1886,6 +2108,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QPushButton \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -2009,11 +2232,15 @@ ui_Main_Window.h: ../Main_Window.ui \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2062,6 +2289,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QPushButton \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -2185,11 +2413,15 @@ ui_Main_Window.h: ../Main_Window.ui \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2238,6 +2470,7 @@ ui_Main_Window.h: ../Main_Window.ui \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QPushButton \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qpushbutton.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -2361,11 +2594,15 @@ ui_Main_Window.h: ../Main_Window.ui \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2413,7 +2650,8 @@ ui_Main_Window.h: ../Main_Window.ui \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h
+		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h
 	D:\_Applications\QT\baseCodes\5.14.2\mingw73_32\bin\uic.exe ..\Main_Window.ui -o ui_Main_Window.h
 
 compiler_yacc_decl_make_all:
@@ -2577,11 +2815,15 @@ release/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2625,6 +2867,7 @@ release/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Merge_File.h \
 		../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Temperature.h \
 		../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Time_Compare.h
@@ -2754,11 +2997,15 @@ release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../..
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2807,13 +3054,13 @@ release/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../..
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QScrollArea \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSizePolicy \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QFileDialog \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qfiledialog.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Button_All_Attri.o ..\actions\buttons\src\Button_All_Attri.cpp
 
@@ -2941,11 +3188,15 @@ release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -2994,13 +3245,13 @@ release/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QScrollArea \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSizePolicy \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QFileDialog \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qfiledialog.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Button_Merge_File.o ..\actions\buttons\src\Button_Merge_File.cpp
 
@@ -3128,11 +3379,15 @@ release/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../.
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -3181,13 +3436,13 @@ release/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../.
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QScrollArea \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSizePolicy \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QFileDialog \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qfiledialog.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Button_Temperature.o ..\actions\buttons\src\Button_Temperature.cpp
 
@@ -3315,11 +3570,15 @@ release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ..
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -3368,13 +3627,13 @@ release/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ..
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
 		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QScrollArea \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSizePolicy \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QFileDialog \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qfiledialog.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdialog.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QListView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qlistview.h \
@@ -3723,7 +3982,6 @@ release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp .
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QCoreApplication \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreapplication.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qeventloop.h \
@@ -3777,7 +4035,8 @@ release/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp .
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\File_To_Targetfile.o ..\tools\src\data_profile\File_To_Targetfile.cpp
 
 release/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
@@ -4003,7 +4262,7 @@ release/Make_Timc_File.o: ../tools/src/data_profile/Make_Timc_File.cpp ../../../
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Make_Timc_File.o ..\tools\src\data_profile\Make_Timc_File.cpp
 
-release/Scatter_Site_X_Part.o: ../tools/src/data_profile/Scatter_Site_X_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
+release/Scatter_Site_Scatter_Part.o: ../tools/src/data_profile/Scatter_Site_Scatter_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdebug.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
@@ -4069,7 +4328,7 @@ release/Scatter_Site_X_Part.o: ../tools/src/data_profile/Scatter_Site_X_Part.cpp
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Scatter_Site_X_Part.o ..\tools\src\data_profile\Scatter_Site_X_Part.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Scatter_Site_Scatter_Part.o ..\tools\src\data_profile\Scatter_Site_Scatter_Part.cpp
 
 release/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
@@ -4139,6 +4398,77 @@ release/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../../../branch_Dev
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Site_Part.o ..\tools\src\data_profile\Site_Part.cpp
 
+release/Targetfile_Ration_Valid_Data.o: ../tools/src/data_profile/Targetfile_Ration_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qset.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Targetfile_Ration_Valid_Data.o ..\tools\src\data_profile\Targetfile_Ration_Valid_Data.cpp
+
 release/Targetfile_Temperature_Valid_Data.o: ../tools/src/data_profile/Targetfile_Temperature_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
@@ -4207,8 +4537,79 @@ release/Targetfile_Temperature_Valid_Data.o: ../tools/src/data_profile/Targetfil
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Targetfile_Temperature_Valid_Data.o ..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp
+
+release/Targetfile_Time_Valid_Data.o: ../tools/src/data_profile/Targetfile_Time_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qset.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Targetfile_Time_Valid_Data.o ..\tools\src\data_profile\Targetfile_Time_Valid_Data.cpp
 
 release/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
@@ -4911,11 +5312,15 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -4973,7 +5378,6 @@ release/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qinputmethod.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDir \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDirIterator \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdiriterator.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSpacerItem
@@ -5094,11 +5498,15 @@ release/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_X_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
 		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
@@ -5156,11 +5564,196 @@ release/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qinputmethod.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDir \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
-		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDirIterator \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdiriterator.h \
 		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Widget_Temperature_Show.o ..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp
+
+release/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp ../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QWidget \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qwidget.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtguiglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qconfig.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlogging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qflags.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmutex.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnumeric.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtgui-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qtwidgets-config.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qwindowdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qnamespace.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qwindowdefs_win.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstring.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qchar.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrefcount.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qarraydata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiterator.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpair.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvector.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qpoint.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringlist.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qregexp.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmetatype.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmargins.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpaintdevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qrect.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsize.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpalette.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qcolor.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qrgb.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qrgba64.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qbrush.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qmatrix.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpolygon.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qregion.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdatastream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qiodevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qline.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtransform.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpainterpath.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qimage.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpixelformat.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpixmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qshareddata.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qhash.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfont.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfontmetrics.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qfontinfo.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qsizepolicy.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qcursor.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qkeysequence.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qevent.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qvariant.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qmap.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdebug.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qtextstream.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qlocale.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qset.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qurl.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qurlquery.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfile.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfiledevice.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qvector2d.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtouchdevice.h \
+		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDebug \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QString \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QStringList \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QFileInfo \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartView \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QAbstractAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qabstractaxis.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChartGlobal \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchartglobal.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QtGlobal \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QPen \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpen.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QFont \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QVariant \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QAbstractSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qabstractseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QObject \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QChart \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qchart.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QLegend \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qlegend.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QGraphicsWidget \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicswidget.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicslayoutitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/QBrush \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QMargins \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QGraphicsView \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsview.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qpainter.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qtextoption.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qframe.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgraphicsscene.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QLineSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qlineseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QXYSeries \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qxyseries.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QHBoxLayout \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qboxlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qgridlayout.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QValueAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qvalueaxis.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
+		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/QCategoryAxis \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCharts/qcategoryaxis.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QApplication \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qapplication.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qcoreapplication.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qeventloop.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/qdesktopwidget.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qguiapplication.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtGui/qinputmethod.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDir \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdir.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/QDirIterator \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtCore/qdiriterator.h \
+		D:/_Applications/QT/baseCodes/5.14.2/mingw73_32/include/QtWidgets/QSpacerItem
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Widget_Time_Show.o ..\widgets\widget_time_show\src\Widget_Time_Show.cpp
 
 release/moc_Main_Window.o: release/moc_Main_Window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_Main_Window.o release\moc_Main_Window.cpp
@@ -5188,6 +5781,9 @@ release/moc_Widget_All_Attri_Show.o: release/moc_Widget_All_Attri_Show.cpp
 
 release/moc_Widget_Temperature_Show.o: release/moc_Widget_Temperature_Show.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_Widget_Temperature_Show.o release\moc_Widget_Temperature_Show.cpp
+
+release/moc_Widget_Time_Show.o: release/moc_Widget_Time_Show.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_Widget_Time_Show.o release\moc_Widget_Time_Show.cpp
 
 ####### Install
 

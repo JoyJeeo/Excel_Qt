@@ -32,7 +32,7 @@ void Button_Time_Compare::total_task()
 //        font.setPixelSize(11);
         font.setPixelSize(18);
 //        font.setBold(true);
-        this->setText("Time file compare");
+        this->setText(" Ratio Of Change ");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
 
@@ -128,7 +128,7 @@ void Button_Time_Compare::construct_widgets_dir_paths()
 
         // 遍历所有需要打开的多文件
         // 依次创建draw窗体
-        Widget_All_Attri_Show* widget = nullptr;
+        widget = nullptr;
         // 设置label字体
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);
@@ -139,13 +139,13 @@ void Button_Time_Compare::construct_widgets_dir_paths()
 
 
         // 创建窗体
-        widget = new Widget_All_Attri_Show;
+        widget = new Widget_Time_Show;
         widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
         // 判断任务是否执行成功
         bool flage = false;
         // 将需要处理的文件路径，输入到程序中进行处理
-        flage = widget->time_task(input_dir_paths);
+        flage = widget->total_task(input_dir_paths);
         // 任务成功
         // 使用非模态窗口实现
         if(flage){

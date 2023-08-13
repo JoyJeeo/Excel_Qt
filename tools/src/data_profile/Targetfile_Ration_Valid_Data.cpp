@@ -77,7 +77,7 @@ pair<double, double> Targetfile_Ration_Valid_Data::get_attri_define_XI(const str
     return make_pair(m_uul.m_attri_uuls[attri].m_LimitL,m_uul.m_attri_uuls[attri].m_LimitU);
 }
 
-vector<vector<string> > Targetfile_Ration_Valid_Data::get_timc_target_file_vec() noexcept
+vector<vector<string> > Targetfile_Ration_Valid_Data::get_target_file_vec() noexcept
 {
     return m_all_array;
 }
@@ -195,9 +195,12 @@ void Targetfile_Ration_Valid_Data::profile_valid_col()
         {
             // part_id一定为整数
             if(m_all_array[row][col] == this->div_col)
+            {
                 // 获得有效列
                 col++;
                 break;
+
+            }
         }
 
     } catch (...) {

@@ -39,7 +39,9 @@ private:
                                                  const vector<string>& scatter_part
                                                  );
     // 分析定义的最值与数据最值之间的所有可能情况，将数据传出，作为二者当前情况的判断依据
-    pair<double,double> profile_define_value_XI_proxy(const string& attri);
+    pair<double,double> profile_define_value_XI_proxy(pair<double,double> attri_define_XI,
+                                                      pair<double,double> attri_value_XI
+                                                      );
     // 获取y轴的最大最小值和所需的分割线个数
     void profile_y_axis_ans(const pair<double, double> &attri_value_XI,
                             const pair<double, double> &XI_proxy_data,

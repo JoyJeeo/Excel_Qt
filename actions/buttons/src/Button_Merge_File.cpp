@@ -29,7 +29,7 @@ void Button_Merge_File::total_task()
 //        font.setPixelSize(11);
         font.setPixelSize(18);
 //        font.setBold(true);
-        this->setText("Merge solo data files");
+        this->setText(" Merge Solo File ");
         this->setFont(font); // 设置字体样式
         this->adjustSize(); // 按钮大小适应字体大小
 
@@ -91,7 +91,7 @@ void Button_Merge_File::construct_widgets_file_paths()
 
         // 遍历所有需要打开的多文件
         // 依次创建draw窗体
-        Widget_All_Attri_Show* widget = nullptr;
+        widget = nullptr;
         // 设置label字体
         QFont font = QFont("Consolas");
         font.setStyleStrategy(QFont::PreferAntialias);

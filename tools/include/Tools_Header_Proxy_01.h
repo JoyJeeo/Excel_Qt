@@ -10,7 +10,9 @@
 #include "data_profile/Make_Timc_File.h"
 #include "data_profile/Scatter_Site_Scatter_Part.h"
 #include "data_profile/Site_Part.h"
+#include "data_profile/Targetfile_Ration_Valid_Data.h"
 #include "data_profile/Targetfile_Temperature_Valid_Data.h"
+#include "data_profile/Targetfile_Time_Valid_Data.h"
 #include "data_profile/Targetfile_Valid_Data.h"
 #include "data_profile/Unit_Ul.h"
 

@@ -65,12 +65,13 @@ Chart_Category_Value::~Chart_Category_Value()
     }
 }
 
-void Chart_Category_Value::setAxis(QString _xname, const map<string,int> &_xdatas,int _xtickc,
+void Chart_Category_Value::setAxis(QString _xname, map<string,int> &_x_map,
+                                   const vector<string> &_x_map_list,int _xtickc,
                                    QString _yname, qreal _ymin, qreal _ymax, int _ytickc,
                                    int pic_choice,const string& _x_unit)
 {
     try {
-        xname = _xname; xdatas = _xdatas; xtickc = _xtickc;
+        xname = _xname; x_map = _x_map; x_map_list = _x_map_list; xtickc = _xtickc;
         yname = _yname; ymin = _ymin; ymax = _ymax; ytickc = _ytickc;
         /************************************
             %u 无符号十进制整数
@@ -158,7 +159,7 @@ void Chart_Category_Value::setAxis(QString _xname, const map<string,int> &_xdata
 
 void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
                                       const vector<string> &scatter_part,
-                                      const map<string,int> &part_map,
+                                      map<string,int> &part_map,
                                       const QMap<string, QMap<string,QPointF>> &series_data,
                                       const pair<double, double> &XI_proxy_data,
                                       const pair<double, double> &attri_define_XI,
@@ -209,9 +210,10 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
 void Chart_Category_Value::build_x_axis(const string& x_unit)
 {
     try {
-        for(auto block : xdatas)
+
+        for(string part : x_map_list)
         {
-            axisX->append(QString::fromStdString(block.first + x_unit),block.second);
+            axisX->append(QString::fromStdString(part + x_unit),x_map[part]);
         }
 
     } catch (...) {
@@ -310,7 +312,7 @@ void Chart_Category_Value::construct_datas_series(const vector<string> &scatter_
 void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_define_XI,
                                              int XI_series_width,
                                              const vector<string> &scatter_part,
-                                             const map<string,int>& part_map)
+                                             map<string,int>& part_map)
 {
     try {
         // 添加最值线【都是红色的虚线】
@@ -326,7 +328,6 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_d
             for(size_t j = 0;j < scatter_part.size();j++)
             {
                 string part = scatter_part[j];
-                part_map[part];
                 max_line->append(QPointF(part_map[part],attri_define_XI.second));
             }
 
@@ -347,8 +348,8 @@ void Chart_Category_Value::construct_XI_line(const pair<double, double> &attri_d
             // 遍历每组芯片内的点数据
             for(size_t j = 0;j < scatter_part.size();j++)
             {
-                int part = scatter_part[j];
-                min_line->append(QPointF(part,attri_define_XI.first));
+                string part = scatter_part[j];
+                min_line->append(QPointF(part_map[part],attri_define_XI.first));
             }
             // 添加LineSeries 加入chart
             qchart->addSeries(min_line);

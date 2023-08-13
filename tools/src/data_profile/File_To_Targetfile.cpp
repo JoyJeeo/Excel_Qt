@@ -122,8 +122,8 @@ const string File_To_Targetfile::time_task(const QStringList &dir_paths)
         /////////////////////////////////////////////////
 
         // new timc.csv
-        Make_Timc_File timc_filor;
-        const string timc_file_path = timc_filor.make_timc_file(dir_paths);
+        Make_Timc_File timc_maker;
+        const string timc_file_path = timc_maker.make_timc_file(dir_paths);
         set_timc_file_path(timc_file_path);
 
         // 生成ration.csv文件 // 【这里可以使用一个类，专门用来分析数据文件，将分析好的文件，交给当前这个类，进行数据反转，专门生成target_file文件，进行解耦】
@@ -169,8 +169,8 @@ const string File_To_Targetfile::ration_task()
             将已经生成好的ration文件，翻转生成ration_target文件并返回地址
     */
     try {
-        Make_Ration_File ration_filor;
-        const string ration_file_path = ration_filor.make_ration_file(TIME_FILE_PATH);
+        Make_Ration_File ration_maker;
+        const string ration_file_path = ration_maker.make_ration_file(TIME_FILE_PATH);
         set_ration_file_path(ration_file_path);
 
         return total_task(ration_file_path,"ration_target_file.csv");
@@ -183,8 +183,8 @@ const string File_To_Targetfile::ration_task()
 const string File_To_Targetfile::temperature_task(const QStringList &file_paths)
 {
     try {
-        Make_Temperature_File temperature_filor;
-        string temperature_file_path = temperature_filor.make_temperature_file(file_paths);
+        Make_Temperature_File temperature_maker;
+        string temperature_file_path = temperature_maker.make_temperature_file(file_paths);
 
         return total_task(temperature_file_path);
 

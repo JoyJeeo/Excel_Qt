@@ -10,9 +10,11 @@ release/File_To_Targetfile.o
 release/Make_Ration_File.o
 release/Make_Temperature_File.o
 release/Make_Timc_File.o
-release/Scatter_Site_X_Part.o
+release/Scatter_Site_Scatter_Part.o
 release/Site_Part.o
+release/Targetfile_Ration_Valid_Data.o
 release/Targetfile_Temperature_Valid_Data.o
+release/Targetfile_Time_Valid_Data.o
 release/Targetfile_Valid_Data.o
 release/Unit_Ul.o
 release/Chart.o
@@ -20,6 +22,7 @@ release/Chart_Category_Value.o
 release/My_Chart_View.o
 release/Widget_All_Attri_Show.o
 release/Widget_Temperature_Show.o
+release/Widget_Time_Show.o
 release/moc_Main_Window.o
 release/moc_Button_All_Attri.o
 release/moc_Button_Merge_File.o
@@ -29,3 +32,4 @@ release/moc_Chart.o
 release/moc_Chart_Category_Value.o
 release/moc_Widget_All_Attri_Show.o
 release/moc_Widget_Temperature_Show.o
+release/moc_Widget_Time_Show.o

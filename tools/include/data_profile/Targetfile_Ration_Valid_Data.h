@@ -35,7 +35,7 @@ public:
     map<string,int> get_part_map() noexcept;
 
     // 获取temperature目标文件读入程序后的完整数据
-    vector<vector<string>> get_timc_target_file_vec() noexcept;
+    vector<vector<string>> get_target_file_vec() noexcept;
     // 获取生成线数据所需的结构体，所有坐标类型都采用离散方式实现
     map<string,map<string,map<string,double>>> get_series_datas() noexcept;
 
@@ -80,7 +80,6 @@ private:
 
     // string的part与int进行映射
     map<string,int> m_part_map;
-
 
 
     // 【有效数据的默认属性区】

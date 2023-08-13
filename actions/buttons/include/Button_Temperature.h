@@ -30,6 +30,11 @@ protected:
     // 这些对象，都是该按钮下触发槽后需要使用的属性对象
     // 获取多文件
     QStringList input_file_paths;
+    // 存储类内特定的'单窗体'
+    Widget_Temperature_Show* widget;
+
+
+// 【类内不变的部分】
     // 将所有窗体都存在容器中
     QVector<QWidget*> widgets;
     // 将各个窗体所属文件的名称存储起来

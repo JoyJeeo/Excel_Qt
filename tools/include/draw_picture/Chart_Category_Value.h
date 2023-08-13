@@ -23,12 +23,13 @@ public:
     Chart_Category_Value(QWidget* parent = 0, QString _chartname = "折线图",int pic_choice = 0);
     ~Chart_Category_Value();
 
-    void setAxis(QString _xname, const map<string,int>& _xdatas,int _xtickc,
+    void setAxis(QString _xname, map<string,int>& _x_map,
+                 const vector<string> &_x_map_list,int _xtickc,
                  QString _yname, qreal _ymin, qreal _ymax, int _ytickc,int pic_choice = 0,
                  const string& _x_unit = "");
     void buildChart(const vector<string> &scatter_site,
                     const vector<string> &scatter_part,
-                    const map<string,int> &part_map,
+                    map<string,int> &part_map,
                     const QMap<string, QMap<string,QPointF>> &series_data,
                     const pair<double, double> &XI_proxy_data,
                     const pair<double, double> &attri_define_XI,
@@ -46,7 +47,7 @@ private:
     // 构造最值线
     void construct_XI_line(const pair<double,double>& attri_define_XI,
                            int XI_series_width,const vector<string>& scatter_part,
-                           const map<string,int> &part_map);
+                           map<string,int> &part_map);
     // 设置chart的图里描述样式
     void construct_legend_style(const vector<string> scatter_site,
                                 const pair<double,double>& attri_define_XI,
@@ -65,7 +66,8 @@ private:
     QString chartname; // chart图表名称
     //坐标轴参数
     QString xname; // x轴名称
-    map<string,int> xdatas;
+    map<string,int> x_map;
+    vector<string> x_map_list;
     int xtickc; // x轴上的实线个数
 
     QString yname; // y轴名称

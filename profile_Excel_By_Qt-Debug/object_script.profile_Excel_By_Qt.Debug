@@ -10,9 +10,11 @@ debug/File_To_Targetfile.o
 debug/Make_Ration_File.o
 debug/Make_Temperature_File.o
 debug/Make_Timc_File.o
-debug/Scatter_Site_X_Part.o
+debug/Scatter_Site_Scatter_Part.o
 debug/Site_Part.o
+debug/Targetfile_Ration_Valid_Data.o
 debug/Targetfile_Temperature_Valid_Data.o
+debug/Targetfile_Time_Valid_Data.o
 debug/Targetfile_Valid_Data.o
 debug/Unit_Ul.o
 debug/Chart.o
@@ -20,6 +22,7 @@ debug/Chart_Category_Value.o
 debug/My_Chart_View.o
 debug/Widget_All_Attri_Show.o
 debug/Widget_Temperature_Show.o
+debug/Widget_Time_Show.o
 debug/moc_Main_Window.o
 debug/moc_Button_All_Attri.o
 debug/moc_Button_Merge_File.o
@@ -29,3 +32,4 @@ debug/moc_Chart.o
 debug/moc_Chart_Category_Value.o
 debug/moc_Widget_All_Attri_Show.o
 debug/moc_Widget_Temperature_Show.o
+debug/moc_Widget_Time_Show.o

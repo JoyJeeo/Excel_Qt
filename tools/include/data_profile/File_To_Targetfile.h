@@ -125,8 +125,6 @@ private:
                          bool& flage,QString time_name);
     // 分析时刻文件夹的时刻名称
     QString profile_time_file_name(const string& dir_path);
-    // 分析timc文件内容，生成ration文件数据的对象
-    Make_Ration_File ration_maker;
 
 
 // 项目所在的文件路径

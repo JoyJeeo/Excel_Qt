@@ -87,11 +87,6 @@ void Widget_Temperature_Show::while_draw(int row_obj_nums)
         size_t i;
         for(i = 0;i < labels.size();i++) // labels.size()
         {
-            if(i == 14)
-            {
-                qDebug() << i ;
-
-            }
     //        auto x = series_datas.find(labels[i]); // x->first报错，不知道为什么
             string attri = labels[i];
             // 获取site_part的对应数据点
@@ -141,10 +136,13 @@ Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
                 new Chart_Category_Value(this,attri.c_str(),pic_choice); // 局部对象
 
         //设置坐标系
-
         // 设置Y轴数据
         // 获取属性单位
         QString unit = QString::fromStdString(datas->get_attri_unit(attri));
+        // 获取属性最值
+        pair<double,double> attri_define_XI = datas->get_attri_define_XI(attri);
+        // 获取数值最值
+        pair<double,double> attri_value_XI = datas->get_attri_value_XI(attri);
 
         // 【构造坐标轴】
         map<string,double> y_steps = y_stepor->get_steps();
@@ -156,20 +154,22 @@ Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
         }
 
         // 获取define，value最值线比较的代理
-        auto XI_proxy_data = profile_define_value_XI_proxy(attri);
+        auto XI_proxy_data = profile_define_value_XI_proxy(attri_define_XI,attri_value_XI);
 
         // 计算y轴需要的一切接口数据
         int lines = 12;
-        pair<double,double> attri_value_XI = datas->get_attri_value_XI(attri);
         pair<double,double> y_axis_around = {0,0};
         profile_y_axis_ans(attri_value_XI,XI_proxy_data,step,
                            y_axis_around,lines // 传出参数
                            );
 
+        // 获取part映射对象
+        map<string,int> part_map = datas->get_part_map();
+
         // 设置坐标系的数值范围
         chart->setAxis(
                     // 横坐标
-                    _xname,datas->get_part_map(),datas->get_part_map().size(),
+                    _xname,part_map,scatter_part,scatter_part.size(),
                     // 纵坐标
                     unit,y_axis_around.first,y_axis_around.second,
                     // 纵坐标的分割线的条数
@@ -177,11 +177,8 @@ Chart_Category_Value *Widget_Temperature_Show::initChart(const string &attri,
                     pic_choice,x_axis_unit);
 
         //绘制【注入数据点数值和最值】
-        // 获取属性最值
-        auto attri_define_XI = datas->get_attri_define_XI(attri);
-
         // 这里传入XI_line_data，为了判断是否需要画图；传入attri_XI，才是真正的最值线的数据【最值有数值就画，没有就不画】
-        chart->buildChart(scatter_site,scatter_part,series_datas,
+        chart->buildChart(scatter_site,scatter_part,part_map,series_datas,
                           XI_proxy_data,attri_define_XI,pic_choice);
 
         return chart;
@@ -230,25 +227,6 @@ QMap<string,QMap<string,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
                 // 如果为NULL值,则用(0,0)作为断点标志
                 if(site_part_vals[site][part] == NULL_Number) continue;
                 // 如果正常数值，则存储将 val -> (part,val)
-                // 更改温度映射
-//                int part_id = 0;
-//                switch (part) {
-//                case -40:
-//                    part_id = 1;
-//                    break;
-//                case 0:
-//                    part_id = 2;
-//                    break;
-//                case 25:
-//                    part_id = 3;
-//                    break;
-//                case 85:
-//                    part_id = 4;
-//                    break;
-//                case 125:
-//                    part_id = 5;
-//                    break;
-//                }
                 // 为了可以均分，这里将温度数值进行映射
                 ans[site][part] = QPointF(part_map[part],site_part_vals[site][part]);
             }
@@ -264,18 +242,15 @@ QMap<string,QMap<string,QPointF>> Widget_Temperature_Show::get_matrix_pointF(
     }
 }
 
-pair<double, double> Widget_Temperature_Show::profile_define_value_XI_proxy(const string &attri)
+pair<double, double> Widget_Temperature_Show::profile_define_value_XI_proxy(pair<double,double> attri_define_XI,
+                                                                            pair<double,double> attri_value_XI
+                                                                            )
 {
     /*
         说明：
             获取define和value的XI比较后的结果，作为两者最值比较的一个代理
     */
     try {
-        // 获取属性最值
-        auto attri_define_XI = datas->get_attri_define_XI(attri);
-        // 获取所有属性值的最值
-        auto attri_value_XI = datas->get_attri_value_XI(attri);
-
         // 经过attri_XI和all_attri_XI对比后，综合获取的数值的最值线的数值结果
         auto XI_proxy_data = attri_define_XI;
 
