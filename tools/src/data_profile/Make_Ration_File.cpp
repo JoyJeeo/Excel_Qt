@@ -51,6 +51,30 @@ const string Make_Ration_File::make_ration_file(const string& timc_file_path)
     }
 }
 
+bool Make_Ration_File::clear_trash_datas()
+{
+    try {
+        if(is_solo_time)
+        {
+            ifstream ifs = input_file_open(ration_file_path.toStdString());
+            vector<vector<string>> all_array = tackle_file_get_all(ifs);
+            ifs.close();
+
+            // 获取真实的ration data
+            vector<vector<string>> ans(all_array.begin(),all_array.begin() + trash_dex);
+            ration_datas = ans;
+            save_datas();
+
+        }
+
+        return is_solo_time;
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::clear_trash_datas";
+        throw;
+    }
+}
+
 ifstream Make_Ration_File::input_file_open(const string &input_file_path)
 {
     try {
@@ -129,6 +153,10 @@ void Make_Ration_File::build_ration_datas()
 
         // 修改数据区的数据，转换为变动率
         update_valid_datas();
+
+        // 判断ration中是否只有一个时刻
+        if((is_solo_time = is_solo_part()) == true)
+            copy_solo_part();
 
     } catch (...) {
         qDebug() << "Make_Ration_File::build_ration_datas";
@@ -380,6 +408,45 @@ double Make_Ration_File::algorithm_ration_data(double T1, double T0)
 
     } catch (...) {
         qDebug() << "Make_Ration_File::algorithm_ration_data";
+        throw;
+    }
+}
+
+bool Make_Ration_File::is_solo_part()
+{
+    try {
+        const int part_col = 1;
+        // 获取第一个part
+        string tag = ration_datas[end_head_begin_T0_body][part_col];
+
+        for(size_t i = end_head_begin_T0_body;i < ration_datas.size();i++)
+        {
+            if(ration_datas[i][part_col] != tag) return false;
+        }
+
+        return true;
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::is_solo_part";
+        throw;
+    }
+}
+
+void Make_Ration_File::copy_solo_part()
+{
+    try {
+        trash_dex = ration_datas.size();
+        const int part_col = 1;
+
+        for(size_t i = end_head_begin_T0_body;i < trash_dex;i++)
+        {
+            auto temp = ration_datas[i];
+            temp[part_col] += " ";
+            ration_datas.push_back(temp);
+        }
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::copy_solo_part";
         throw;
     }
 }

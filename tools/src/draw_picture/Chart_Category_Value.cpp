@@ -210,7 +210,6 @@ void Chart_Category_Value::buildChart(const vector<string> &scatter_site,
 void Chart_Category_Value::build_x_axis(const string& x_unit)
 {
     try {
-
         for(string part : x_map_list)
         {
             axisX->append(QString::fromStdString(part + x_unit),x_map[part]);

@@ -54,6 +54,9 @@ private:
     void construct_time_legend_style(const vector<string> scatter_time_sites,const pair<double,double>& attri_XI,int choice = 0);
     QMap<string,QVector<QLineSeries*>> time_series;
 
+    // 【函数参数获取】
+    const QString keep_dot_next(const string& num,int keep_num = 3);
+
 
     QChart* qchart; // chart图表容器
     QChartView* chartview; // chart显示器容器，容纳chart图表

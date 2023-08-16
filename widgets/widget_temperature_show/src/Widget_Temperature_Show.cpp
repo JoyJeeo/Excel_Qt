@@ -421,8 +421,17 @@ void Widget_Temperature_Show::bulid_pic_save(Chart_Category_Value* pic_chart,
     try {
         // 【初始化图片存储参数】
         // 初始化pic窗体和其存储布局
-        static QWidget* pic = new QWidget;
-        static QGridLayout* pic_layout = new QGridLayout(pic);
+        static bool is_first_flag = true;
+        static QWidget* pic = nullptr;
+        static QGridLayout* pic_layout = nullptr;
+
+        if(is_first_flag)
+        {
+            pic = new QWidget;
+            pic_layout = new QGridLayout(pic);
+            is_first_flag = false;
+        }
+
         pic_layout->setSizeConstraint(QLayout::SetMinAndMaxSize); // 设置网格布局管理器的一格的最小和最大大小
         pic_layout->setHorizontalSpacing(0);
         pic_layout->setVerticalSpacing(0);
@@ -482,7 +491,10 @@ void Widget_Temperature_Show::bulid_pic_save(Chart_Category_Value* pic_chart,
 
             // 回收临时堆区内存
             delete pic_layout;
+            pic_layout = nullptr;
             delete pic;
+            pic = nullptr;
+            is_first_flag = true;
         }
 
 

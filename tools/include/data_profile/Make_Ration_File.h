@@ -18,6 +18,8 @@ public:
 
     const string make_ration_file(const string& timc_file_path);
 
+    bool clear_trash_datas();
+
 private:
 // 【方法区】
     // 获取文件读入流
@@ -66,6 +68,12 @@ private:
     // 变动率需要调用的计算算法
     double algorithm_ration_data(double T1,double T0);
 
+    // 判断是否只有一个partid
+    bool is_solo_part();
+
+    // 一个partid，则将其数据再拷贝一份，只改变partid部分，产生两个数据
+    void copy_solo_part();
+
 
     // 获取文件的保存路径
     void profile_output_file_path() noexcept;
@@ -77,6 +85,11 @@ private:
     vector<vector<string>> timc_datas;
     // 记录目标的最终结果数据[ration.csv]
     vector<vector<string>> ration_datas;
+
+    // 判断是否为一个时刻的数据
+    bool is_solo_time = false;
+    // trash数据的开始下标位置
+    size_t trash_dex = 0;
 
     // 分析timc文件关键数据的下标位置
     size_t end_head_begin_T0_body;

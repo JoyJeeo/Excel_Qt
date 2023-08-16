@@ -668,20 +668,44 @@ void Chart::construct_time_legend_style(const vector<string> scatter_time_sites,
         {
             legends[legends_size - max_line_num]->setLabel(
                         attri_XI.second != INT_MAX ?
-                        QString::fromStdString("max_line: " + to_string(attri_XI.second))  :
-                        QString::fromStdString("min_line: " + to_string(attri_XI.first)));
+                        "max_line: " + keep_dot_next(to_string(attri_XI.second))  :
+                        "min_line: " + keep_dot_next(to_string(attri_XI.first))
+                        );
         }
         // 两条最值线都存在时
         if(max_line_num == 2)
         {
-            legends[legends_size - max_line_num]->setLabel(QString::fromStdString("max_line: " + to_string(attri_XI.second)));
-            legends[legends_size - max_line_num + 1]->setLabel(QString::fromStdString("min_line: " + to_string(attri_XI.first)));
+            legends[legends_size - max_line_num]->setLabel(
+                        "max_line: " + keep_dot_next(to_string(attri_XI.second))
+                         );
+            legends[legends_size - max_line_num + 1]->setLabel(
+                        "min_line: " + keep_dot_next(to_string(attri_XI.first))
+                        );
         }
         // site最值线的图例
 //        legends[i]->setLabel(i == legends_size-2 ? "max_line" : "min_line");
 
     } catch (...) {
         qDebug() << "Chart::construct_time_legend_style";
+        throw;
+    }
+}
+
+const QString Chart::keep_dot_next(const string &num, int keep_num)
+{
+    try {
+        int dot_dex;
+        for(dot_dex = num.size() - 1;dot_dex >= 0;dot_dex--)
+        {
+            if(num[dot_dex] == '.')break;
+        }
+
+        QString ans_str = QString::fromStdString(num.substr(0,dot_dex + keep_num + 1));
+
+        return ans_str;
+
+    } catch (...) {
+        qDebug() << "Chart::keep_dot_next";
         throw;
     }
 }

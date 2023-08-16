@@ -107,11 +107,19 @@ vector<string> Scatter_Site_Scatter_Part::get_scatter_string_part()
             }
         }
 
-        // 可能可以普及所有string的partid，因此最好排一下序
-        sort(parts.begin(),parts.end(),[](const string& a,const string& b){
-            // 对part的前端数字部分进行排序
-            return stoi(a) < stoi(b);
-        }); // 从小到大排序
+        // 对parts进行排序
+        try {
+            // 一般情况下，按照数字大小进行排序
+            sort(parts.begin(),parts.end(),[](const string& a,const string& b){
+                // 对part的前端数字部分进行排序
+                return stoi(a) < stoi(b);
+            }); // 从小到大排序
+
+        }
+        catch (...) {
+            // 如果parts中无数字，则按照字典序进行排序
+            sort(parts.begin(),parts.end());
+        }
 
         return parts;
 
@@ -119,4 +127,5 @@ vector<string> Scatter_Site_Scatter_Part::get_scatter_string_part()
         qDebug() << "Scatter_Site_Scatter_Part::get_scatter_string_part";
         throw;
     }
+
 }

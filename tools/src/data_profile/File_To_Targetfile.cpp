@@ -173,7 +173,13 @@ const string File_To_Targetfile::ration_task()
         const string ration_file_path = ration_maker.make_ration_file(TIME_FILE_PATH);
         set_ration_file_path(ration_file_path);
 
-        return total_task(ration_file_path,"ration_target_file.csv");
+        // 获取目标的ration target
+        string target_file_path = total_task(ration_file_path,"ration_target_file.csv");
+
+        // 重新改写ration file
+        ration_maker.clear_trash_datas();
+
+        return target_file_path;
     } catch (...) {
         qDebug() << "File_To_Targetfile::ration_task";
         throw;
