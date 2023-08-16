@@ -1109,7 +1109,7 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 
         // 纸张计算参数
         int pic_row_obj_nums = 2; // 图片中一行chart的个数[lie]
-        int page_chart_nums = 3; // 一页显示多少行
+        int page_chart_nums = 2; // 一页显示多少行
         int page_charts = pic_row_obj_nums * page_chart_nums;
 
         // 将map数据按照labels中，循环获取key和value后，传入initChart创建对应属性的chart

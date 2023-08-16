@@ -69,7 +69,7 @@ private:
                         bool last_pic_flage = false,
                          QString pic_prefix_name = "PIC_",
                          int page_row_obj_nums = 2, // 图片中一行chart的个数[lie]
-                        int page_row_nums = 3 // 一张图片的行数
+                        int page_row_nums = 2 // 一张图片的行数
                     );
     // 保存图片
     void save_pic(QWidget* saved_widget,const QString& saved_path);

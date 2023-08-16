@@ -122,13 +122,13 @@ void Make_Ration_File::build_ration_datas()
 {
     try {
         // 获取并修正timc文件的头数据
-        void profile_ration_head();
+        profile_ration_head();
 
         // 移动T0后的数据到前面
-        void move_other_data();
+        move_other_data();
 
         // 修改数据区的数据，转换为变动率
-        void update_valid_datas();
+        update_valid_datas();
 
     } catch (...) {
         qDebug() << "Make_Ration_File::build_ration_datas";
@@ -328,7 +328,7 @@ void Make_Ration_File::update_valid_datas()
         // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】【获取不同时刻】
         int T0_offset = 0;
         // 计算两个时刻之间的间隔数【其后每个时刻之间计算都以这个间隔为基础】【相同时刻的跨度】
-        int interval_time = end_T0_body_begin_other_body - end_head_begin_T0_body;
+        int interval_n = end_T0_body_begin_other_body - end_head_begin_T0_body;
 
         // 计算有效数据
         for(size_t row_T0 = end_head_begin_T0_body;row_T0 < end_T0_body_begin_other_body;
@@ -338,9 +338,9 @@ void Make_Ration_File::update_valid_datas()
             {
                 for(size_t row_other = end_T0_body_begin_other_body + T0_offset,
                     // timc计算结果存入ration的结果中
-                    row_ration_record = end_T0_body_begin_other_body + T0_offset;
+                    row_ration_record = end_head_begin_T0_body + T0_offset; // row_ration_record既有timc的属性，又有ration的属性
                     row_other < timc_datas.size();
-                    row_other += interval_time,row_ration_record += interval_time)
+                    row_other += interval_n,row_ration_record += interval_n)
                 {
                     // 【排除所有不应该被用来计算的情况】
                     // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】

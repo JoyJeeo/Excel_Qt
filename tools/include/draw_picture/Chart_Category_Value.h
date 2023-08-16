@@ -53,6 +53,9 @@ private:
                                 const pair<double,double>& attri_define_XI,
                                 int pic_choice = 0);
 
+    // 【函数参数获取】
+    const QString keep_dot_next(const string& num,int keep_num = 3);
+
     // 【对象区】
     QMap<string,QVector<QLineSeries*>> series;
 

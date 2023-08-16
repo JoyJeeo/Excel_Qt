@@ -60,7 +60,7 @@ void Button_All_Attri::task_widget_all_attri_show()
         construct_main_widge();
 
         // 将widgets窗体内容进行保存
-        save_pic(main_widge,"./ALL_ATTRI_PIC.png");
+        //save_pic(main_widge,"./ALL_ATTRI_PIC.png");
 
         // 构造QScrollArea
         construct_scrollarea();

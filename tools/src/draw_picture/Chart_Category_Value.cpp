@@ -432,20 +432,42 @@ void Chart_Category_Value::construct_legend_style(const vector<string> scatter_s
         {
             legends[legends_size - max_line_num]->setLabel(
                         attri_define_XI.second != INT_MAX ?
-                        QString::fromStdString("max_line: " + to_string(attri_define_XI.second))  :
-                        QString::fromStdString("min_line: " + to_string(attri_define_XI.first)));
+                        "max_line: " + keep_dot_next(to_string(attri_define_XI.second))  :
+                        "min_line: " + keep_dot_next(to_string(attri_define_XI.first))
+                        );
         }
         // 两条最值线都存在时
         if(max_line_num == 2)
         {
             legends[legends_size - max_line_num]->setLabel(
-                        QString::fromStdString("max_line: " + to_string(attri_define_XI.second)));
+                        "max_line: " + keep_dot_next(to_string(attri_define_XI.second))
+                         );
             legends[legends_size - max_line_num + 1]->setLabel(
-                        QString::fromStdString("min_line: " + to_string(attri_define_XI.first)));
+                        "min_line: " + keep_dot_next(to_string(attri_define_XI.first))
+                        );
         }
 
     } catch (...) {
         qDebug() << "Chart_Category_Value::construct_legend_style";
+        throw;
+    }
+}
+
+const QString Chart_Category_Value::keep_dot_next(const string &num, int keep_num)
+{
+    try {
+        int dot_dex;
+        for(dot_dex = num.size() - 1;dot_dex >= 0;dot_dex--)
+        {
+            if(num[dot_dex] == '.')break;
+        }
+
+        QString ans_str = QString::fromStdString(num.substr(0,dot_dex + keep_num + 1));
+
+        return ans_str;
+
+    } catch (...) {
+        qDebug() << "Chart_Category_Value::keep_dot_next";
         throw;
     }
 }

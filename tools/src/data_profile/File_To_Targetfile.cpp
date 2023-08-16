@@ -602,8 +602,11 @@ size_t File_To_Targetfile::get_vec_col_index_valid(const vector<vector<string>>&
         for(row = 0,col = 0;col < target_arrays[row].size();col++)
         {
             // SITE_NUM不一定为整数
-            if(is_Integer_Numeric(target_arrays[row][col]) || is_Integer_Numeric(target_arrays[row+1][col]))
+            if(target_arrays[row][col] == this->div_str)
+            {
+                col++;
                 break;
+            }
         }
         return col;
 

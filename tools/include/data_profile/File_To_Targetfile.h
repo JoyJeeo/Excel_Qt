@@ -152,6 +152,8 @@ const string target_str = "SITE_NUM";
 size_t cols_num = 45;
 size_t rows_num = 45;
 size_t targe_data_index = 0; // 记录有效数据开始的起点
+// 有效列的起始位置
+const string div_str = "";
 };
 
 

@@ -60,7 +60,7 @@ void Button_Merge_File::task_widget_merge_datas_show()
         construct_main_widge();
 
         // 将widgets窗体内容进行保存
-        save_pic(main_widge,"./MERGE_SOLO_FILE_PIC.png");
+        //save_pic(main_widge,"./MERGE_SOLO_FILE_PIC.png");
 
         // 构造QScrollArea
         construct_scrollarea();

@@ -178,8 +178,10 @@ Chart_Category_Value *Widget_Time_Show::initChart(const string &attri,
 {
     try {
         //设置表头【attri的名称已经在这里设置给chart作为表名了】
-        Chart_Category_Value* chart =
-                new Chart_Category_Value(this,attri.c_str(),pic_choice); // 局部对象
+        Chart_Category_Value* chart = nullptr;
+        if(is_time_chart)
+            chart = new Chart_Category_Value(this,attri.c_str(),pic_choice);
+        else chart = new Chart_Category_Value(this,("Ratio(%): " + attri).c_str(),pic_choice);
 
         //设置坐标系
 
