@@ -1,11 +1,13 @@
 debug/Main_Window.o
 debug/Button_All_Attri.o
 debug/Button_Merge_File.o
+debug/Button_Select_Test_Plan_File.o
 debug/Button_Temperature.o
 debug/Button_Time_Compare.o
 debug/main.o
 debug/Attri_Unit_UL.o
 debug/Axis_Y_Step.o
+debug/Compare_Plan_UUL.o
 debug/File_To_Targetfile.o
 debug/Make_Ration_File.o
 debug/Make_Temperature_File.o
@@ -26,6 +28,7 @@ debug/Widget_Time_Show.o
 debug/moc_Main_Window.o
 debug/moc_Button_All_Attri.o
 debug/moc_Button_Merge_File.o
+debug/moc_Button_Select_Test_Plan_File.o
 debug/moc_Button_Temperature.o
 debug/moc_Button_Time_Compare.o
 debug/moc_Chart.o

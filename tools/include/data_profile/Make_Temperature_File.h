@@ -5,6 +5,7 @@
 #include <vector>
 #include <QStringList>
 #include <QString>
+#include "Compare_Plan_UUL.h"
 using namespace std;
 
 class Make_Temperature_File
@@ -91,6 +92,9 @@ private:
     const string target_str = "SITE_NUM";
     // 记录目标数据的分界点
     const string div_str = "";
+
+    // 头数据与test plan比较对象
+    Compare_Plan_UUL test_plan;
 
 };
 

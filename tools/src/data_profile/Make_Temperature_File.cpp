@@ -46,6 +46,10 @@ const string Make_Temperature_File::make_temperature_file(const QStringList &fil
         // 处理所有文件结束，将文件内容进行保存
         save_datas();
 
+        // 判断是否需要展示warning
+        if(test_plan.get_warning())
+            test_plan.warning_show();
+
         // 返回保存的temperature文件的路径
         return temperature_file_path.toStdString();
 
@@ -233,11 +237,16 @@ void Make_Temperature_File::tackle_solo_file(const QString &file_path,bool first
         profile_div_index(target_array,end_head_begin_body);
 
         // 头数据处理
+        // 获取头数据
+        vector<vector<string>> head_datas = get_head_datas(target_array,end_head_begin_body);
+        // 分析是否头数据与test plan存在不符
+        if(test_plan.warning_head(head_datas,file_path.toStdString()))
+        {
+            test_plan.set_warning(true);
+        }
         // 只有第一个文件会获取头数据
         if(first_file_flage)
         {
-            // 获取头数据
-            vector<vector<string>> head_datas = get_head_datas(target_array,end_head_begin_body);
             // 将头数据加载进总容器中
             load_datas(head_datas);
         }

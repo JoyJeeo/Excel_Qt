@@ -1,11 +1,13 @@
 release/Main_Window.o
 release/Button_All_Attri.o
 release/Button_Merge_File.o
+release/Button_Select_Test_Plan_File.o
 release/Button_Temperature.o
 release/Button_Time_Compare.o
 release/main.o
 release/Attri_Unit_UL.o
 release/Axis_Y_Step.o
+release/Compare_Plan_UUL.o
 release/File_To_Targetfile.o
 release/Make_Ration_File.o
 release/Make_Temperature_File.o
@@ -26,6 +28,7 @@ release/Widget_Time_Show.o
 release/moc_Main_Window.o
 release/moc_Button_All_Attri.o
 release/moc_Button_Merge_File.o
+release/moc_Button_Select_Test_Plan_File.o
 release/moc_Button_Temperature.o
 release/moc_Button_Time_Compare.o
 release/moc_Chart.o

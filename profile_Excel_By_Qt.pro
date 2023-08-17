@@ -20,11 +20,13 @@ SOURCES += \
     Main_Window.cpp \
     actions/buttons/src/Button_All_Attri.cpp \
     actions/buttons/src/Button_Merge_File.cpp \
+    actions/buttons/src/Button_Select_Test_Plan_File.cpp \
     actions/buttons/src/Button_Temperature.cpp \
     actions/buttons/src/Button_Time_Compare.cpp \
     main.cpp \
     tools/src/data_profile/Attri_Unit_UL.cpp \
     tools/src/data_profile/Axis_Y_Step.cpp \
+    tools/src/data_profile/Compare_Plan_UUL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
     tools/src/data_profile/Make_Ration_File.cpp \
     tools/src/data_profile/Make_Temperature_File.cpp \
@@ -47,11 +49,13 @@ HEADERS += \
     Main_Window.h \
     actions/buttons/include/Button_All_Attri.h \
     actions/buttons/include/Button_Merge_File.h \
+    actions/buttons/include/Button_Select_Test_Plan_File.h \
     actions/buttons/include/Button_Temperature.h \
     actions/buttons/include/Button_Time_Compare.h \
     tools/include/Tools_Header_Proxy_01.h \
     tools/include/data_profile/Attri_Unit_Ul.h \
     tools/include/data_profile/Axis_Y_Step.h \
+    tools/include/data_profile/Compare_Plan_UUL.h \
     tools/include/data_profile/File_To_Targetfile.h \
     tools/include/data_profile/Make_Ration_File.h \
     tools/include/data_profile/Make_Temperature_File.h \

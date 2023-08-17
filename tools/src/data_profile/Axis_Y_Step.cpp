@@ -6,6 +6,9 @@
 #include <sstream>
 #include <QCoreApplication>
 
+// 全局的test_plan文件的地址
+extern QString test_plan_path;
+
 Axis_Y_Step::Axis_Y_Step()
 {
     try {
@@ -38,7 +41,7 @@ ifstream Axis_Y_Step::input_file_open(const string& input_File_path)
         ifs.open(input_File_path);
         if(!ifs.is_open())
         {
-            cerr<<"step file open fail"<<endl;
+            cerr<<"test_plan file open fail"<<endl;
             exit(1);
         }
         return ifs;
@@ -47,11 +50,6 @@ ifstream Axis_Y_Step::input_file_open(const string& input_File_path)
         qDebug() << "Axis_Y_Step::input_file_open";
         throw;
     }
-}
-
-void Axis_Y_Step::profile_step_file_path() noexcept
-{
-    step_file_path = QCoreApplication::applicationDirPath() + "/" + step_file_name;
 }
 
 void Axis_Y_Step::tackle_file(const ifstream& ifs)
@@ -121,11 +119,8 @@ void Axis_Y_Step::profile_steps(const vector<vector<string> > &all_array)
 void Axis_Y_Step::total_task()
 {
     try {
-        // 获取step文件路径
-        profile_step_file_path();
-//        qDebug() << step_file_path;
         // 打开step文件 如果打开失败，说明step文件可能不存在
-        ifstream ifs = input_file_open(step_file_path.toStdString());
+        ifstream ifs = input_file_open(test_plan_path.toStdString());
 
         // 提取文件内容
         tackle_file(ifs);

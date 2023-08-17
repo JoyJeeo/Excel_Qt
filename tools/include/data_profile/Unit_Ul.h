@@ -10,6 +10,12 @@ struct Unit_Ul{
     explicit Unit_Ul(){};
     Unit_Ul(string unit,double limitL,double limitU)
                 :m_Unit(unit),m_LimitL(limitL),m_LimitU(limitU){}
+
+    bool operator!=(const Unit_Ul& uul);
+    bool operator==(const Unit_Ul& uul);
+
+    explicit operator string();
+
     string m_Unit;
     double m_LimitL;
     double m_LimitU;

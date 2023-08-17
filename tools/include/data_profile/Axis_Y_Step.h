@@ -18,17 +18,12 @@ public:
 private:
     ifstream input_file_open(const string& input_File_path);
 
-    void profile_step_file_path() noexcept;
-
     void tackle_file(const ifstream& ifs);
     vector<vector<string>> tackle_file_get_all(const ifstream& ifs);
     void profile_steps(const vector<vector<string>>& all_array);
 
     // 获取项目的step
     void total_task();
-
-    QString step_file_path = "";
-    const QString step_file_name = "step_for_Tool.csv";
 
     // 记录项目对应的step
     map<string,double> m_steps;

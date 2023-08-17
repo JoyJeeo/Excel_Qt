@@ -32,6 +32,7 @@ void Main_Window::total_task()
         ui->btn_merge->total_task();
         ui->btn_time_compare->total_task();
         ui->btn_temperature->total_task();
+        ui->btn_select_testplan->total_task();
 
     } catch (...) {
         qDebug() << "Main_Window::total_task";

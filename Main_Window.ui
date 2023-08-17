@@ -14,47 +14,54 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>30</y>
-      <width>191</width>
-      <height>191</height>
+      <x>30</x>
+      <y>40</y>
+      <width>345</width>
+      <height>211</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>6</number>
-     </property>
+    <layout class="QGridLayout" name="gridLayout_2">
      <property name="sizeConstraint">
       <enum>QLayout::SetMinAndMaxSize</enum>
      </property>
-     <item>
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item row="3" column="0">
+      <widget class="Button_Temperature" name="btn_temperature">
+       <property name="text">
+        <string>btn_temperature</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
       <widget class="Button_All_Attri" name="btn_all_attri">
        <property name="text">
         <string>btn_all_attri</string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="0">
       <widget class="Button_Merge_File" name="btn_merge">
        <property name="text">
         <string>btn_merge</string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="2" column="0">
       <widget class="Button_Time_Compare" name="btn_time_compare">
        <property name="text">
         <string>btn_time_compare</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="Button_Temperature" name="btn_temperature">
+     <item row="0" column="1">
+      <widget class="Button_Select_Test_Plan_File" name="btn_select_testplan">
        <property name="text">
-        <string>btn_temperature</string>
+        <string>btn_select_testplan</string>
        </property>
       </widget>
      </item>
@@ -68,7 +75,7 @@
      <x>0</x>
      <y>0</y>
      <width>811</width>
-     <height>29</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>
@@ -93,6 +100,11 @@
    <class>Button_Temperature</class>
    <extends>QPushButton</extends>
    <header location="global">actions\buttons\include\Button_Temperature.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Button_Select_Test_Plan_File</class>
+   <extends>QPushButton</extends>
+   <header location="global">actions\buttons\include\Button_Select_Test_Plan_File.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
