@@ -37,6 +37,8 @@ SOURCES += \
     tools/src/data_profile/Targetfile_Temperature_Valid_Data.cpp \
     tools/src/data_profile/Targetfile_Time_Valid_Data.cpp \
     tools/src/data_profile/Targetfile_Valid_Data.cpp \
+    tools/src/data_profile/Unit_UL_Block.cpp \
+    tools/src/data_profile/Unit_UL_Str.cpp \
     tools/src/data_profile/Unit_Ul.cpp \
     tools/src/draw_picture/Chart.cpp \
     tools/src/draw_picture/Chart_Category_Value.cpp \
@@ -66,6 +68,8 @@ HEADERS += \
     tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
     tools/include/data_profile/Targetfile_Time_Valid_Data.h \
     tools/include/data_profile/Targetfile_Valid_Data.h \
+    tools/include/data_profile/Unit_UL_Block.h \
+    tools/include/data_profile/Unit_UL_Str.h \
     tools/include/data_profile/Unit_Ul.h \
     tools/include/draw_picture/Chart.h \
     tools/include/draw_picture/Chart_Category_Value.h \

@@ -16,6 +16,8 @@
 #include "data_profile/Targetfile_Time_Valid_Data.h"
 #include "data_profile/Targetfile_Valid_Data.h"
 #include "data_profile/Unit_Ul.h"
+#include "data_profile/Unit_UL_Block.h"
+#include "data_profile/Unit_UL_Str.h"
 
 // draw_picture
 #include "draw_picture/Chart.h"

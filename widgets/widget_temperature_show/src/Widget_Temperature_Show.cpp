@@ -7,21 +7,30 @@
 
 extern size_t pic_pages;
 extern int NULL_Number;
-extern QString test_plan_path;
-extern bool is_first_testplan;
+
+QString test_plan_path = "";
+
+void init_test_plan()
+{
+    /*
+        只执行一次的函数
+    */
+    static bool is_first_testplan = true;
+    if(is_first_testplan)
+    {
+        // 初始化[默认]的test_plan的路径
+        test_plan_path =
+                QCoreApplication::applicationDirPath() + "/" +
+                "test_plan.csv";
+        is_first_testplan = false;
+    }
+}
 
 Widget_Temperature_Show::Widget_Temperature_Show(QWidget *parent)
     : QWidget(parent)
 {
     try {
-        if(is_first_testplan)
-        {
-            // 初始化[默认]的test_plan的路径
-            test_plan_path =
-                    QCoreApplication::applicationDirPath() + "/" +
-                    "test_plan.csv";
-            is_first_testplan = false;
-        }
+        init_test_plan();
 
         // 构造函数中只做一次性构造对象的
         resize(800,800);

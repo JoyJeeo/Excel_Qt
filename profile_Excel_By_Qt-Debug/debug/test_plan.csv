@@ -1,5 +1,5 @@
 ﻿,Unit,LimitL,LimitU,Step
-Continuity_out,V,0.1,1,0.1
+Continuity,V,0.1,1,0.1
 Continuity_vin,V,-1,-0.1,0.1
 Continuity_vin1,V,-1,-0.1,0.1
 Continuity_en,V,-1,-0.1,0.1

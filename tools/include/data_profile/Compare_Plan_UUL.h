@@ -1,8 +1,8 @@
 #ifndef COMPARE_PLAN_UUL_H
 #define COMPARE_PLAN_UUL_H
 
-#include "tools/include/data_profile/Attri_Unit_Ul.h"
-#include "tools/include/data_profile/Unit_Ul.h"
+#include "tools/include/data_profile/Unit_UL_Block.h"
+#include "tools/include/data_profile/Unit_UL_Str.h"
 #include <QLabel>
 #include <QScrollArea>
 
@@ -12,12 +12,11 @@ public:
     Compare_Plan_UUL();
     ~Compare_Plan_UUL();
 
-    bool warning_head(const vector<vector<string>>& head_datas,const string& file_path);
+    void warning_head(const vector<vector<string>>& head_datas,const string& file_path);
 
     bool warning_show();
 
-    void set_warning(bool flage) noexcept;
-    bool get_warning() noexcept;
+    bool warning_flage() noexcept;
 
 private:
     // 【方法区】
@@ -46,25 +45,28 @@ private:
     // 将Make的源头数据的attri行中的attri列构造后返回
     vector<vector<string>> get_valid_head_datas(const vector<vector<string>>& head_datas);
 
-    string make_label_text(const string& attri,pair<string,Unit_Ul>& test_uul,
-                           const vector<pair<string,Unit_Ul>>& warnings);
+    string make_label_text(const string& attri,pair<string,Unit_UL_Str>& test_uul,
+                           const vector<pair<string,Unit_UL_Str>>& warnings);
 
 
     // 【对象区】
     // 存储warning的uuls【无序】【来源于datas】 // attri -> (file_path,uul)
-    map<string,vector<pair<string,Unit_Ul>>> warning_uul;
+    map<string,vector<pair<string,Unit_UL_Str>>> warning_uul;
     // 存储warning的pro【有序】【first来源plan,second来源datas】
     vector<pair<string,bool>> warning_attri_list;
 
 
     // 存储plan中的计划uul【来源plan】
-    Attri_Unit_Ul plan_uul;
+    Unit_UL_Block plan_uul; // 要与data中的字符串相同，与target获取中的数值获取不同
 
     // head valid_col div
     const string div_str = "TEST_NUM";
 
     // 记录是否需要show warning的bool
     bool is_warning = false;
+
+    // 如果test plan中没有data中的属性的记录
+    vector<string> plan_nopros;
 
 };
 

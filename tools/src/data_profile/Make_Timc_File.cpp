@@ -37,6 +37,9 @@ const string Make_Timc_File::make_timc_file(const QStringList &dir_paths)
         // 保存数据
         save_datas();
 
+        if(test_plan.warning_flage())
+            test_plan.warning_show();
+
         return timc_file_path.toStdString();
 
     } catch (...) {
@@ -144,11 +147,12 @@ void Make_Timc_File::tackle_single_file(const string &time_name, const QString &
         profile_div_index(target_array,end_head_begin_body);
 
         // 头数据处理
+        // 获取头数据
+        vector<vector<string>> head_datas = get_head_datas(target_array,end_head_begin_body);
+        test_plan.warning_head(head_datas,file_path.toStdString());
         // 只有第一个文件会获取头数据
         if(first_file_flage)
         {
-            // 获取头数据
-            vector<vector<string>> head_datas = get_head_datas(target_array,end_head_begin_body);
             // 将头数据加载进总容器中
             load_datas(head_datas);
 

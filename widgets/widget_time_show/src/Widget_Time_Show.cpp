@@ -1,18 +1,21 @@
 #include "widgets/widget_time_show/include/Widget_Time_Show.h"
 
-
-extern size_t pic_pages;
-extern int NULL_Number;
-
 #include <QApplication>
 #include <QDir>
 #include <QDirIterator>
 #include <QSpacerItem>
 
+extern size_t pic_pages;
+extern int NULL_Number;
+
+extern void init_test_plan();
+
 Widget_Time_Show::Widget_Time_Show(QWidget *parent)
     : QWidget(parent)
 {
     try {
+        init_test_plan();
+
         // 构造函数中只做一次性构造对象的
         resize(800,800);
         src_file_manager = new File_To_Targetfile;

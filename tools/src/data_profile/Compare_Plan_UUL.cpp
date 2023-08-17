@@ -6,10 +6,10 @@
 #include <iostream>
 #include <sstream>
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 // 全局的test_plan文件的地址
-QString test_plan_path = ""; // test plan的路径
-bool is_first_testplan = true; // test plan 是否被初始化【谁是第一个窗体】
+extern QString test_plan_path; // test plan的路径
 
 Compare_Plan_UUL::Compare_Plan_UUL()
 {
@@ -29,7 +29,7 @@ Compare_Plan_UUL::~Compare_Plan_UUL()
 
 }
 
-bool Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
+void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
                                     const string& file_path)
 {
     try {
@@ -41,15 +41,16 @@ bool Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
         size_t limitl_row = 2;
         size_t limitU_row = 3;
 
+
         for(size_t col = 0;col < valid_head[attri_row].size();col++)
         {
             string attri = valid_head[attri_row][col];
-            Unit_Ul uul(valid_head[unit_row][col],
-                        stod(valid_head[limitl_row][col]),
-                        stod(valid_head[limitU_row][col]));
+            Unit_UL_Str uul(valid_head[unit_row][col],
+                        valid_head[limitl_row][col],
+                        valid_head[limitU_row][col]);
 
             // 无warning
-            if(uul != plan_uul.m_attri_uuls[attri]) return false;
+            if(uul == plan_uul.m_attri_uuls[attri]) continue;
 
             // warning
             // 这个属性没被添加过
@@ -59,11 +60,32 @@ bool Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
                                  [&attri](const pair<string,bool>& a){
                                     return a.first == attri;
                                 });
+                // 在test plan中没找到
+                if(obj == warning_attri_list.end())
+                {
+                    // 没有项目，则报告
+                    if(find(plan_nopros.begin(),plan_nopros.end(),attri) == plan_nopros.end())
+                    {
+                        // plan欠缺的pro
+                        plan_nopros.push_back(attri);
 
+                        // 给出提示框
+                        QMessageBox *msgBox = new QMessageBox;
+                        msgBox->setWindowTitle("WARNING: TEST PLAN NoPro");
+                        msgBox->setText(QString::fromStdString("TestPlan NoPro:\n  " + attri));
+                        msgBox->setAttribute(Qt::WA_DeleteOnClose);
+                        msgBox->show();
+                    }
+
+                    // 记录中存在，则继续循环
+                    continue;
+                }
+                // 找到了，则warning
+                is_warning = true;
                 // 设置搜索列表
                 obj->second = true;
                 // 初始化
-                warning_uul.insert(make_pair(attri,vector<pair<string,Unit_Ul>>()));
+                warning_uul.insert(make_pair(attri,vector<pair<string,Unit_UL_Str>>()));
                 // 添加waring uul
                 warning_uul[attri].push_back(make_pair(file_path,uul));
             }
@@ -73,8 +95,6 @@ bool Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
             }
 
         }
-
-        return true;
 
     } catch (...) {
         qDebug() << "Compare_Plan_UUL::warning_head";
@@ -100,12 +120,7 @@ bool Compare_Plan_UUL::warning_show()
     }
 }
 
-void Compare_Plan_UUL::set_warning(bool flage) noexcept
-{
-    is_warning = flage;
-}
-
-bool Compare_Plan_UUL::get_warning() noexcept
+bool Compare_Plan_UUL::warning_flage() noexcept
 {
     return is_warning;
 }
@@ -165,9 +180,9 @@ void Compare_Plan_UUL::profile_test_plan(const vector<vector<string>> &all_array
         for(;row_attri < all_array.size();row_attri++)
         {
             plan_uul.m_attri_uuls.insert(make_pair(all_array[row_attri][col_attri],
-                                                   Unit_Ul(all_array[row_attri][col_unit],
-                                                           stod(all_array[row_attri][col_limitL]),
-                                                           stod(all_array[row_attri][col_limitU])
+                                                   Unit_UL_Str(all_array[row_attri][col_unit],
+                                                           all_array[row_attri][col_limitL],
+                                                           all_array[row_attri][col_limitU]
                                                            ))); // 【！！！与target的头数据分析分开,string】
             warning_attri_list.push_back(make_pair(all_array[row_attri][col_attri],false));
         }
@@ -199,8 +214,8 @@ QVector<QLabel *> Compare_Plan_UUL::profile_lables()
 
 
             attri = warning_attri_list[i].first;
-            pair<string,Unit_Ul> test_uul = make_pair("Test_Plan: ",plan_uul.m_attri_uuls[attri]);
-            vector<pair<string,Unit_Ul>>& warnings = warning_uul[attri];
+            pair<string,Unit_UL_Str> test_uul = make_pair("Test_Plan: ",plan_uul.m_attri_uuls[attri]);
+            vector<pair<string,Unit_UL_Str>>& warnings = warning_uul[attri];
 
             // 组装QLabel中的字符串内容
             label = new QLabel;
@@ -224,13 +239,23 @@ QWidget *Compare_Plan_UUL::get_main_widget(const QVector<QLabel *> &labels)
 {
     try {
         // 容纳所有label
-        QWidget *main_widge = new QWidget;
+        QWidget *main_widge = new QWidget(nullptr);
         QVBoxLayout* v_layout = new QVBoxLayout(main_widge);
         main_widge->setLayout(v_layout);
+
+        QString div_line = "";
+        for(int i = 0;i < 200;i++)
+        {
+            div_line += "=";
+        }
+
 
         for(int i = 0;i < labels.size();i++)
         {
             v_layout->addWidget(labels[i]);
+
+            QLabel* null_label = new QLabel(div_line,nullptr);
+            v_layout->addWidget(null_label);
         }
 
         return main_widge;
@@ -244,7 +269,7 @@ QWidget *Compare_Plan_UUL::get_main_widget(const QVector<QLabel *> &labels)
 QScrollArea *Compare_Plan_UUL::get_scroll()
 {
     try {
-        QScrollArea* scrollarea = new QScrollArea;
+        QScrollArea* scrollarea = new QScrollArea(nullptr);
         scrollarea->resize(800,620);
         scrollarea->setWindowTitle("Test_Plan WARNING");
         scrollarea->setWidgetResizable(true);
@@ -312,6 +337,7 @@ vector<vector<string>> Compare_Plan_UUL::get_valid_head_datas(const vector<vecto
     try {
         size_t row = 0;
         size_t col_begin_attri;
+        size_t end_row = 4;
 
         for(col_begin_attri = 0; col_begin_attri < head_datas[row].size();col_begin_attri++)
         {
@@ -324,7 +350,8 @@ vector<vector<string>> Compare_Plan_UUL::get_valid_head_datas(const vector<vecto
 
         vector<vector<string>> valid_head_datas;
 
-        for(size_t i = 0;i < head_datas.size();i++)
+        // 头中的空行不需要
+        for(size_t i = 0;i < end_row;i++)
         {
             valid_head_datas.push_back(vector<string>(
                                               head_datas[i].begin() + col_begin_attri,
@@ -339,23 +366,24 @@ vector<vector<string>> Compare_Plan_UUL::get_valid_head_datas(const vector<vecto
     }
 }
 
-string Compare_Plan_UUL::make_label_text(const string &attri, pair<string, Unit_Ul> &test_uul,
-                                         const vector<pair<string, Unit_Ul>> &warnings)
+string Compare_Plan_UUL::make_label_text(const string &attri, pair<string, Unit_UL_Str> &test_uul,
+                                         const vector<pair<string, Unit_UL_Str>> &warnings)
 {
     try {
         string str =
                 attri + "\n" +
-                test_uul.first + ": " +  string(test_uul.second) + "\n";
+                test_uul.first + string(test_uul.second) + "\n";
 
         // 循环添加warning
         for(size_t i = 0;i < warnings.size();i++)
         {
-            pair<string, Unit_Ul> t = warnings[i];
+            pair<string, Unit_UL_Str> t = warnings[i];
             str += t.first + ":\n  " +
                     string(t.second) +
                     (i != warnings.size() - 1 ? "\n" : "");
         }
 
+        return str;
 
     } catch (...) {
         qDebug() << "Compare_Plan_UUL::make_label_text";
