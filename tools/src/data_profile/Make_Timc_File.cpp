@@ -39,6 +39,8 @@ const string Make_Timc_File::make_timc_file(const QStringList &dir_paths)
 
         if(test_plan.warning_flage())
             test_plan.warning_show();
+        if(test_plan.warning_extra_flage())
+            test_plan.warning_extra_show();
 
         return timc_file_path.toStdString();
 

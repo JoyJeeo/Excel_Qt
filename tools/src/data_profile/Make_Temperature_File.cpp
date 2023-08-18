@@ -49,6 +49,8 @@ const string Make_Temperature_File::make_temperature_file(const QStringList &fil
         // 判断是否需要展示warning
         if(test_plan.warning_flage())
             test_plan.warning_show();
+        if(test_plan.warning_extra_flage())
+            test_plan.warning_extra_show();
 
         // 返回保存的temperature文件的路径
         return temperature_file_path.toStdString();

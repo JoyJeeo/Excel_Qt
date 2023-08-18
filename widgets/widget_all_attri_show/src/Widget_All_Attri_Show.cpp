@@ -600,8 +600,6 @@ Widget_All_Attri_Show::Widget_All_Attri_Show(QWidget *parent)
 {
     /*构造类内对象*/
     try {
-        init_test_plan();
-
         // 构造函数中只做一次性构造对象的
         resize(800,800);
         src_file_manager = new File_To_Targetfile;

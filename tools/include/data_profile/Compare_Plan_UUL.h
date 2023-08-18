@@ -5,6 +5,7 @@
 #include "tools/include/data_profile/Unit_UL_Str.h"
 #include <QLabel>
 #include <QScrollArea>
+#include <set>
 
 class Compare_Plan_UUL
 {
@@ -12,11 +13,16 @@ public:
     Compare_Plan_UUL();
     ~Compare_Plan_UUL();
 
+    // 获取可能出现warning的数据
     void warning_head(const vector<vector<string>>& head_datas,const string& file_path);
 
     bool warning_show();
 
     bool warning_flage() noexcept;
+
+    bool warning_extra_flage() noexcept;
+
+    bool warning_extra_show();
 
 private:
     // 【方法区】
@@ -27,14 +33,25 @@ private:
     // 初始化成员对象plan_uul,warning_attri_list
     void profile_test_plan(const vector<vector<string>>& all_array);
 
+    // 判断plan中的pro是否在data中不存在plan -> data
+    void diff_plan_to_data(const set<string>& data_pros);
+
     // 构造lables
-    QVector<QLabel*> profile_lables();
+    QVector<QLabel*> profile_labels();
 
     // 构造mainwidget
     QWidget* get_main_widget(const QVector<QLabel*>& labels);
 
+    // 构造extra的label
+    QVector<QLabel*> make_data_less_extra_labels();
+
+    // 构造mainwidget
+    QWidget* make_data_lack_widget(const QVector<QLabel*>& labels);
+
     // 构造scroll to show
     QScrollArea* get_scroll();
+
+
 
 
     // 【函数参数提供】
@@ -65,8 +82,12 @@ private:
     // 记录是否需要show warning的bool
     bool is_warning = false;
 
-    // 如果test plan中没有data中的属性的记录
-    vector<string> plan_nopros;
+    // 记录是否extra
+    bool is_extra_pro = false;
+    // 如果读入的data中有pro，而plan里没有【测多了】
+    set<string> data_extra_pro;
+    // data里没有，而plan里有【少测了pro】 // 将多出来的pros记录下来
+    set<string> data_less_pro;
 
 };
 

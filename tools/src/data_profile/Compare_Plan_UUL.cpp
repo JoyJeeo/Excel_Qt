@@ -6,6 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QMessageBox>
 
 // 全局的test_plan文件的地址
@@ -32,6 +33,14 @@ Compare_Plan_UUL::~Compare_Plan_UUL()
 void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
                                     const string& file_path)
 {
+    /*
+        说明：
+            1. data pro == plan pro 显示是否存在plan数据上的差异 // 具体到数据出现问题的文件中
+            2. data pro > plan pro 显示extra的项目
+            3. data pro < plan pro 显示less的项目 // 这两个只会显示出现问题的pro，而不会显示具体在哪个文件中
+            4. 都可以显示，如果出现这三种情况中的任意一种时
+
+    */
     try {
         vector<vector<string>> valid_head = get_valid_head_datas(head_datas);
 
@@ -41,6 +50,8 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
         size_t limitl_row = 2;
         size_t limitU_row = 3;
 
+        // 获取data的head pro映射集
+        set<string> data_pros;
 
         for(size_t col = 0;col < valid_head[attri_row].size();col++)
         {
@@ -48,6 +59,9 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
             Unit_UL_Str uul(valid_head[unit_row][col],
                         valid_head[limitl_row][col],
                         valid_head[limitU_row][col]);
+
+            // 添加到data的映射中
+            data_pros.insert(attri);
 
             // 无warning
             if(uul == plan_uul.m_attri_uuls[attri]) continue;
@@ -63,18 +77,14 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
                 // 在test plan中没找到
                 if(obj == warning_attri_list.end())
                 {
-                    // 没有项目，则报告
-                    if(find(plan_nopros.begin(),plan_nopros.end(),attri) == plan_nopros.end())
+                    // 没有项目，则报告 // 一个pro只会被添加一次
+                    if(data_extra_pro.find(attri) == data_extra_pro.end())
                     {
                         // plan欠缺的pro
-                        plan_nopros.push_back(attri);
+                        data_extra_pro.insert(attri);
 
-                        // 给出提示框
-                        QMessageBox *msgBox = new QMessageBox;
-                        msgBox->setWindowTitle("WARNING: TEST PLAN NoPro");
-                        msgBox->setText(QString::fromStdString("TestPlan NoPro:\n  " + attri));
-                        msgBox->setAttribute(Qt::WA_DeleteOnClose);
-                        msgBox->show();
+                        // 设置标志
+                        is_extra_pro = true;
                     }
 
                     // 记录中存在，则继续循环
@@ -96,6 +106,9 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
 
         }
 
+        // 检测plan的pro 与 data的pro的缺少关系
+        diff_plan_to_data(data_pros);
+
     } catch (...) {
         qDebug() << "Compare_Plan_UUL::warning_head";
         throw;
@@ -105,7 +118,7 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
 bool Compare_Plan_UUL::warning_show()
 {
     try {
-        QVector<QLabel*> labels = profile_lables();
+        QVector<QLabel*> labels = profile_labels();
         QWidget* warning_window = get_main_widget(labels);
         QScrollArea* scroll = get_scroll();
 
@@ -123,6 +136,29 @@ bool Compare_Plan_UUL::warning_show()
 bool Compare_Plan_UUL::warning_flage() noexcept
 {
     return is_warning;
+}
+
+bool Compare_Plan_UUL::warning_extra_flage() noexcept
+{
+    return is_extra_pro;
+}
+
+bool Compare_Plan_UUL::warning_extra_show()
+{
+    try {
+        QVector<QLabel*> labels = make_data_less_extra_labels();
+        QWidget* lack_window = make_data_lack_widget(labels);
+        QScrollArea* scroll = get_scroll();
+
+        scroll->setWidget(lack_window);
+        scroll->show();
+
+        return true;
+
+    } catch (...) {
+        qDebug() << "Compare_Plan_UUL::warning_extra_show";
+        throw;
+    }
 }
 
 void Compare_Plan_UUL::init()
@@ -193,7 +229,34 @@ void Compare_Plan_UUL::profile_test_plan(const vector<vector<string>> &all_array
     }
 }
 
-QVector<QLabel *> Compare_Plan_UUL::profile_lables()
+void Compare_Plan_UUL::diff_plan_to_data(const set<string> &data_pros)
+{
+    try {
+
+        for(const pair<string,bool>& x : warning_attri_list)
+        {
+            // 以plan的pro为标准，查看plan -> data中的缺少的attri
+            if(data_pros.find(x.first) == data_pros.end())
+            {
+                // 设置标志
+                is_extra_pro = true;
+
+                // 是否已经被添加过【唯一添加】
+                if(data_less_pro.find(x.first) == data_less_pro.end())
+                {
+                    data_less_pro.insert(x.first);
+                }
+            }
+        }
+
+
+    } catch (...) {
+        qDebug() << "Compare_Plan_UUL::diff_plan_to_data";
+        throw;
+    }
+}
+
+QVector<QLabel *> Compare_Plan_UUL::profile_labels()
 {
     try {
         string attri = "";
@@ -262,6 +325,106 @@ QWidget *Compare_Plan_UUL::get_main_widget(const QVector<QLabel *> &labels)
 
     } catch (...) {
         qDebug() << "Compare_Plan_UUL::get_main_widget";
+        throw;
+    }
+}
+
+QVector<QLabel *> Compare_Plan_UUL::make_data_less_extra_labels()
+{
+    try {
+        QLabel* label = nullptr;
+        QVector<QLabel *> labels;
+
+        // 设置字体
+        QFont font = QFont("Consolas");
+        font.setStyleStrategy(QFont::PreferAntialias);
+        font.setPixelSize(20);
+        font.setBold(true);
+
+        // data中less的pro【少测的pro】
+        if(data_less_pro.size() > 0)
+        {
+            // 组装QLabel中的字符串内容
+            label = new QLabel;
+            label->setFont(font);
+
+            QString title = "Items in the test plan are missing from the read-in items\n";
+            QString List = "List:\n";
+
+            QString text = "";
+
+            size_t counter = 1;
+            for(string pro : data_less_pro)
+            {
+                text += QString::fromStdString(pro +
+                                               (counter == data_less_pro.size() ? "" :
+                                                    counter % 4 == 0 ? "\n" : "  |  ")
+                                               );
+                counter++;
+            }
+
+            // 写入label
+            label->setText(title + List + text);
+            // 载入labels
+            labels.push_back(label);
+        }
+
+        // data中extra的pro【多测的pro，plan中不需要测的项目】
+        if(data_extra_pro.size() > 0)
+        {
+            // 组装QLabel中的字符串内容
+            label = new QLabel;
+            label->setFont(font);
+
+            QString title = "Among the items measured in the read-in file, "
+                            "the items measured more than the test plan\n";
+            QString List = "List:\n";
+
+            QString text = "";
+
+            size_t counter = 1;
+            for(string pro : data_extra_pro)
+            {
+                text += QString::fromStdString(pro +
+                                               (counter == data_extra_pro.size() ? "" :
+                                                    counter % 4 == 0 ? "\n" : "  |  ")
+                                               );
+                counter++;
+            }
+
+            // 写入label
+            label->setText(title + List + text);
+            // 载入labels
+            labels.push_back(label);
+        }
+
+
+        return labels;
+
+    } catch (...) {
+        qDebug() << "Compare_Plan_UUL::make_data_less_extra_labels";
+        throw;
+    }
+}
+
+QWidget *Compare_Plan_UUL::make_data_lack_widget(const QVector<QLabel *> &labels)
+{
+    try {
+        // 容纳所有label
+        QWidget *main_widge = new QWidget(nullptr);
+        QHBoxLayout* H_layout = new QHBoxLayout(main_widge);
+        main_widge->setLayout(H_layout);
+
+
+        for(int i = 0;i < labels.size();i++)
+        {
+            H_layout->addWidget(labels[i]);
+        }
+
+        return main_widge;
+
+    } catch (...) {
+        qDebug() << "Compare_Plan_UUL::make_data_lack_widget";
         throw;
     }
 }
@@ -378,7 +541,7 @@ string Compare_Plan_UUL::make_label_text(const string &attri, pair<string, Unit_
         for(size_t i = 0;i < warnings.size();i++)
         {
             pair<string, Unit_UL_Str> t = warnings[i];
-            str += t.first + ":\n  " +
+            str += t.first + ":\n\t" +
                     string(t.second) +
                     (i != warnings.size() - 1 ? "\n" : "");
         }

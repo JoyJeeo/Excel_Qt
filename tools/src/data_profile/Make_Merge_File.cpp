@@ -44,6 +44,8 @@ const string Make_Merge_File::make_merge_file(const QStringList &file_paths)
         // 判断是否需要展示warning
         if(test_plan.warning_flage())
             test_plan.warning_show();
+        if(test_plan.warning_extra_flage())
+            test_plan.warning_extra_show();
 
         // 返回保存的temperature文件的路径
         return merge_file_path.toStdString();

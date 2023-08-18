@@ -113,6 +113,11 @@ QStringList Button_Time_Compare::construct_input_dir_paths() noexcept
     if (fileDialog.exec() == QDialog::Accepted)
     {
         folders = fileDialog.selectedFiles();
+        // 对文件夹名称进行排序
+        sort(folders.begin(),folders.end(),[](const QString& a,const QString& b){
+            // 字符串结果比较排序即可
+            return a < b;
+        });
 //        qDebug() << folders;
     }
 

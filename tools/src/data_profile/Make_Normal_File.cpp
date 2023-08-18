@@ -34,6 +34,8 @@ const string Make_Normal_File::make_normal_file(const QString &file_path)
         // 判断是否需要展示warning
         if(test_plan.warning_flage())
             test_plan.warning_show();
+        if(test_plan.warning_extra_flage())
+            test_plan.warning_extra_show();
 
         // 返回保存的temperature文件的路径
         return normal_file_path.toStdString();
