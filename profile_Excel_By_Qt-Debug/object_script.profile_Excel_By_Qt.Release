@@ -9,6 +9,7 @@ release/Attri_Unit_UL.o
 release/Axis_Y_Step.o
 release/Compare_Plan_UUL.o
 release/File_To_Targetfile.o
+release/Make_Merge_File.o
 release/Make_Ration_File.o
 release/Make_Temperature_File.o
 release/Make_Timc_File.o

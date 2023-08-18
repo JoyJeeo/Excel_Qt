@@ -6,6 +6,7 @@
 #include "data_profile/Axis_Y_Step.h"
 #include "data_profile/Compare_Plan_UUL.h"
 #include "data_profile/File_To_Targetfile.h"
+#include "data_profile/Make_Merge_File.h"
 #include "data_profile/Make_Ration_File.h"
 #include "data_profile/Make_Temperature_File.h"
 #include "data_profile/Make_Timc_File.h"

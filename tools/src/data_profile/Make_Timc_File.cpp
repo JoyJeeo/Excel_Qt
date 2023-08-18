@@ -27,7 +27,7 @@ const string Make_Timc_File::make_timc_file(const QStringList &dir_paths)
 {
     try {
         // 遍历处理所有文件夹
-        bool first_file_flage = true;
+        bool first_file_flage = true; // 一个文件夹里可能有多个数据，因此必须引用传入在内部进行修改
 
         for(int i = 0;i < dir_paths.size();i++)
         {

@@ -10,6 +10,7 @@
 #include "tools/include/data_profile/Make_Temperature_File.h"
 #include "tools/include/data_profile/Make_Timc_File.h"
 #include "tools/include/data_profile/Make_Ration_File.h"
+#include "tools/include/data_profile/Make_Merge_File.h"
 
 
 File_To_Targetfile::File_To_Targetfile()
@@ -70,7 +71,10 @@ const string File_To_Targetfile::merge_task(const QStringList &file_paths)
 {
     try {
         // 将多个单文件路径传入，解析合并出alls文件
-        merge_files_solo_data(file_paths);
+//        merge_files_solo_data(file_paths);
+        Make_Merge_File merge_maker;
+        string merge_file_path = merge_maker.make_merge_file(file_paths);
+        set_alls_file_path(merge_file_path);
 
         // 合并后的文件，作为source_file，衔接上该类的总任务total_task
         return total_task(ALLS_MERGE_FILE_PATH,"target_file.csv");
