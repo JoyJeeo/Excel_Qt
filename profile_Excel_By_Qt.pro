@@ -29,6 +29,7 @@ SOURCES += \
     tools/src/data_profile/Compare_Plan_UUL.cpp \
     tools/src/data_profile/File_To_Targetfile.cpp \
     tools/src/data_profile/Make_Merge_File.cpp \
+    tools/src/data_profile/Make_Normal_File.cpp \
     tools/src/data_profile/Make_Ration_File.cpp \
     tools/src/data_profile/Make_Temperature_File.cpp \
     tools/src/data_profile/Make_Timc_File.cpp \
@@ -61,6 +62,7 @@ HEADERS += \
     tools/include/data_profile/Compare_Plan_UUL.h \
     tools/include/data_profile/File_To_Targetfile.h \
     tools/include/data_profile/Make_Merge_File.h \
+    tools/include/data_profile/Make_Normal_File.h \
     tools/include/data_profile/Make_Ration_File.h \
     tools/include/data_profile/Make_Temperature_File.h \
     tools/include/data_profile/Make_Timc_File.h \

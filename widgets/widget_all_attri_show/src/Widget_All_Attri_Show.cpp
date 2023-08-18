@@ -1198,14 +1198,14 @@ void Widget_All_Attri_Show::while_draw(int row_obj_nums)
 
 }
 
-bool Widget_All_Attri_Show::total_task(const string& input_file_path)
+bool Widget_All_Attri_Show::total_task(const QString& input_file_path)
 {
     /*使用中间文件，将目标文件的数据打开后，对其中内容进行绘制*/
     // 数据处理
     try{
         // 对原始数据进行处理和分析source_file -> target_file，获取目标文件的绝对路径
         // 【传入输入文件的路径，传出输出文件的路径】
-        const string target_file_path = src_file_manager->total_task(input_file_path);
+        const string target_file_path = src_file_manager->normal_task(input_file_path);
 
         // 打开目标文件后，输入的文件名才会被修改
         // 设置Widget的窗口名称

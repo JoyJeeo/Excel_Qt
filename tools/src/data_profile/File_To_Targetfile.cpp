@@ -11,6 +11,7 @@
 #include "tools/include/data_profile/Make_Timc_File.h"
 #include "tools/include/data_profile/Make_Ration_File.h"
 #include "tools/include/data_profile/Make_Merge_File.h"
+#include "tools/include/data_profile/Make_Normal_File.h"
 
 
 File_To_Targetfile::File_To_Targetfile()
@@ -63,6 +64,20 @@ const string File_To_Targetfile::total_task(const string& input_file_path,string
 
     } catch (...) {
         qDebug() << "File_To_Targetfile::total_task";
+        throw;
+    }
+}
+
+const string File_To_Targetfile::normal_task(const QString &input_file_path)
+{
+    try {
+        Make_Normal_File normal_maker;
+        string normal_file_path = normal_maker.make_normal_file(input_file_path);
+
+        return total_task(normal_file_path);
+
+    } catch (...) {
+        qDebug() << "File_To_Targetfile::normal_task";
         throw;
     }
 }

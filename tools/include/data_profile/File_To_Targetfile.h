@@ -26,6 +26,8 @@ public:
     // 将target_file文件的路径进行返回
     const string total_task(const string& input_file_path,string output_file_name = "target_file.csv");
 
+    const string normal_task(const QString& input_file_path);
+
     // 单数据多文件合并
     const string merge_task(const QStringList& file_paths);
 
@@ -133,6 +135,7 @@ QString pro_path = ".";
 string IN_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\source_file.csv";
 // 内部可修改输出文件的产生位置
 string OUT_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\target_file.csv";
+
 // 合并的输出文件的产生位置
 string ALLS_MERGE_FILE_PATH = "D:\\QT\\Codes\\profile_Excel_By_Qt\\alls.csv";
 // 时刻文件的合并文件

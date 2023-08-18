@@ -10,6 +10,7 @@ debug/Axis_Y_Step.o
 debug/Compare_Plan_UUL.o
 debug/File_To_Targetfile.o
 debug/Make_Merge_File.o
+debug/Make_Normal_File.o
 debug/Make_Ration_File.o
 debug/Make_Temperature_File.o
 debug/Make_Timc_File.o

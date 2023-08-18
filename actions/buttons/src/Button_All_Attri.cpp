@@ -110,7 +110,7 @@ void Button_All_Attri::construct_widgets_file_paths()
             // 判断任务是否执行成功
             bool flage = false;
             // 将需要处理的文件路径，输入到程序中进行处理
-            flage = widget->total_task(iterator->toStdString());
+            flage = widget->total_task(*iterator);
             // 任务成功
             // 使用非模态窗口实现
             if(flage){

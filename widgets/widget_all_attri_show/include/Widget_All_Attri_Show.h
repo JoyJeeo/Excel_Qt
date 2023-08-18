@@ -26,7 +26,7 @@ public:
     vector<string> get_scatter_time_sites() noexcept;
     int get_time_site_max_parts() noexcept;
 
-    bool total_task(const string& input_file_path);
+    bool total_task(const QString& input_file_path);
     // 合并单文件的窗体
     bool merge_task(const QStringList& files_path);
     // 【功能三】时刻文件的分析窗体
