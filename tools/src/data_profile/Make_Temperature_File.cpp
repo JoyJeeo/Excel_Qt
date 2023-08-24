@@ -151,7 +151,7 @@ pair<vector<string>,string> Make_Temperature_File::profile_siteNo_temperature(co
 
         // 分析末尾的特殊字符串【N03_125.csv】
         string last_str = str_names[last_index];
-        string last_no;
+        string last_no = "";
         bool tmp_flage = false; // 用于两种数据获取的切换
         for(size_t i = 0;i < last_str.size();i++)
         {

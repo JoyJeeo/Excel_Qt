@@ -116,10 +116,10 @@ void Make_Timc_File::tackle_single_file(const string &time_name, const QString &
 {
     try {
         // 根据文件路径获取No号
-        string no_name = profile_no_name(file_path);
+        vector<string> no_name = profile_no_name(file_path);
 
         // 获取单文件的修改建议
-        auto steer = make_pair(no_name,time_name);
+        pair<vector<string>,string> steer = make_pair(no_name,time_name);
 
         // 获取文件的输入流
         ifstream ifs = input_file_open(file_path.toStdString());
@@ -268,26 +268,75 @@ QStringList Make_Timc_File::profile_dir_inner_file_paths(const QList<QFileInfo> 
     }
 }
 
-string Make_Timc_File::profile_no_name(const QString &file_path)
+vector<string> Make_Timc_File::profile_no_name(const QString &file_path)
 {
     /*
         说明：
-            文件夹中文件名的命名规则：N01.csv,N02.csv,N12.csv,...
+            文件夹中文件名的命名规则：N01-N02.csv,N03-N04.csv,N05-N06.csv,...
             将N12.csv -> No_12进行返回
     */
     try {
         // 获取完整的文件名
         string integral_file_name = profile_path_to_name(file_path);
 
-        // 获取文件名中dot的位置
-        int dot_index = profile_nameDot_index(integral_file_name);
-        // 不算dot本身
-        dot_index--;
+        // 将文件名作为输入端重新读入
+        istringstream sin(integral_file_name);
 
-        // 获取修改后的文件名【No_...】
-        string no_name = "No_" + integral_file_name.substr(1,dot_index - 1 + 1); // 不算'.'本身
+        // 存储字符串段
+        vector<string> str_names;
+        string temp_str;
 
-        return no_name;
+        // 将file_name以'_'为分界点，进行字符串内容读取
+        while(getline(sin,temp_str,'-'))
+        {
+            // cout<<array.size()<<" ";
+            str_names.push_back(temp_str);
+        }
+
+        // 【对字符串段进行分析】
+        // 对分割的字符串进行分析
+        int len = str_names.size();
+        int last_index = len - 1;
+
+        // 存储No的容器
+        vector<string> nos;
+
+        // 分析no
+        for(int i = 0;i < last_index;i++)
+        {
+            string no = str_names[i];
+            string ans_no = "No_" + no.substr(1,no.size() - 1);
+
+
+            // 加入nos
+            nos.push_back(ans_no);
+        }
+
+        // 分析末尾的特殊字符串
+        string last_str = str_names[last_index];
+        string last_no = "";
+        for(size_t i = 0;i < last_str.size();i++)
+        {
+            if(last_str[i] == '_' || last_str[i] == '.')
+            {
+                // 做最后的处理
+                nos.push_back(last_no);
+
+                break;
+            }
+
+            // 获取no
+            if(last_str[i] != 'N')
+            {
+                last_no += last_str[i];
+            }
+            // 遇到'N'
+            else {
+                last_no = "No_";
+            }
+        }
+
+        return nos;
 
     } catch (...) {
         qDebug() << "Make_Timc_File::profile_file_name";
@@ -531,7 +580,7 @@ vector<vector<string>> Make_Timc_File::get_body_datas(const vector<vector<string
 }
 
 vector<vector<string>> Make_Timc_File::update_body_datas(const vector<vector<string>> &body_datas,
-                                                          const pair<string,string> &steer)
+                                                          const pair<vector<string>,string>& steers)
 {
     /*
         说明：
@@ -543,12 +592,17 @@ vector<vector<string>> Make_Timc_File::update_body_datas(const vector<vector<str
         // 创建二维数组，为了匹配load_datas的数据加载功能
         vector<vector<string>> update_body;
 
-        // 只获取体数据中的最后一组数据作为真实有效的数据信息
-        vector<string> real_body = body_datas[body_datas.size() - 1];
-        real_body[0] = steer.first;
-        real_body[1] = steer.second;
+        for(size_t i = 0;i < steers.first.size();i++)
+        {
+            update_body.push_back(body_datas[i]);
+            // 修改SITE_NUM
+            // 一般将文件名中的芯片编号N01...，改为No_01,No_02,...
+            update_body[i][0] = steers.first[i];
 
-        update_body.push_back(real_body);
+            // 修改PART_ID
+            update_body[i][1] = steers.second;
+
+        }
 
         return update_body;
 

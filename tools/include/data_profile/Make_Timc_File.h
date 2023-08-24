@@ -44,7 +44,7 @@ private:
     QStringList profile_dir_inner_file_paths(const QList<QFileInfo>& file_infos);
 
     // 获取修改后的文件名称No_...【命名规范以'N数字'的形式命名文件夹内文件的名称】
-    string profile_no_name(const QString& file_path);
+    vector<string> profile_no_name(const QString& file_path);
 
 // 【分析名称需要的参数函数】 //
     // 获取任意文件的'/'后的名称
@@ -83,7 +83,7 @@ private:
     // 对单文件的内容进行修改获取new_body_data 【只处理并返回，体数据中的最后一次数据结果】
     vector<vector<string>> update_body_datas(const vector<vector<string>>& body_datas,
                                              // first为No_...,second为时刻名称
-                                             const pair<string,string>& steer // 修改建议
+                                             const pair<vector<string>,string>& steers // 修改建议
                                              );
 
     // 将容器内容load进入全局数据容器中
