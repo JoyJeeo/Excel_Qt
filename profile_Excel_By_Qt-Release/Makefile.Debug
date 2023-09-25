@@ -80,7 +80,7 @@ SOURCES       = ..\Main_Window.cpp \
 		..\tools\src\draw_picture\My_Chart_View.cpp \
 		..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp \
 		..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp \
-		..\widgets\widget_time_show\src\Widget_Time_Show.cpp E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
+		..\widgets\widget_time_show\src\Widget_Time_Show.cpp E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp \
 		debug\moc_Main_Window.cpp \
 		debug\moc_Button_All_Attri.cpp \
 		debug\moc_Button_Merge_File.cpp \
@@ -227,7 +227,7 @@ clean: compiler_clean
 	-$(DEL_FILE) debug\profile_Excel_By_Qt_resource_res.o
 
 distclean: clean 
-	-$(DEL_FILE) E:\branch_Dev_Excel_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
+	-$(DEL_FILE) E:\Tool_Qt\branch_Dev_Excel_Qt\profile_Excel_By_Qt-Release\profile_excel_by_qt_plugin_import.cpp .qmake.stash
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Debug
 
@@ -367,7 +367,7 @@ debug/moc_Main_Window.cpp: ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o debug\moc_Main_Window.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\Main_Window.h -o debug\moc_Main_Window.cpp
 
 debug/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -480,37 +480,37 @@ debug/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -551,15 +551,15 @@ debug/moc_Button_All_Attri.cpp: ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o debug\moc_Button_All_Attri.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_All_Attri.h -o debug\moc_Button_All_Attri.cpp
 
 debug/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -672,37 +672,37 @@ debug/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.h 
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -743,15 +743,15 @@ debug/moc_Button_Merge_File.cpp: ../actions/buttons/include/Button_Merge_File.h 
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o debug\moc_Button_Merge_File.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Merge_File.h -o debug\moc_Button_Merge_File.cpp
 
 debug/moc_Button_Select_Test_Plan_File.cpp: ../actions/buttons/include/Button_Select_Test_Plan_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -863,7 +863,7 @@ debug/moc_Button_Select_Test_Plan_File.cpp: ../actions/buttons/include/Button_Se
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Select_Test_Plan_File.h -o debug\moc_Button_Select_Test_Plan_File.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Select_Test_Plan_File.h -o debug\moc_Button_Select_Test_Plan_File.cpp
 
 debug/moc_Button_Temperature.cpp: ../actions/buttons/include/Button_Temperature.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -976,37 +976,37 @@ debug/moc_Button_Temperature.cpp: ../actions/buttons/include/Button_Temperature.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1047,15 +1047,15 @@ debug/moc_Button_Temperature.cpp: ../actions/buttons/include/Button_Temperature.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Temperature.h -o debug\moc_Button_Temperature.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Temperature.h -o debug\moc_Button_Temperature.cpp
 
 debug/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Compare.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
@@ -1168,37 +1168,37 @@ debug/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Compar
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1239,15 +1239,15 @@ debug/moc_Button_Time_Compare.cpp: ../actions/buttons/include/Button_Time_Compar
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Time_Compare.h -o debug\moc_Button_Time_Compare.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\actions\buttons\include\Button_Time_Compare.h -o debug\moc_Button_Time_Compare.cpp
 
 debug/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
@@ -1400,7 +1400,7 @@ debug/moc_Chart.cpp: ../tools/include/draw_picture/Chart.h \
 		../tools/include/draw_picture/My_Chart_View.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o debug\moc_Chart.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart.h -o debug\moc_Chart.cpp
 
 debug/moc_Chart_Category_Value.cpp: ../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
@@ -1554,7 +1554,7 @@ debug/moc_Chart_Category_Value.cpp: ../tools/include/draw_picture/Chart_Category
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart_Category_Value.h -o debug\moc_Chart_Category_Value.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\tools\include\draw_picture\Chart_Category_Value.h -o debug\moc_Chart_Category_Value.cpp
 
 debug/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
@@ -1661,37 +1661,37 @@ debug/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/Wi
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1732,13 +1732,13 @@ debug/moc_Widget_All_Attri_Show.cpp: ../widgets/widget_all_attri_show/include/Wi
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o debug\moc_Widget_All_Attri_Show.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_all_attri_show\include\Widget_All_Attri_Show.h -o debug\moc_Widget_All_Attri_Show.cpp
 
 debug/moc_Widget_Temperature_Show.cpp: ../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
@@ -1845,37 +1845,37 @@ debug/moc_Widget_Temperature_Show.cpp: ../widgets/widget_temperature_show/includ
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -1916,13 +1916,13 @@ debug/moc_Widget_Temperature_Show.cpp: ../widgets/widget_temperature_show/includ
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h -o debug\moc_Widget_Temperature_Show.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_temperature_show\include\Widget_Temperature_Show.h -o debug\moc_Widget_Temperature_Show.cpp
 
 debug/moc_Widget_Time_Show.cpp: ../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
@@ -2029,37 +2029,37 @@ debug/moc_Widget_Time_Show.cpp: ../widgets/widget_time_show/include/Widget_Time_
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2100,13 +2100,13 @@ debug/moc_Widget_Time_Show.cpp: ../widgets/widget_time_show/include/Widget_Time_
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		debug/moc_predefs.h \
 		C:/QT/Qt5.14.2_MinGW_static/bin/moc.exe
-	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_time_show\include\Widget_Time_Show.h -o debug\moc_Widget_Time_Show.cpp
+	C:\QT\Qt5.14.2_MinGW_static\bin\moc.exe $(DEFINES) --include E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/debug/moc_predefs.h -IC:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g++ -IE:/Tool_Qt/branch_Dev_Excel_Qt -IC:/QT/Qt5.14.2_MinGW_static/include -IC:/QT/Qt5.14.2_MinGW_static/include/QtCharts -IC:/QT/Qt5.14.2_MinGW_static/include/QtWidgets -IC:/QT/Qt5.14.2_MinGW_static/include/QtGui -IC:/QT/Qt5.14.2_MinGW_static/include/QtCore -I. -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/_Applications/QT/baseCodes/Tools/mingw730_32/i686-w64-mingw32/include ..\widgets\widget_time_show\include\Widget_Time_Show.h -o debug\moc_Widget_Time_Show.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2232,37 +2232,37 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2303,12 +2303,12 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -2419,37 +2419,37 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2490,12 +2490,12 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -2606,37 +2606,37 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2677,12 +2677,12 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -2793,37 +2793,37 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -2864,12 +2864,12 @@ ui_Main_Window.h: ../Main_Window.ui \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3100,10 +3100,17 @@ debug/Main_Window.o: ../Main_Window.cpp ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtabwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qicon.h \
 		ui_Main_Window.h \
-		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QFileDialog \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qfiledialog.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdir.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QMessageBox \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Main_Window.o ..\Main_Window.cpp
 
-debug/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_All_Attri.h \
+debug/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../actions/buttons/include/Button_All_Attri.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3214,37 +3221,37 @@ debug/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../../b
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3285,12 +3292,12 @@ debug/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../../b
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QFileDialog \
@@ -3299,7 +3306,7 @@ debug/Button_All_Attri.o: ../actions/buttons/src/Button_All_Attri.cpp ../../../b
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Button_All_Attri.o ..\actions\buttons\src\Button_All_Attri.cpp
 
-debug/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Merge_File.h \
+debug/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../actions/buttons/include/Button_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3410,37 +3417,37 @@ debug/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../..
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3481,12 +3488,12 @@ debug/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../..
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QFileDialog \
@@ -3495,7 +3502,7 @@ debug/Button_Merge_File.o: ../actions/buttons/src/Button_Merge_File.cpp ../../..
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Button_Merge_File.o ..\actions\buttons\src\Button_Merge_File.cpp
 
-debug/Button_Select_Test_Plan_File.o: ../actions/buttons/src/Button_Select_Test_Plan_File.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Select_Test_Plan_File.h \
+debug/Button_Select_Test_Plan_File.o: ../actions/buttons/src/Button_Select_Test_Plan_File.cpp ../actions/buttons/include/Button_Select_Test_Plan_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3611,7 +3618,7 @@ debug/Button_Select_Test_Plan_File.o: ../actions/buttons/src/Button_Select_Test_
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Button_Select_Test_Plan_File.o ..\actions\buttons\src\Button_Select_Test_Plan_File.cpp
 
-debug/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Temperature.h \
+debug/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../actions/buttons/include/Button_Temperature.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3722,37 +3729,37 @@ debug/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3793,12 +3800,12 @@ debug/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QFileDialog \
@@ -3807,7 +3814,7 @@ debug/Button_Temperature.o: ../actions/buttons/src/Button_Temperature.cpp ../../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Button_Temperature.o ..\actions\buttons\src\Button_Temperature.cpp
 
-debug/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../../../branch_Dev_Excel_Qt/actions/buttons/include/Button_Time_Compare.h \
+debug/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../actions/buttons/include/Button_Time_Compare.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QPushButton \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qpushbutton.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -3918,37 +3925,37 @@ debug/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
-		../../../branch_Dev_Excel_Qt/widgets/Widgets_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+		../widgets/Widgets_Header_Proxy_01.h \
+		../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -3989,12 +3996,12 @@ debug/Button_Time_Compare.o: ../actions/buttons/src/Button_Time_Compare.cpp ../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
-		../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+		../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+		../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QVBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSizePolicy \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QFileDialog \
@@ -4140,8 +4147,8 @@ debug/main.o: ../main.cpp ../Main_Window.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\main.cpp
 
-debug/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_UL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+debug/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../tools/include/data_profile/Attri_Unit_UL.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -4209,7 +4216,7 @@ debug/Attri_Unit_UL.o: ../tools/src/data_profile/Attri_Unit_UL.cpp ../../../bran
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Attri_Unit_UL.o ..\tools\src\data_profile\Attri_Unit_UL.cpp
 
-debug/Axis_Y_Step.o: ../tools/src/data_profile/Axis_Y_Step.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+debug/Axis_Y_Step.o: ../tools/src/data_profile/Axis_Y_Step.cpp ../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstring.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qchar.h \
@@ -4281,9 +4288,9 @@ debug/Axis_Y_Step.o: ../tools/src/data_profile/Axis_Y_Step.cpp ../../../branch_D
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Axis_Y_Step.o ..\tools\src\data_profile\Axis_Y_Step.cpp
 
-debug/Compare_Plan_UUL.o: ../tools/src/data_profile/Compare_Plan_UUL.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+debug/Compare_Plan_UUL.o: ../tools/src/data_profile/Compare_Plan_UUL.cpp ../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -4402,12 +4409,13 @@ debug/Compare_Plan_UUL.o: ../tools/src/data_profile/Compare_Plan_UUL.cpp ../../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlayoutitem.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
+		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QHBoxLayout \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QMessageBox \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qmessagebox.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Compare_Plan_UUL.o ..\tools\src\data_profile\Compare_Plan_UUL.cpp
 
-debug/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
+debug/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp ../tools/include/data_profile/File_To_Targetfile.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstring.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qchar.h \
@@ -4524,25 +4532,25 @@ debug/File_To_Targetfile.o: ../tools/src/data_profile/File_To_Targetfile.cpp ../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDirIterator \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdiriterator.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDir \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/Make_Normal_File.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\File_To_Targetfile.o ..\tools\src\data_profile\File_To_Targetfile.cpp
 
-debug/Make_Merge_File.o: ../tools/src/data_profile/Make_Merge_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+debug/Make_Merge_File.o: ../tools/src/data_profile/Make_Merge_File.cpp ../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstringlist.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qlist.h \
@@ -4603,9 +4611,9 @@ debug/Make_Merge_File.o: ../tools/src/data_profile/Make_Merge_File.cpp ../../../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qobject_impl.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qshareddata.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qhash.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qmap.h \
@@ -4664,7 +4672,7 @@ debug/Make_Merge_File.o: ../tools/src/data_profile/Make_Merge_File.cpp ../../../
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Make_Merge_File.o ..\tools\src\data_profile\Make_Merge_File.cpp
 
-debug/Make_Normal_File.o: ../tools/src/data_profile/Make_Normal_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
+debug/Make_Normal_File.o: ../tools/src/data_profile/Make_Normal_File.cpp ../tools/include/data_profile/Make_Normal_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstringlist.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qlist.h \
@@ -4725,9 +4733,9 @@ debug/Make_Normal_File.o: ../tools/src/data_profile/Make_Normal_File.cpp ../../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qobject_impl.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qshareddata.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qhash.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qmap.h \
@@ -4786,7 +4794,7 @@ debug/Make_Normal_File.o: ../tools/src/data_profile/Make_Normal_File.cpp ../../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Make_Normal_File.o ..\tools\src\data_profile\Make_Normal_File.cpp
 
-debug/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
+debug/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../tools/include/data_profile/Make_Ration_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstring.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qchar.h \
@@ -4858,7 +4866,7 @@ debug/Make_Ration_File.o: ../tools/src/data_profile/Make_Ration_File.cpp ../../.
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Make_Ration_File.o ..\tools\src\data_profile\Make_Ration_File.cpp
 
-debug/Make_Temperature_File.o: ../tools/src/data_profile/Make_Temperature_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
+debug/Make_Temperature_File.o: ../tools/src/data_profile/Make_Temperature_File.cpp ../tools/include/data_profile/Make_Temperature_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstringlist.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qlist.h \
@@ -4904,9 +4912,9 @@ debug/Make_Temperature_File.o: ../tools/src/data_profile/Make_Temperature_File.c
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qregexp.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstringmatcher.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qhash.h \
@@ -4979,7 +4987,7 @@ debug/Make_Temperature_File.o: ../tools/src/data_profile/Make_Temperature_File.c
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qeventloop.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Make_Temperature_File.o ..\tools\src\data_profile\Make_Temperature_File.cpp
 
-debug/Make_Timc_File.o: ../tools/src/data_profile/Make_Timc_File.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
+debug/Make_Timc_File.o: ../tools/src/data_profile/Make_Timc_File.cpp ../tools/include/data_profile/Make_Timc_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qstringlist.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qlist.h \
@@ -5040,9 +5048,9 @@ debug/Make_Timc_File.o: ../tools/src/data_profile/Make_Timc_File.cpp ../../../br
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qobject_impl.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qshareddata.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qhash.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qmap.h \
@@ -5103,7 +5111,7 @@ debug/Make_Timc_File.o: ../tools/src/data_profile/Make_Timc_File.cpp ../../../br
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Make_Timc_File.o ..\tools\src\data_profile\Make_Timc_File.cpp
 
-debug/Scatter_Site_Scatter_Part.o: ../tools/src/data_profile/Scatter_Site_Scatter_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+debug/Scatter_Site_Scatter_Part.o: ../tools/src/data_profile/Scatter_Site_Scatter_Part.cpp ../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5171,7 +5179,7 @@ debug/Scatter_Site_Scatter_Part.o: ../tools/src/data_profile/Scatter_Site_Scatte
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Scatter_Site_Scatter_Part.o ..\tools\src\data_profile\Scatter_Site_Scatter_Part.cpp
 
-debug/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/SITE_PART.h \
+debug/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../tools/include/data_profile/SITE_PART.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5239,9 +5247,9 @@ debug/Site_Part.o: ../tools/src/data_profile/Site_Part.cpp ../../../branch_Dev_E
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Site_Part.o ..\tools\src\data_profile\Site_Part.cpp
 
-debug/Targetfile_Ration_Valid_Data.o: ../tools/src/data_profile/Targetfile_Ration_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+debug/Targetfile_Ration_Valid_Data.o: ../tools/src/data_profile/Targetfile_Ration_Valid_Data.cpp ../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5307,12 +5315,12 @@ debug/Targetfile_Ration_Valid_Data.o: ../tools/src/data_profile/Targetfile_Ratio
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Targetfile_Ration_Valid_Data.o ..\tools\src\data_profile\Targetfile_Ration_Valid_Data.cpp
 
-debug/Targetfile_Temperature_Valid_Data.o: ../tools/src/data_profile/Targetfile_Temperature_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+debug/Targetfile_Temperature_Valid_Data.o: ../tools/src/data_profile/Targetfile_Temperature_Valid_Data.cpp ../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5378,12 +5386,12 @@ debug/Targetfile_Temperature_Valid_Data.o: ../tools/src/data_profile/Targetfile_
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Targetfile_Temperature_Valid_Data.o ..\tools\src\data_profile\Targetfile_Temperature_Valid_Data.cpp
 
-debug/Targetfile_Time_Valid_Data.o: ../tools/src/data_profile/Targetfile_Time_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+debug/Targetfile_Time_Valid_Data.o: ../tools/src/data_profile/Targetfile_Time_Valid_Data.cpp ../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5449,11 +5457,11 @@ debug/Targetfile_Time_Valid_Data.o: ../tools/src/data_profile/Targetfile_Time_Va
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Targetfile_Time_Valid_Data.o ..\tools\src\data_profile\Targetfile_Time_Valid_Data.cpp
 
-debug/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
+debug/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.cpp ../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/data_profile/Site_Part.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5519,12 +5527,12 @@ debug/Targetfile_Valid_Data.o: ../tools/src/data_profile/Targetfile_Valid_Data.c
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qcontiguouscache.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Targetfile_Valid_Data.o ..\tools\src\data_profile\Targetfile_Valid_Data.cpp
 
-debug/Unit_UL_Block.o: ../tools/src/data_profile/Unit_UL_Block.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+debug/Unit_UL_Block.o: ../tools/src/data_profile/Unit_UL_Block.cpp ../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5592,7 +5600,7 @@ debug/Unit_UL_Block.o: ../tools/src/data_profile/Unit_UL_Block.cpp ../../../bran
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Unit_UL_Block.o ..\tools\src\data_profile\Unit_UL_Block.cpp
 
-debug/Unit_UL_Str.o: ../tools/src/data_profile/Unit_UL_Str.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+debug/Unit_UL_Str.o: ../tools/src/data_profile/Unit_UL_Str.cpp ../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5660,7 +5668,7 @@ debug/Unit_UL_Str.o: ../tools/src/data_profile/Unit_UL_Str.cpp ../../../branch_D
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Unit_UL_Str.o ..\tools\src\data_profile\Unit_UL_Str.cpp
 
-debug/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+debug/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qdebug.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qalgorithms.h \
@@ -5728,7 +5736,7 @@ debug/Unit_Ul.o: ../tools/src/data_profile/Unit_Ul.cpp ../../../branch_Dev_Excel
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Unit_Ul.o ..\tools\src\data_profile\Unit_Ul.cpp
 
-debug/Chart.o: ../tools/src/draw_picture/Chart.cpp ../../../branch_Dev_Excel_Qt/tools/include/draw_picture/chart.h \
+debug/Chart.o: ../tools/src/draw_picture/Chart.cpp ../tools/include/draw_picture/chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -5876,13 +5884,13 @@ debug/Chart.o: ../tools/src/draw_picture/Chart.cpp ../../../branch_Dev_Excel_Qt/
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QLegendMarker \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qlegendmarker.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Chart.o ..\tools\src\draw_picture\Chart.cpp
 
-debug/Chart_Category_Value.o: ../tools/src/draw_picture/Chart_Category_Value.cpp ../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+debug/Chart_Category_Value.o: ../tools/src/draw_picture/Chart_Category_Value.cpp ../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -6037,7 +6045,7 @@ debug/Chart_Category_Value.o: ../tools/src/draw_picture/Chart_Category_Value.cpp
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Chart_Category_Value.o ..\tools\src\draw_picture\Chart_Category_Value.cpp
 
-debug/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
+debug/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../tools/include/draw_picture/My_Chart_View.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -6175,7 +6183,7 @@ debug/My_Chart_View.o: ../tools/src/draw_picture/My_Chart_View.cpp ../../../bran
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\My_Chart_View.o ..\tools\src\draw_picture\My_Chart_View.cpp
 
-debug/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp ../../../branch_Dev_Excel_Qt/widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
+debug/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_Attri_Show.cpp ../widgets/widget_all_attri_show/include/Widget_All_Attri_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -6280,37 +6288,37 @@ debug/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_A
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -6351,8 +6359,8 @@ debug/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_A
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
@@ -6369,7 +6377,7 @@ debug/Widget_All_Attri_Show.o: ../widgets/widget_all_attri_show/src/Widget_All_A
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Widget_All_Attri_Show.o ..\widgets\widget_all_attri_show\src\Widget_All_Attri_Show.cpp
 
-debug/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget_Temperature_Show.cpp ../../../branch_Dev_Excel_Qt/widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
+debug/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget_Temperature_Show.cpp ../widgets/widget_temperature_show/include/Widget_Temperature_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -6474,37 +6482,37 @@ debug/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget_T
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -6545,8 +6553,8 @@ debug/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget_T
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
@@ -6563,7 +6571,7 @@ debug/Widget_Temperature_Show.o: ../widgets/widget_temperature_show/src/Widget_T
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Widget_Temperature_Show.o ..\widgets\widget_temperature_show\src\Widget_Temperature_Show.cpp
 
-debug/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp ../../../branch_Dev_Excel_Qt/widgets/widget_time_show/include/Widget_Time_Show.h \
+debug/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp ../widgets/widget_time_show/include/Widget_Time_Show.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QWidget \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qwidget.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qtwidgetsglobal.h \
@@ -6668,37 +6676,37 @@ debug/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp .
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfiledevice.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qvector2d.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtGui/qtouchdevice.h \
-		../../../branch_Dev_Excel_Qt/tools/include/Tools_Header_Proxy_01.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Attri_Unit_Ul.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_Ul.h \
+		../tools/include/Tools_Header_Proxy_01.h \
+		../tools/include/data_profile/Attri_Unit_Ul.h \
+		../tools/include/data_profile/Unit_Ul.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QDebug \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Axis_Y_Step.h \
+		../tools/include/data_profile/Axis_Y_Step.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QString \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Compare_Plan_UUL.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Block.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Unit_UL_Str.h \
+		../tools/include/data_profile/Compare_Plan_UUL.h \
+		../tools/include/data_profile/Unit_UL_Block.h \
+		../tools/include/data_profile/Unit_UL_Str.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QLabel \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qlabel.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qframe.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QScrollArea \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qscrollarea.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qabstractscrollarea.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/File_To_Targetfile.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Merge_File.h \
+		../tools/include/data_profile/File_To_Targetfile.h \
+		../tools/include/data_profile/Make_Merge_File.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QStringList \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/QFileInfo \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCore/qfileinfo.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Normal_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Ration_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Temperature_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Make_Timc_File.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Scatter_Site_Scatter_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Site_Part.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Time_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/data_profile/Targetfile_Valid_Data.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart.h \
+		../tools/include/data_profile/Make_Normal_File.h \
+		../tools/include/data_profile/Make_Ration_File.h \
+		../tools/include/data_profile/Make_Temperature_File.h \
+		../tools/include/data_profile/Make_Timc_File.h \
+		../tools/include/data_profile/Scatter_Site_Scatter_Part.h \
+		../tools/include/data_profile/Site_Part.h \
+		../tools/include/data_profile/Targetfile_Ration_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Temperature_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Time_Valid_Data.h \
+		../tools/include/data_profile/Targetfile_Valid_Data.h \
+		../tools/include/draw_picture/Chart.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QChartView \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qchartview.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QAbstractAxis \
@@ -6739,8 +6747,8 @@ debug/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp .
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/qgridlayout.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QValueAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qvalueaxis.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/My_Chart_View.h \
-		../../../branch_Dev_Excel_Qt/tools/include/draw_picture/Chart_Category_Value.h \
+		../tools/include/draw_picture/My_Chart_View.h \
+		../tools/include/draw_picture/Chart_Category_Value.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/QCategoryAxis \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtCharts/qcategoryaxis.h \
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QApplication \
@@ -6757,8 +6765,8 @@ debug/Widget_Time_Show.o: ../widgets/widget_time_show/src/Widget_Time_Show.cpp .
 		C:/QT/Qt5.14.2_MinGW_static/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Widget_Time_Show.o ..\widgets\widget_time_show\src\Widget_Time_Show.cpp
 
-debug/profile_excel_by_qt_plugin_import.o: E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\profile_excel_by_qt_plugin_import.o E:/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
+debug/profile_excel_by_qt_plugin_import.o: E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\profile_excel_by_qt_plugin_import.o E:/Tool_Qt/branch_Dev_Excel_Qt/profile_Excel_By_Qt-Release/profile_excel_by_qt_plugin_import.cpp
 
 debug/moc_Main_Window.o: debug/moc_Main_Window.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_Main_Window.o debug\moc_Main_Window.cpp

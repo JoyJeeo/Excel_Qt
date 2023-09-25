@@ -131,10 +131,11 @@ void Make_Ration_File::init_ration_datas()
     try {
         // 初始化ration_datas
         // 计算ration数据存储容器的初始化大小
-        int row_len = timc_datas.size() - (end_T0_body_begin_other_body - end_head_begin_T0_body );
-        int col_len = timc_datas[0].size();
+        //int row_len = timc_datas.size() - (end_T0_body_begin_other_body - end_head_begin_T0_body );
+        //int col_len = timc_datas[0].size();
         // 以空字符串为初始化
-        ration_datas = vector<vector<string>>(row_len,vector<string>(col_len,""));
+        ration_datas = vector<vector<string>>(timc_datas.size(),
+                                              vector<string>(timc_datas[0].size(),""));
 
     } catch (...) {
         qDebug() << "Make_Ration_File::init_ration_datas";
@@ -326,19 +327,28 @@ void Make_Ration_File::move_other_data()
 {
     try {
         // 设置前排数据索引和移动数据索引的开始位置
-        size_t pre_index = end_head_begin_T0_body;
-        size_t move_index = end_T0_body_begin_other_body;
-
+        //size_t pre_index = end_head_begin_T0_body;
+        //size_t move_index = end_T0_body_begin_other_body;
+        //
         // 搬运和修改部分数据
-        for(;move_index < timc_datas.size() && pre_index < timc_datas.size();
-            move_index++,pre_index++)
+        //for(;move_index < timc_datas.size() && pre_index < timc_datas.size();
+        //    move_index++,pre_index++)
+        //{
+        //    for(size_t j = 0;j < valid_col;j++)
+        //    {
+        //        // 从timc向ration搬运其余数据
+        //        ration_datas[pre_index][j] = timc_datas[move_index][j];
+        //    }
+        //}
+
+        for(size_t i = end_head_begin_T0_body; i < timc_datas.size(); i++)
         {
             for(size_t j = 0;j < valid_col;j++)
             {
-                // 从timc向ration搬运其余数据
-                ration_datas[pre_index][j] = timc_datas[move_index][j];
+                ration_datas[i][j] = timc_datas[i][j];
             }
         }
+
 
     } catch (...) {
         qDebug() << "Make_Ration_File::move_other_data";
@@ -353,44 +363,83 @@ void Make_Ration_File::update_valid_datas()
         // 对比数据T0数据区
         // 本质上类似于在"填表格"
 
-        // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】【获取不同时刻】
-        int T0_offset = 0;
-        // 计算两个时刻之间的间隔数【其后每个时刻之间计算都以这个间隔为基础】【相同时刻的跨度】
-        int interval_n = end_T0_body_begin_other_body - end_head_begin_T0_body;
+         // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】【获取不同时刻】
+         int T0_offset = 0;
+         // 计算两个时刻之间的间隔数【其后每个时刻之间计算都以这个间隔为基础】【相同时刻的跨度】
+         int interval_n = end_T0_body_begin_other_body - end_head_begin_T0_body;
 
-        // 计算有效数据
-        for(size_t row_T0 = end_head_begin_T0_body;row_T0 < end_T0_body_begin_other_body;
-            row_T0++,T0_offset++) // 将时刻的no偏移,同步到其他时刻上
-        {
-            for(size_t col = valid_col;col < timc_datas[row_T0].size();col++)
-            {
-                for(size_t row_other = end_T0_body_begin_other_body + T0_offset,
-                    // timc计算结果存入ration的结果中
-                    row_ration_record = end_head_begin_T0_body + T0_offset; // row_ration_record既有timc的属性，又有ration的属性
-                    row_other < timc_datas.size();
-                    row_other += interval_n,row_ration_record += interval_n)
-                {
-                    // 【排除所有不应该被用来计算的情况】
-                    // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】
-                    if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
-                        continue;
+         // 计算有效数据
+         for(size_t row_T0 = end_head_begin_T0_body;row_T0 < end_T0_body_begin_other_body;
+             row_T0++,T0_offset++) // 将时刻的no偏移,同步到其他时刻上
+         {
+             for(size_t col = valid_col;col < timc_datas[row_T0].size();col++)
+             {
+                 for(size_t row_other = end_head_begin_T0_body + T0_offset,
+                     // timc计算结果存入ration的结果中
+                     row_ration_record = end_head_begin_T0_body + T0_offset; // row_ration_record既有timc的属性，又有ration的属性
+                     row_other < timc_datas.size();
+                     row_other += interval_n,row_ration_record += interval_n)
+                 {
+                     // 【排除所有不应该被用来计算的情况】
+                     // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】
+                     if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
+                         continue;
 
-                    double T0 = stod(timc_datas[row_T0][col]);
-                    double T1 = stod(timc_datas[row_other][col]);
-                    // 如果分母为0
-                    if(T0 == 0.0)
-                        continue;
+                     double T0 = stod(timc_datas[row_T0][col]);
+                     double T1 = stod(timc_datas[row_other][col]);
+                     // 如果分母为0
+                     if(T0 == 0.0)
+                         continue;
 
-                    // 【可以被计算的情况】
-                    // 获取算法的计算结果
-                    double ans_data = algorithm_ration_data(T1,T0);
+                     // 【可以被计算的情况】
+                     // 获取算法的计算结果
+                     double ans_data = algorithm_ration_data(T1,T0);
 
-                    // 将double数据转换为string字符串存储[√]
-                    // 将timc的计算结果 -> ration结果中存储
-                    ration_datas[row_ration_record][col] = to_string(ans_data);
-                }
-            }
-        }
+                     // 将double数据转换为string字符串存储[√]
+                     // 将timc的计算结果 -> ration结果中存储
+                     ration_datas[row_ration_record][col] = to_string(ans_data);
+                 }
+             }
+         }
+
+       // // 计算T0所在row与其开始行的偏移量【让后面的计算与T0的行偏移同步】【获取不同时刻】
+       // int T0_offset = 0;
+       // // 计算两个时刻之间的间隔数【其后每个时刻之间计算都以这个间隔为基础】【相同时刻的跨度】
+       // int interval_n = end_T0_body_begin_other_body - end_head_begin_T0_body;
+       //
+       // // 计算有效数据
+       // for(size_t row_T0 = end_head_begin_T0_body;row_T0 < end_T0_body_begin_other_body;
+       //     row_T0++,T0_offset++) // 将时刻的no偏移,同步到其他时刻上
+       // {
+       //     for(size_t col = valid_col;col < timc_datas[row_T0].size();col++)
+       //     {
+       //         for(size_t row_other = end_T0_body_begin_other_body + T0_offset,
+       //             // timc计算结果存入ration的结果中
+       //             row_ration_record = end_head_begin_T0_body + T0_offset; // row_ration_record既有timc的属性，又有ration的属性
+       //             row_other < timc_datas.size();
+       //             row_other += interval_n,row_ration_record += interval_n)
+       //         {
+       //             // 【排除所有不应该被用来计算的情况】
+       //             // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】
+       //             if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
+       //                 continue;
+       //
+       //             double T0 = stod(timc_datas[row_T0][col]);
+       //             double T1 = stod(timc_datas[row_other][col]);
+       //             // 如果分母为0
+       //             if(T0 == 0.0)
+       //                 continue;
+       //
+       //             // 【可以被计算的情况】
+       //             // 获取算法的计算结果
+       //             double ans_data = algorithm_ration_data(T1,T0);
+       //
+       //             // 将double数据转换为string字符串存储[√]
+       //             // 将timc的计算结果 -> ration结果中存储
+       //             ration_datas[row_ration_record][col] = to_string(ans_data);
+       //         }
+       //     }
+       // }
     } catch (...) {
         qDebug() << "Make_Ration_File::update_valid_datas";
         throw;

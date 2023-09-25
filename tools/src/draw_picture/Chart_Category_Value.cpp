@@ -212,8 +212,10 @@ void Chart_Category_Value::build_x_axis(const string& x_unit)
     try {
         for(string part : x_map_list)
         {
+//            qDebug() << x_map[part];
             axisX->append(QString::fromStdString(part + x_unit),x_map[part]);
         }
+//        qDebug() << "...";
 
     } catch (...) {
         qDebug() << "Chart_Category_Value::build_x_axis";
