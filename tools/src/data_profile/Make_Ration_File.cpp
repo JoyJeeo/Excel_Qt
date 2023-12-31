@@ -382,7 +382,9 @@ void Make_Ration_File::update_valid_datas()
                  {
                      // 【排除所有不应该被用来计算的情况】
                      // 保证两个都有数值【任何一方没有出现数值，都认为是不能被计算】
-                     if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
+//                     if(timc_datas[row_T0][col].size() == 0 || timc_datas[row_other][col].size() == 0)
+//                         continue;
+                     if(!is_valid_number(timc_datas[row_T0][col]) || !is_valid_number(timc_datas[row_other][col]))
                          continue;
 
                      double T0 = stod(timc_datas[row_T0][col]);
@@ -442,6 +444,31 @@ void Make_Ration_File::update_valid_datas()
        // }
     } catch (...) {
         qDebug() << "Make_Ration_File::update_valid_datas";
+        throw;
+    }
+}
+
+bool Make_Ration_File::is_valid_number(const string &num)
+{
+    try {
+        if(num.size() == 0)
+            return false;
+
+        int counter = 0;
+        for(size_t i = 0;i < num.size();i++)
+        {
+            if((num[i] <= '9' && num[i] >= '0') || (num[i] == '.' && counter != 0) || (num[i] == '-' && counter == 0))
+            {
+                counter++;
+                continue;
+            }
+            else
+                return false;
+        }
+        return true;
+
+    } catch (...) {
+        qDebug() << "Make_Ration_File::is_valid_cell";
         throw;
     }
 }

@@ -65,6 +65,9 @@ private:
     // 修改数据区的数据，转换为变动率
     void update_valid_datas();
 
+    // 判断无效的字符串空数据
+    bool is_valid_number(const string& num);
+
     // 变动率需要调用的计算算法
     double algorithm_ration_data(double T1,double T0);
 

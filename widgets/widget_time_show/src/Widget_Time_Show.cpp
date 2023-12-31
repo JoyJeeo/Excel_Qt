@@ -102,6 +102,11 @@ void Widget_Time_Show::while_draw(int row_obj_nums)
         {
             string attri = labels[i];
 
+            if(attri == "P2P_LEAK_sw_Pre")
+            {
+                int a = 1;
+            }
+
             // 【time图像生成】
             // 获取site_part的对应数据点
             QMap<string,QMap<string,QPointF>> time_site_points = get_matrix_pointF(time_series_datas[attri],
@@ -130,6 +135,9 @@ void Widget_Time_Show::while_draw(int row_obj_nums)
 
             counter++;
 
+            // !!!
+            //if(attri == "Vline_regulation_5" || attri == "PG_leakage" || attri == "Post_Leakage_en_l") continue;
+
             // 【ration图像生成】
             // 获取site_part的对应数据点
             QMap<string,QMap<string,QPointF>> ration_site_points = get_matrix_pointF(ration_series_datas[attri],
@@ -137,6 +145,30 @@ void Widget_Time_Show::while_draw(int row_obj_nums)
                                                                            ration_datas->get_scatter_part(),
                                                                            !is_time_chart
                                                                            );
+            vector<string> scatter_site = ration_datas->get_scatter_site();
+            vector<string> scatter_part = ration_datas->get_scatter_part();
+            bool flage = false;
+            for(size_t i = 0;i < scatter_site.size();i++)
+            {
+                string site = scatter_site[i];
+                for(size_t j = 0;j < scatter_part.size();j++)
+                {
+                    string part = scatter_part[j];
+                    if(ration_site_points[site][part].y() > 100 || ration_site_points[site][part].y() < -100)
+                    {
+                        flage = true;
+                        break;
+                    }
+                }
+                if(flage) break;
+            }
+            if(flage)
+            {
+                Chart_Category_Value *t = new Chart_Category_Value;
+                t->setMinimumSize(1500,1800); // 注意和Chart_Category_Value的设置大小同步【手动】
+                bulid_pic_save(t,counter,pic_dir); // 制造pic 同一张图里不能全空空，必须至少nullptr，或者空窗体代替
+                continue;
+            }
 
             // 获取初始化好的chart
             Chart_Category_Value* ration_chart = this->initChart(attri,ration_site_points,
