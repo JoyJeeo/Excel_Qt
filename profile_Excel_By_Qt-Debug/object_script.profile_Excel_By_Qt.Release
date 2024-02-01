@@ -29,6 +29,7 @@ release/My_Chart_View.o
 release/Widget_All_Attri_Show.o
 release/Widget_Temperature_Show.o
 release/Widget_Time_Show.o
+release/qrc_res.o
 release/moc_Main_Window.o
 release/moc_Button_All_Attri.o
 release/moc_Button_Merge_File.o

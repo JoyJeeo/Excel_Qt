@@ -10,7 +10,7 @@
 #include <QMessageBox>
 
 // 全局的test_plan文件的地址
-extern QString test_plan_path; // test plan的路径
+extern QString test_plan_path; // test plan的路径【test plan中的数据格式是绝对的，文件名称不是绝对的】
 
 Compare_Plan_UUL::Compare_Plan_UUL()
 {
@@ -64,7 +64,9 @@ void Compare_Plan_UUL::warning_head(const vector<vector<string>> &head_datas,
             data_pros.insert(attri);
 
             // 无warning
-            if(uul == plan_uul.m_attri_uuls[attri]) continue;
+            map<string,Unit_UL_Str>::iterator item_iterator = plan_uul.m_attri_uuls.find(attri);
+            if(item_iterator != plan_uul.m_attri_uuls.end() && uul == item_iterator->second)
+                continue;
 
             // warning
             // 这个属性没被添加过
@@ -161,6 +163,16 @@ bool Compare_Plan_UUL::warning_extra_show()
     }
 }
 
+vector<string> Compare_Plan_UUL::get_test_plan_pro_list()
+{
+    return plan_uul.m_attri_list;
+}
+
+map<string, Unit_UL_Str> Compare_Plan_UUL::get_test_plan_map()
+{
+    return plan_uul.m_attri_uuls;
+}
+
 void Compare_Plan_UUL::init()
 {
     try {
@@ -215,7 +227,9 @@ void Compare_Plan_UUL::profile_test_plan(const vector<vector<string>> &all_array
         // 填充uul
         for(;row_attri < all_array.size();row_attri++)
         {
-            plan_uul.m_attri_uuls.insert(make_pair(all_array[row_attri][col_attri],
+            string pro_name = all_array[row_attri][col_attri];
+            plan_uul.m_attri_list.push_back(pro_name);
+            plan_uul.m_attri_uuls.insert(make_pair(pro_name,
                                                    Unit_UL_Str(all_array[row_attri][col_unit],
                                                            all_array[row_attri][col_limitL],
                                                            all_array[row_attri][col_limitU]

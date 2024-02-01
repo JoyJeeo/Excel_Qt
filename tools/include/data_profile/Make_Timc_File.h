@@ -85,6 +85,14 @@ private:
                                              // first为No_...,second为时刻名称
                                              const pair<vector<string>,string>& steers // 修改建议
                                              );
+    // 根据test plan获得对应pro的col索引
+    map<string,int> profile_pro_col_by_testplan(const vector<vector<string>> &head_datas, const string &time_name, const QString &file_path);
+
+    // 根据test plan更新head
+    void update_head_datas_by_testplan(vector<vector<string>>& head_datas, map<string,int>& base_pro_col);
+
+    // 更具test plan更新body
+    void update_body_datas_by_testplan(vector<vector<string>>& body_datas, map<string,int>& base_pro_col);
 
     // 将容器内容load进入全局数据容器中
     void load_datas(const vector<vector<string>>& datas);

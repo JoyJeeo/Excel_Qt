@@ -16,6 +16,7 @@ const string m_Unit = "Unit";
 const string m_LimitL = "LimitL";
 const string m_LimitU = "LimitU";
 map<string,Unit_UL_Str> m_attri_uuls;
+vector<string> m_attri_list;
 
 };
 

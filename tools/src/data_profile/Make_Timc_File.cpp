@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <QDir>
+#include <QMessageBox>
 #include <sstream>
 
 Make_Timc_File::Make_Timc_File()
@@ -142,7 +143,7 @@ void Make_Timc_File::tackle_single_file(const string &time_name, const QString &
         vector<vector<string>> target_array = tackle_solo_file_get_target(all_array,rows_num,
                                                                  cols_num,target_data_index);
 
-        // 获取目标数据区中的分割点inde
+        // 获取目标数据区中的分割点index
         size_t end_head_begin_body = 0;
 
         // 分析目标数据的分割点下标，分析出头数据和体数据的位置
@@ -152,9 +153,12 @@ void Make_Timc_File::tackle_single_file(const string &time_name, const QString &
         // 获取头数据
         vector<vector<string>> head_datas = get_head_datas(target_array,end_head_begin_body);
         test_plan.warning_head(head_datas,file_path.toStdString());
+        // 变动率中，根据test plan获取的有效列的索引数据
+        map<string,int> base_pro_col = profile_pro_col_by_testplan(head_datas,time_name,file_path);
         // 只有第一个文件会获取头数据
         if(first_file_flage)
         {
+            update_head_datas_by_testplan(head_datas, base_pro_col);
             // 将头数据加载进总容器中
             load_datas(head_datas);
 
@@ -167,6 +171,9 @@ void Make_Timc_File::tackle_single_file(const string &time_name, const QString &
         vector<vector<string>> body_datas = get_body_datas(target_array,end_head_begin_body);
         // 修改body_datas中的数据
         vector<vector<string>> update_body = update_body_datas(body_datas,steer);
+        // 将boday_datas中的数据与test plan的项目进行对齐
+        update_body_datas_by_testplan(update_body, base_pro_col);
+
         // 加载进容器中
         load_datas(update_body);
 
@@ -608,6 +615,144 @@ vector<vector<string>> Make_Timc_File::update_body_datas(const vector<vector<str
 
     } catch (...) {
         qDebug() << "Make_Timc_File::update_body_datas";
+        throw;
+    }
+}
+
+map<string, int> Make_Timc_File::profile_pro_col_by_testplan(const vector<vector<string>> &head_datas,
+                                                             const string &time_name, const QString &file_path)
+{
+    try {
+        map<string, int> base_pro_col;
+        map<string, Unit_UL_Str> pro_set = test_plan.get_test_plan_map();
+
+        // 扫原始的head项目，找对应pro_set填充base_pro_index
+        // 获取有效列的起始位置
+        size_t begin_row = 0;
+        size_t col_end_invalid_begin_pro;
+
+        for(col_end_invalid_begin_pro = 0; col_end_invalid_begin_pro < head_datas[begin_row].size();col_end_invalid_begin_pro++)
+        {
+            if(head_datas[begin_row][col_end_invalid_begin_pro] == "TEST_NUM")
+            {
+                col_end_invalid_begin_pro++;
+                break;
+            }
+        }
+        // 开始扫所有项目，完成base_pro_index
+        for(size_t col = col_end_invalid_begin_pro;col < head_datas[begin_row].size();col++)
+        {
+            if(pro_set.find(head_datas[begin_row][col]) != pro_set.end())
+            {
+                base_pro_col.insert(make_pair(head_datas[begin_row][col], col));
+            }
+        }
+
+        // Warning 变动率中，多出的项目不要，少的项目报错并说明少哪些项目
+        // 将test plan中的所有项目都先加入non中
+        set<string> non_pro;
+        for(auto& item : pro_set) non_pro.insert(item.first);
+        // 将base_pro_col中与non_pro一致的项目都删除
+        for(auto& item : base_pro_col) non_pro.erase(item.first);
+        // 正常non应该为空，否则报错
+        if(non_pro.size() != 0)
+        {
+            string warning_str = "Timc: " + time_name + "\n" +
+                    "File_Path: " + file_path.toStdString() + "\n" +
+                    "[Non_Pros]: \n";
+            int counter = 1;
+            for(auto& item : non_pro)
+            {
+                warning_str += item + (counter % 4 != 0 ? ',' : '\n');
+                counter++;
+            }
+            warning_str = warning_str.substr(0,warning_str.size() - 1);
+            QMessageBox::warning(nullptr,"timc test_plan error",QString::fromStdString(warning_str));
+            exit(1);
+        }
+
+        return base_pro_col;
+    } catch (...) {
+        qDebug() << "Make_Timc_File::profile_pro_col_by_testplan";
+        throw;
+    }
+}
+
+void Make_Timc_File::update_head_datas_by_testplan(vector<vector<string> > &head_datas, map<string,int>& base_pro_col)
+{
+    try {
+        vector<string> pro_list = test_plan.get_test_plan_pro_list();
+
+        // 获取有效列的起始位置
+        size_t begin_row = 0;
+        size_t col_end_invalid_begin_pro;
+        size_t end_row = 5;
+
+        for(col_end_invalid_begin_pro = 0; col_end_invalid_begin_pro < head_datas[begin_row].size();col_end_invalid_begin_pro++)
+        {
+            if(head_datas[begin_row][col_end_invalid_begin_pro] == "TEST_NUM")
+            {
+                col_end_invalid_begin_pro++;
+                break;
+            }
+        }
+
+        // 将原始head_datas的数据重新填充进res
+        vector<vector<string>> res(end_row, vector<string>());
+        for(size_t col = 0;col < col_end_invalid_begin_pro;col++)
+        {
+            for(size_t row = 0;row < end_row;row++)
+                res[row].push_back(head_datas[row][col]);
+        }
+        for(size_t i = 0;i < pro_list.size();i++)
+        {
+            assert(base_pro_col.find(pro_list[i]) != base_pro_col.end());
+            int col = base_pro_col[pro_list[i]];
+
+            for(size_t row = 0;row < end_row;row++)
+                res[row].push_back(head_datas[row][col]);
+        }
+
+        // 最后将res与head_dats数据进行交换
+        head_datas = res;
+
+    } catch (...) {
+        qDebug() << "Make_Timc_File::update_head_datas_by_testplan";
+        throw;
+    }
+}
+
+void Make_Timc_File::update_body_datas_by_testplan(vector<vector<string> > &body_datas, map<string,int>& base_pro_col)
+{
+    try {
+        vector<string> pro_list = test_plan.get_test_plan_pro_list();
+
+        // 获取有效列的起始位置
+        size_t begin_row = 0;
+        size_t col_end_invalid_begin_pro = 6; // 手动设置
+        size_t end_row = body_datas.size();
+
+        // 将原始body_datas数据对应base_pro_index重新填充res
+        vector<vector<string>> res(end_row, vector<string>());
+        for(size_t col = 0;col < col_end_invalid_begin_pro;col++)
+        {
+            for(size_t row = 0;row < end_row;row++)
+                res[row].push_back(body_datas[row][col]);
+        }
+        for(size_t i = 0;i < pro_list.size();i++)
+        {
+            assert(base_pro_col.find(pro_list[i]) != base_pro_col.end());
+            int col = base_pro_col[pro_list[i]];
+
+            for(size_t row = 0;row < end_row;row++)
+                res[row].push_back(body_datas[row][col]);
+        }
+
+        // res的数据即为body_datas所需的最终数据，二者交换
+        body_datas = res;
+
+    } catch (...) {
+        qDebug() << "Make_Timc_File::update_body_datas_by_testplan";
         throw;
     }
 }

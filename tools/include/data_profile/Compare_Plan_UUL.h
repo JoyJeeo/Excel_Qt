@@ -24,6 +24,10 @@ public:
 
     bool warning_extra_show();
 
+    vector<string> get_test_plan_pro_list();
+
+    map<string,Unit_UL_Str> get_test_plan_map();
+
 private:
     // 【方法区】
     void init();

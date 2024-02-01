@@ -29,6 +29,7 @@ debug/My_Chart_View.o
 debug/Widget_All_Attri_Show.o
 debug/Widget_Temperature_Show.o
 debug/Widget_Time_Show.o
+debug/qrc_res.o
 debug/moc_Main_Window.o
 debug/moc_Button_All_Attri.o
 debug/moc_Button_Merge_File.o

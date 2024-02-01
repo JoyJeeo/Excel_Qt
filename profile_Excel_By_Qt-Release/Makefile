@@ -303,7 +303,8 @@ Makefile: ../profile_Excel_By_Qt.pro C:/QT/Qt5.14.2_MinGW_static/mkspecs/win32-g
 		C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Gui.prl \
 		C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Core.prl \
 		C:/QT/Qt5.14.2_MinGW_static/lib/qtmain.prl \
-		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/build_pass.prf
+		C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/build_pass.prf \
+		../res.qrc
 	$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/spec_pre.prf:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/qdevice.pri:
@@ -539,6 +540,7 @@ C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Gui.prl:
 C:/QT/Qt5.14.2_MinGW_static/lib/Qt5Core.prl:
 C:/QT/Qt5.14.2_MinGW_static/lib/qtmain.prl:
 C:/QT/Qt5.14.2_MinGW_static/mkspecs/features/build_pass.prf:
+../res.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\profile_Excel_By_Qt.pro -spec win32-g++ "CONFIG+=qtquickcompiler"
 
